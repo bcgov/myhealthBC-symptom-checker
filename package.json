@@ -1,0 +1,5 @@
+{
+  "name": "@bcgov/myhealth-symptom-checker",
+  "private": true,
+  "workspaces": ["apps/api", "apps/web"]
+}
