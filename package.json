@@ -1,5 +1,25 @@
 {
   "name": "@bcgov/myhealth-symptom-checker",
   "private": true,
-  "workspaces": ["apps/api", "apps/web"]
+  "scripts": {
+    "start:api": "yarn workspace api start",
+    "start:web": "yarn workspace web start",
+    "watch:api": "yarn workspace api watch",
+    "watch:web": "yarn workspace web watch",
+    "test:api": "yarn workspace api test",
+    "test:web": "yarn workspace web test",
+    "test:e2e:api": "yarn workspace api test:e2e",
+    "test:e2e:web": "yarn workspace web test:e2e",
+    "start": "concurrently yarn:start:*",
+    "watch": "concurrently yarn:watch:*",
+    "test": "concurrently yarn:test:*",
+    "test:e2e": "concurrently yarn:test:e2e:*"
+  },
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
 }
