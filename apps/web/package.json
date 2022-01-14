@@ -3,14 +3,14 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "next dev",
+    "watch": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "start-server-and-test dev http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless"
+    "e2e": "start-server-and-test watch http://localhost:3000 cypress",
+    "test:e2e": "start-server-and-test watch http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "next": "latest",
