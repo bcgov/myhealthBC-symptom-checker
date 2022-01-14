@@ -2,8 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import useTranslation from 'next-translate/useTranslation';
 
 export default function Home() {
+  const { t } = useTranslation('common');
   return (
     <div className={styles.container}>
       <Head>
@@ -14,12 +16,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          {t('title')}
         </p>
 
         <div className={styles.grid}>
