@@ -1,5 +1,6 @@
 {
-  "name": "@symchk/myhealth-symptom-checker",
+  "name": "symchk",
+  "description": "My health symptom checker",
   "private": true,
   "scripts": {
     "format:staged": "yarn pretty-quick --staged",
@@ -9,22 +10,21 @@
     "check": "run-p 'lint' 'format:check'",
     "prepare": "husky install",
     "precommit": "yarn format:staged",
-    "start:api": "yarn workspace api start",
-    "start:web": "yarn workspace web start",
-    "watch:api": "yarn workspace api watch",
-    "watch:web": "yarn workspace web watch",
-    "test:api": "yarn workspace api test",
-    "test:web": "yarn workspace web test",
-    "test:e2e:api": "yarn workspace api test:e2e",
-    "test:e2e:web": "yarn workspace web test:e2e",
+    "start:api": "yarn workspace @symchk/api start",
+    "start:web": "yarn workspace @symchk/web start",
+    "watch:api": "yarn workspace @symchk/api watch",
+    "watch:web": "yarn workspace @symchk/web watch",
+    "test:api": "yarn workspace @symchk/api test",
+    "test:web": "yarn workspace @symchk/web test",
+    "test:e2e:api": "yarn workspace @symchk/api test:e2e",
+    "test:e2e:web": "yarn workspace @symchk/web test:e2e",
     "start": "concurrently yarn:start:*",
     "watch": "concurrently yarn:watch:*",
     "test": "concurrently yarn:test:*",
     "test:e2e": "concurrently yarn:test:e2e:*"
   },
   "workspaces": [
-    "apps/api",
-    "apps/web"
+    "apps/*"
   ],
   "devDependencies": {
     "@tsconfig/node16": "1.0.1",
@@ -36,5 +36,5 @@
     "prettier": "2.4.1",
     "pretty-quick": "3.1.2"
   },
-  "version": "1.22.17"
+  "packageManager": "yarn@3.1.0"
 }
