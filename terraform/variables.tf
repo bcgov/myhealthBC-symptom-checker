@@ -25,5 +25,5 @@ locals {
   is_prod     = var.target_env == "prod" ? [var.target_env] : []
   is_not_prod = var.target_env != "prod" ? [var.target_env] : []
 
-  fw_club = var.target_env != "prod" ? 1 : 0
+  internal_domain = var.target_env != "prod" ? 1 : 0
 }
