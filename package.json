@@ -1,5 +1,5 @@
 {
-  "name": "@bcgov/myhealth-symptom-checker",
+  "name": "@symchk/myhealth-symptom-checker",
   "private": true,
   "scripts": {
     "format:staged": "yarn pretty-quick --staged",
