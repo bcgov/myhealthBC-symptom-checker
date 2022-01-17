@@ -9,4 +9,4 @@ COPY ./apps/$BUILD_CONTEXT apps/$BUILD_CONTEXT
 
 RUN yarn
 
-CMD ["yarn" "build:${BUILD_CONTEXT}"]
+CMD ["yarn", "build:${BUILD_CONTEXT}"]
