@@ -1,5 +1,8 @@
 #!make
 
+# Default Environments
+-include ./.env
+
 export COMMIT_SHA?=$(shell git rev-parse --short=7 HEAD)
 export REPO_LOCATION=$(shell git rev-parse --show-toplevel)
 
@@ -71,3 +74,15 @@ force-unlock: init
 
 destroy: init
 	terraform -chdir=$(TERRAFORM_DIR) destroy
+
+docker-down:
+	@docker-compose down
+
+docker-build:
+	@docker-compose build
+
+docker-run:
+	@docker-compose up
+
+docker-run-db:
+	@docker-compose up db
