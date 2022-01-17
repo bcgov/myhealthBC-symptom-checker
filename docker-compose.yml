@@ -23,6 +23,7 @@ services:
       dockerfile: Dockerfile
       args:
         - BUILD_CONTEXT=api
+    command: 'yarn watch:api'
     volumes:
       - ./apps/api:/apps/api
       - apps/api/node_modules
@@ -47,6 +48,7 @@ services:
       dockerfile: Dockerfile
       args:
         - BUILD_CONTEXT=web
+    command: 'yarn watch:web'
     volumes:
       - ./apps/web:/apps/web
       - apps/api/node_modules
