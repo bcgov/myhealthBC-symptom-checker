@@ -16,35 +16,44 @@ services:
     networks:
       - local
   api:
-    image: ${PROJECT_NAME}_base
+    image: ${PROJECT_NAME}_api
     container_name: ${PROJECT_NAME}_api
     build:
       context: .
       dockerfile: Dockerfile
-    command: 'yarn watch:api'
+      args:
+        - BUILD_CONTEXT=api
     volumes:
       - ./apps/api:/apps/api
+      - apps/api/node_modules
     ports:
       - '4040:4040'
+    expose:
+      - 4040
     environment:
       - POSTGRES_HOST=db
       - BUILD_ID=${COMMIT_SHA}
+      - RUNTIME_ENV=local
     depends_on:
       - db
     networks:
       - local
 
   web:
-    image: ${PROJECT_NAME}_base
+    image: ${PROJECT_NAME}_web
     container_name: ${PROJECT_NAME}_web
     build:
       context: .
       dockerfile: Dockerfile
-    command: 'yarn watch:web'
+      args:
+        - BUILD_CONTEXT=web
     volumes:
       - ./apps/web:/apps/web
+      - apps/api/node_modules
     ports:
       - '3030:3030'
+    expose:
+      - 3030
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:4040/api/v1
       - RUNTIME_ENV=local

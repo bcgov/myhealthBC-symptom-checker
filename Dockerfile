@@ -1,10 +1,12 @@
 FROM node:16-alpine
 
-COPY apps apps
-COPY package.json package.json
-COPY tsconfig.json tsconfig.json
+ARG BUILD_CONTEXT
+
+COPY package.json .
+COPY yarn.lock .
+COPY tsconfig.json .
+COPY ./apps/$BUILD_CONTEXT apps/$BUILD_CONTEXT
 
 RUN yarn
 
-EXPOSE 3030
-EXPOSE 4040
+CMD ["yarn" "build:${BUILD_CONTEXT}"]
