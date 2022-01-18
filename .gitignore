@@ -3,7 +3,12 @@ node_modules
 *.log
 apps/web/cypress/videos
 .tool-versions
+
 .env
 .yarn
 .out
+
+
+*.env
+.pgdata
 
