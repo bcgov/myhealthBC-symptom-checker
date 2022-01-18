@@ -5,3 +5,5 @@ apps/web/cypress/videos
 .tool-versions
 .env
 .yarn
+.out
+
