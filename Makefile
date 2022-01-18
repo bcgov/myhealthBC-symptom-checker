@@ -89,3 +89,18 @@ docker-run:
 
 docker-run-db:
 	@docker-compose up db
+
+pre-build:
+	@rm -rf .build || true
+	@mkdir -p .build;
+	@rm -rf terraform/.artifacts || true
+	@mkdir -p terraform/.artifacts
+
+api-build: pre-build
+	@yarn install
+	@yarn workspace @symchk/api build
+	@yarn workspaces focus @symchk/api --production
+	@cp -r node_modules .build/node_modules
+	@cp -r ./apps/api/dist .build
+	@(cd .build; zip -rq ../terraform/.artifacts/api.zip *)
+

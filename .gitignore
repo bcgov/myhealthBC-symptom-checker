@@ -12,3 +12,5 @@ apps/web/cypress/videos
 *.env
 .pgdata
 
+.build
+*.zip
