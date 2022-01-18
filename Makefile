@@ -70,10 +70,13 @@ apply: init
 	@terraform -chdir=$(TERRAFORM_DIR) apply -auto-approve -input=false
 
 force-unlock: init
-	terraform -chdir=$(TERRAFORM_DIR) force-unlock $(LOCK_ID)
+	@terraform -chdir=$(TERRAFORM_DIR) force-unlock $(LOCK_ID)
 
 destroy: init
-	terraform -chdir=$(TERRAFORM_DIR) destroy
+	@terraform -chdir=$(TERRAFORM_DIR) destroy
+
+refresh: 
+	@terraform -chdir=$(TERRAFORM_DIR) apply -refresh-only -auto-approve -input=false
 
 docker-down:
 	@docker-compose down
