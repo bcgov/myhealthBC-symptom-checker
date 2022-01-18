@@ -51,7 +51,7 @@ services:
     command: 'yarn watch:web'
     volumes:
       - ./apps/web:/apps/web
-      - apps/api/node_modules
+      - apps/web/node_modules
     ports:
       - '3030:3030'
     expose:
