@@ -20,8 +20,12 @@ variable "region" {
 locals {
   namespace   = var.project_code
   account_id  = data.aws_caller_identity.current.account_id
+  
   app_name    = "${var.project_name}-app-${var.target_env}"
   api_name    = "${var.project_name}-api-${var.target_env}"
+  
+  api_build_zip = "empty_lambda.zip"
+
   is_prod     = var.target_env == "prod" ? [var.target_env] : []
   is_not_prod = var.target_env != "prod" ? [var.target_env] : []
 
