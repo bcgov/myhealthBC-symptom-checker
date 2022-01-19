@@ -1,5 +1,5 @@
 // ***********************************************************
-// This example support/index.tsx is processed and
+// This example support/index.ts is processed and
 // loaded automatically before your test files.
 //
 // This is a great place to put global configuration and
@@ -12,6 +12,8 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
+
+/// <reference types="cypress" />
 
 // Import commands.ts using ES2015 syntax:
 import './commands';
