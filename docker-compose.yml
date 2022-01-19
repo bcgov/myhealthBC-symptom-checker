@@ -26,7 +26,7 @@ services:
     command: 'yarn watch:api'
     volumes:
       - ./apps/api:/apps/api
-      - apps/api/node_modules
+      - /apps/api/node_modules
     ports:
       - '4040:4040'
     expose:
@@ -47,11 +47,11 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - BUILD_CONTEXT=web
-    command: 'yarn watch:web'
+        - BUILD_CONTEXT=web-gatsby
+    command: 'yarn watch:web-gatsby'
     volumes:
-      - ./apps/web:/apps/web
-      - apps/web/node_modules
+      - ./apps/web-gatsby:/apps/web-gatsby
+      - /apps/web-gatsby/node_modules
     ports:
       - '3030:3030'
     expose:
@@ -59,6 +59,7 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:4040/api/v1
       - RUNTIME_ENV=local
+      - PARCEL_WORKERS=1
     depends_on:
       - api
 networks:
