@@ -14,7 +14,7 @@
     "serve:web-gatsby": "yarn workspace @symchk/web-gatsby serve",
     "start:api": "yarn workspace @symchk/api start",
     "start:web": "yarn workspace @symchk/web start",
-    "watch:web-gatsby": "yarn workspace @symchk/web-gatsby develop",
+    "watch:web-gatsby": "yarn workspace @symchk/web-gatsby develop -H 0.0.0.0",
     "watch:api": "yarn workspace @symchk/api watch",
     "watch:web": "yarn workspace @symchk/web watch",
     "test:api": "yarn workspace @symchk/api test",
