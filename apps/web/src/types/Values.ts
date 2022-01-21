@@ -1,6 +1,6 @@
 export type Values = {
-  severe: boolean;
-  difficultBreading: boolean;
+  severe: string;
+  breath: string;
   symptoms: string[];
-  tested: boolean;
+  tested: string;
 };
