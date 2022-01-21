@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+@layer base {
+  @font-face {
+    font-family: BCSans;
+    src: url('./fonts/BCSans-Regular.woff') format('woff');
+  }
+  @font-face {
+    font-family: BCSans-Bold;
+    font-weight: 600;
+    src: url('./fonts/BCSans-Bold.woff') format('woff');
+  }
+}
+
+@media (min-width: 768px) {
+  .bar-separator > *:not(:last-child):after {
+    content: '|';
+    margin: 0 0.5rem;
+    color: #fff;
+  }
+}

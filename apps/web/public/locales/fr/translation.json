@@ -1,3 +1,9 @@
 {
-  "Welcome": "Welcome in French"
+  "Header Title": "COVID-19 Symptom Checker in French",
+  "Welcome": "Soyez le bienvenu",
+  "Question": "Question",
+  "Go back": "Retourner",
+  "Continue": "Continuez",
+  "Result": "Résultat",
+  "Start assessment": "Commencer l'évaluation"
 }

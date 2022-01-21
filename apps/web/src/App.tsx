@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { useTranslation } from 'react-i18next';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const { t } = useTranslation();
+import { Layout } from './Layout';
+import { Home } from './components/Home';
+import { SymptomChecker } from './forms/SymptomChecker';
+
+const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          {t('Welcome')}
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path='/checker'
+          element={
+            <Layout>
+              <SymptomChecker />
+            </Layout>
+          }
+        ></Route>
+        <Route
+          path='/'
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
