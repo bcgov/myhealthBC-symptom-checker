@@ -34,6 +34,8 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "@headlessui/react": "^1.4.3",
+    "@heroicons/react": "^1.0.5",
     "@tailwindcss/typography": "^0.5.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",

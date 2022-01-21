@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from 'src/images/gov_bc_logo.svg';
 import { Link } from 'react-router-dom';
+import { LanguageSelector } from './LanguageSelector';
 
 export const Header = () => {
   return (
     <header className='w-full py-2 border-b-2 bg-bcBluePrimary border-bcYellowPrimary flex justify-center'>
-      <div className='w-full 2xl:w-2/3 h-full flex flex-row items-center align-center justify-between px-2 md:px-12'>
+      <div className='w-full 2xl:w-3/4 h-full flex flex-row items-center align-center justify-between md:px-12 px-2'>
         <div className='layout-grid gap-0 h-full flex flex-row items-center align-center'>
           <Link to='/'>
             <img src={logo} alt='government of british columbia' className='h-10' />
@@ -16,6 +17,7 @@ export const Header = () => {
             </h1>
           </div>
         </div>
+        <LanguageSelector />
       </div>
     </header>
   );
