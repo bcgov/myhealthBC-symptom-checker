@@ -40,6 +40,10 @@ module.exports = {
       },
       width: {
         layout: '1140px',
+        button: '184px',
+      },
+      height: {
+        button: '54px',
       },
       letterSpacing: {
         widest: '.3em',

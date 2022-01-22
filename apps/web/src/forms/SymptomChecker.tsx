@@ -5,13 +5,28 @@ import { Values } from '../types/Values';
 import { useFormik, FormikProvider } from 'formik';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
+import { Q3Symptoms } from './Q3Symptoms';
+import _ from 'lodash';
+import { setValueByPath } from '../utils';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
   const initialValues: Values = {
-    breath: '',
+    breathing: '',
     severe: '',
-    symptoms: [],
+    symptoms: {
+      fever: '',
+      cough: '',
+      breathing: '',
+      throat: '',
+      smell: '',
+      headache: '',
+      fatigue: '',
+      diarrhea: '',
+      appetite: '',
+      nausea: '',
+      none: '',
+    },
     tested: '',
   };
   const [values, setValues] = useState(initialValues);
@@ -20,6 +35,8 @@ export const SymptomChecker = () => {
     console.log('submitted: ', values);
     actions.setSubmitting(false);
   };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const validate = values => {
     return {};
   };
@@ -40,16 +57,26 @@ export const SymptomChecker = () => {
   });
 
   const onChange = e => {
-    const { name, value } = e.target;
-    const newValue = { ...values, [name]: value };
-    setValues(newValue);
-    formik.setFieldValue(name, value);
+    const { name, type } = e.target;
+    let value = e.target.value;
+    if (type === 'checkbox') {
+      value = e.target.checked ? 'true' : 'false';
+    }
+    const clone = _.cloneDeep(values);
+    const [subKey, subValues] = setValueByPath(clone, name, value);
+    setValues(clone);
+    if (subValues) {
+      formik.setFieldValue(subKey as string, subValues);
+    } else {
+      formik.setFieldValue(name, value);
+    }
     e.stopPropagation();
   };
 
   const pages: ReactElement[] = [
     <Q1SevereSymptom key={0} onChange={onChange} />,
     <Q2DifficultBreathing key={1} onChange={onChange} />,
+    <Q3Symptoms key={2} values={values} onChange={onChange} />,
   ];
 
   return (
@@ -71,7 +98,7 @@ export const SymptomChecker = () => {
             </Button>
           </span>
         </div>
-        <div className='text-sm bg-slate-100 p-4'>
+        <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
           <pre>
             <strong>{'values => '}</strong>
             {JSON.stringify(values, null, 2)}

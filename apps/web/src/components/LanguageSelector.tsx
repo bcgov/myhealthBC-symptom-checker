@@ -31,7 +31,7 @@ export const LanguageSelector = () => {
             'inline-flex justify-between w-full',
             'rounded border border-gray-300 shadow-sm',
             'px-2 py-2',
-            'text-bcLightGray text-sm font-medium text-gray-700',
+            'text-bcLightGray text-sm font-medium',
             'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500',
           )}
         >
