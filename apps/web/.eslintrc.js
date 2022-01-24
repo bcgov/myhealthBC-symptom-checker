@@ -22,7 +22,6 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
-    '@typescript-eslint/no-explicit-any': 'warn',
   },
   ignorePatterns: ['/cypress', '*.js'],
 };
