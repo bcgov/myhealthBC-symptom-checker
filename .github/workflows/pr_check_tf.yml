@@ -16,8 +16,6 @@ jobs:
 
     timeout-minutes: 10
     concurrency: ci-${github.ref}-dev
-    environment:
-      name: dev
 
     steps:
       - uses: actions/checkout@v2
@@ -28,6 +26,8 @@ jobs:
         with:
           path: ~/.tflint.d/plugins
           key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+      # https://github.com/marketplace/actions/setup-tflint
 
       - uses: terraform-linters/setup-tflint@v1
         name: Setup TFLint
@@ -55,6 +55,9 @@ jobs:
         id: plan
         run: make plan
         continue-on-error: true
+
+      # From:
+      # https://github.com/hashicorp/setup-terraform#usage
 
       - name: Show Plan on PR
         uses: actions/github-script@0.9.0
