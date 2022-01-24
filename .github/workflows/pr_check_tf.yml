@@ -75,7 +75,9 @@ jobs:
             ${process.env.PLAN}
             \`\`\`
 
-            </details>;
+            </details>
+
+            **`;
               
             github.issues.createComment({
               issue_number: context.issue.number,
