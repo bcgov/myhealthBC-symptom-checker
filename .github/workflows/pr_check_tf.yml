@@ -53,11 +53,8 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color
+        run: make planss
         continue-on-error: true
-
-      - name: Terraform Plan
-        run: make plan 2>&1 | tee plan.txt
 
       - name: Show Plan on PR
         uses: actions/github-script@0.9.0
