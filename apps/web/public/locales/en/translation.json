@@ -1,0 +1,15 @@
+{
+  "Header Title": "COVID-19 Symptom Checker",
+  "Welcome": "Welcome in English",
+  "Question": "Question",
+  "Go back": "Go back",
+  "Continue": "Continue",
+  "Result": "Result",
+  "Start assessment": "Start assessment",
+  "Q1": "Are you experiencing any of the following:",
+  "Q1-1": "Severe difficulty breathing (e.g. struggling to breathe or speaking in single words)",
+  "Q1-2": "Severe chest pain",
+  "Q1-3": "Having a very hard time waking up",
+  "Q1-4": "Feeling confused",
+  "Q1-5": "Losing consciousness"
+}

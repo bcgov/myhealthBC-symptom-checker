@@ -26,7 +26,7 @@ services:
     command: 'yarn watch:api'
     volumes:
       - ./apps/api:/apps/api
-      - apps/api/node_modules
+      - /apps/api/node_modules
     ports:
       - '4040:4040'
     expose:
@@ -51,7 +51,7 @@ services:
     command: 'yarn watch:web'
     volumes:
       - ./apps/web:/apps/web
-      - apps/web/node_modules
+      - /apps/web/node_modules
     ports:
       - '3030:3030'
     expose:

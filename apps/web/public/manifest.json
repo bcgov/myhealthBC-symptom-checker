@@ -1,0 +1,15 @@
+{
+  "short_name": "COVID-19 Symptom Checker",
+  "name": "COVID-19 Self-Assessment Tool",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

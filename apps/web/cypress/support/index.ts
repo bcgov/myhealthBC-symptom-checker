@@ -13,6 +13,8 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+/// <reference types="cypress" />
+
 // Import commands.ts using ES2015 syntax:
 import './commands';
 
