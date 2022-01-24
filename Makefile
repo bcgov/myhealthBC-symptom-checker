@@ -109,6 +109,10 @@ api-deploy:
 web-deploy:
 	@aws s3 sync .build/ s3://symchk-app-$(ENV_NAME) --delete
 
+# Use: make web-invalidate CFID=E2Z655SG2SJ0H0
+web-invalidate: 
+	@aws --region $(AWS_REGION) cloudfront create-invalidation --distribution-id $(CFID) --paths "/*"
+
 # ============================================================= #
 # Local Development
 # ============================================================= #

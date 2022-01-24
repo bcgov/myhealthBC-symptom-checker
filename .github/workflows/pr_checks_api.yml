@@ -31,9 +31,9 @@ jobs:
       - name: Unit test API Package
         run: yarn workspace @symchk/api test
 
+      - name: Build API Package
+        run: yarn workspace @symchk/api build
+
       # TODO:
       # - name: Integration test API Package
       #   run: make api-integration-test
-
-      - name: Build API Package
-        run: yarn workspace @symchk/api build

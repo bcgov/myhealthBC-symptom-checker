@@ -1,0 +1,68 @@
+name: Deployment to aws dev environment
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - dev
+env:
+  PROJECT: symchk
+  ENV_NAME: dev
+  TF_VERSION: 1.1.3
+  TF_LINT_VERSION: v0.34.1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency: ci-${github.ref}-dev # avoid running parallel TF jobs and create locks
+    environment:
+      name: dev
+
+    steps:
+      - uses: actions/checkout@v2
+        name: checkout
+
+      - uses: actions/cache@v2
+        name: Cache yarn
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          cli_config_credentials_token: ${{ secrets.TFC_TEAM_TOKEN }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-skip-session-tagging: true
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY_ID }}
+          aws-region: ca-central-1
+          role-to-assume: ${{ secrets.AWS_SA_ROLE_ARN }}
+          role-duration-seconds: 900
+          role-session-name: ci-deployment
+
+      - name: Build API
+        run: make api-build
+
+      - name: Deploy API
+        run: make api-deploy
+
+      - name: Build WEB
+        run: make api-build
+
+      - name: Deploy WEB
+        run: make api-deploy
+
+      - name: Invalidate WEB
+        run: make web-invalidate CFID=$(terraform -chdir=terraform output -json | jq -r '.cfid.value')
+
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          target: 'dev.symchk.freshworks.club'
+          cmd_options: '-I'

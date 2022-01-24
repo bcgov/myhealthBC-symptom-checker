@@ -124,3 +124,7 @@ resource "aws_cloudfront_distribution" "app" {
     compress    = true
   }
 }
+
+output "cfid" {
+  value = aws_cloudfront_distribution.app.id
+}
