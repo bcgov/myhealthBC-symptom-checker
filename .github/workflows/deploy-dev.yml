@@ -88,5 +88,13 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'Tag to DEV'
-          SLACK_MESSAGE: 'Deployment Failure :rocket:'
-        if: ${{ jobs.deploy.status }} == 'failure'
+          SLACK_MESSAGE: 'Deployment Failure :chart_with_downwards_trend:'
+        if: ${{ jobs.deploy.status }} != 'success'
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: 'Tag to DEV'
+          SLACK_MESSAGE: 'Deployment Success :rocket:'
+        if: ${{ jobs.deploy.status }} == 'success'
