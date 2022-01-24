@@ -52,7 +52,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TFC_TEAM_TOKEN }}
 
       - name: Terraform Plan
-        run: make plan
+        run: make plan > plan.txt
 
       - name: Show Plan on PR
         uses: actions/github-script@0.3.0
@@ -62,4 +62,4 @@ jobs:
           script: |
             const fs = require('fs');
             const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
-            github.issues.createComment({ issue_number, owner, repo, body: `${const data = fs.readFileSync('./plan.txt', {encoding:'utf8', flag:'r'});}` });
+            github.issues.createComment({ issue_number, owner, repo, body: `${fs.readFileSync('./plan.txt', {encoding:'utf8', flag:'r'});}` });
