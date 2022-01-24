@@ -5,7 +5,7 @@
   "scripts": {
     "format:staged": "yarn pretty-quick --staged",
     "format:check": "yarn prettier --check .",
-    "format:write": "yarn prettier --write .",
+    "format": "yarn prettier --write .",
     "lint": "echo 'Linting all packages' && yarn workspace api lint && yarn workspace web lint",
     "check": "run-p 'lint' 'format:check'",
     "prepare": "husky install",
