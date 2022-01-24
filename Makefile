@@ -129,3 +129,10 @@ docker-run:
 docker-run-db:
 	@docker-compose up db
 
+# ============================================================= #
+# Tag Development
+# ============================================================= #
+
+tag-dev:
+	@git tag -fa dev -m "Deploy $(git log --pretty=format:"%an: %s" -1) to DEV env"
+	@git push --force origin refs/tags/dev:refs/tags/dev
