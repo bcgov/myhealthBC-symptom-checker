@@ -53,7 +53,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: make planss
+        run: make plans
         continue-on-error: true
 
       - name: Show Plan on PR
