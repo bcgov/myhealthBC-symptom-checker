@@ -61,7 +61,7 @@ init: write-config-tf
 
 plan: init
 	# Creating all AWS infrastructure.
-	@terraform -chdir=$(TERRAFORM_DIR) plan
+	@terraform -chdir=$(TERRAFORM_DIR) plan -no-color
 
 apply: init
 	# Creating all AWS infrastructure.
