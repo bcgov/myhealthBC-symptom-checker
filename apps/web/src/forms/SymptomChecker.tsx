@@ -20,11 +20,12 @@ export const SymptomChecker = () => {
       breathing: '',
       throat: '',
       smell: '',
-      headache: '',
-      fatigue: '',
+      runnyNose: '',
+      sneezing: '',
       diarrhea: '',
       appetite: '',
       nausea: '',
+      aches: '',
       none: '',
     },
     tested: '',
@@ -98,12 +99,12 @@ export const SymptomChecker = () => {
             </Button>
           </span>
         </div>
-        <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
-          <pre>
-            <strong>{'values => '}</strong>
-            {JSON.stringify(values, null, 2)}
-          </pre>
-        </div>
+        {/*<div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>*/}
+        {/*  <pre>*/}
+        {/*    <strong>{'values => '}</strong>*/}
+        {/*    {JSON.stringify(values, null, 2)}*/}
+        {/*  </pre>*/}
+        {/*</div>*/}
       </FormikProvider>
     </div>
   );

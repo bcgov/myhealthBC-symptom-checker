@@ -7,11 +7,12 @@ export type Values = {
     breathing: string;
     throat: string;
     smell: string;
-    headache: string;
-    fatigue: string;
+    runnyNose: string;
+    sneezing: string;
     diarrhea: string;
     appetite: string;
     nausea: string;
+    aches: string;
     none: string;
   };
   tested: string;
