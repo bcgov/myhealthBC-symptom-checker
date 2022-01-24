@@ -13,6 +13,9 @@ env:
 
 jobs:
   deploy:
+    name: deploy
+    outputs:
+      status: ${{ job.status }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     concurrency: ci-${github.ref}-dev # avoid running parallel TF jobs and create locks
@@ -22,6 +25,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: checkout
+
+      # - name: Slack Notification
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_TITLE: 'Tag to DEV'
+      #     SLACK_MESSAGE: 'Starting Deployment :agile:'
 
       - uses: actions/cache@v2
         name: Cache yarn
@@ -66,3 +76,17 @@ jobs:
         with:
           target: 'dev.symchk.freshworks.club'
           cmd_options: '-I'
+
+  slack:
+    name: Slack
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: 'Tag to DEV'
+          SLACK_MESSAGE: 'Deployment Completed :rocket:'
+        if: ${{ jobs.deploy.status }} == 'failure'
