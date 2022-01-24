@@ -14,10 +14,6 @@ jobs:
   test-infra:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: terraform
-
     timeout-minutes: 10
     concurrency: ci-${github.ref}-dev
     environment:
@@ -39,12 +35,15 @@ jobs:
           tflint_version: ${{ env.TF_LINT_VERSION }}
 
       - name: Show version
+        working-directory: terraform
         run: tflint --version
 
       - name: Init TFLint
+        working-directory: terraform
         run: tflint --init
 
       - name: Run TFLint
+        working-directory: terraform
         run: tflint -f compact
 
       - uses: hashicorp/setup-terraform@v1
