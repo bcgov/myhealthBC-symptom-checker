@@ -88,5 +88,5 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'Tag to DEV'
-          SLACK_MESSAGE: 'Deployment Completed :rocket:'
+          SLACK_MESSAGE: 'Deployment Failure :rocket:'
         if: ${{ jobs.deploy.status }} == 'failure'
