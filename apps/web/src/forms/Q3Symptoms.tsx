@@ -12,14 +12,15 @@ export const Q3Symptoms = ({ values, onChange }: PageProps) => {
     return {
       fever: t('Fever or chills'),
       cough: t('Cough'),
-      breathing: t('Difficult breathing'),
+      breathing: t('Shortness of breath'),
       throat: t('Sore throat'),
       smell: t('Loss of sense of smell or taste'),
-      headache: t('Headache'),
-      fatigue: t('Extreme fatigue or tiredness'),
+      runnyNose: t('Runny nose'),
+      sneezing: t('Sneezing'),
       diarrhea: t('Diarrhea'),
       appetite: t('Loss of appetite'),
       nausea: t('Nausea or vomiting'),
+      aches: t('Body or muscle aches'),
       none: t('None of the above'),
     };
   };
