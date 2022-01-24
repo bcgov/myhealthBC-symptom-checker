@@ -83,5 +83,5 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: 'Tag to DEV'
-          SLACK_MESSAGE: ${{ ${{ job.status }} == 'success' && 'Deployment Success :rocket:' || 'Deployment Failed :sadpanda:' }}  ?
+          SLACK_MESSAGE: ${{ ${{ job.status }} == 'success' && 'Deployment Success :rocket:' || 'Deployment Failed :sadpanda:' }}
           SLACK_COLOR: ${{ job.status }}
