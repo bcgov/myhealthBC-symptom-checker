@@ -1,22 +1,22 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageProps } from '../types/PageProps';
+import { Question } from '../components/Question';
+import { Options } from '../components/Options';
+import { YesNoFields } from '../components/YesNoFields';
 
-export const Q1SevereSymptom = ({ values }: PageProps) => {
+export const Q1SevereSymptom = ({ onChange }: PageProps) => {
   const { t } = useTranslation();
 
-  return (
-    <>
-      <p className='text-3xl mb-10'>{t('Q1')} 1</p>
-      <ul className='list-disc pl-6 mb-10'>
-        <li>{t('Q1-1')}</li>
-        <li>{t('Q1-2')}</li>
-        <li>{t('Q1-3')}</li>
-        <li>{t('Q1-4')}</li>
-        <li>{t('Q1-5')}</li>
-      </ul>
+  const options = ['Q1-1', 'Q1-2', 'Q1-3', 'Q1-4', 'Q1-5'];
 
-      <pre className='ml-10'>{JSON.stringify(values, null, 4)}</pre>
-    </>
+  return (
+    <div>
+      <div className='pb-7'>
+        <Question>{t('Q1')}</Question>
+        <Options options={options.map(option => t(option))} />
+      </div>
+      <YesNoFields name='severe' onChange={onChange} />
+    </div>
   );
 };

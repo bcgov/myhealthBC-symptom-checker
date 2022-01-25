@@ -13,7 +13,7 @@ i18n
       order: ['path', 'navigator', 'querystring', 'cookie'],
     },
     debug: true,
-
+    supportedLngs: ['en', 'fr', 'zh', 'ko', 'fa', 'ar', 'tl', 'vi'],
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

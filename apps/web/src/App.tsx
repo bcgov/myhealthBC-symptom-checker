@@ -1,9 +1,7 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import { Layout } from './Layout';
 import { Home } from './components/Home';
 import { SymptomChecker } from './forms/SymptomChecker';
+import { ResultPage } from './results/ResultPage';
 
 const App = () => {
   return (
@@ -16,7 +14,7 @@ const App = () => {
               <SymptomChecker />
             </Layout>
           }
-        ></Route>
+        />
         <Route
           path='/'
           element={
@@ -24,7 +22,15 @@ const App = () => {
               <Home />
             </Layout>
           }
-        ></Route>
+        />
+        <Route
+          path='/result/:result'
+          element={
+            <Layout result>
+              <ResultPage />
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
