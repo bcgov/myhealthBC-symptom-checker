@@ -6,7 +6,7 @@ type QuestionDescPropTypes = PropsWithChildren<ReactNode> & {
 
 export const QuestionDescription = ({ text, children }: QuestionDescPropTypes) => {
   return (
-    <div className='text-base text-bcGray pb-4'>
+    <div className='text-base text-bcGray'>
       {text}
       {children}
     </div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'formik';
 
 export const RadioField = props => {
-  const { name, text, label, value, onChange, description } = props;
+  const { name, text, label, value, onChange, description, checked } = props;
   return (
     <label className='flex items-center cursor-pointer leading-none py-3'>
       <Field
@@ -14,6 +14,7 @@ export const RadioField = props => {
         description={description || name}
         onChange={onChange}
         className='mr-2 h-5 w-5 min-w-5 cursor-pointer hover:border-2'
+        checked={checked}
       />
       <span id={name + value} className='ml-3'>
         {text}
@@ -29,4 +30,5 @@ RadioField.propTypes = {
   text: PropTypes.string,
   onChange: PropTypes.func,
   description: PropTypes.string,
+  checked: PropTypes.bool,
 };

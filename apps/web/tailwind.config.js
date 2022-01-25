@@ -22,6 +22,7 @@ module.exports = {
         bcBlueIndicator: '#0053A4',
         bcLightBackground: '#E5E5E5',
         bcLightBlueBackground: '#D9EAF7',
+        bcLightBoxBackground: '#FAFAFA',
         bcOrange: '#F6A622',
         bcDisabled: '#CFCFCF',
       },
