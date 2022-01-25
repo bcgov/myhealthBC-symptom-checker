@@ -12,7 +12,6 @@ import { Q4TestResult } from './Q4TestResult';
 import { useNavigate } from 'react-router-dom';
 import { Recommendation } from '../types/Recommendation';
 import { Q3SymptomBreathingSeverity } from './Q3SymptomBreathingSeverity';
-import { Q3SymptomCoughSeverity } from './Q3SymptomCoughSeverity';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -86,7 +85,6 @@ export const SymptomChecker = () => {
     <Q2DifficultBreathing key={1} onChange={onChange} />,
     <Q3Symptoms key={2} values={values} onChange={onChange} />,
     <Q3SymptomBreathingSeverity key={3} values={values} onChange={onChange} />,
-    <Q3SymptomCoughSeverity key={4} values={values} onChange={onChange} />,
     <Q4TestResult key={100} onChange={onChange} />,
   ];
 
@@ -131,12 +129,12 @@ export const SymptomChecker = () => {
             </Button>
           </span>
         </div>
-        {/* <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
-          <pre>
-            <strong>{'values => '}</strong>
-            {JSON.stringify(values, null, 2)}
-          </pre>
-        </div> */}
+        {/*<div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>*/}
+        {/*  <pre>*/}
+        {/*    <strong>{'values => '}</strong>*/}
+        {/*    {JSON.stringify(values, null, 2)}*/}
+        {/*  </pre>*/}
+        {/*</div>*/}
       </FormikProvider>
     </div>
   );
