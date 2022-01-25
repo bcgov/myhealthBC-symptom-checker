@@ -10,12 +10,14 @@ export const Tooltip = ({ children, text }: TooltipProps) => {
     if (tipRef.current?.style.opacity) {
       tipRef.current.style.opacity = '1';
       tipRef.current.style.marginLeft = '20px';
+      tipRef.current.style.zIndex = '10';
     }
   }
   function handleMouseLeave() {
     if (tipRef.current?.style.opacity) {
       tipRef.current.style.opacity = '0';
       tipRef.current.style.marginLeft = '10px';
+      tipRef.current.style.zIndex = '-10';
     }
   }
   return (

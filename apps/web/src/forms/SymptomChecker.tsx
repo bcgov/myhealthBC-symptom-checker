@@ -34,6 +34,8 @@ export const SymptomChecker = () => {
       none: '',
     },
     tested: '',
+    testDate: new Date(),
+    testResult: '',
   };
   const [values, setValues] = useState(initialValues);
   const submit = (values, actions) => {
@@ -55,9 +57,13 @@ export const SymptomChecker = () => {
     onSubmit: submit,
   });
 
-  const onChange = e => {
+  const onChange = (e, key, value) => {
+    if (key) {
+      setValues({ ...values, [key]: value });
+      return;
+    }
     const { name, type } = e.target;
-    let value = e.target.value;
+    value = e.target.value;
     if (type === 'checkbox') {
       value = e.target.checked ? 'true' : 'false';
     }
@@ -76,7 +82,7 @@ export const SymptomChecker = () => {
     <Q1SevereSymptom key={0} onChange={onChange} />,
     <Q2DifficultBreathing key={1} onChange={onChange} />,
     <Q3Symptoms key={2} values={values} onChange={onChange} />,
-    <Q4TestResult key={3} onChange={onChange} />,
+    <Q4TestResult key={3} values={values} onChange={onChange} />,
   ];
 
   const decideNextPage = () => {

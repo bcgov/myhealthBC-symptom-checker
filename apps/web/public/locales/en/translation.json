@@ -30,6 +30,8 @@
   "Q4": "Have you received a new COVID-19 test result?",
   "Q4-desc": "If you have not entered it here before, please enter the details of your last COVID-19 test.",
   "Q4-help": "Sharing your COVID-19 test results enhances public health's understanding and response to COVID-19.",
+  "Q4-Enter the details": "Please enter the details of your COVID-19 test:",
+  "Q4-Date you had your test:": "Date you had your test:",
   "Question": "Question",
   "Recommendation": "Our recommendation",
   "Result": "Result",
