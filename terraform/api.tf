@@ -9,6 +9,17 @@ resource "aws_lambda_function" "api" {
   memory_size      = 512
   timeout          = 30
 
+  lifecycle {
+    ignore_changes = [
+      # Ignore changes to tags, e.g. because a management agent
+      # updates these based on some ruleset managed elsewhere.
+      filename,
+      source_code_hash,
+      source_code_size,
+      last_modified,
+    ]
+  }
+
   vpc_config {
     security_group_ids = [module.network.aws_security_groups.app.id]
     subnet_ids         = module.network.aws_subnet_ids.app.ids

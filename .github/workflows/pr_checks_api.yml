@@ -1,0 +1,39 @@
+name: Api PR checks
+
+on:
+  pull_request:
+    paths:
+      - 'apps/api/**'
+
+jobs:
+  pr-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+        name: checkout
+      - uses: actions/cache@v2
+        name: Cache yarn
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn workspace @symchk/api install
+
+      - name: Run formatting check
+        run: yarn format:check
+
+      - name: Lint API Package
+        run: yarn workspace @symchk/api lint
+
+      - name: Unit test API Package
+        run: yarn workspace @symchk/api test
+
+      - name: Build API Package
+        run: yarn workspace @symchk/api build
+
+      # TODO:
+      # - name: Integration test API Package
+      #   run: make api-integration-test

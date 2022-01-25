@@ -46,3 +46,6 @@ yarn-error.log*
 
 #hbs
 *.hbs
+
+#terraform 
+terraform

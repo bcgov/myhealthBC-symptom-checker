@@ -102,35 +102,6 @@ resource "aws_cloudfront_distribution" "app" {
     }
   }
 
-  // Cache img directory
-  ordered_cache_behavior {
-    path_pattern           = "/img/*"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
-    cached_methods         = ["GET", "HEAD", "OPTIONS"]
-    target_origin_id       = local.s3_origin_id
-    cache_policy_id        = data.aws_cloudfront_cache_policy.optimized.id
-    viewer_protocol_policy = "redirect-to-https"
-
-    function_association {
-      event_type   = "viewer-response"
-      function_arn = aws_cloudfront_function.response.arn
-    }
-  }
-
-  // Cache _next directory
-  ordered_cache_behavior {
-    path_pattern           = "/_next/*"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
-    cached_methods         = ["GET", "HEAD", "OPTIONS"]
-    target_origin_id       = local.s3_origin_id
-    cache_policy_id        = data.aws_cloudfront_cache_policy.optimized.id
-    viewer_protocol_policy = "redirect-to-https"
-    function_association {
-      event_type   = "viewer-response"
-      function_arn = aws_cloudfront_function.response.arn
-    }
-  }
-
   // API Redirection 
   ordered_cache_behavior {
     path_pattern           = "/api/*"
@@ -152,4 +123,8 @@ resource "aws_cloudfront_distribution" "app" {
     max_ttl     = 0
     compress    = true
   }
+}
+
+output "cfid" {
+  value = aws_cloudfront_distribution.app.id
 }

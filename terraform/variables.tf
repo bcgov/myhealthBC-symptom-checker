@@ -23,8 +23,9 @@ locals {
   
   app_name    = "${var.project_name}-app-${var.target_env}"
   api_name    = "${var.project_name}-api-${var.target_env}"
+  db_name    = "${var.project_name}-db-${var.target_env}"
   
-  api_build_zip = ".artifacts/api.zip"
+  api_build_zip = ".artifacts/empty_lambda.zip"
 
   is_prod     = var.target_env == "prod" ? [var.target_env] : []
   is_not_prod = var.target_env != "prod" ? [var.target_env] : []

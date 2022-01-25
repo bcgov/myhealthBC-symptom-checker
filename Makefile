@@ -39,7 +39,6 @@ export TF_BACKEND_CFG
 
 print-env: 
 	@tput setaf 1; 
-	@echo -e "\n\n"
 	@echo -e "=========================================================="
 	@echo -e "Environment - $(ENV_NAME)"
 	@echo -e "=========================================================="
@@ -48,7 +47,6 @@ print-env:
 	@echo -e "LZ2 Suffix - $(LZ2_SUFFIX)"
 	@echo -e "LZ2 Namespace - $(PROJECT_CODE)"
 	@echo -e "=========================================================="
-	@echo -e "\n\n"
 	@tput setaf 9
 
 write-config-tf: 
@@ -63,7 +61,7 @@ init: write-config-tf
 
 plan: init
 	# Creating all AWS infrastructure.
-	@terraform -chdir=$(TERRAFORM_DIR) plan
+	@terraform -chdir=$(TERRAFORM_DIR) plan -no-color
 
 apply: init
 	# Creating all AWS infrastructure.
@@ -78,6 +76,47 @@ destroy: init
 refresh: 
 	@terraform -chdir=$(TERRAFORM_DIR) apply -refresh-only -auto-approve -input=false
 
+# ============================================================= #
+# Build
+# ============================================================= #
+
+pre-build:
+	@rm -rf .build || true
+	@mkdir -p .build;
+
+api-build: pre-build
+	@yarn install
+	@yarn workspace @symchk/api build
+	@yarn workspaces focus @symchk/api --production
+	@cp -r node_modules .build/node_modules
+	@cp -r ./apps/api/dist/* .build
+	@(cd .build; zip -rmq api.zip *)
+
+web-build: pre-build
+	@yarn install
+	@yarn workspace @symchk/web build
+	@cp -r ./apps/web/build/* .build
+
+
+
+# ============================================================= #
+# Deploy
+# ============================================================= #
+
+api-deploy: 
+	@aws lambda update-function-code --function-name symchk-api-$(ENV_NAME) --zip-file fileb://.build/api.zip
+
+web-deploy:
+	@aws s3 sync .build/ s3://symchk-app-$(ENV_NAME) --delete
+
+# Use: make web-invalidate CFID=E2Z655SG2SJ0H0
+web-invalidate: 
+	@aws --region $(AWS_REGION) cloudfront create-invalidation --distribution-id $(CFID) --paths "/*"
+
+# ============================================================= #
+# Local Development
+# ============================================================= #
+
 docker-down:
 	@docker-compose down
 
@@ -90,17 +129,10 @@ docker-run:
 docker-run-db:
 	@docker-compose up db
 
-pre-build:
-	@rm -rf .build || true
-	@mkdir -p .build;
-	@rm -rf terraform/.artifacts || true
-	@mkdir -p terraform/.artifacts
+# ============================================================= #
+# Tag Development
+# ============================================================= #
 
-api-build: pre-build
-	@yarn install
-	@yarn workspace @symchk/api build
-	@yarn workspaces focus @symchk/api --production
-	@cp -r node_modules .build/node_modules
-	@cp -r ./apps/api/dist/* .build
-	@(cd .build; zip -rq ../terraform/.artifacts/api.zip *)
-
+tag-dev:
+	@git tag -fa dev -m "Deploy $(git log --pretty=format:"%an: %s" -1) to DEV env"
+	@git push --force origin refs/tags/dev:refs/tags/dev
