@@ -12,7 +12,7 @@ export const Q1SevereSymptom = ({ onChange }: PageProps) => {
 
   return (
     <div>
-      <div className='pb-10'>
+      <div className='pb-7'>
         <Question>{t('Q1')}</Question>
         <Options options={options.map(option => t(option))} />
       </div>

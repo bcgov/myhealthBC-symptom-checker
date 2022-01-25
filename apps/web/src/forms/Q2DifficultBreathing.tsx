@@ -12,7 +12,7 @@ export const Q2DifficultBreathing = ({ onChange }: PageProps) => {
 
   return (
     <div>
-      <div className='pb-10'>
+      <div className='pb-7'>
         <Question>{t('Q2')}</Question>
         <Options options={options.map(option => t(option))} />
       </div>

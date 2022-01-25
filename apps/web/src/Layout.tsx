@@ -2,13 +2,21 @@ import React, { PropsWithChildren, ReactNode } from 'react';
 
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+import { DownloadBCApp } from './components/DownloadBCApp';
 
-export const Layout = ({ children }: PropsWithChildren<ReactNode>) => {
+type LayoutProps = PropsWithChildren<ReactNode> & {
+  result?: boolean;
+};
+
+export const Layout = ({ result, children }: LayoutProps) => {
   return (
-    <div className='flex flex-col h-full bg-bcLightBackground'>
+    <div className='flex flex-col min-h-screen bg-bcLightBackground'>
       <Header />
-      <div className='h-full text-bcBlack'>
-        <main className='container mx-auto max-w-5xl mt-12 py-16 px-32 bg-white'>{children}</main>
+      <div className='flex-grow text-bcBlack mb-auto'>
+        <main className='container mx-auto max-w-main mt-12 py-12 px-24 bg-white rounded shadow-md'>
+          {children}
+        </main>
+        {result ? <DownloadBCApp /> : ''}
       </div>
       <Footer />
     </div>

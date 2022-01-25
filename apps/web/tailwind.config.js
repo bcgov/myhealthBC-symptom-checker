@@ -16,6 +16,7 @@ module.exports = {
         bcBlueNav: '#38598A',
         bcRedError: '#D8292F',
         bcGreenSuccess: '#2E8540',
+        bcGreenLight: '#F7FCF8',
         bcYellowWarning: '#F5A623',
         bcBlueAccent: '#38598A',
         bcBlueIndicator: '#0053A4',
@@ -37,6 +38,9 @@ module.exports = {
       },
       minWidth: {
         5: '1.25rem',
+      },
+      maxWidth: {
+        main: '996px',
       },
       width: {
         layout: '1140px',

@@ -1,16 +1,21 @@
 import React, { ReactElement, useState } from 'react';
+import _ from 'lodash';
+import { FormikProvider, useFormik } from 'formik';
 import { Q1SevereSymptom } from './Q1SevereSymptom';
 import { Q2DifficultBreathing } from './Q2DifficultBreathing';
 import { Values } from '../types/Values';
-import { useFormik, FormikProvider } from 'formik';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { Q3Symptoms } from './Q3Symptoms';
-import _ from 'lodash';
 import { setValueByPath } from '../utils';
+import { Q4TestResult } from './Q4TestResult';
+import { useNavigate } from 'react-router-dom';
+import { Recommendation } from '../types/Recommendation';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const initialValues: Values = {
     breathing: '',
     severe: '',
@@ -44,13 +49,6 @@ export const SymptomChecker = () => {
 
   const [page, setPage] = useState(0);
 
-  const next = () => {
-    setPage(Math.min(page + 1, pages.length - 1));
-  };
-  const previous = () => {
-    setPage(Math.max(page - 1, 0));
-  };
-
   const formik = useFormik({
     initialValues: values,
     validate,
@@ -78,22 +76,45 @@ export const SymptomChecker = () => {
     <Q1SevereSymptom key={0} onChange={onChange} />,
     <Q2DifficultBreathing key={1} onChange={onChange} />,
     <Q3Symptoms key={2} values={values} onChange={onChange} />,
+    <Q4TestResult key={3} onChange={onChange} />,
   ];
+
+  const decideNextPage = () => {
+    // temporarily
+    if (page < pages.length - 1) {
+      return page + 1;
+    }
+    navigate(`/result/${Recommendation.ASYMPTOMATIC}`);
+    return page;
+  };
+
+  const next = () => {
+    setPage(decideNextPage());
+  };
+  const previous = () => {
+    setPage(Math.max(page - 1, 0));
+  };
 
   return (
     <div className=' h-full flex flex-col '>
       <FormikProvider value={formik}>
         <div>{pages[page]}</div>
         <div className='my-10'>
-          <Button type='button' variant='outline' onClick={previous} disabled={page === 0}>
+          <Button
+            type='button'
+            variant='outline'
+            widthClass='w-44'
+            onClick={previous}
+            disabled={page === 0}
+          >
             {t('Go back')}
           </Button>
           <span className='ml-4'>
             <Button
               type={pages.length - 1 === page ? 'button' : 'submit'}
               variant='primary'
+              widthClass='w-44'
               onClick={next}
-              disabled={pages.length - 1 === page}
             >
               {t('Continue')}
             </Button>

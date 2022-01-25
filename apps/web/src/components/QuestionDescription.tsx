@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PropsWithChildren, ReactNode } from 'react';
 
-export const QuestionDescription = ({ text }) => {
-  return <div className='text-base text-bcGray pb-4'>{text}</div>;
+type QuestionDescPropTypes = PropsWithChildren<ReactNode> & {
+  text: string;
 };
 
-QuestionDescription.propTypes = {
-  text: PropTypes.string,
+export const QuestionDescription = ({ text, children }: QuestionDescPropTypes) => {
+  return (
+    <div className='text-base text-bcGray pb-4'>
+      {text}
+      {children}
+    </div>
+  );
 };

@@ -7,6 +7,7 @@ export interface ButtonProps {
   variant?: keyof typeof buttonColor;
   disabled?: boolean;
   children?: ReactNode;
+  widthClass?: string;
 }
 
 export const buttonColor: Record<string, string> = {
@@ -18,7 +19,7 @@ export const buttonColor: Record<string, string> = {
 
 export const buttonBase = classNames(
   'inline-flex justify-center items-center',
-  'w-button h-button px-8 py-2 sm:mt-0',
+  'min-w-button h-button px-8 py-2 sm:mt-0',
   'md:text-base text-sm font-bold',
   'shadow-sm focus:outline-none',
   'rounded',
@@ -27,10 +28,10 @@ export const buttonBase = classNames(
 );
 
 export const Button = (props: ButtonProps) => {
-  const { type, onClick, variant, disabled, children } = props;
-  const classNames = `${buttonBase} ${variant ? buttonColor[variant] : ''}`;
+  const { type, onClick, widthClass, variant, disabled, children } = props;
+  const classes = classNames(buttonBase, variant ? buttonColor[variant] : '', widthClass || '');
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={classNames}>
+    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
       {children}
     </button>
   );

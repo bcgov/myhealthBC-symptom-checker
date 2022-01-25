@@ -5,7 +5,7 @@ import { Field } from 'formik';
 export const RadioField = props => {
   const { name, text, label, value, onChange, description } = props;
   return (
-    <div className='mb-6 pl-1'>
+    <div className='mb-6 pl'>
       <label className='flex items-center cursor-pointer leading-none'>
         <Field
           name={name}
