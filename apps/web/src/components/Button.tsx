@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import classNames from 'classnames';
 
 export interface ButtonProps {
   type?: 'submit' | 'reset' | 'button';
@@ -6,6 +7,7 @@ export interface ButtonProps {
   variant?: keyof typeof buttonColor;
   disabled?: boolean;
   children?: ReactNode;
+  widthClass?: string;
 }
 
 export const buttonColor: Record<string, string> = {
@@ -15,16 +17,21 @@ export const buttonColor: Record<string, string> = {
   outline: 'border border-gray-400 bg-white hover:bg-gray-100 focus:ring-blue-500',
 };
 
-export const buttonBase = `w-auto inline-flex justify-center items-center rounded 
-  shadow-sm px-8 py-2 text-base font-bold focus:outline-none
-  disabled:opacity-50
-  focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:text-sm`;
+export const buttonBase = classNames(
+  'inline-flex justify-center items-center',
+  'min-w-button md:h-button px-8 py-2 sm:mt-0',
+  'md:text-base text-sm font-bold',
+  'shadow-sm focus:outline-none',
+  'rounded',
+  'disabled:opacity-50',
+  'focus:ring-2 focus:ring-offset-2',
+);
 
 export const Button = (props: ButtonProps) => {
-  const { type, onClick, variant, disabled, children } = props;
-  const classNames = `${buttonBase} ${variant ? buttonColor[variant] : ''}`;
+  const { type, onClick, widthClass, variant, disabled, children } = props;
+  const classes = classNames(buttonBase, variant ? buttonColor[variant] : '', widthClass || '');
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={classNames}>
+    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
       {children}
     </button>
   );
