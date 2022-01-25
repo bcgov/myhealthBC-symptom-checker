@@ -16,4 +16,6 @@ export type Values = {
     none: string;
   };
   tested: string;
+  testDate: Date;
+  testResult: string;
 };

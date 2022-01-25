@@ -1,6 +1,7 @@
 import { Values } from './Values';
+import { SyntheticEvent } from 'react';
 
 export type PageProps = {
   values?: Values;
-  onChange: (values: Values) => void;
+  onChange: (e: SyntheticEvent | null, key?: string, value?: any) => void;
 };

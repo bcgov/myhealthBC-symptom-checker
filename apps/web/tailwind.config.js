@@ -45,6 +45,7 @@ module.exports = {
       width: {
         layout: '1140px',
         button: '184px',
+        content: '596px',
       },
       height: {
         button: '54px',
