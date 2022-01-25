@@ -103,7 +103,7 @@ export const SymptomChecker = () => {
           <Button
             type='button'
             variant='outline'
-            widthClass='w-44'
+            widthClass='md:w-44'
             onClick={previous}
             disabled={page === 0}
           >
@@ -113,7 +113,7 @@ export const SymptomChecker = () => {
             <Button
               type={pages.length - 1 === page ? 'button' : 'submit'}
               variant='primary'
-              widthClass='w-44'
+              widthClass='md:w-44'
               onClick={next}
             >
               {t('Continue')}

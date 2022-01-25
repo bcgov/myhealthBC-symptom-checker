@@ -9,8 +9,8 @@ export const DownloadBCApp = () => {
   const { t } = useTranslation();
 
   return (
-    <div className='container mx-auto max-w-main my-12 pt-12 pb-12 px-28 bg-white pt-12 bg-white rounded'>
-      <div className='relative'>
+    <div className='container mx-auto max-w-main my-4 md:my-12 pt-12 pb-12 px-2 md:px-28 bg-white pt-12 bg-white rounded'>
+      <div className='invisible md:visible relative'>
         <div className='absolute left-14 top-5 rounded-xl bg-black p-1 pt-3'>
           <img className='rounded-xl' src={phone2} width={74} height={162} alt='phone2 image' />
         </div>
@@ -18,7 +18,7 @@ export const DownloadBCApp = () => {
           <img className='rounded-xl' src={phone1} width={74} height={162} alt='phone1 image' />
         </div>
       </div>
-      <div className='pl-80'>
+      <div className='pl-2 md:pl-80'>
         <h1 className='text-xl font-bold'>{t('DownloadApp')}</h1>
         <div className='my-4'>{t('DownloadAppDescription')}</div>
         <div className='flex'>

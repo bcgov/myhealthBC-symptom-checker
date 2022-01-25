@@ -11,7 +11,7 @@ export const Header = () => {
           <Link to='/'>
             <img src={logo} alt='government of british columbia' className='h-10' />
           </Link>
-          <div className='ml-7 pl-7 border-l-2 border-bcYellowPrimary'>
+          <div className='ml-3 md:ml-7 pl-3 md:pl-7 border-l-2 border-bcYellowPrimary'>
             <h1 className=' font-semibold tracking-wider text-white lg:text-xl md:text-xl text-sm focus:outline-none'>
               COVID-19 Symptom Checker
             </h1>

@@ -19,7 +19,7 @@ export const buttonColor: Record<string, string> = {
 
 export const buttonBase = classNames(
   'inline-flex justify-center items-center',
-  'min-w-button h-button px-8 py-2 sm:mt-0',
+  'min-w-button md:h-button px-8 py-2 sm:mt-0',
   'md:text-base text-sm font-bold',
   'shadow-sm focus:outline-none',
   'rounded',
