@@ -31,4 +31,4 @@ jobs:
         run: yarn workspace @symchk/web build
 
       - name: Test web package
-        run: yarn workspace @symchk/web test
+        run: yarn test:e2e:web
