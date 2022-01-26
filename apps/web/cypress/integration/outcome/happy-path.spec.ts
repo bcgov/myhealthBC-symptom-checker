@@ -1,5 +1,3 @@
-import { createYield } from 'typescript';
-
 describe('Happy path outcome', () => {
   it('without covid test details', () => {
     cy.visit('http://localhost:3030');
