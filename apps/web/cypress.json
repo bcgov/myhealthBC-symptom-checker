@@ -1,3 +1,8 @@
 {
-  "ignoreTestFiles": "**/*.js"
+  "ignoreTestFiles": "**/*.js",
+  "baseUrl": "http://localhost:3030",
+  "env": {
+    "FAIL_FAST_STRATEGY": "run",
+    "FAIL_FAST_ENABLED": true
+  }
 }
