@@ -14,8 +14,8 @@ export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
   return (
     <div>
       <div className='pb-5'>
-        <Question>{t('Q3.5')}</Question>
-        <QuestionDescription text={t('Q3.5-desc')} />
+        <Question>{t('Q3.5-breathing')}</Question>
+        <QuestionDescription text={t('Q3.5-breathing-desc')} />
       </div>
 
       <div>
@@ -47,8 +47,10 @@ export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
       </div>
       <div className='bg-gray-50 my-4 p-4 rounded'>
         <div className='text-bcBlueLink font-bold'>{t(severity)}</div>
-        <div className='font-bold mt-3'>{t(`${severity}-title`)}</div>
-        {severity !== 'None' ? <div className='mt-3'>{t(`${severity}-desc`)}</div> : ''}
+        <div className='font-bold mt-3'>
+          {t(severity === 'None' ? 'None-title' : `Breathing-${severity}-title`)}
+        </div>
+        {severity !== 'None' ? <div className='mt-3'>{t(`Breathing-${severity}-desc`)}</div> : ''}
       </div>
     </div>
   );
