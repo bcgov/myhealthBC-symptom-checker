@@ -29,3 +29,10 @@ jobs:
 
       - name: Build web package
         run: yarn workspace @symchk/web build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn workspace @symchk/web build
+          start: yarn workspace @symchk/web start
+          working-directory: ./apps/web
