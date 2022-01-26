@@ -18,4 +18,5 @@ export type Values = {
   tested: string;
   testDate: Date;
   testResult: string;
+  severityOfBreathing: string;
 };

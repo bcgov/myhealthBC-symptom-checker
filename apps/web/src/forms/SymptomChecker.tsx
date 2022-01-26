@@ -11,6 +11,7 @@ import { setValueByPath } from '../utils';
 import { Q4TestResult } from './Q4TestResult';
 import { useNavigate } from 'react-router-dom';
 import { Recommendation } from '../types/Recommendation';
+import { Q3SymptomBreathingSeverity } from './Q3SymptomBreathingSeverity';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -36,6 +37,7 @@ export const SymptomChecker = () => {
     tested: '',
     testDate: new Date(),
     testResult: '',
+    severityOfBreathing: '',
   };
   const [values, setValues] = useState(initialValues);
   const submit = (values, actions) => {
@@ -82,7 +84,8 @@ export const SymptomChecker = () => {
     <Q1SevereSymptom key={0} onChange={onChange} />,
     <Q2DifficultBreathing key={1} onChange={onChange} />,
     <Q3Symptoms key={2} values={values} onChange={onChange} />,
-    <Q4TestResult key={3} values={values} onChange={onChange} />,
+    <Q3SymptomBreathingSeverity key={3} values={values} onChange={onChange} />,
+    <Q4TestResult key={100} onChange={onChange} />,
   ];
 
   const decideNextPage = () => {
