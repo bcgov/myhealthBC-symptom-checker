@@ -29,6 +29,3 @@ jobs:
 
       - name: Build web package
         run: yarn workspace @symchk/web build
-
-      - name: Test web package
-        run: yarn test:e2e:web
