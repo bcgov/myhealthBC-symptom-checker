@@ -17,7 +17,7 @@ export const Q2DifficultBreathing = ({ onChange }: PageProps) => {
         <Options options={options.map(option => t(option))} />
       </div>
 
-      <YesNoFields name='breathing' onChange={onChange} />
+      <YesNoFields name='complicated' onChange={onChange} />
     </div>
   );
 };

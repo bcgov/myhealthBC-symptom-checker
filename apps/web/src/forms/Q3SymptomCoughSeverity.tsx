@@ -3,12 +3,12 @@ import { Trans, useTranslation } from 'react-i18next';
 import { PageProps } from '../types/PageProps';
 import { Question } from '../components/Question';
 import { RadioField } from '../components/RadioField';
+import { Severity } from '../types/Severity';
 
 export const Q3SymptomCoughSeverity = ({ values, onChange }: PageProps) => {
   const { t } = useTranslation();
 
-  const severity = values?.severityOfBreathing || 'None';
-  const noneChecked = severity === 'None' || severity === '';
+  const severity = values?.symptoms?.breathing || Severity.None;
 
   return (
     <div>
@@ -27,22 +27,27 @@ export const Q3SymptomCoughSeverity = ({ values, onChange }: PageProps) => {
 
       <div>
         <RadioField
-          name={'severityOfCough'}
-          value='None'
+          name={'symptoms.cough'}
+          value={Severity.None}
           onChange={onChange}
           text={t('None')}
-          checked={noneChecked}
+          checked={severity === Severity.None}
         />
-        <RadioField name={'severityOfCough'} value='Mild' onChange={onChange} text={t('Mild')} />
         <RadioField
-          name={'severityOfCough'}
-          value='Moderate'
+          name={'symptoms.cough'}
+          value={Severity.Mild}
+          onChange={onChange}
+          text={t(Severity.Mild)}
+        />
+        <RadioField
+          name={'symptoms.cough'}
+          value={Severity.Moderate}
           onChange={onChange}
           text={t('Moderate')}
         />
         <RadioField
-          name={'severityOfCough'}
-          value='Severe'
+          name={'symptoms.cough'}
+          value={Severity.Severe}
           onChange={onChange}
           text={t('Severe')}
         />
@@ -50,7 +55,7 @@ export const Q3SymptomCoughSeverity = ({ values, onChange }: PageProps) => {
       <div className='bg-gray-50 my-4 p-4 rounded'>
         <div className='text-bcBlueLink font-bold'>{t(severity)}</div>
         <div className='font-bold mt-3'>
-          {t(severity === 'None' ? 'None-title' : `Cough-${severity}-title`)}
+          {t(severity === Severity.None ? 'None-title' : `Cough-${severity}-title`)}
         </div>
       </div>
     </div>

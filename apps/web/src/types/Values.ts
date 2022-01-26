@@ -1,11 +1,9 @@
 import { Symptoms } from './Symptoms';
+import { TestResult } from './TestResult';
 
 export class Values {
-  severe!: string;
-  breathing!: string;
+  emergent!: string;
+  complicated!: string;
   symptoms!: Partial<Symptoms>;
-  tested!: string;
-  testDate!: Date;
-  testResult!: string;
-  severityOfBreathing!: string;
+  test!: Partial<TestResult>;
 }

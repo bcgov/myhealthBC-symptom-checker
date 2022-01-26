@@ -16,7 +16,7 @@ export const Q1SevereSymptom = ({ onChange }: PageProps) => {
         <Question>{t('Q1')}</Question>
         <Options options={options.map(option => t(option))} />
       </div>
-      <YesNoFields name='severe' onChange={onChange} />
+      <YesNoFields name='emergent' onChange={onChange} />
     </div>
   );
 };

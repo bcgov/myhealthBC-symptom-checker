@@ -4,12 +4,12 @@ import { PageProps } from '../types/PageProps';
 import { Question } from '../components/Question';
 import { RadioField } from '../components/RadioField';
 import { QuestionDescription } from '../components/QuestionDescription';
+import { Severity } from '../types/Severity';
 
 export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
   const { t } = useTranslation();
 
-  const severity = values?.severityOfBreathing || 'None';
-  const noneChecked = severity === 'None' || severity === '';
+  const severity = values?.symptoms?.breathing || Severity.None;
 
   return (
     <div>
@@ -20,27 +20,27 @@ export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
 
       <div>
         <RadioField
-          name={'severityOfBreathing'}
-          value='None'
+          name={'symptoms.breathing'}
+          value={Severity.None}
           onChange={onChange}
           text={t('None')}
-          checked={noneChecked}
+          checked={severity === Severity.None}
         />
         <RadioField
-          name={'severityOfBreathing'}
-          value='Mild'
+          name={'symptoms.breathing'}
+          value={Severity.Mild}
           onChange={onChange}
           text={t('Mild')}
         />
         <RadioField
-          name={'severityOfBreathing'}
-          value='Moderate'
+          name={'symptoms.breathing'}
+          value={Severity.Moderate}
           onChange={onChange}
           text={t('Moderate')}
         />
         <RadioField
-          name={'severityOfBreathing'}
-          value='Severe'
+          name={'symptoms.breathing'}
+          value={Severity.Severe}
           onChange={onChange}
           text={t('Severe')}
         />

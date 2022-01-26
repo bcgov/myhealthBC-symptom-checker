@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { FormikProvider, useFormik } from 'formik';
 import { Q1SevereSymptom } from './Q1SevereSymptom';
 import { Q2DifficultBreathing } from './Q2DifficultBreathing';
-import { Values } from '../types/Values';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { Q3Symptoms } from './Q3Symptoms';
@@ -40,24 +39,26 @@ export const SymptomChecker = () => {
   });
 
   const onChange = (e, key, value) => {
-    if (key) {
-      setValues({ ...values, [key]: value });
-      return;
+    let name, newValue;
+    if (e) {
+      name = e.target.name;
+      newValue = e.target.value;
+      e.stopPropagation();
+    } else {
+      name = key;
+      newValue = value;
     }
-    const { name, type } = e.target;
-    value = e.target.value;
-    if (type === 'checkbox') {
-      value = e.target.checked ? 'true' : 'false';
+    if (e?.target.type === 'checkbox') {
+      newValue = e.target.checked ? 'true' : 'false';
     }
     const clone = _.cloneDeep(values);
-    const [subKey, subValues] = setValueByPath(clone, name, value);
+    const [subKey, subValues] = setValueByPath(clone, name, newValue);
     setValues(clone);
     if (subValues) {
       formik.setFieldValue(subKey as string, subValues);
     } else {
-      formik.setFieldValue(name, value);
+      formik.setFieldValue(name, newValue);
     }
-    e.stopPropagation();
   };
 
   const pages: ReactElement[] = [
@@ -66,7 +67,7 @@ export const SymptomChecker = () => {
     <Q3Symptoms key={2} values={values} onChange={onChange} />,
     <Q3SymptomBreathingSeverity key={3} values={values} onChange={onChange} />,
     <Q3SymptomCoughSeverity key={4} values={values} onChange={onChange} />,
-    <Q4TestResult key={100} onChange={onChange} />,
+    <Q4TestResult key={100} values={values} onChange={onChange} />,
   ];
 
   const decideNextPage = () => {
