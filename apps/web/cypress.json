@@ -1,4 +1,3 @@
 {
-  "ignoreTestFiles": "**/*.js",
-  "baseUrl": "http://localhost:3030"
+  "ignoreTestFiles": "**/*.js"
 }
