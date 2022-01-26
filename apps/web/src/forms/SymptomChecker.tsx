@@ -131,12 +131,12 @@ export const SymptomChecker = () => {
             </Button>
           </span>
         </div>
-        <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
+        {/* <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
           <pre>
             <strong>{'values => '}</strong>
             {JSON.stringify(values, null, 2)}
           </pre>
-        </div>
+        </div> */}
       </FormikProvider>
     </div>
   );
