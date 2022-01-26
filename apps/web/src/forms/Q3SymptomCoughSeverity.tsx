@@ -19,8 +19,8 @@ export const Q3SymptomCoughSeverity = ({ values, onChange }: PageProps) => {
         <div className='text-base text-bcGray'>
           <Trans i18nKey='Q3.5-cough-desc3'>
             For more information on cough, see HealthLinkBC&apos;s information for
-            <strong>children age 11 and younger</strong> and for{' '}
-            <strong>people age 12 and older.</strong>
+            <span className='underline text-bcBlueAccent'>children age 11 and younger</span> and for{' '}
+            <span className='underline text-bcBlueAccent'>people age 12 and older.</span>
           </Trans>
         </div>
       </div>
