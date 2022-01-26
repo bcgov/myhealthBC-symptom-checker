@@ -1,11 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { PageProps } from '../types/PageProps';
 import { Question } from '../components/Question';
 import { RadioField } from '../components/RadioField';
-import { QuestionDescription } from '../components/QuestionDescription';
 
-export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
+export const Q3SymptomCoughSeverity = ({ values, onChange }: PageProps) => {
   const { t } = useTranslation();
 
   const severity = values?.severityOfBreathing || 'None';
@@ -14,32 +13,35 @@ export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
   return (
     <div>
       <div className='pb-5'>
-        <Question>{t('Q3.5-breathing')}</Question>
-        <QuestionDescription text={t('Q3.5-breathing-desc')} />
+        <Question>{t('Q3.5-cough')}</Question>
+        <div className='text-base text-bcGray mb-2'>{t('Q3.5-cough-desc1')}</div>
+        <div className='text-base text-bcGray font-bold mb-2'>{t('Q3.5-cough-desc2')}</div>
+        <div className='text-base text-bcGray'>
+          <Trans i18nKey='Q3.5-cough-desc3'>
+            For more information on cough, see HealthLinkBC&apos;s information for
+            <strong>children age 11 and younger</strong> and for{' '}
+            <strong>people age 12 and older.</strong>
+          </Trans>
+        </div>
       </div>
 
       <div>
         <RadioField
-          name={'severityOfBreathing'}
+          name={'severityOfCough'}
           value='None'
           onChange={onChange}
           text={t('None')}
           checked={noneChecked}
         />
+        <RadioField name={'severityOfCough'} value='Mild' onChange={onChange} text={t('Mild')} />
         <RadioField
-          name={'severityOfBreathing'}
-          value='Mild'
-          onChange={onChange}
-          text={t('Mild')}
-        />
-        <RadioField
-          name={'severityOfBreathing'}
+          name={'severityOfCough'}
           value='Moderate'
           onChange={onChange}
           text={t('Moderate')}
         />
         <RadioField
-          name={'severityOfBreathing'}
+          name={'severityOfCough'}
           value='Severe'
           onChange={onChange}
           text={t('Severe')}
@@ -48,9 +50,8 @@ export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
       <div className='bg-gray-50 my-4 p-4 rounded'>
         <div className='text-bcBlueLink font-bold'>{t(severity)}</div>
         <div className='font-bold mt-3'>
-          {t(severity === 'None' ? 'None-title' : `Breathing-${severity}-title`)}
+          {t(severity === 'None' ? 'None-title' : `Cough-${severity}-title`)}
         </div>
-        {severity !== 'None' ? <div className='mt-3'>{t(`Breathing-${severity}-desc`)}</div> : ''}
       </div>
     </div>
   );
