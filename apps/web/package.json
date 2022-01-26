@@ -9,8 +9,9 @@
     "test": "cypress run",
     "eject": "react-scripts eject",
     "lint": "eslint . --fix",
-    "cypress": "cypress open",
+    "cypress": "cypress run",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "test:e2e": "concurrently yarn:start yarn:cypress:run"
   },
   "eslintConfig": {
