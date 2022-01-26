@@ -38,7 +38,9 @@ export const ResultAsymptomatic = () => {
           <div>
             <Trans i18nKey='ResultAsymptomaticNotice2'>
               For more information on COVID-19 and how to stay safe, visit the{' '}
-              <a href='http://www.bccdc.ca/'>BCCDC website</a>
+              <a className='underline' href='http://www.bccdc.ca/'>
+                BCCDC website
+              </a>
             </Trans>
           </div>
         </div>
