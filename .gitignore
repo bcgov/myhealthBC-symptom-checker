@@ -6,6 +6,8 @@ apps/web/cypress/videos
 
 .env
 .yarn
+!.yarn/plugins
+!.yarn/releases
 .out
 
 
