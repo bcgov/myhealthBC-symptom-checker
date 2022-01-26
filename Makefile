@@ -109,9 +109,8 @@ api-deploy:
 web-deploy:
 	@aws s3 sync .build/ s3://symchk-app-$(ENV_NAME) --delete
 
-# Use: make web-invalidate CFID=E2Z655SG2SJ0H0
-web-invalidate: 
-	@aws --region $(AWS_REGION) cloudfront create-invalidation --distribution-id $(CFID) --paths "/*"
+web-invalidate:
+	@terraform -chdir=terraform output -json | jq -r '.cfid.value' |  xargs -I{} aws --region $(AWS_REGION) cloudfront create-invalidation --distribution-id {} --paths "/*"
 
 # ============================================================= #
 # Local Development

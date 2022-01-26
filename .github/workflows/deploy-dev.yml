@@ -59,25 +59,22 @@ jobs:
       - name: Terraform Init
         run: make init
 
-      - name: Build API
-        run: make api-build
-
-      - name: Deploy API
-        run: make api-deploy
-
       - name: Build WEB
-        run: make api-build
+        run: make web-build
 
       - name: Deploy WEB
-        run: make api-deploy
+        run: make web-deploy
 
       - name: Invalidate WEB
-        run: make web-invalidate CFID=$(terraform -chdir=terraform output -json | jq -r '.cfid.value')
+        run: aws --region ca-central-1 cloudfront create-invalidation --distribution-id ${{ secrets.CFID }} --paths "/*"
+        continue-on-error: true
 
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
-          target: 'dev.symchk.freshworks.club'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://dev.symchk.freshworks.club/'
+          fail_action: false
           cmd_options: '-I'
 
       - name: Slack Notification
