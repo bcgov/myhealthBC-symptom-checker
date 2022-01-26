@@ -27,9 +27,6 @@ jobs:
       - name: Lint web package
         run: yarn workspace @symchk/web lint
 
-      - name: Build web package
-        run: yarn workspace @symchk/web build
-
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
