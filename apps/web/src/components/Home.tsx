@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className='flex flex-col justify-center items-center m-auto'>
       <div className='p-12'>{t('Welcome')}</div>
-      <Button variant='primary' onClick={() => navigate('/checker')}>
+      <Button title={t('Start assessment')} variant='primary' onClick={() => navigate('/checker')}>
         {t('Start assessment')}
       </Button>
     </div>
