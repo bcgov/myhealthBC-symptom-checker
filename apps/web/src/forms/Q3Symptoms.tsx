@@ -42,7 +42,7 @@ export const Q3Symptoms = ({ values, onChange }: PageProps) => {
             <Checkbox
               key={symptom}
               name={name}
-              checked={values?.symptoms[symptom] === 'true'}
+              checked={values?.symptoms && values?.symptoms[symptom] === 'true'}
               text={t(symptoms[symptom])}
               onChange={onChange}
             />

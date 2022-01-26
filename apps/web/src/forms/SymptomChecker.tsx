@@ -13,33 +13,12 @@ import { useNavigate } from 'react-router-dom';
 import { Recommendation } from '../types/Recommendation';
 import { Q3SymptomBreathingSeverity } from './Q3SymptomBreathingSeverity';
 import { Q3SymptomCoughSeverity } from './Q3SymptomCoughSeverity';
+import { initialValues } from '../types/initialValues';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const initialValues: Values = {
-    breathing: '',
-    severe: '',
-    symptoms: {
-      fever: '',
-      cough: '',
-      breathing: '',
-      throat: '',
-      smell: '',
-      runnyNose: '',
-      sneezing: '',
-      diarrhea: '',
-      appetite: '',
-      nausea: '',
-      aches: '',
-      none: '',
-    },
-    tested: '',
-    testDate: new Date(),
-    testResult: '',
-    severityOfBreathing: '',
-  };
   const [values, setValues] = useState(initialValues);
   const submit = (values, actions) => {
     actions.setSubmitting(true);
