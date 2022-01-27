@@ -122,6 +122,7 @@ export const SymptomChecker = () => {
           </Button>
           <span className='ml-4'>
             <Button
+              title={t('Continue')}
               type={pages.length - 1 === page ? 'button' : 'submit'}
               variant='primary'
               widthClass='md:w-44'
