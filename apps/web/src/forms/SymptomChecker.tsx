@@ -13,6 +13,8 @@ import { Recommendation } from '../types/Recommendation';
 import { Q3SymptomBreathingSeverity } from './Q3SymptomBreathingSeverity';
 import { Q3SymptomCoughSeverity } from './Q3SymptomCoughSeverity';
 import { initialValues } from '../types/initialValues';
+import { Q3SymptomBodyAchesSeverity } from './Q3SymptomBodyAchesSeverity';
+import { Q3SymptomSoreThroatSeverity } from './Q3SymptomSoreThroatSeverity';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -67,6 +69,8 @@ export const SymptomChecker = () => {
     <Q3Symptoms key={2} values={values} onChange={onChange} />,
     <Q3SymptomBreathingSeverity key={3} values={values} onChange={onChange} />,
     <Q3SymptomCoughSeverity key={4} values={values} onChange={onChange} />,
+    <Q3SymptomBodyAchesSeverity key={5} values={values} onChange={onChange} />,
+    <Q3SymptomSoreThroatSeverity key={6} values={values} onChange={onChange} />,
     <Q4TestResult key={100} values={values} onChange={onChange} />,
   ];
 
