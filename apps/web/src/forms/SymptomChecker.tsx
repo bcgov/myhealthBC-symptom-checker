@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import _ from 'lodash';
-import { useFormik, Formik, Form, FormikHelpers } from 'formik';
+import { useFormik, Formik, Form } from 'formik';
 import { SymptomQuestion } from './SymptomQuestion';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
