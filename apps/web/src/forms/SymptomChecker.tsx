@@ -127,7 +127,7 @@ export const SymptomChecker = () => {
     },
     {
       component: <Q4TestResult key={100} values={values} onChange={onChange} />,
-      validationSchema: validationSchema[3],
+      validationSchema: {},
     },
   ];
 
