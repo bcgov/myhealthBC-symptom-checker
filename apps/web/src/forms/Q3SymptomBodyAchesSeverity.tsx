@@ -6,17 +6,17 @@ import { RadioField } from '../components/RadioField';
 import { QuestionDescription } from '../components/QuestionDescription';
 import { Severity } from '../types/Severity';
 
-export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
+export const Q3SymptomBodyAchesSeverity = ({ values, onChange }: PageProps) => {
   const { t } = useTranslation();
 
-  const valueKey = 'symptoms.breathing';
-  const severity = values?.symptoms?.breathing || Severity.None;
+  const valueKey = 'symptoms.bodyAches';
+  const severity = values?.symptoms?.bodyAches || Severity.None;
 
   return (
     <div>
       <div className='pb-5'>
-        <Question>{t('Q3.5-breathing')}</Question>
-        <QuestionDescription text={t('Q3.5-breathing-desc')} />
+        <Question>{t('Q3.5-bodyAches')}</Question>
+        <QuestionDescription text={t('Q3.5-bodyAches-desc')} />
       </div>
 
       <div>
@@ -34,9 +34,8 @@ export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
       <div className='bg-gray-50 my-4 p-4 rounded'>
         <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
         <div className='font-bold mt-3'>
-          {t(severity === 'None' ? 'None-title' : `Breathing-${severity}-title`)}
+          {t(severity === 'None' ? 'None-title' : `BodyAches-${severity}-title`)}
         </div>
-        {severity !== 'None' ? <div className='mt-3'>{t(`Breathing-${severity}-desc`)}</div> : ''}
       </div>
     </div>
   );
