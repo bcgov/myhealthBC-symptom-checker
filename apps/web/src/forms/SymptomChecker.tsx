@@ -26,7 +26,7 @@ export const SymptomChecker = () => {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const validate = values => {
+  const validate = () => {
     return {};
   };
 

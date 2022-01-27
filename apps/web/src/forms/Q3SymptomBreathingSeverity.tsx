@@ -46,7 +46,7 @@ export const Q3SymptomBreathingSeverity = ({ values, onChange }: PageProps) => {
         />
       </div>
       <div className='bg-gray-50 my-4 p-4 rounded'>
-        <div className='text-bcBlueLink font-bold'>{t(severity)}</div>
+        <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
         <div className='font-bold mt-3'>
           {t(severity === 'None' ? 'None-title' : `Breathing-${severity}-title`)}
         </div>
