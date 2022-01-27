@@ -27,13 +27,9 @@ jobs:
       - name: Lint web package
         run: yarn workspace @symchk/web lint
 
-      - name: Build web package
-        run: yarn workspace @symchk/web build
-
-      # TODO: Unit Test
-      # - name: Test web package
-      #   run: yarn workspace @symchk/web test
-
-      # TODO: Cypress Test
-      # - name: Test web package
-      #   run: yarn workspace @symchk/web test
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     start: (yarn start &)
+      #     working-directory: ./apps/web
+      #     wait-on: 'http://localhost:3030'

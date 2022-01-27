@@ -25,6 +25,7 @@ export const FormButtons = (props: FormButtonsProps) => {
       </Button>
       <span className='ml-4'>
         <Button
+          title={t('Continue')}
           type={type as 'button' | 'submit'}
           variant='primary'
           onClick={next}

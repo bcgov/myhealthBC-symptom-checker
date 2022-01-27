@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 export interface ButtonProps {
   type?: 'submit' | 'reset' | 'button';
+  title?: string;
   onClick: () => void;
   variant?: keyof typeof buttonColor;
   disabled?: boolean;
@@ -28,10 +29,10 @@ export const buttonBase = classNames(
 );
 
 export const Button = (props: ButtonProps) => {
-  const { type, onClick, widthClass, variant, disabled, children } = props;
+  const { type, title, onClick, widthClass, variant, disabled, children } = props;
   const classes = classNames(buttonBase, variant ? buttonColor[variant] : '', widthClass || '');
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
+    <button title={title} type={type} onClick={onClick} disabled={disabled} className={classes}>
       {children}
     </button>
   );
