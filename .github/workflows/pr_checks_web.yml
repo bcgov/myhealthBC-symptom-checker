@@ -27,9 +27,12 @@ jobs:
       - name: Lint web package
         run: yarn workspace @symchk/web lint
 
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     start: (yarn start &)
-      #     working-directory: ./apps/web
-      #     wait-on: 'http://localhost:3030'
+      - name: Build web package
+        run: yarn workspace @symchk/web build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn start
+          working-directory: ./apps/web
+          wait-on: 'http://localhost:3030'
