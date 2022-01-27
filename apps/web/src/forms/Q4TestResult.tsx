@@ -2,22 +2,16 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { PageProps } from '../types/PageProps';
+import { PageProps } from '../types/index';
 import { Question } from '../components/Question';
 import { QuestionDescription } from '../components/QuestionDescription';
-import { YesNoFields } from '../components/YesNoFields';
 import question from '../images/question.svg';
 import { Tooltip } from '../components/Tooltip';
 import calendar from '../images/calendar.svg';
 
-import en from 'date-fns/locale/en-CA';
-import fr from 'date-fns/locale/fr-CA';
-import ko from 'date-fns/locale/ko';
-import zh from 'date-fns/locale/zh-CN';
-import fa from 'date-fns/locale/fa-IR';
-import ar from 'date-fns/locale/ar';
-import vi from 'date-fns/locale/vi';
+import { enCA as en, frCA as fr, ko, zhCN as zh, faIR as fa, ar, vi } from 'date-fns/locale';
 import { Field } from 'formik';
+import RadioButtons from 'src/components/Radio';
 
 registerLocale('en', en);
 registerLocale('ko', ko);
@@ -89,7 +83,20 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
           </div>
         </QuestionDescription>
       </div>
-      <YesNoFields name='test.tested' onChange={onChange} />
+      <RadioButtons
+        label={''}
+        name={'complicatingFactors'}
+        options={[
+          {
+            key: 'yes',
+            value: 'yes',
+          },
+          {
+            key: 'no',
+            value: 'no',
+          },
+        ]}
+      ></RadioButtons>
       {renderTestOptions()}
     </div>
   );

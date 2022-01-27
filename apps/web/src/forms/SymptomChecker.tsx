@@ -1,20 +1,15 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import _ from 'lodash';
-import { FormikProvider, useFormik } from 'formik';
-import { Q1SevereSymptom } from './Q1SevereSymptom';
-import { Q2DifficultBreathing } from './Q2DifficultBreathing';
+import { useFormik, Formik, Form, FormikHelpers } from 'formik';
+import { SymptomQuestion } from './SymptomQuestion';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { Q3Symptoms } from './Q3Symptoms';
 import { setValueByPath } from '../utils';
 import { Q4TestResult } from './Q4TestResult';
 import { useNavigate } from 'react-router-dom';
-import { Recommendation } from '../types/Recommendation';
-import { Q3SymptomBreathingSeverity } from './Q3SymptomBreathingSeverity';
-import { Q3SymptomCoughSeverity } from './Q3SymptomCoughSeverity';
-import { initialValues } from '../types/initialValues';
-import { Q3SymptomBodyAchesSeverity } from './Q3SymptomBodyAchesSeverity';
-import { Q3SymptomSoreThroatSeverity } from './Q3SymptomSoreThroatSeverity';
+import { Recommendation, SymptomCheckerForm, YES_NO_OPTIONS } from '../types';
+import { initialValues, validationSchema } from '../types';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -32,7 +27,7 @@ export const SymptomChecker = () => {
     return {};
   };
 
-  const [page, setPage] = useState(0);
+  const [step, setStep] = useState(0);
 
   const formik = useFormik({
     initialValues: values,
@@ -63,67 +58,108 @@ export const SymptomChecker = () => {
     }
   };
 
-  const pages: ReactElement[] = [
-    <Q1SevereSymptom key={0} onChange={onChange} />,
-    <Q2DifficultBreathing key={1} onChange={onChange} />,
-    <Q3Symptoms key={2} values={values} onChange={onChange} />,
-    <Q3SymptomBreathingSeverity key={3} values={values} onChange={onChange} />,
-    <Q3SymptomCoughSeverity key={4} values={values} onChange={onChange} />,
-    <Q3SymptomBodyAchesSeverity key={5} values={values} onChange={onChange} />,
-    <Q3SymptomSoreThroatSeverity key={6} values={values} onChange={onChange} />,
-    <Q4TestResult key={100} values={values} onChange={onChange} />,
+  const decideNextPage = (values: Partial<SymptomCheckerForm>) => {
+    if (values.emergentFactors === 'yes') {
+      navigate(`/result/${Recommendation.CALL_911}`);
+    }
+
+    if (values.complicatingFactors === 'yes') {
+      navigate(`/result/${Recommendation.CALL_811}`);
+    }
+
+    if (values.symptoms === 'true') {
+      navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+    }
+
+    // temporarily
+    if (step < 8 - 1) {
+      return step + 1;
+    }
+
+    navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+    return step;
+  };
+
+  const nextQuestion = (
+    values: Partial<SymptomCheckerForm>,
+    actions: FormikHelpers<Partial<SymptomCheckerForm>>,
+  ) => {
+    console.log('Going to next step');
+    console.log(values);
+    setStep(decideNextPage(values));
+  };
+
+  const previous = () => {
+    setStep(Math.max(step - 1, 0));
+  };
+
+  const steps = [
+    {
+      component: (
+        <SymptomQuestion
+          key={0}
+          showErrors={true}
+          answerOptions={YES_NO_OPTIONS}
+          question={{
+            title: 'Q1',
+            options: ['Q1-1', 'Q1-2', 'Q1-3', 'Q1-4', 'Q1-5'],
+          }}
+          name='emergentFactors'
+        />
+      ),
+      validationSchema: validationSchema[0],
+    },
+    {
+      component: (
+        <SymptomQuestion
+          key={1}
+          showErrors={true}
+          answerOptions={YES_NO_OPTIONS}
+          question={{
+            title: 'Q2',
+            options: ['Q2-1', 'Q2-2'],
+          }}
+          name='complicatingFactors'
+        />
+      ),
+      validationSchema: validationSchema[1],
+    },
+    {
+      component: <Q3Symptoms key={2} values={values} onChange={onChange} />,
+      validationSchema: validationSchema[2],
+    },
+    {
+      component: <Q4TestResult key={100} values={values} onChange={onChange} />,
+      validationSchema: validationSchema[3],
+    },
   ];
 
-  const decideNextPage = () => {
-    // temporarily
-    if (page < pages.length - 1) {
-      return page + 1;
-    }
-    navigate(`/result/${Recommendation.ASYMPTOMATIC}`);
-    return page;
-  };
-
-  const next = () => {
-    setPage(decideNextPage());
-  };
-  const previous = () => {
-    setPage(Math.max(page - 1, 0));
-  };
-
   return (
-    <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-white rounded shadow-md'>
-      <div className=' h-full flex flex-col '>
-        <FormikProvider value={formik}>
-          <div>{pages[page]}</div>
-          <div className='my-10'>
+    <div className=' h-full flex flex-col '>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={steps[step].validationSchema}
+        onSubmit={nextQuestion}
+      >
+        <Form>
+          <div> {steps[step].component}</div>
+          <div className='my-10 justify-center'>
             <Button
               type='button'
               variant='outline'
               widthClass='md:w-44'
               onClick={previous}
-              disabled={page === 0}
+              disabled={step === 0}
             >
               {t('Go back')}
             </Button>
-            <span className='ml-4'>
-              <Button
-                type={pages.length - 1 === page ? 'button' : 'submit'}
-                variant='primary'
-                widthClass='md:w-44'
-                onClick={next}
-              >
-                {t('Continue')}
-              </Button>
-            </span>
+            <span className='ml-4'></span>
+            <Button type='submit' variant='primary' widthClass='md:w-44'>
+              {t('Continue')}
+            </Button>
           </div>
-          <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
-            <pre>
-              <strong>{'values => '}</strong>
-              {JSON.stringify(values, null, 2)}
-            </pre>
-          </div>
-        </FormikProvider>
-      </div>
-    </main>
+        </Form>
+      </Formik>
+    </div>
   );
 };
