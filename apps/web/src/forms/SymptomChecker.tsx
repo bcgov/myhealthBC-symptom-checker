@@ -80,10 +80,7 @@ export const SymptomChecker = () => {
     return step;
   };
 
-  const nextQuestion = (
-    values: Partial<SymptomCheckerForm>,
-    actions: FormikHelpers<Partial<SymptomCheckerForm>>,
-  ) => {
+  const nextQuestion = (values: Partial<SymptomCheckerForm>) => {
     console.log('Going to next step');
     console.log(values);
     setStep(decideNextPage(values));
