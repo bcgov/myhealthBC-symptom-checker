@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PageProps } from '../types/PageProps';
+import { PageProps } from '../types/index';
 import { Question } from '../components/Question';
 import { Checkbox } from '../components/Checkbox';
 import { QuestionDescription } from '../components/QuestionDescription';
+import Checkboxes from 'src/components/Checkboxes';
 
 export const Q3Symptoms = ({ values, onChange }: PageProps) => {
   const { t, i18n } = useTranslation();
