@@ -25,6 +25,8 @@ module.exports = {
         bcLightBoxBackground: '#FAFAFA',
         bcOrange: '#F6A622',
         bcDisabled: '#CFCFCF',
+        lightRedBackground: '#FCF7F9',
+        lightYellowBackground: '#FCFAF7',
       },
       fontSize: {
         '3xl': '1.5rem',
