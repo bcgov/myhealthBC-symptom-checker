@@ -33,7 +33,7 @@ export const SymptomQuestion = (props: FieldOptionProps) => {
         {question.content && <div className='mt-3'>{question.content}</div>}
       </div>
 
-      <RadioButtons name={name} options={answerOptions}></RadioButtons>
+      <RadioButtons label={''} name={name} options={answerOptions}></RadioButtons>
 
       {questionFooter ? (
         <div className='bg-gray-50 my-4 p-4 rounded'>

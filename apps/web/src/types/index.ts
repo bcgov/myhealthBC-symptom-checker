@@ -23,6 +23,7 @@ export enum Recommendation {
 }
 
 export enum Severity {
+  NA = 'N/A',
   None = 'None',
   Mild = 'Mild',
   Moderate = 'Moderate',
@@ -67,7 +68,22 @@ export interface SymptomCheckerForm {
   test?: Partial<TestResult>;
 }
 
-export const initialValues: Partial<SymptomCheckerForm> = {};
+export const initialValues: Partial<SymptomCheckerForm> = {
+  symptoms: {
+    fever: { isExperienced: false, severity: Severity.NA },
+    cough: { isExperienced: false, severity: Severity.NA },
+    shortnessOfBreath: { isExperienced: false, severity: Severity.NA },
+    soreThroat: { isExperienced: false, severity: Severity.NA },
+    lossOfSmellTaste: { isExperienced: false, severity: Severity.NA },
+    runnyNose: { isExperienced: false, severity: Severity.NA },
+    sneezing: { isExperienced: false, severity: Severity.NA },
+    diarrhea: { isExperienced: false, severity: Severity.NA },
+    lossOfAppetite: { isExperienced: false, severity: Severity.NA },
+    nauseaVomitting: { isExperienced: false, severity: Severity.NA },
+    bodyMuscleAches: { isExperienced: false, severity: Severity.NA },
+    none: { isExperienced: false, severity: Severity.NA },
+  },
+};
 
 export const validationSchema = [
   yup.object().shape({
