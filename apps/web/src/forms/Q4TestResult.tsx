@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -30,19 +30,15 @@ registerLocale('tl', en); // date-fns doesn't support Tagalog?
 
 export const Q4TestResult = ({ values, onChange }: PageProps) => {
   const { t, i18n } = useTranslation();
-  const [tested, setTested] = useState(false);
-  const [testDate, setTestDate] = useState(values?.testDate || new Date());
-  useEffect(() => setTested(values?.tested === 'true'), [values?.tested]);
-  useEffect(() => {
-    setTestDate(values?.testDate || new Date());
-  }, [values?.testDate]);
 
   const handleDateChange = value => {
-    onChange(null, 'testDate', value);
+    onChange(null, 'test.testDate', value);
   };
 
   const renderTestOptions = () => {
-    if (!tested) return '';
+    if (values?.test?.tested !== 'true') {
+      return '';
+    }
     return (
       <div className='py-3'>
         <div className='font-bold my-4'>{t('Q4-Enter the details')}</div>
@@ -50,7 +46,7 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
         <div className='flex w-56 p-2 mb-4 border rounded'>
           <DatePicker
             locale={i18n.language}
-            selected={testDate}
+            selected={values.test.testDate}
             placeholderText='yyyy-mm-dd'
             ariaInvalid='error'
             dateFormat='yyyy-MM-dd'
@@ -61,12 +57,12 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
         <div className='my-2'>{t('Result')}:</div>
         <div className='flex flexcol w-56 p-2 border rounded'>
           <Field
-            name='testResult'
-            label='testResult'
-            description='testResult'
+            name='test.result'
+            label='test.result'
+            description='test.result'
             as='select'
             onChange={onChange}
-            value={values?.testResult || ''}
+            value={values?.test?.result || ''}
             placeholder='Select'
             className='w-full'
           >
@@ -93,7 +89,7 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
           </div>
         </QuestionDescription>
       </div>
-      <YesNoFields name='tested' onChange={onChange} />
+      <YesNoFields name='test.tested' onChange={onChange} />
       {renderTestOptions()}
     </div>
   );

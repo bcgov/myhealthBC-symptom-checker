@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode, useEffect } from 'react';
 
 type TooltipProps = PropsWithChildren<ReactNode> & {
   text: string;
@@ -6,6 +6,13 @@ type TooltipProps = PropsWithChildren<ReactNode> & {
 
 export const Tooltip = ({ children, text }: TooltipProps) => {
   const tipRef = React.createRef<HTMLDivElement>();
+
+  useEffect(() => {
+    if (tipRef.current?.style.opacity) {
+      tipRef.current.style.zIndex = '-10';
+    }
+  }, [tipRef.current]);
+
   function handleMouseEnter() {
     if (tipRef.current?.style.opacity) {
       tipRef.current.style.opacity = '1';
