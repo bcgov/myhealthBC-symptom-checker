@@ -125,7 +125,7 @@ export const SymptomChecker = () => {
       validationSchema: validationSchema[1],
     },
     {
-      component: <Q3Symptoms key={2} values={values} onChange={onChange} />,
+      component: <Q3Symptoms key={2} />,
       validationSchema: validationSchema[2],
     },
     {
