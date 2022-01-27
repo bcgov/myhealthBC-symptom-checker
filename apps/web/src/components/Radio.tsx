@@ -2,20 +2,13 @@ import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 
 export interface FormFieldProps {
-  label?: string;
+  label: string;
   name: string;
   options: Array<{
     key: string;
-    value: string | boolean;
+    value: string;
   }>;
 }
-
-export const renderBooleanOrString = (value: string | boolean) => {
-  if ('boolean' === typeof value) {
-    return value ? 'Yes' : 'No';
-  }
-  return value;
-};
 
 function RadioButtons(props: FormFieldProps) {
   const { label, name, options, ...rest } = props;
@@ -31,17 +24,15 @@ function RadioButtons(props: FormFieldProps) {
                 className='flex space-x-5 items-center cursor-pointer leading-none py-3'
                 key={option.key}
               >
-                <input
+                <Field
                   type='radio'
                   id={option.value}
                   {...field}
                   {...rest}
                   value={option.value}
                   checked={field.value === option.value}
-                />
-                <br></br>
-                {/* FIXME: Render booleans? */}
-                <label htmlFor={renderBooleanOrString(option.value)}>{option.key}</label>
+                ></Field>
+                <label htmlFor={option.value}>{option.key}</label>
               </div>
             );
           });

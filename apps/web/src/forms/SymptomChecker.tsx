@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import _ from 'lodash';
-import { useFormik, Formik, Form, FormikHelpers } from 'formik';
+import { useFormik, Formik, Form } from 'formik';
 import { SymptomQuestion } from './SymptomQuestion';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
@@ -80,10 +80,7 @@ export const SymptomChecker = () => {
     return step;
   };
 
-  const nextQuestion = (
-    values: Partial<SymptomCheckerForm>,
-    actions: FormikHelpers<Partial<SymptomCheckerForm>>,
-  ) => {
+  const nextQuestion = (values: Partial<SymptomCheckerForm>) => {
     console.log('Going to next step');
     console.log(values);
     setStep(decideNextPage(values));
@@ -125,12 +122,12 @@ export const SymptomChecker = () => {
       validationSchema: validationSchema[1],
     },
     {
-      component: <Q3Symptoms key={2} values={values} onChange={onChange} />,
+      component: <Q3Symptoms key={2} />,
       validationSchema: validationSchema[2],
     },
     {
       component: <Q4TestResult key={100} values={values} onChange={onChange} />,
-      validationSchema: validationSchema[3],
+      validationSchema: {},
     },
   ];
 

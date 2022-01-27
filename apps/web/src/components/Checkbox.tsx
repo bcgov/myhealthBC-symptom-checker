@@ -1,34 +1,38 @@
 import React from 'react';
 import { Field } from 'formik';
-import PropTypes from 'prop-types';
 
-export const Checkbox = props => {
-  const { name, text, label, checked, onChange, description } = props;
+export interface CheckboxesFormFieldProps {
+  label: string;
+  name: string;
+  options: Array<{
+    key: string;
+    value: string;
+    name: string;
+  }>;
+}
+
+export const Checkboxes: React.FC<CheckboxesFormFieldProps> = ({ name, options }) => {
   return (
-    <div className='py-2'>
-      <label className='flex flex-row items-center'>
-        <Field
-          name={name}
-          label={label || name}
-          type='checkbox'
-          checked={checked}
-          description={description || name}
-          onChange={onChange}
-          className='mr-2 h-5 w-5 min-w-5 cursor-pointer hover:border-2'
-        />
-        <span id={`checkbox-${name}`} className='ml-3'>
-          {text}
-        </span>
-      </label>
+    <div>
+      {options.map(option => {
+        return (
+          <div className='py-2' key={option.key}>
+            <div className='flex flex-row items-center'>
+              <Field
+                name={option.name}
+                label={option.value}
+                type='checkbox'
+                className='mr-2 h-5 w-5 min-w-5 cursor-pointer hover:border-2'
+              ></Field>
+              <span id={`checkbox-${name}`} className='ml-3'>
+                {option.value}
+              </span>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
 
-Checkbox.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  checked: PropTypes.bool,
-  text: PropTypes.string,
-  onChange: PropTypes.func,
-  description: PropTypes.string,
-};
+export default Checkboxes;
