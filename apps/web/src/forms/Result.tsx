@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { PageProps } from '../types/PageProps';
+import { PageProps } from '../types/index';
 
 export const Result = ({ values }: PageProps) => {
   const { t } = useTranslation();

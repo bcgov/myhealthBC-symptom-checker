@@ -1,19 +1,16 @@
 import React from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { PageProps } from '../types/PageProps';
-import { Question } from '../components/Question';
-import { RadioField } from '../components/RadioField';
-import { Severity } from '../types/Severity';
+import { useTranslation } from 'react-i18next';
+import { PageProps } from 'src/types';
 
 export const Q3SymptomSoreThroatSeverity = ({ values, onChange }: PageProps) => {
   const { t } = useTranslation();
 
-  const valueKey = 'symptoms.soreThroat';
-  const severity = values?.symptoms?.soreThroat || Severity.None;
+  // const valueKey = 'symptoms.soreThroat';
+  // const severity = values?.symptoms?.soreThroat || Severity.None;
 
   return (
     <div>
-      <div className='pb-5'>
+      {/* <div className='pb-5'>
         <Question>{t('Q3.5-soreThroat')}</Question>
         <div className='text-base text-bcGray mb-2'>{t('Q3.5-soreThroat-desc1')}</div>
         <div className='text-base text-bcGray font-bold mb-2'>{t('Q3.5-soreThroat-desc2')}</div>
@@ -50,7 +47,7 @@ export const Q3SymptomSoreThroatSeverity = ({ values, onChange }: PageProps) => 
         ) : (
           ''
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

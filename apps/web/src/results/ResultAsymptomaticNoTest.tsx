@@ -4,7 +4,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import house from '../images/house.svg';
 import { ResultPageLayout } from './ResultPageLayout';
 
-export const ResultAsymptomatic = () => {
+export const ResultAsymptomaticNoTest = () => {
   const { t } = useTranslation();
 
   return (

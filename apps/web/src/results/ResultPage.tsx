@@ -1,8 +1,8 @@
 import React from 'react';
-import { Recommendation } from '../types/Recommendation';
+import { Recommendation } from '../types/index';
 import { ResultCall911 } from './ResultCall911';
 import { ResultCall811 } from './ResultCall811';
-import { ResultAsymptomatic } from './ResultAsymptomatic';
+import { ResultAsymptomaticNoTest } from './ResultAsymptomaticNoTest';
 import { ResultSymptomaticTest } from './ResultSymptomaticTest';
 import { ResultSymptomaticNoTest } from './ResultSymptomaticNoTest';
 import { useParams } from 'react-router-dom';
@@ -13,7 +13,7 @@ export const ResultPage = () => {
   const results = {
     [Recommendation.CALL_911]: <ResultCall911 />,
     [Recommendation.CALL_811]: <ResultCall811 />,
-    [Recommendation.ASYMPTOMATIC]: <ResultAsymptomatic />,
+    [Recommendation.ASYMPTOMATIC_NO_TEST]: <ResultAsymptomaticNoTest />,
     [Recommendation.SYMPTOMATIC_TEST]: <ResultSymptomaticTest />,
     [Recommendation.SYMPTOMATIC_NO_TEST]: <ResultSymptomaticNoTest />,
   };
