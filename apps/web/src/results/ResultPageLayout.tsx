@@ -1,7 +1,6 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
-import house from '../images/house.svg';
 import { Button } from '../components/Button';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 type ResultPageLayoutTypes = PropsWithChildren<ReactNode> & {
