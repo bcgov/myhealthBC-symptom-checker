@@ -5,23 +5,25 @@ import { Question } from '../components/Question';
 import { RadioField } from '../components/RadioField';
 import { Severity } from '../types/Severity';
 
-export const Q3SymptomCoughSeverity = ({ values, onChange }: PageProps) => {
+export const Q3SymptomSoreThroatSeverity = ({ values, onChange }: PageProps) => {
   const { t } = useTranslation();
 
-  const valueKey = 'symptoms.cough';
-  const severity = values?.symptoms?.cough || Severity.None;
+  const valueKey = 'symptoms.soreThroat';
+  const severity = values?.symptoms?.soreThroat || Severity.None;
 
   return (
     <div>
       <div className='pb-5'>
-        <Question>{t('Q3.5-cough')}</Question>
-        <div className='text-base text-bcGray mb-2'>{t('Q3.5-cough-desc1')}</div>
-        <div className='text-base text-bcGray font-bold mb-2'>{t('Q3.5-cough-desc2')}</div>
+        <Question>{t('Q3.5-soreThroat')}</Question>
+        <div className='text-base text-bcGray mb-2'>{t('Q3.5-soreThroat-desc1')}</div>
+        <div className='text-base text-bcGray font-bold mb-2'>{t('Q3.5-soreThroat-desc2')}</div>
         <div className='text-base text-bcGray'>
-          <Trans i18nKey='Q3.5-cough-desc3'>
-            For more information on cough, see HealthLinkBC&apos;s information for
-            <span className='underline text-bcBlueAccent'>children age 11 and younger</span> and for{' '}
-            <span className='underline text-bcBlueAccent'>people age 12 and older.</span>
+          <Trans i18nKey='Q3.5-soreThroat-desc3'>
+            For more information on sore throat, go to{' '}
+            <a className='underline text-bcBlueAccent' href='https://www.healthlinkbc.ca/'>
+              Healthlink BC
+            </a>{' '}
+            and for{' '}
           </Trans>
         </div>
       </div>
@@ -41,8 +43,13 @@ export const Q3SymptomCoughSeverity = ({ values, onChange }: PageProps) => {
       <div className='bg-gray-50 my-4 p-4 rounded'>
         <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
         <div className='font-bold mt-3'>
-          {t(severity === Severity.None ? 'None-title' : `Cough-${severity}-title`)}
+          {t(severity === 'None' ? 'None-title' : `SoreThroat-${severity}-title`)}
         </div>
+        {severity === Severity.Severe || severity === Severity.Moderate ? (
+          <div className='mt-3'>{t(`SoreThroat-${severity}-desc`)}</div>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );
