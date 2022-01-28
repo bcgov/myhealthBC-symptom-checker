@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { Field, useFormikContext } from 'formik';
 import PropTypes from 'prop-types';
 import { SymptomCheckerForm, Symptoms } from '../types';
@@ -7,6 +7,10 @@ export const SymptomCheckbox = props => {
   const { name, label, checked, description } = props;
 
   const { values, setFieldValue } = useFormikContext<SymptomCheckerForm>();
+
+  useEffect(() => {
+    console.log('value changed ', values);
+  }, [values.symptoms.none.checked]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!name.includes('.')) return;
@@ -21,13 +25,13 @@ export const SymptomCheckbox = props => {
       if (symptom === 'none') {
         Object.keys(symptoms)
           .filter(key => key != symptom)
-          .forEach(key => (symptoms[key].isExperienced = false));
+          .forEach(key => (symptoms[key].checked = false));
       } else {
-        symptoms.none.isExperienced = false;
+        symptoms.none.checked = false;
       }
     }
 
-    details.isExperienced = checked;
+    details.checked = checked;
     setFieldValue(key, values[key]);
   };
 

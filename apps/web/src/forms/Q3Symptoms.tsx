@@ -19,7 +19,7 @@ export const Q3Symptoms = () => {
           <SymptomCheckbox
             key={symptom}
             name={`symptoms.${symptom}`}
-            checked={values?.symptoms[symptom]?.isExperienced}
+            checked={values?.symptoms[symptom]?.checked}
             label={t(symptom)}
           />
         );
