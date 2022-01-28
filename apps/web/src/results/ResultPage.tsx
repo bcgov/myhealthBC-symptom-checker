@@ -17,5 +17,9 @@ export const ResultPage = () => {
     [Recommendation.SYMPTOMATIC_TEST]: <ResultSymptomaticTest />,
     [Recommendation.SYMPTOMATIC_NO_TEST]: <ResultSymptomaticNoTest />,
   };
-  return <>{results[result as Recommendation]}</>;
+  return (
+    <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-white rounded shadow-md'>
+      {results[result as Recommendation]}
+    </main>
+  );
 };

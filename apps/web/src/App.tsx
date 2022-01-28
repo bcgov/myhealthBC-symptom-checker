@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Layout } from './Layout';
-import { Home } from './components/Home';
+import Layout from './Layout';
+import Home from './components/Home';
 import { SymptomChecker } from './forms/SymptomChecker';
 import { ResultPage } from './results/ResultPage';
 

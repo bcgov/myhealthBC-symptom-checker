@@ -91,37 +91,39 @@ export const SymptomChecker = () => {
   };
 
   return (
-    <div className=' h-full flex flex-col '>
-      <FormikProvider value={formik}>
-        <div>{pages[page]}</div>
-        <div className='my-10'>
-          <Button
-            type='button'
-            variant='outline'
-            widthClass='md:w-44'
-            onClick={previous}
-            disabled={page === 0}
-          >
-            {t('Go back')}
-          </Button>
-          <span className='ml-4'>
+    <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-white rounded shadow-md'>
+      <div className=' h-full flex flex-col '>
+        <FormikProvider value={formik}>
+          <div>{pages[page]}</div>
+          <div className='my-10'>
             <Button
-              type={pages.length - 1 === page ? 'button' : 'submit'}
-              variant='primary'
+              type='button'
+              variant='outline'
               widthClass='md:w-44'
-              onClick={next}
+              onClick={previous}
+              disabled={page === 0}
             >
-              {t('Continue')}
+              {t('Go back')}
             </Button>
-          </span>
-        </div>
-        <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
-          <pre>
-            <strong>{'values => '}</strong>
-            {JSON.stringify(values, null, 2)}
-          </pre>
-        </div>
-      </FormikProvider>
-    </div>
+            <span className='ml-4'>
+              <Button
+                type={pages.length - 1 === page ? 'button' : 'submit'}
+                variant='primary'
+                widthClass='md:w-44'
+                onClick={next}
+              >
+                {t('Continue')}
+              </Button>
+            </span>
+          </div>
+          <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
+            <pre>
+              <strong>{'values => '}</strong>
+              {JSON.stringify(values, null, 2)}
+            </pre>
+          </div>
+        </FormikProvider>
+      </div>
+    </main>
   );
 };
