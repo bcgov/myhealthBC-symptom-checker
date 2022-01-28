@@ -21,7 +21,7 @@ function RadioButtons(props: FormFieldProps) {
           return options.map(option => {
             return (
               <div
-                className='flex space-x-5 items-center cursor-pointer leading-none py-3'
+                className='flex space-x-5  cursor-pointer items-center leading-none py-3'
                 key={option.key}
               >
                 <Field
@@ -31,8 +31,11 @@ function RadioButtons(props: FormFieldProps) {
                   {...rest}
                   value={option.value}
                   checked={field.value === option.value}
-                ></Field>
-                <label htmlFor={option.value}>{option.key}</label>
+                  className='h-5 w-5 cursor-pointer'
+                />
+                <label className='!ml-0 pl-4 cursor-pointer ' htmlFor={option.value}>
+                  {option.key}
+                </label>
               </div>
             );
           });

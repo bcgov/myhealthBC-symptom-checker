@@ -2,85 +2,36 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Question } from '../components/Question';
 import { QuestionDescription } from '../components/QuestionDescription';
-import Checkboxes from 'src/components/Checkboxes';
+import { useFormikContext } from 'formik';
+import { SymptomCheckbox } from '../components/SymptomCheckbox';
+import { SymptomCheckerForm } from '../types';
 
 export const Q3Symptoms = () => {
-  const { t } = useTranslation();
-
-  const symptomOptions2: Array<{
-    key: string;
-    value: string;
-    name: string;
-  }> = [
-    {
-      key: 'fever',
-      name: 'fever.isExperienced',
-      value: 'Fever or chills',
-    },
-    {
-      key: 'cough',
-      name: 'cough.isExperienced',
-      value: 'Cough',
-    },
-    {
-      key: 'shortnessOfBreath',
-      name: 'shortnessOfBreath.isExperienced',
-      value: 'Shortness of breath',
-    },
-    {
-      key: 'soreThroat',
-      name: 'soreThroat.isExperienced',
-      value: 'Sore throat',
-    },
-    {
-      key: 'lossOfSmellTaste',
-      name: 'lossOfSmellTaste.isExperienced',
-      value: 'Loss of sense of smell or taste',
-    },
-    {
-      key: 'runnyNose',
-      name: 'runnyNose.isExperienced',
-      value: 'Runny nose',
-    },
-    {
-      key: 'sneezing',
-      name: 'sneezing.isExperienced',
-      value: 'Sneezing',
-    },
-    {
-      key: 'diarrhea',
-      name: 'diarrhea.isExperienced',
-      value: 'Diarrhea',
-    },
-    {
-      key: 'lossOfAppetite',
-      name: 'lossOfAppetite.isExperienced',
-      value: 'Loss of appetite',
-    },
-    {
-      key: 'nauseaVomitting',
-      name: 'nauseaVomitting.isExperienced',
-      value: 'Nausea or vomiting',
-    },
-    {
-      key: 'bodyMuscleAches',
-      name: 'bodyMuscleAches.isExperienced',
-      value: 'Body or muscle aches',
-    },
-    {
-      key: 'none',
-      name: 'none.isExperienced',
-      value: 'None',
-    },
-  ];
+  const { t } = useTranslation('symptoms');
+  const { values, errors } = useFormikContext<SymptomCheckerForm>();
 
   return (
     <div>
-      <div>
-        <Question>{t('Q3')}</Question>
-        <QuestionDescription text={t('Q3-desc')} />
-        <Checkboxes name={'symptomps'} label='symptomps' options={symptomOptions2}></Checkboxes>
-      </div>
+      <Question>{t('Question')}</Question>
+      <QuestionDescription text={t('Description')} />
+      {Object.keys(values.symptoms).map(symptom => {
+        return (
+          <SymptomCheckbox
+            key={symptom}
+            name={`symptoms.${symptom}`}
+            checked={values?.symptoms[symptom]?.isExperienced}
+            label={t(symptom)}
+          />
+        );
+      })}
+      {errors.symptoms ? (
+        <div className='bg-gray-50 my-4 p-4 rounded'>
+          <div className='text-bcBlueLink font-bold'>{t('Errors')}</div>
+          <div className='font-bold mt-3'>{errors.symptoms}</div>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

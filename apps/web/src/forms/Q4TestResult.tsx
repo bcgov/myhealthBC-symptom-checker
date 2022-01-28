@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { PageProps } from '../types/index';
+import { SymptomCheckerForm, YES_NO_OPTIONS } from 'src/types/index';
 import { Question } from '../components/Question';
 import { QuestionDescription } from '../components/QuestionDescription';
 import question from '../images/question.svg';
@@ -10,8 +10,9 @@ import { Tooltip } from '../components/Tooltip';
 import calendar from '../images/calendar.svg';
 
 import { enCA as en, frCA as fr, ko, zhCN as zh, faIR as fa, ar, vi } from 'date-fns/locale';
-import { Field } from 'formik';
+import { Field, useFormikContext } from 'formik';
 import RadioButtons from 'src/components/Radio';
+import { ErrorBox } from '../components/ErrorBox';
 
 registerLocale('en', en);
 registerLocale('ko', ko);
@@ -22,15 +23,17 @@ registerLocale('ar', ar);
 registerLocale('vi', vi);
 registerLocale('tl', en); // date-fns doesn't support Tagalog?
 
-export const Q4TestResult = ({ values, onChange }: PageProps) => {
+export const Q4TestResult = () => {
   const { t, i18n } = useTranslation();
 
+  const { values, setFieldValue, errors } = useFormikContext<SymptomCheckerForm>();
+
   const handleDateChange = value => {
-    onChange(null, 'test.testDate', value);
+    setFieldValue('test', { ...values.test, testDate: value });
   };
 
   const renderTestOptions = () => {
-    if (values?.test?.tested !== 'true') {
+    if (values?.test?.tested !== 'yes') {
       return '';
     }
     return (
@@ -48,6 +51,7 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
           />
           <img src={calendar} height={12} width={12} alt='select date' />
         </div>
+        {errors.test && errors.test['testDate'] ? <ErrorBox error={errors.test['testDate']} /> : ''}
         <div className='my-2'>{t('Result')}:</div>
         <div className='flex flexcol w-56 p-2 border rounded'>
           <Field
@@ -55,7 +59,6 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
             label='test.result'
             description='test.result'
             as='select'
-            onChange={onChange}
             value={values?.test?.result || ''}
             placeholder='Select'
             className='w-full'
@@ -66,6 +69,7 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
             <option value='Indeterminate'>{t('Indeterminate')}</option>
           </Field>
         </div>
+        {errors.test && errors.test['result'] ? <ErrorBox error={errors.test['result']} /> : ''}
       </div>
     );
   };
@@ -83,20 +87,7 @@ export const Q4TestResult = ({ values, onChange }: PageProps) => {
           </div>
         </QuestionDescription>
       </div>
-      <RadioButtons
-        label={''}
-        name={'complicatingFactors'}
-        options={[
-          {
-            key: 'yes',
-            value: 'yes',
-          },
-          {
-            key: 'no',
-            value: 'no',
-          },
-        ]}
-      ></RadioButtons>
+      <RadioButtons label={''} name={'test.tested'} options={YES_NO_OPTIONS} />
       {renderTestOptions()}
     </div>
   );
