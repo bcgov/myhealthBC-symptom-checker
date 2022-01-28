@@ -85,12 +85,32 @@ export const initialValues: Partial<SymptomCheckerForm> = {
   },
 };
 
+const yesOrNoValidator = yup.string().oneOf(['yes', 'no']).required('This is a required field');
+
 export const validationSchema = [
   yup.object().shape({
-    emergentFactors: yup.string().oneOf(['yes', 'no']).required('This is a required field'),
+    emergentFactors: yesOrNoValidator,
   }),
   yup.object().shape({
-    complicatingFactors: yup.string().oneOf(['yes', 'no']).required('This is a required field'),
+    complicatingFactors: yesOrNoValidator,
+  }),
+  yup.object().shape({
+    symptoms: yup.object().test('required', (value, context) => {
+      const isSet = Object.values(value).some((s: SymptomDetails) => s.isExperienced);
+      if (isSet) return true;
+      throw new yup.ValidationError('Required', value, context.path);
+    }),
+  }),
+  yup.object().shape({
+    test: yup.object().shape({
+      tested: yesOrNoValidator,
+      testDate: yup
+        .date()
+        .when('tested', { is: value => value === 'yes', then: s => s.required() }),
+      result: yup
+        .string()
+        .when('tested', { is: value => value === 'yes', then: s => s.required() }),
+    }),
   }),
 ];
 

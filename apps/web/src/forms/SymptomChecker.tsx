@@ -15,87 +15,14 @@ export const SymptomChecker = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [values, setValues] = useState(initialValues);
-  const submit = (values, actions) => {
-    actions.setSubmitting(true);
-    console.log('submitted: ', values);
-    actions.setSubmitting(false);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const validate = () => {
-    return {};
-  };
-
   const [step, setStep] = useState(0);
-
-  const formik = useFormik({
-    initialValues: values,
-    validate,
-    onSubmit: submit,
-  });
-
-  const onChange = (e, key, value) => {
-    let name, newValue;
-    if (e) {
-      name = e.target.name;
-      newValue = e.target.value;
-      e.stopPropagation();
-    } else {
-      name = key;
-      newValue = value;
-    }
-    if (e?.target.type === 'checkbox') {
-      newValue = e.target.checked ? 'true' : 'false';
-    }
-    const clone = _.cloneDeep(values);
-    const [subKey, subValues] = setValueByPath(clone, name, newValue);
-    setValues(clone);
-    if (subValues) {
-      formik.setFieldValue(subKey as string, subValues);
-    } else {
-      formik.setFieldValue(name, newValue);
-    }
-  };
-
-  const decideNextPage = (values: Partial<SymptomCheckerForm>) => {
-    if (values.emergentFactors === 'yes') {
-      navigate(`/result/${Recommendation.CALL_911}`);
-    }
-
-    if (values.complicatingFactors === 'yes') {
-      navigate(`/result/${Recommendation.CALL_811}`);
-    }
-
-    if (values.symptoms === 'true') {
-      navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
-    }
-
-    // temporarily
-    if (step < 8 - 1) {
-      return step + 1;
-    }
-
-    navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
-    return step;
-  };
-
-  const nextQuestion = (values: Partial<SymptomCheckerForm>) => {
-    console.log('Going to next step');
-    console.log(values);
-    setStep(decideNextPage(values));
-  };
-
-  const previous = () => {
-    setStep(Math.max(step - 1, 0));
-  };
 
   const steps = [
     {
       component: (
         <SymptomQuestion
           key={0}
-          showErrors={true}
+          showErrors
           answerOptions={YES_NO_OPTIONS}
           question={{
             title: 'Q1',
@@ -110,7 +37,7 @@ export const SymptomChecker = () => {
       component: (
         <SymptomQuestion
           key={1}
-          showErrors={true}
+          showErrors
           answerOptions={YES_NO_OPTIONS}
           question={{
             title: 'Q2',
@@ -126,16 +53,47 @@ export const SymptomChecker = () => {
       validationSchema: validationSchema[2],
     },
     {
-      component: <Q4TestResult key={100} values={values} onChange={onChange} />,
-      validationSchema: {},
+      component: <Q4TestResult key={100} />,
+      validationSchema: validationSchema[3],
     },
   ];
+
+  const decideNextPage = (values: Partial<SymptomCheckerForm>) => {
+    if (values.emergentFactors === 'yes') {
+      navigate(`/result/${Recommendation.CALL_911}`);
+    }
+
+    if (values.complicatingFactors === 'yes') {
+      navigate(`/result/${Recommendation.CALL_811}`);
+    }
+
+    if (values.symptoms === 'true') {
+      navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+    }
+
+    // temporarily
+    if (step < steps.length - 1) {
+      return step + 1;
+    }
+
+    navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+    return step;
+  };
+
+  const nextQuestion = (values: Partial<SymptomCheckerForm>) => {
+    console.log('Going to next step', values);
+    setStep(decideNextPage(values));
+  };
+
+  const previous = () => {
+    setStep(Math.max(step - 1, 0));
+  };
 
   return (
     <div className=' h-full flex flex-col '>
       <Formik
         initialValues={initialValues}
-        validationSchema={steps[step].validationSchema}
+        validationSchema={steps[step]?.validationSchema}
         onSubmit={nextQuestion}
       >
         <Form>
