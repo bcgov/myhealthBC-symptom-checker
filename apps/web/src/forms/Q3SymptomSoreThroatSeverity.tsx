@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { PageProps } from 'src/types';
 
-export const Q3SymptomSoreThroatSeverity = ({ values, onChange }: PageProps) => {
+export const Q3SymptomSoreThroatSeverity = () => {
   const { t } = useTranslation();
 
   // const valueKey = 'symptoms.soreThroat';

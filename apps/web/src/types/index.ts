@@ -1,11 +1,4 @@
-import { SyntheticEvent } from 'react';
 import * as yup from 'yup';
-
-export type PageProps = {
-  values?: Partial<SymptomCheckerForm>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onChange: (e: SyntheticEvent | null, key?: string, value?: any) => void;
-};
 
 export enum Result {
   Negative = 'Negative',
