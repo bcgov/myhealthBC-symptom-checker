@@ -1,5 +1,5 @@
 describe('Happy path outcome', () => {
-  it('without covid test details', () => {
+  it.skip('without covid test details', () => {
     cy.visit('http://localhost:3030');
     cy.contains('Start assessment');
     cy.get('button[title="Start assessment"]').click();
@@ -17,7 +17,7 @@ describe('Happy path outcome', () => {
     cy.contains('You do not need a COVID-19 test at this time.');
   });
 
-  it('with covid test details', () => {
+  it.skip('with covid test details', () => {
     cy.visit('http://localhost:3030');
     cy.contains('Start assessment');
     cy.get('button[title="Start assessment"]').click();
