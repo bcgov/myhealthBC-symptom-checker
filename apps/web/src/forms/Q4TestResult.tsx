@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -26,11 +26,17 @@ registerLocale('tl', en); // date-fns doesn't support Tagalog?
 export const Q4TestResult = () => {
   const { t, i18n } = useTranslation();
 
-  const { values, setFieldValue, errors } = useFormikContext<SymptomCheckerForm>();
+  const { values, setFieldValue, errors, touched, setTouched } =
+    useFormikContext<SymptomCheckerForm>();
 
   const handleDateChange = value => {
     setFieldValue('test', { ...values.test, testDate: value });
   };
+
+  useEffect(() => {
+    delete touched.test;
+    setTouched(touched);
+  }, []);
 
   const renderTestOptions = () => {
     if (values?.test?.tested !== 'yes') {
@@ -51,7 +57,11 @@ export const Q4TestResult = () => {
           />
           <img src={calendar} height={12} width={12} alt='select date' />
         </div>
-        {errors.test && errors.test['testDate'] ? <ErrorBox error={errors.test['testDate']} /> : ''}
+        {errors.test && touched.test && touched.test['testDate'] && errors.test['testDate'] ? (
+          <ErrorBox error={errors.test['testDate']} />
+        ) : (
+          ''
+        )}
         <div className='my-2'>{t('Result')}:</div>
         <div className='flex flexcol w-56 p-2 border rounded'>
           <Field
@@ -69,7 +79,11 @@ export const Q4TestResult = () => {
             <option value='Indeterminate'>{t('Indeterminate')}</option>
           </Field>
         </div>
-        {errors.test && errors.test['result'] ? <ErrorBox error={errors.test['result']} /> : ''}
+        {errors.test && touched.test && touched.test['result'] && errors.test['result'] ? (
+          <ErrorBox error={errors.test['result']} />
+        ) : (
+          ''
+        )}
       </div>
     );
   };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 
 export interface FormFieldProps {
-  label: string;
+  label?: string;
   name: string;
   options: Array<{
     key: string;
@@ -10,12 +10,18 @@ export interface FormFieldProps {
   }>;
 }
 
-function RadioButtons(props: FormFieldProps) {
+const RadioButtons = (props: FormFieldProps) => {
   const { label, name, options, ...rest } = props;
+
+  const validator = value => {
+    if (options.map(option => option.value).includes(value)) return null;
+    return 'Required';
+  };
+
   return (
     <div>
-      <label>{label}</label>
-      <Field name={name}>
+      {label ? <label>{label}</label> : ''}
+      <Field name={name} validate={validator}>
         {formik => {
           const { field } = formik;
           return options.map(option => {
@@ -44,6 +50,6 @@ function RadioButtons(props: FormFieldProps) {
       <ErrorMessage name={name} />
     </div>
   );
-}
+};
 
 export default RadioButtons;

@@ -16,7 +16,6 @@ export enum Recommendation {
 }
 
 export enum Severity {
-  NA = 'N/A',
   None = 'None',
   Mild = 'Mild',
   Moderate = 'Moderate',
@@ -50,35 +49,44 @@ export interface Symptoms {
 }
 
 export interface SymptomDetails {
-  isExperienced: boolean;
-  severity: Severity;
+  isExperienced?: boolean;
+  severity?: Severity;
 }
 
 export interface SymptomCheckerForm {
   emergentFactors: string;
   complicatingFactors: string;
-  symptoms: Partial<Symptoms>;
+  symptoms: Symptoms;
   test?: Partial<TestResult>;
 }
 
-export const initialValues: Partial<SymptomCheckerForm> = {
+export const initialValues: SymptomCheckerForm = {
+  complicatingFactors: '',
+  emergentFactors: '',
   symptoms: {
-    fever: { isExperienced: false, severity: Severity.NA },
-    cough: { isExperienced: false, severity: Severity.NA },
-    shortnessOfBreath: { isExperienced: false, severity: Severity.NA },
-    soreThroat: { isExperienced: false, severity: Severity.NA },
-    lossOfSmellTaste: { isExperienced: false, severity: Severity.NA },
-    runnyNose: { isExperienced: false, severity: Severity.NA },
-    sneezing: { isExperienced: false, severity: Severity.NA },
-    diarrhea: { isExperienced: false, severity: Severity.NA },
-    lossOfAppetite: { isExperienced: false, severity: Severity.NA },
-    nauseaVomitting: { isExperienced: false, severity: Severity.NA },
-    bodyMuscleAches: { isExperienced: false, severity: Severity.NA },
-    none: { isExperienced: false, severity: Severity.NA },
+    fever: { isExperienced: false },
+    cough: { isExperienced: false },
+    shortnessOfBreath: { isExperienced: false },
+    soreThroat: { isExperienced: false },
+    lossOfSmellTaste: { isExperienced: false },
+    runnyNose: { isExperienced: false },
+    sneezing: { isExperienced: false },
+    diarrhea: { isExperienced: false },
+    lossOfAppetite: { isExperienced: false },
+    nauseaVomitting: { isExperienced: false },
+    bodyMuscleAches: { isExperienced: false },
+    none: { isExperienced: false },
   },
+  test: { tested: undefined, testDate: undefined, result: undefined },
 };
 
 const yesOrNoValidator = yup.string().oneOf(['yes', 'no']).required('This is a required field');
+// export const severityValidator = yup.object().test('severity required', (value, context) => {
+//   return Object.values(value.symptoms).filter(s => {
+//     const detail = s as SymptomDetails;
+//     return !detail.isExperienced || detail.severity;
+//   });
+// });
 
 export const validationSchema = [
   yup.object().shape({
