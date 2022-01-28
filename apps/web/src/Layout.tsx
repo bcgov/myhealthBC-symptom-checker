@@ -8,7 +8,7 @@ type LayoutProps = PropsWithChildren<ReactNode> & {
   result?: boolean;
 };
 
-export const Layout = ({ result, children }: LayoutProps) => {
+const Layout = ({ result, children }: LayoutProps) => {
   return (
     <div className='flex flex-col min-h-screen bg-bcLightBackground'>
       <Header />
@@ -22,3 +22,5 @@ export const Layout = ({ result, children }: LayoutProps) => {
     </div>
   );
 };
+
+export default Layout;

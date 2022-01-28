@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import globe from '../images/globe.svg';
+import globe from 'src/images/globe.svg';
 
 const languages = {
   en: 'English',
