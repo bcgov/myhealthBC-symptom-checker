@@ -3,6 +3,6 @@
 describe('Landing page', () => {
   it('has welcome message', () => {
     cy.visit('http://localhost:3030');
-    cy.contains('Welcome');
+    cy.contains('COVID 19 self-assessment tool');
   });
 });
