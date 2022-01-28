@@ -131,31 +131,33 @@ export const SymptomChecker = () => {
   };
 
   return (
-    <div className=' h-full flex flex-col '>
-      <Formik
-        initialValues={_.cloneDeep(initialValues)}
-        validationSchema={steps[step]?.validationSchema}
-        onSubmit={nextQuestion}
-      >
-        <Form>
-          <div> {steps[step].component}</div>
-          <div className='my-10 justify-center'>
-            <Button
-              type='button'
-              variant='outline'
-              widthClass='md:w-44'
-              onClick={previous}
-              disabled={step === 0}
-            >
-              {t('Go back')}
-            </Button>
-            <span className='ml-4'></span>
-            <Button type='submit' variant='primary' widthClass='md:w-44'>
-              {t('Continue')}
-            </Button>
-          </div>
-        </Form>
-      </Formik>
-    </div>
+    <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-white rounded shadow-md'>
+      <div className=' h-full flex flex-col '>
+        <Formik
+          initialValues={_.cloneDeep(initialValues)}
+          validationSchema={steps[step]?.validationSchema}
+          onSubmit={nextQuestion}
+        >
+          <Form>
+            <div> {steps[step].component}</div>
+            <div className='my-10 justify-center'>
+              <Button
+                type='button'
+                variant='outline'
+                widthClass='md:w-44'
+                onClick={previous}
+                disabled={step === 0}
+              >
+                {t('Go back')}
+              </Button>
+              <span className='ml-4'></span>
+              <Button type='submit' variant='primary' widthClass='md:w-44'>
+                {t('Continue')}
+              </Button>
+            </div>
+          </Form>
+        </Formik>
+      </div>
+    </main>
   );
 };
