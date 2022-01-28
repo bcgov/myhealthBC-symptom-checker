@@ -4,7 +4,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import house from '../images/house.svg';
 import { ResultPageLayout } from './ResultPageLayout';
 
-export const ResultAsymptomatic = () => {
+export const ResultAsymptomaticNoTest = () => {
   const { t } = useTranslation();
 
   return (
@@ -12,7 +12,7 @@ export const ResultAsymptomatic = () => {
       image={house}
       imageBg='bg-greenLight'
       imageAlt='safe house'
-      title={t('ResultAsymptomatic')}
+      title={t('ResultAsymptomaticNoTest')}
       titleColor='text-bcGreenSuccess'
     >
       <div>{t('ResultAsymptomaticDescription')}</div>

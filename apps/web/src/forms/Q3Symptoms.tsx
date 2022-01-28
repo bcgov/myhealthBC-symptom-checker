@@ -1,54 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { PageProps } from '../types/PageProps';
 import { Question } from '../components/Question';
-import { Checkbox } from '../components/Checkbox';
 import { QuestionDescription } from '../components/QuestionDescription';
+import { useFormikContext } from 'formik';
+import { SymptomCheckbox } from '../components/SymptomCheckbox';
+import { SymptomCheckerForm } from '../types';
 
-export const Q3Symptoms = ({ values, onChange }: PageProps) => {
-  const { t, i18n } = useTranslation();
-
-  const getSymptomOptions = () => {
-    return {
-      fever: t('Fever or chills'),
-      cough: t('Cough'),
-      breathing: t('Shortness of breath'),
-      throat: t('Sore throat'),
-      smell: t('Loss of sense of smell or taste'),
-      runnyNose: t('Runny nose'),
-      sneezing: t('Sneezing'),
-      diarrhea: t('Diarrhea'),
-      appetite: t('Loss of appetite'),
-      nausea: t('Nausea or vomiting'),
-      aches: t('Body or muscle aches'),
-      none: t('None of the above'),
-    };
-  };
-
-  const [symptoms, setSymptoms] = useState(getSymptomOptions());
-
-  useEffect(() => {
-    setSymptoms(getSymptomOptions());
-  }, [i18n.language]);
+export const Q3Symptoms = () => {
+  const { t } = useTranslation('symptoms');
+  const { values, errors } = useFormikContext<SymptomCheckerForm>();
 
   return (
     <div>
-      <div>
-        <Question>{t('Q3')}</Question>
-        <QuestionDescription text={t('Q3-desc')} />
-        {Object.keys(symptoms).map(symptom => {
-          const name = `symptoms.${symptom}`;
-          return (
-            <Checkbox
-              key={symptom}
-              name={name}
-              checked={values?.symptoms && values?.symptoms[symptom] === 'true'}
-              text={t(symptoms[symptom])}
-              onChange={onChange}
-            />
-          );
-        })}
-      </div>
+      <Question>{t('Question')}</Question>
+      <QuestionDescription text={t('Description')} />
+      {Object.keys(values.symptoms).map(symptom => {
+        return (
+          <SymptomCheckbox
+            key={symptom}
+            name={`symptoms.${symptom}`}
+            checked={values?.symptoms[symptom]?.isExperienced}
+            label={t(symptom)}
+          />
+        );
+      })}
+      {errors.symptoms ? (
+        <div className='bg-gray-50 my-4 p-4 rounded'>
+          <div className='text-bcBlueLink font-bold'>{t('Errors')}</div>
+          <div className='font-bold mt-3'>{errors.symptoms}</div>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

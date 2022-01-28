@@ -1,15 +1,20 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { PageProps } from '../types/PageProps';
+import { useFormikContext } from 'formik';
+import { Severity, SymptomCheckerForm } from '../types';
 import { Question } from '../components/Question';
-import { RadioField } from '../components/RadioField';
-import { Severity } from '../types/Severity';
+import RadioButtons from '../components/Radio';
 
-export const Q3SymptomSoreThroatSeverity = ({ values, onChange }: PageProps) => {
+export const Q3SymptomSoreThroatSeverity = () => {
   const { t } = useTranslation();
 
-  const valueKey = 'symptoms.soreThroat';
-  const severity = values?.symptoms?.soreThroat || Severity.None;
+  const { values } = useFormikContext<SymptomCheckerForm>();
+
+  const name = 'symptoms.soreThroat.severity';
+  const details = values.symptoms.soreThroat;
+  const severity = details.severity;
+
+  const options = Object.values(Severity).map((s: string) => ({ key: s, value: s }));
 
   return (
     <div>
@@ -29,28 +34,23 @@ export const Q3SymptomSoreThroatSeverity = ({ values, onChange }: PageProps) => 
       </div>
 
       <div>
-        {Object.values(Severity).map(value => (
-          <RadioField
-            name={valueKey}
-            key={value}
-            value={value}
-            onChange={onChange}
-            text={t(value)}
-            checked={value === severity}
-          />
-        ))}
+        <RadioButtons name={name} options={options} />
       </div>
-      <div className='bg-gray-50 my-4 p-4 rounded'>
-        <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
-        <div className='font-bold mt-3'>
-          {t(severity === 'None' ? 'None-title' : `SoreThroat-${severity}-title`)}
+      {severity ? (
+        <div className='bg-gray-50 my-4 p-4 rounded'>
+          <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
+          <div className='font-bold mt-3'>
+            {t(severity === 'None' ? 'None-title' : `SoreThroat-${severity}-title`)}
+          </div>
+          {severity === Severity.Severe || severity === Severity.Moderate ? (
+            <div className='mt-3'>{t(`SoreThroat-${severity}-desc`)}</div>
+          ) : (
+            ''
+          )}
         </div>
-        {severity === Severity.Severe || severity === Severity.Moderate ? (
-          <div className='mt-3'>{t(`SoreThroat-${severity}-desc`)}</div>
-        ) : (
-          ''
-        )}
-      </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

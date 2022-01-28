@@ -1,128 +1,162 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
+import { Formik, Form } from 'formik';
 import _ from 'lodash';
-import { FormikProvider, useFormik } from 'formik';
-import { Q1SevereSymptom } from './Q1SevereSymptom';
-import { Q2DifficultBreathing } from './Q2DifficultBreathing';
+import { SymptomQuestion } from './SymptomQuestion';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { Q3Symptoms } from './Q3Symptoms';
-import { setValueByPath } from '../utils';
 import { Q4TestResult } from './Q4TestResult';
 import { useNavigate } from 'react-router-dom';
-import { Recommendation } from '../types/Recommendation';
-import { Q3SymptomBreathingSeverity } from './Q3SymptomBreathingSeverity';
-import { Q3SymptomCoughSeverity } from './Q3SymptomCoughSeverity';
-import { initialValues } from '../types/initialValues';
-import { Q3SymptomBodyAchesSeverity } from './Q3SymptomBodyAchesSeverity';
+import { Recommendation, SymptomCheckerForm, YES_NO_OPTIONS } from '../types';
+import { initialValues, validationSchema } from '../types';
+import { Q3SeverityBreathing } from './Q3SeverityBreathing';
 import { Q3SymptomSoreThroatSeverity } from './Q3SymptomSoreThroatSeverity';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [values, setValues] = useState(initialValues);
-  const submit = (values, actions) => {
-    actions.setSubmitting(true);
-    console.log('submitted: ', values);
-    actions.setSubmitting(false);
-  };
+  const [step, setStep] = useState(0);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const validate = () => {
-    return {};
-  };
+  const [pageHistory, setPageHistory] = useState<number[]>([]);
 
-  const [page, setPage] = useState(0);
-
-  const formik = useFormik({
-    initialValues: values,
-    validate,
-    onSubmit: submit,
-  });
-
-  const onChange = (e, key, value) => {
-    let name, newValue;
-    if (e) {
-      name = e.target.name;
-      newValue = e.target.value;
-      e.stopPropagation();
-    } else {
-      name = key;
-      newValue = value;
-    }
-    if (e?.target.type === 'checkbox') {
-      newValue = e.target.checked ? 'true' : 'false';
-    }
-    const clone = _.cloneDeep(values);
-    const [subKey, subValues] = setValueByPath(clone, name, newValue);
-    setValues(clone);
-    if (subValues) {
-      formik.setFieldValue(subKey as string, subValues);
-    } else {
-      formik.setFieldValue(name, newValue);
-    }
-  };
-
-  const pages: ReactElement[] = [
-    <Q1SevereSymptom key={0} onChange={onChange} />,
-    <Q2DifficultBreathing key={1} onChange={onChange} />,
-    <Q3Symptoms key={2} values={values} onChange={onChange} />,
-    <Q3SymptomBreathingSeverity key={3} values={values} onChange={onChange} />,
-    <Q3SymptomCoughSeverity key={4} values={values} onChange={onChange} />,
-    <Q3SymptomBodyAchesSeverity key={5} values={values} onChange={onChange} />,
-    <Q3SymptomSoreThroatSeverity key={6} values={values} onChange={onChange} />,
-    <Q4TestResult key={100} values={values} onChange={onChange} />,
+  const steps = [
+    {
+      component: (
+        <SymptomQuestion
+          key={0}
+          showErrors
+          answerOptions={YES_NO_OPTIONS}
+          question={{
+            title: 'Q1',
+            options: ['Q1-1', 'Q1-2', 'Q1-3', 'Q1-4', 'Q1-5'],
+          }}
+          name='emergentFactors'
+        />
+      ),
+      validationSchema: validationSchema[0],
+    },
+    {
+      component: (
+        <SymptomQuestion
+          key={1}
+          showErrors
+          answerOptions={YES_NO_OPTIONS}
+          question={{
+            title: 'Q2',
+            options: ['Q2-1', 'Q2-2'],
+          }}
+          name='complicatingFactors'
+        />
+      ),
+      validationSchema: validationSchema[1],
+    },
+    {
+      component: <Q3Symptoms key={2} />,
+      validationSchema: validationSchema[2],
+    },
+    {
+      symptom: 'shortnessOfBreath',
+      component: <Q3SeverityBreathing />,
+    },
+    {
+      symptom: 'soreThroat',
+      component: <Q3SymptomSoreThroatSeverity />,
+    },
+    {
+      component: <Q4TestResult key={100} />,
+      validationSchema: validationSchema[3],
+    },
   ];
 
-  const decideNextPage = () => {
-    // temporarily
-    if (page < pages.length - 1) {
-      return page + 1;
+  const decideNextPage = (values: SymptomCheckerForm) => {
+    if (values.emergentFactors === 'yes') {
+      navigate(`/result/${Recommendation.CALL_911}`);
     }
-    navigate(`/result/${Recommendation.ASYMPTOMATIC}`);
-    return page;
+
+    if (values.complicatingFactors === 'yes') {
+      navigate(`/result/${Recommendation.CALL_811}`);
+    }
+
+    if (step < 2) {
+      return step + 1;
+    }
+
+    // go to severity selection
+    let severityStep = -1;
+    for (let index = step + 1; index < steps.length; index++) {
+      const symptom = steps[index].symptom;
+      if (symptom !== 'none' && index > step && symptom && values.symptoms[symptom].isExperienced) {
+        severityStep = index;
+        if (severityStep !== step) {
+          return severityStep;
+        }
+      }
+    }
+
+    // go to health work questions
+
+    // go to test result
+    if (step < steps.length - 1) {
+      return steps.length - 1;
+    }
+
+    const hasSymptoms = Object.keys(values.symptoms)
+      .filter(symptom => symptom !== 'none')
+      .some(symptom => values.symptoms[symptom].isExperienced);
+    if (hasSymptoms) {
+      navigate(`/result/${Recommendation.SYMPTOMATIC_TEST}`);
+    } else {
+      navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+    }
+    return step;
   };
 
-  const next = () => {
-    setPage(decideNextPage());
+  const nextQuestion = (values: SymptomCheckerForm) => {
+    console.log('Going to next step', values);
+    const nextStep = decideNextPage(values);
+    if (nextStep) {
+      pageHistory.push(step);
+      setPageHistory([...pageHistory]);
+      setStep(nextStep);
+    }
   };
+
   const previous = () => {
-    setPage(Math.max(page - 1, 0));
+    const prev = pageHistory.pop();
+    if (prev !== undefined) {
+      setStep(prev);
+      setPageHistory([...pageHistory]);
+    }
   };
 
   return (
     <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-white rounded shadow-md'>
       <div className=' h-full flex flex-col '>
-        <FormikProvider value={formik}>
-          <div>{pages[page]}</div>
-          <div className='my-10'>
-            <Button
-              type='button'
-              variant='outline'
-              widthClass='md:w-44'
-              onClick={previous}
-              disabled={page === 0}
-            >
-              {t('Go back')}
-            </Button>
-            <span className='ml-4'>
+        <Formik
+          initialValues={_.cloneDeep(initialValues)}
+          validationSchema={steps[step]?.validationSchema}
+          onSubmit={nextQuestion}
+        >
+          <Form>
+            <div> {steps[step].component}</div>
+            <div className='my-10 justify-center'>
               <Button
-                type={pages.length - 1 === page ? 'button' : 'submit'}
-                variant='primary'
+                type='button'
+                variant='outline'
                 widthClass='md:w-44'
-                onClick={next}
+                onClick={previous}
+                disabled={step === 0}
               >
+                {t('Go back')}
+              </Button>
+              <span className='ml-4'></span>
+              <Button type='submit' variant='primary' widthClass='md:w-44'>
                 {t('Continue')}
               </Button>
-            </span>
-          </div>
-          <div className='text-sm bg-slate-100 p-4 max-h-56 overflow-auto'>
-            <pre>
-              <strong>{'values => '}</strong>
-              {JSON.stringify(values, null, 2)}
-            </pre>
-          </div>
-        </FormikProvider>
+            </div>
+          </Form>
+        </Formik>
       </div>
     </main>
   );
