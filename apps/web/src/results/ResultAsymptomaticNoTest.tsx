@@ -12,7 +12,7 @@ export const ResultAsymptomaticNoTest = () => {
       image={house}
       imageBg='bg-greenLight'
       imageAlt='safe house'
-      title={t('ResultAsymptomatic')}
+      title={t('ResultAsymptomaticNoTest')}
       titleColor='text-bcGreenSuccess'
     >
       <div>{t('ResultAsymptomaticDescription')}</div>
