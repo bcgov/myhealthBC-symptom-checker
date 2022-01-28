@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import _ from 'lodash';
-import { useFormik, Formik, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import { SymptomQuestion } from './SymptomQuestion';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { Q3Symptoms } from './Q3Symptoms';
-import { setValueByPath } from '../utils';
 import { Q4TestResult } from './Q4TestResult';
 import { useNavigate } from 'react-router-dom';
 import { Recommendation, SymptomCheckerForm, YES_NO_OPTIONS } from '../types';
