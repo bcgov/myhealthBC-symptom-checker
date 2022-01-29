@@ -11,8 +11,9 @@ import calendar from '../images/calendar.svg';
 
 import { enCA as en, frCA as fr, ko, zhCN as zh, faIR as fa, ar, vi } from 'date-fns/locale';
 import { Field, useFormikContext } from 'formik';
-import RadioButtons from 'src/components/Radio';
+import RadioButtons from 'src/components/RadioButtons';
 import { ErrorBox } from '../components/ErrorBox';
+import _ from 'lodash';
 
 registerLocale('en', en);
 registerLocale('ko', ko);
@@ -57,11 +58,7 @@ export const Q4TestResult = () => {
           />
           <img src={calendar} height={12} width={12} alt='select date' />
         </div>
-        {errors.test && touched.test && touched.test['testDate'] && errors.test['testDate'] ? (
-          <ErrorBox error={errors.test['testDate']} />
-        ) : (
-          ''
-        )}
+        <ErrorBox error={_.get(errors, 'test.testDate')} hide={!_.get(touched, 'test.testDate')} />
         <div className='my-2'>{t('Result')}:</div>
         <div className='flex flexcol w-56 p-2 border rounded'>
           <Field
@@ -79,11 +76,7 @@ export const Q4TestResult = () => {
             <option value='Indeterminate'>{t('Indeterminate')}</option>
           </Field>
         </div>
-        {errors.test && touched.test && touched.test['result'] && errors.test['result'] ? (
-          <ErrorBox error={errors.test['result']} />
-        ) : (
-          ''
-        )}
+        <ErrorBox error={_.get(errors, 'test.result')} hide={!_.get(touched, 'test.result')} />
       </div>
     );
   };
@@ -102,6 +95,7 @@ export const Q4TestResult = () => {
         </QuestionDescription>
       </div>
       <RadioButtons label={''} name={'test.tested'} options={YES_NO_OPTIONS} />
+      <ErrorBox error={_.get(errors, 'test.tested')} hide={!_.get(touched, 'test.tested')} />
       {renderTestOptions()}
     </div>
   );

@@ -38,6 +38,7 @@ const RadioButtons = (props: FormFieldProps) => {
                   value={option.value}
                   checked={field.value === option.value}
                   className='h-5 w-5 cursor-pointer'
+                  validate={value => options.includes(value)}
                 />
                 <label className='!ml-0 pl-4 cursor-pointer ' htmlFor={option.value}>
                   {option.key}
@@ -47,7 +48,6 @@ const RadioButtons = (props: FormFieldProps) => {
           });
         }}
       </Field>
-      <ErrorMessage name={name} />
     </div>
   );
 };

@@ -16,8 +16,6 @@ const QuestionSteps: Step[] = [
     type: QuestionType.EMERGENT,
     component: (
       <SymptomQuestion
-        key={0}
-        showErrors
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'Q1',
@@ -26,14 +24,11 @@ const QuestionSteps: Step[] = [
         name='emergentFactors'
       />
     ),
-    validationSchema: validationSchema[0],
   },
   {
     type: QuestionType.COMPLICATED,
     component: (
       <SymptomQuestion
-        key={1}
-        showErrors
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'Q2',
@@ -42,12 +37,16 @@ const QuestionSteps: Step[] = [
         name='complicatingFactors'
       />
     ),
-    validationSchema: validationSchema[1],
   },
   {
     type: QuestionType.SYMPTOMS,
     component: <Q3Symptoms />,
-    validationSchema: validationSchema[2],
+    validationSchema: validationSchema.symptoms,
+  },
+  {
+    type: QuestionType.RESULT,
+    component: <Q4TestResult />,
+    validationSchema: validationSchema.test,
   },
   {
     type: QuestionType.SEVERITY,
@@ -85,9 +84,54 @@ const QuestionSteps: Step[] = [
     component: <SeverityNausea />,
   },
   {
-    type: QuestionType.RESULT,
-    component: <Q4TestResult key={100} />,
-    validationSchema: validationSchema[3],
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ1',
+          options: ['HWQ1-1', 'HWQ1-2', 'HWQ1-3', 'HWQ1-4', 'HWQ1-5', 'HWQ1-6'],
+        }}
+        name='healthWork.immunocompromised'
+      />
+    ),
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ2',
+          content: 'HWQ2-description',
+        }}
+        name='healthWork.unvaccinated'
+      />
+    ),
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ3',
+        }}
+        name='healthWork.careWorker'
+      />
+    ),
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ4',
+        }}
+        name='healthWork.congregated'
+      />
+    ),
   },
 ];
 

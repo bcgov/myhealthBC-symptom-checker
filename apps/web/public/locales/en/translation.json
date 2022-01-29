@@ -68,5 +68,17 @@
   "Yes": "Yes",
   "COVID 19 self-assessment tool": "COVID 19 self-assessment tool",
   "Tool description": "This online tool will determine whether you may need further assessment or testing for COVID-19.",
-  "Home alert": "If you have any concerns, feel very sick, or your symptoms are not improving, contact your family doctor/nurse practitioner or call 8-1-1."
+  "Home alert": "If you have any concerns, feel very sick, or your symptoms are not improving, contact your family doctor/nurse practitioner or call 8-1-1.",
+  "HWQ1": "Are you an individual who is moderately to severely immunocompromised?",
+  "HWQ1-1": "You have had an organ transplant and are taking anti-rejection medications",
+  "HWQ1-2": "You are receiving chemotherapy for cancer",
+  "HWQ1-3": "You have had a bone marrow or stem cell transplant or CAR-T cell therapy",
+  "HWQ1-4": "You have been diagnosed with a primary immunodeficiency disorder",
+  "HWQ1-5": "You have been diagnosed with HIV and are not currently taking medications for it",
+  "HWQ1-6": "You are on dialysis and/or have severe kidney disease",
+  "HWQ2": "Are you 18 years of age and older and unvaccinated or partially vaccinated?",
+  "HWQ2-description": "Unvaccinated or partially vaccinated means you have not received at least 2 doses of a 2-dose series or more than 14 days after receiving a single dose of a 1-dose series.",
+  "HWQ3": "Do you work as a health care worker in a hospital, long-term care facility, assisted living facility, or community clinic, or as a first responder (i.e. police officer, emergency medical technician/paramedic, or firefighter)?",
+  "HWQ4": "Do you live or work in a congregate setting (such as a long term care facility, shelter, correctional facility, or group home) or in a community that is far from testing centres and hospitals (such as rural, remote, isolated, or Indigenous community or a work camp)?",
+  "Required": "This field is required"
 }

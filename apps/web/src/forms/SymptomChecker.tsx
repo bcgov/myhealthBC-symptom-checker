@@ -26,14 +26,16 @@ export const SymptomChecker = () => {
       navigate(`/result/${Recommendation.CALL_811}`);
     }
 
-    if (step < 2) {
+    // 0 - emergent, 1 - complicated, 2 - symptoms, 3 - test result
+    if (step < 3) {
       return step + 1;
     }
 
     // go to severity selection for the primary symptoms
-    for (let index = step + 1; index < steps.length; index++) {
+    let index = step + 1;
+    for (; index < steps.length; index++) {
       const symptom = steps[index].symptom;
-      if (!symptom) continue;
+      if (!symptom) break;
       const { checked, required } = values.symptoms[symptom];
       if (checked && required) {
         return index;
@@ -41,16 +43,16 @@ export const SymptomChecker = () => {
     }
 
     // go to health work questions
-
-    // go to test result
-    if (step < steps.length - 1) {
-      return steps.length - 1;
+    if (index < steps.length) {
+      return index;
     }
 
     const symptoms = Object.keys(values.symptoms)
       .filter(symptom => symptom !== 'none')
       .map(symptom => values.symptoms[symptom]);
-    if (symptoms.some(s => s.severity)) {
+    const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
+
+    if (symptoms.some(s => s.severity) || healthWorkConcern) {
       navigate(`/result/${Recommendation.SYMPTOMATIC_TEST}`);
     } else if (symptoms.length > 0) {
       navigate(`/result/${Recommendation.SYMPTOMATIC_NO_TEST}`);
@@ -61,7 +63,6 @@ export const SymptomChecker = () => {
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {
-    console.log('Going to next step', values);
     const nextStep = decideNextPage(values);
     if (nextStep) {
       pageHistory.push(step);

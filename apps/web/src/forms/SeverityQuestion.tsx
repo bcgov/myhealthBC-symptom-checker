@@ -4,7 +4,7 @@ import { QuestionDescription } from '../components/QuestionDescription';
 import { Severity } from '../types';
 import { useFormikContext } from 'formik';
 import { SymptomCheckerForm } from '../types';
-import RadioButtons from '../components/Radio';
+import RadioButtons from '../components/RadioButtons';
 import { ErrorBox } from '../components/ErrorBox';
 import { useTranslation } from 'react-i18next';
 
@@ -46,7 +46,7 @@ export const SeverityQuestion = (props: SeverityQuestionProps) => {
 
       <div>
         <RadioButtons name={field} options={options} />
-        {error ? <ErrorBox error={error} /> : ''}
+        <ErrorBox error={error} />
       </div>
       {children || renderSeverityDescription()}
     </div>
