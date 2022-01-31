@@ -1,14 +1,15 @@
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/globals.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './i18n';
+import { Spinner } from './components/Spinner';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={'loading'}>
+    <Suspense fallback={<Spinner />}>
       <App />
     </Suspense>
   </React.StrictMode>,
