@@ -21,13 +21,13 @@ export const SymptomCheckbox = props => {
       if (symptom === 'none') {
         Object.keys(symptoms)
           .filter(key => key != symptom)
-          .forEach(key => (symptoms[key].isExperienced = false));
+          .forEach(key => (symptoms[key].checked = false));
       } else {
-        symptoms.none.isExperienced = false;
+        symptoms.none.checked = false;
       }
     }
 
-    details.isExperienced = checked;
+    details.checked = checked;
     setFieldValue(key, values[key]);
   };
 

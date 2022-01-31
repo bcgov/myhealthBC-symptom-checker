@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import _ from 'lodash';
-import { SymptomQuestion } from './SymptomQuestion';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
-import { Q3Symptoms } from './Q3Symptoms';
-import { Q4TestResult } from './Q4TestResult';
 import { useNavigate } from 'react-router-dom';
-import { Recommendation, SymptomCheckerForm, YES_NO_OPTIONS } from '../types';
-import { initialValues, validationSchema } from '../types';
-import { Q3SeverityBreathing } from './Q3SeverityBreathing';
-import { Q3SymptomSoreThroatSeverity } from './Q3SymptomSoreThroatSeverity';
+import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
+import QuestionSteps from './QuestionSteps';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -20,54 +15,7 @@ export const SymptomChecker = () => {
 
   const [pageHistory, setPageHistory] = useState<number[]>([]);
 
-  const steps = [
-    {
-      component: (
-        <SymptomQuestion
-          key={0}
-          showErrors
-          answerOptions={YES_NO_OPTIONS}
-          question={{
-            title: 'Q1',
-            options: ['Q1-1', 'Q1-2', 'Q1-3', 'Q1-4', 'Q1-5'],
-          }}
-          name='emergentFactors'
-        />
-      ),
-      validationSchema: validationSchema[0],
-    },
-    {
-      component: (
-        <SymptomQuestion
-          key={1}
-          showErrors
-          answerOptions={YES_NO_OPTIONS}
-          question={{
-            title: 'Q2',
-            options: ['Q2-1', 'Q2-2'],
-          }}
-          name='complicatingFactors'
-        />
-      ),
-      validationSchema: validationSchema[1],
-    },
-    {
-      component: <Q3Symptoms key={2} />,
-      validationSchema: validationSchema[2],
-    },
-    {
-      symptom: 'shortnessOfBreath',
-      component: <Q3SeverityBreathing />,
-    },
-    {
-      symptom: 'soreThroat',
-      component: <Q3SymptomSoreThroatSeverity />,
-    },
-    {
-      component: <Q4TestResult key={100} />,
-      validationSchema: validationSchema[3],
-    },
-  ];
+  const steps = QuestionSteps;
 
   const decideNextPage = (values: SymptomCheckerForm) => {
     if (values.emergentFactors === 'yes') {
@@ -78,42 +26,43 @@ export const SymptomChecker = () => {
       navigate(`/result/${Recommendation.CALL_811}`);
     }
 
-    if (step < 2) {
+    // 0 - emergent, 1 - complicated, 2 - symptoms, 3 - test result
+    if (step < 3) {
       return step + 1;
     }
 
-    // go to severity selection
-    let severityStep = -1;
-    for (let index = step + 1; index < steps.length; index++) {
+    // go to severity selection for the primary symptoms
+    let index = step + 1;
+    for (; index < steps.length; index++) {
       const symptom = steps[index].symptom;
-      if (symptom !== 'none' && index > step && symptom && values.symptoms[symptom].isExperienced) {
-        severityStep = index;
-        if (severityStep !== step) {
-          return severityStep;
-        }
+      if (!symptom) break;
+      const { checked, required } = values.symptoms[symptom];
+      if (checked && required) {
+        return index;
       }
     }
 
     // go to health work questions
-
-    // go to test result
-    if (step < steps.length - 1) {
-      return steps.length - 1;
+    if (index < steps.length) {
+      return index;
     }
 
-    const hasSymptoms = Object.keys(values.symptoms)
-      .filter(symptom => symptom !== 'none')
-      .some(symptom => values.symptoms[symptom].isExperienced);
-    if (hasSymptoms) {
+    const symptoms = Object.keys(values.symptoms)
+      .filter(symptom => symptom !== 'none' && values.symptoms[symptom].checked)
+      .map(symptom => values.symptoms[symptom]);
+    const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
+
+    if (symptoms.length === 0) {
+      navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+    } else if (healthWorkConcern) {
       navigate(`/result/${Recommendation.SYMPTOMATIC_TEST}`);
     } else {
-      navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+      navigate(`/result/${Recommendation.SYMPTOMATIC_NO_TEST}`);
     }
     return step;
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {
-    console.log('Going to next step', values);
     const nextStep = decideNextPage(values);
     if (nextStep) {
       pageHistory.push(step);
@@ -131,7 +80,7 @@ export const SymptomChecker = () => {
   };
 
   return (
-    <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-white rounded shadow-md'>
+    <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-lightBlueBackground md:bg-white md:rounded shadow-md'>
       <div className=' h-full flex flex-col '>
         <Formik
           initialValues={_.cloneDeep(initialValues)}
@@ -140,7 +89,7 @@ export const SymptomChecker = () => {
         >
           <Form>
             <div> {steps[step].component}</div>
-            <div className='my-10 justify-center'>
+            <div className='my-10 justify-center flex flex-col md:flex-row mx-2 md:mx-0 m'>
               <Button
                 type='button'
                 variant='outline'
@@ -150,7 +99,7 @@ export const SymptomChecker = () => {
               >
                 {t('Go back')}
               </Button>
-              <span className='ml-4'></span>
+              <span className='ml-4 mt-3 md:mt-0'></span>
               <Button type='submit' variant='primary' widthClass='md:w-44'>
                 {t('Continue')}
               </Button>

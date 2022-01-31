@@ -1,4 +1,6 @@
 import * as yup from 'yup';
+import { ReactNode } from 'react';
+import { BaseSchema } from 'yup';
 
 export enum Result {
   Negative = 'Negative',
@@ -36,21 +38,31 @@ export const YES_NO_OPTIONS = [
 export interface Symptoms {
   fever: SymptomDetails;
   cough: SymptomDetails;
-  shortnessOfBreath: SymptomDetails;
+  difficultBreathing: SymptomDetails;
   soreThroat: SymptomDetails;
   lossOfSmellTaste: SymptomDetails;
+  headache: SymptomDetails;
+  fatigue: SymptomDetails;
   runnyNose: SymptomDetails;
   sneezing: SymptomDetails;
   diarrhea: SymptomDetails;
   lossOfAppetite: SymptomDetails;
-  nauseaVomitting: SymptomDetails;
-  bodyMuscleAches: SymptomDetails;
+  nauseaVomiting: SymptomDetails;
+  bodyAches: SymptomDetails;
   none: SymptomDetails;
 }
 
 export interface SymptomDetails {
-  isExperienced?: boolean;
+  checked?: boolean;
   severity?: Severity;
+  required?: boolean;
+}
+
+export interface HealthWorkDetails {
+  immunocompromised?: boolean;
+  unvaccinated?: boolean;
+  careWorker?: boolean;
+  congregated?: boolean;
 }
 
 export interface SymptomCheckerForm {
@@ -58,65 +70,73 @@ export interface SymptomCheckerForm {
   complicatingFactors: string;
   symptoms: Symptoms;
   test?: Partial<TestResult>;
+  healthWork: HealthWorkDetails;
 }
 
 export const initialValues: SymptomCheckerForm = {
   complicatingFactors: '',
   emergentFactors: '',
   symptoms: {
-    fever: { isExperienced: false },
-    cough: { isExperienced: false },
-    shortnessOfBreath: { isExperienced: false },
-    soreThroat: { isExperienced: false },
-    lossOfSmellTaste: { isExperienced: false },
-    runnyNose: { isExperienced: false },
-    sneezing: { isExperienced: false },
-    diarrhea: { isExperienced: false },
-    lossOfAppetite: { isExperienced: false },
-    nauseaVomitting: { isExperienced: false },
-    bodyMuscleAches: { isExperienced: false },
-    none: { isExperienced: false },
+    fever: { checked: false },
+    cough: { checked: false, required: true },
+    difficultBreathing: { checked: false, required: true },
+    soreThroat: { checked: false, required: true },
+    lossOfSmellTaste: { checked: false },
+    headache: { checked: false, required: true },
+    fatigue: { checked: false },
+    runnyNose: { checked: false },
+    sneezing: { checked: false },
+    diarrhea: { checked: false, required: true },
+    lossOfAppetite: { checked: false },
+    nauseaVomiting: { checked: false, required: true },
+    bodyAches: { checked: false, required: true },
+    none: { checked: false },
   },
   test: { tested: undefined, testDate: undefined, result: undefined },
+  healthWork: {},
 };
 
 const yesOrNoValidator = yup.string().oneOf(['yes', 'no']).required('This is a required field');
-// export const severityValidator = yup.object().test('severity required', (value, context) => {
-//   return Object.values(value.symptoms).filter(s => {
-//     const detail = s as SymptomDetails;
-//     return !detail.isExperienced || detail.severity;
-//   });
-// });
 
-export const validationSchema = [
-  yup.object().shape({
-    emergentFactors: yesOrNoValidator,
-  }),
-  yup.object().shape({
-    complicatingFactors: yesOrNoValidator,
-  }),
-  yup.object().shape({
+export const validationSchema = {
+  symptoms: yup.object().shape({
     symptoms: yup.object().test('required', (value, context) => {
-      const isSet = Object.values(value).some((s: SymptomDetails) => s.isExperienced);
+      const isSet = Object.values(value).some((s: SymptomDetails) => s.checked);
       if (isSet) return true;
       throw new yup.ValidationError('Required', value, context.path);
     }),
   }),
-  yup.object().shape({
+  test: yup.object().shape({
     test: yup.object().shape({
       tested: yesOrNoValidator,
       testDate: yup
         .date()
-        .when('tested', { is: value => value === 'yes', then: s => s.required() }),
+        .when('tested', { is: value => value === 'yes', then: s => s.required('Required') }),
       result: yup
         .string()
-        .when('tested', { is: value => value === 'yes', then: s => s.required() }),
+        .when('tested', { is: value => value === 'yes', then: s => s.required('Required') }),
     }),
   }),
-];
+};
 
 export class TestResult {
   tested!: string;
   testDate!: Date;
   result!: Result;
+}
+
+export enum QuestionType {
+  EMERGENT = 'emergent',
+  COMPLICATED = 'complicated',
+  SYMPTOMS = 'symptoms',
+  SEVERITY = 'severity',
+  RESULT = 'result',
+  HEALTH_WORK = 'health/work',
+}
+
+export interface Step {
+  type: QuestionType;
+  component: ReactNode;
+  validationSchema?: BaseSchema;
+  symptom?: string;
 }

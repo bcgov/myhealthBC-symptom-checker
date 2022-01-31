@@ -14,16 +14,18 @@ export const Q3Symptoms = () => {
     <div>
       <Question>{t('Question')}</Question>
       <QuestionDescription text={t('Description')} />
-      {Object.keys(values.symptoms).map(symptom => {
-        return (
-          <SymptomCheckbox
-            key={symptom}
-            name={`symptoms.${symptom}`}
-            checked={values?.symptoms[symptom]?.isExperienced}
-            label={t(symptom)}
-          />
-        );
-      })}
+      <div className='mt-4'>
+        {Object.keys(values.symptoms).map(symptom => {
+          return (
+            <SymptomCheckbox
+              key={symptom}
+              name={`symptoms.${symptom}`}
+              checked={values?.symptoms[symptom]?.checked}
+              label={t(symptom)}
+            />
+          );
+        })}
+      </div>
       {errors.symptoms ? (
         <div className='bg-gray-50 my-4 p-4 rounded'>
           <div className='text-bcBlueLink font-bold'>{t('Errors')}</div>

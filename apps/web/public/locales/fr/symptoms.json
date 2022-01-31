@@ -3,14 +3,14 @@
   "Description": "Select the symptoms you have. If you are not experiencing any symptoms, select 'None of the above.'",
   "fever": "Fever or chills",
   "cough": "'Cough",
-  "shortnessOfBreath": "'Shortness of breath",
+  "difficultBreathing": "'Shortness of breath",
   "soreThroat": "'Sore throat",
   "lossOfSmellTaste": "'Loss of sense of smell or taste",
   "runnyNose": "'Runny nose",
   "sneezing": "'Sneezing",
   "diarrhea": "'Diarrhea",
   "lossOfAppetite": "'Loss of appetite",
-  "nauseaVomitting": "'Nausea or vomiting",
-  "bodyMuscleAches": "'Body or muscle aches",
+  "nauseaVomiting": "'Nausea or vomiting",
+  "bodyAches": "'Body or muscle aches",
   "none": "'None of the above"
 }
