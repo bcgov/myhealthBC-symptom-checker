@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from 'src/images/gov_bc_logo.svg';
 import { Link } from 'react-router-dom';
-import { LanguageSelector } from './LanguageSelector';
+// import { LanguageSelector } from './LanguageSelector';
 
 export const Header = () => {
   return (
@@ -17,7 +17,7 @@ export const Header = () => {
             </h1>
           </div>
         </div>
-        <LanguageSelector />
+        {/*<LanguageSelector />*/}
       </div>
     </header>
   );
