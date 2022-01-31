@@ -28,7 +28,7 @@ export const SeverityQuestion = (props: SeverityQuestionProps) => {
     const severity = values.symptoms[symptom].severity;
     if (!values.symptoms[symptom].severity) return '';
     return (
-      <div className='bg-gray-50 my-4 p-4 rounded'>
+      <div className='bg-bcLightBoxBackground md:bg-gray-50 my-4 p-4 border rounded'>
         <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
         <div className='font-bold mt-3'>
           {t(severity === 'None' ? 'None-title' : `${symptom}-${severity}-title`)}

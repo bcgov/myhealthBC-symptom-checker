@@ -8,10 +8,6 @@ export const SymptomCheckbox = props => {
 
   const { values, setFieldValue } = useFormikContext<SymptomCheckerForm>();
 
-  useEffect(() => {
-    console.log('value changed ', values);
-  }, [values.symptoms.none.checked]);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!name.includes('.')) return;
     const [key, symptom] = name.split('.');

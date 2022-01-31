@@ -27,6 +27,7 @@ module.exports = {
         bcDisabled: '#CFCFCF',
         lightRedBackground: '#FCF7F9',
         lightYellowBackground: '#FCFAF7',
+        lightBlueBackground: '#F7F9FC',
       },
       fontSize: {
         '3xl': '1.5rem',
