@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent } from 'react';
 import { Field, useFormikContext } from 'formik';
 import PropTypes from 'prop-types';
 import { SymptomCheckerForm, Symptoms } from '../types';
