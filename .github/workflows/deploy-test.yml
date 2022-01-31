@@ -1,0 +1,87 @@
+name: Deployment to aws test environment
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - test
+env:
+  PROJECT: symchk
+  ENV_NAME: test
+  TF_VERSION: 1.1.3
+  TF_LINT_VERSION: v0.34.1
+
+jobs:
+  deploy:
+    name: deploy
+    outputs:
+      status: ${{ job.status }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency: ci-${github.ref}-test # Terraform lock prevention - Must be used in all actions that depend on terraform
+    environment:
+      name: test
+
+    steps:
+      - uses: actions/checkout@v2
+        name: checkout
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: 'SymChk - Tag to TEST'
+          SLACK_MESSAGE: 'Starting Deployment :agile:'
+
+      - uses: actions/cache@v2
+        name: Cache yarn
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          cli_config_credentials_token: ${{ secrets.TFC_TEAM_TOKEN }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-skip-session-tagging: true
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY_ID }}
+          aws-region: ca-central-1
+          role-to-assume: ${{ secrets.AWS_SA_ROLE_ARN }}
+          role-duration-seconds: 900
+          role-session-name: ci-deployment
+
+      - name: Terraform Init
+        run: make init
+
+      - name: Build WEB
+        run: make web-build
+
+      - name: Deploy WEB
+        run: make web-deploy
+
+      - name: Invalidate WEB
+        run: aws --region ca-central-1 cloudfront create-invalidation --distribution-id ${{ secrets.CFID }} --paths "/*"
+        continue-on-error: true
+
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://test.symchk.freshworks.club/'
+          fail_action: false
+          cmd_options: '-I'
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: always()
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: 'SymChk - Tag to TEST'
+          SLACK_MESSAGE: ${{ job.status == 'success' && 'Deployment Success :rocket:' || 'Deployment Failed :sadpanda:' }} # Ternary Hack - https://github.com/actions/runner/issues/409#issuecomment-752775072
+          SLACK_COLOR: ${{ job.status }}
