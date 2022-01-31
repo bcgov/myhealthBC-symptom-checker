@@ -129,9 +129,17 @@ docker-run-db:
 	@docker-compose up db
 
 # ============================================================= #
-# Tag Development
+# Tag Based Deployments
 # ============================================================= #
 
 tag-dev:
 	@git tag -fa dev -m "Deploy $(git log --pretty=format:"%an: %s" -1) to DEV env"
 	@git push --force origin refs/tags/dev:refs/tags/dev
+
+tag-test:
+	@git tag -fa test -m "Deploy $(git log --pretty=format:"%an: %s" -1) to TEST env"
+	@git push --force origin refs/tags/test:refs/tags/test
+
+tag-prod:
+	@git tag -fa prod -m "Deploy $(git log --pretty=format:"%an: %s" -1) to PROD env"
+	@git push --force origin refs/tags/prod:refs/tags/prod
