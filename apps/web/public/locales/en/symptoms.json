@@ -2,7 +2,7 @@
   "Question": "Are you experiencing new or worsening symptoms?",
   "Description": "Select the symptoms you have. If you are not experiencing any symptoms, select 'None of the above.'",
   "fever": "Fever or chills",
-  "cough": "Cough",
+  "cough": "Cough (either new or worsening / exacerbation of chronic cough)",
   "difficultBreathing": "Shortness of breath",
   "soreThroat": "Sore throat",
   "lossOfSmellTaste": "Loss of sense of smell or taste",

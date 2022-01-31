@@ -4,7 +4,7 @@ import { QuestionDescription } from '../components/QuestionDescription';
 import { Severity } from '../types';
 import { useFormikContext } from 'formik';
 import { SymptomCheckerForm } from '../types';
-import RadioButtons from '../components/Radio';
+import RadioButtons from '../components/RadioButtons';
 import { ErrorBox } from '../components/ErrorBox';
 import { useTranslation } from 'react-i18next';
 
@@ -28,7 +28,7 @@ export const SeverityQuestion = (props: SeverityQuestionProps) => {
     const severity = values.symptoms[symptom].severity;
     if (!values.symptoms[symptom].severity) return '';
     return (
-      <div className='bg-gray-50 my-4 p-4 rounded'>
+      <div className='bg-bcLightBoxBackground md:bg-gray-50 my-4 p-4 border rounded'>
         <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
         <div className='font-bold mt-3'>
           {t(severity === 'None' ? 'None-title' : `${symptom}-${severity}-title`)}
@@ -46,7 +46,7 @@ export const SeverityQuestion = (props: SeverityQuestionProps) => {
 
       <div>
         <RadioButtons name={field} options={options} />
-        {error ? <ErrorBox error={error} /> : ''}
+        <ErrorBox error={error} />
       </div>
       {children || renderSeverityDescription()}
     </div>

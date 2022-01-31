@@ -58,11 +58,19 @@ export interface SymptomDetails {
   required?: boolean;
 }
 
+export interface HealthWorkDetails {
+  immunocompromised?: boolean;
+  unvaccinated?: boolean;
+  careWorker?: boolean;
+  congregated?: boolean;
+}
+
 export interface SymptomCheckerForm {
   emergentFactors: string;
   complicatingFactors: string;
   symptoms: Symptoms;
   test?: Partial<TestResult>;
+  healthWork: HealthWorkDetails;
 }
 
 export const initialValues: SymptomCheckerForm = {
@@ -85,36 +93,31 @@ export const initialValues: SymptomCheckerForm = {
     none: { checked: false },
   },
   test: { tested: undefined, testDate: undefined, result: undefined },
+  healthWork: {},
 };
 
 const yesOrNoValidator = yup.string().oneOf(['yes', 'no']).required('This is a required field');
 
-export const validationSchema = [
-  yup.object().shape({
-    emergentFactors: yesOrNoValidator,
-  }),
-  yup.object().shape({
-    complicatingFactors: yesOrNoValidator,
-  }),
-  yup.object().shape({
+export const validationSchema = {
+  symptoms: yup.object().shape({
     symptoms: yup.object().test('required', (value, context) => {
       const isSet = Object.values(value).some((s: SymptomDetails) => s.checked);
       if (isSet) return true;
       throw new yup.ValidationError('Required', value, context.path);
     }),
   }),
-  yup.object().shape({
+  test: yup.object().shape({
     test: yup.object().shape({
       tested: yesOrNoValidator,
       testDate: yup
         .date()
-        .when('tested', { is: value => value === 'yes', then: s => s.required() }),
+        .when('tested', { is: value => value === 'yes', then: s => s.required('Required') }),
       result: yup
         .string()
-        .when('tested', { is: value => value === 'yes', then: s => s.required() }),
+        .when('tested', { is: value => value === 'yes', then: s => s.required('Required') }),
     }),
   }),
-];
+};
 
 export class TestResult {
   tested!: string;
@@ -128,6 +131,7 @@ export enum QuestionType {
   SYMPTOMS = 'symptoms',
   SEVERITY = 'severity',
   RESULT = 'result',
+  HEALTH_WORK = 'health/work',
 }
 
 export interface Step {
