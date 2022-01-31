@@ -14,6 +14,8 @@ i18n
     },
     debug: true,
     supportedLngs: ['en', 'fr', 'zh', 'ko', 'fa', 'ar', 'tl', 'vi'],
+    preload: ['en', 'fr'],
+    ns: ['translation', 'symptoms'],
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

@@ -7,7 +7,7 @@ import { SymptomCheckbox } from '../components/SymptomCheckbox';
 import { SymptomCheckerForm } from '../types';
 
 export const Q3Symptoms = () => {
-  const { t } = useTranslation('symptoms');
+  const { t } = useTranslation();
   const { values, errors } = useFormikContext<SymptomCheckerForm>();
 
   return (

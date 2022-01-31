@@ -15,17 +15,17 @@ const Home = () => {
     <>
       <main className='bg-white'>
         <div className='container mx-auto max-w-main py-8'>
-          <h2 className='text-3xl font-bold'>{t('COVID 19 self-assessment tool')}</h2>
-          <div className='my-5'>
-            <ul className='flex'>
-              <li className='pr-3 mr-3 border-r-bc-gray border-r-2'>English</li>
-              <li className='mr-6'>
-                <a className='text-blue-500 hover:text-blue-800' href='#'>
-                  French
-                </a>
-              </li>
-            </ul>
-          </div>
+          <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
+          {/*<div className='mb-5'>*/}
+          {/*  <ul className='flex'>*/}
+          {/*    <li className='pr-3 mr-3 border-r-bc-gray border-r-2'>English</li>*/}
+          {/*    <li className='mr-6'>*/}
+          {/*      <a className='text-blue-500 hover:text-blue-800' href='#'>*/}
+          {/*        French*/}
+          {/*      </a>*/}
+          {/*    </li>*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
           <div>Last updated</div>
           <div className='flex flex-wrap md:flex-nowrap md:flex-row-reverse my-5'>
             <div className='basis-full md:basis-1/2'>

@@ -13,10 +13,11 @@ const FooterLink: React.FC<{ href: string; label?: string }> = ({ href, label, c
   return (
     <div className='md:mr-8 mt-2 md:mt-0'>
       <p className='block text-xs mt-4 lg:mt-0 mb-1'>{label}</p>
-      <a href={href}>
-        <a className='w-full md:w-auto flex items-center justify-center button rounded-md px-6 py-2 border text-bcBluePrimary border-bcBluePrimary font-bold'>
-          {children}
-        </a>
+      <a
+        className='w-full md:w-auto flex items-center justify-center button rounded-md px-6 py-2 border text-bcBluePrimary border-bcBluePrimary font-bold'
+        href={href}
+      >
+        {children}
       </a>
     </div>
   );
