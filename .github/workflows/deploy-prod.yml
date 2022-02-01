@@ -3,7 +3,7 @@ name: Deployment to aws prod environment
 on:
   push:
     tags:
-      - test
+      - prod
   workflow_dispatch:
 
 env:
