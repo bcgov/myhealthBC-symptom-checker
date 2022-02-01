@@ -1,6 +1,8 @@
 name: Deployment to aws test environment
 on:
   push:
+    branches:
+      - main
     tags:
       - test
 env:

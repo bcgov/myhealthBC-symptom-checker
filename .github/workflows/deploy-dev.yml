@@ -1,8 +1,6 @@
 name: Deployment to aws dev environment
 on:
   push:
-    branches:
-      - main
     tags:
       - dev
 env:
