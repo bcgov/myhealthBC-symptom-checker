@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "service_account" {
       "cloudfront:TagResource"
     ]
     resources = [
-      "arn:aws:cloudfront:::distribution/*"
+      "arn:aws:cloudfront::*:distribution/*"
     ]
   }
   statement {
@@ -46,7 +46,7 @@ data "aws_iam_policy_document" "service_account" {
       "lambda:UpdateFunctionCode",
     ]
     resources = [
-      "arn:aws:lambda:::function:symchk-*"
+      "arn:aws:lambda::*:function:symchk-*"
     ]
   }
 }
