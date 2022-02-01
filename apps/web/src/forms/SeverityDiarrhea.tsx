@@ -15,7 +15,10 @@ export const SeverityDiarrhea = () => {
         <div className='text-base text-bcGray'>
           <Trans i18nKey={`${symptom}-description2`}>
             For more information on headaches, go to{' '}
-            <a className='underline' href='https://www.healthlinkbc.ca/health-topics/heada'>
+            <a
+              className='underline text-bcBlueLink'
+              href='https://www.healthlinkbc.ca/health-topics/heada'
+            >
               Healthlink BC
             </a>
             .

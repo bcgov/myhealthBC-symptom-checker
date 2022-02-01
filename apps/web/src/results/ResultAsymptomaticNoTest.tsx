@@ -26,7 +26,7 @@ export const ResultAsymptomaticNoTest = () => {
         <div>
           <Trans i18nKey='ResultAsymptomaticNotice2'>
             For more information on COVID-19 and how to stay safe, visit the{' '}
-            <a className='underline text-bcBlueAccent' href='http://www.bccdc.ca/'>
+            <a className='underline text-bcBlueLink' href='http://www.bccdc.ca/'>
               BCCDC website
             </a>
           </Trans>

@@ -20,7 +20,7 @@ export const ResultSymptomaticTest = () => {
         <Trans i18nKey='ResultSymptomaticTestDescription1'>
           <b>If you test positive for COVID-19</b>{' '}
           <a
-            className='underline text-bcBlueAccent'
+            className='underline text-bcBlueLink'
             href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/self-isolation'
           >
             self-isolate
@@ -44,7 +44,7 @@ export const ResultSymptomaticTest = () => {
         <li className='my-3'>
           <Trans i18nKey='ResultSymptomaticTestDescription4'>
             <a
-              className='underline text-bcBlueAccent'
+              className='underline text-bcBlueLink'
               href='https://bc.thrive.health/covid19app/resources/c03f73e6-1c25-433d-9821-559626efbc21'
             >
               Access your test results
@@ -55,7 +55,7 @@ export const ResultSymptomaticTest = () => {
         <li className='my-3'>
           <Trans i18nKey='ResultSymptomaticTestDescription5'>
             <a
-              className='underline text-bcBlueAccent'
+              className='underline text-bcBlueLink'
               href='https://bc.thrive.health/covid19app/resources/7ac28674-60b0-40db-914a-e15b04af25ba'
             >
               Learn what to do
@@ -68,7 +68,7 @@ export const ResultSymptomaticTest = () => {
         <Trans i18nKey='ResultSymptomaticTestDescription6'>
           For more information about the testing options for children and youth, visit{' '}
           <a
-            className='underline text-bcBlueAccent'
+            className='underline text-bcBlueLink'
             href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/testing/children-youth'
           >
             COVID-19 Testing for Children and Youth

@@ -25,7 +25,7 @@ export const ResultCall811 = () => {
           <Trans i18nKey='Result811Notice'>
             For more information on where you can call for help,{' '}
             <a
-              className='underline text-bcBlueAccent'
+              className='underline text-bcBlueLink'
               href='https://bc.wethrive.ninja/covid19app/resources/559894d8-8df3-4243-9246-bf7a46323744'
             >
               click here
