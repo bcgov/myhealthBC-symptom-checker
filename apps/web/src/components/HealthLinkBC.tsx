@@ -8,6 +8,8 @@ export const HealthLinkBC = () => {
       <a
         className='underline text-bcBlueLink'
         href='https://www.healthlinkbc.ca/health-topics/vomt3'
+        target='_blank'
+        rel='noreferrer'
       >
         children age 11 and younger
       </a>
@@ -15,6 +17,8 @@ export const HealthLinkBC = () => {
       <a
         className='underline text-bcBlueLink'
         href='https://www.healthlinkbc.ca/health-topics/navt4'
+        target='_blank'
+        rel='noreferrer'
       >
         people age 12 and older.
       </a>

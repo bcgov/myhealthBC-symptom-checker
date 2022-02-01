@@ -96,8 +96,6 @@ export const initialValues: SymptomCheckerForm = {
   healthWork: {},
 };
 
-const yesOrNoValidator = yup.string().oneOf(['yes', 'no']).required('This is a required field');
-
 export const validationSchema = {
   symptoms: yup.object().shape({
     symptoms: yup.object().test('required', (value, context) => {
@@ -108,7 +106,7 @@ export const validationSchema = {
   }),
   test: yup.object().shape({
     test: yup.object().shape({
-      tested: yesOrNoValidator,
+      tested: yup.string().oneOf(['yes', 'no']),
       testDate: yup
         .date()
         .when('tested', { is: value => value === 'yes', then: s => s.required('Required') }),

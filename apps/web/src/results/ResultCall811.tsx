@@ -27,6 +27,8 @@ export const ResultCall811 = () => {
             <a
               className='underline text-bcBlueLink'
               href='https://bc.wethrive.ninja/covid19app/resources/559894d8-8df3-4243-9246-bf7a46323744'
+              rel='noreferrer'
+              target='_blank'
             >
               click here
             </a>

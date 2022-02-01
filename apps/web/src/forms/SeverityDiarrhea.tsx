@@ -18,6 +18,8 @@ export const SeverityDiarrhea = () => {
             <a
               className='underline text-bcBlueLink'
               href='https://www.healthlinkbc.ca/health-topics/heada'
+              rel='noreferrer'
+              target='_blank'
             >
               Healthlink BC
             </a>

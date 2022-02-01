@@ -17,7 +17,7 @@ export const ResultPageLayout = (props: ResultPageLayoutTypes) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const restart = () => {
-    navigate('/checker');
+    navigate('/');
   };
 
   return (

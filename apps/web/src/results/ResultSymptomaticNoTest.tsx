@@ -27,6 +27,8 @@ export const ResultSymptomaticNoTest = () => {
             <a
               className='underline text-bcBlueLink'
               href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19'
+              rel='noreferrer'
+              target='_blank'
             >
               BCCDC website
             </a>

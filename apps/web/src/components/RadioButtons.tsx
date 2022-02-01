@@ -8,13 +8,16 @@ export interface FormFieldProps {
     key: string;
     value: string;
   }>;
+  optional?: boolean;
 }
 
 const RadioButtons = (props: FormFieldProps) => {
-  const { label, name, options, ...rest } = props;
+  const { label, name, options, optional, ...rest } = props;
 
   const validator = value => {
-    if (options.map(option => option.value).includes(value)) return null;
+    if (optional || options.map(option => option.value).includes(value)) {
+      return null;
+    }
     return 'Required';
   };
 
@@ -38,7 +41,6 @@ const RadioButtons = (props: FormFieldProps) => {
                   value={option.value}
                   checked={field.value === option.value}
                   className='h-5 w-5 cursor-pointer'
-                  validate={value => options.includes(value)}
                 />
                 <label className='!ml-0 pl-4 cursor-pointer ' htmlFor={option.value}>
                   {option.key}
