@@ -25,7 +25,7 @@ export const ResultSymptomaticNoTest = () => {
           <Trans i18nKey='ResultSymptomaticNoTestNotice3'>
             For more information on COVID-19 and how to stay safe, visit the{' '}
             <a
-              className='underline text-bcBlueAccent'
+              className='underline text-bcBlueLink'
               href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19'
             >
               BCCDC website
