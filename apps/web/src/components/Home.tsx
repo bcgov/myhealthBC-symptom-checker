@@ -93,10 +93,10 @@ const Home = () => {
                 family&apos;s assessment history and all your BC proofs of vaccination.
               </p>
             </Trans>
-            <a className='inline-block' href='#' title='App Store'>
+            <a className='inline-block' href='#' title='App Store' target='_blank'>
               <img src={appStore} className='pr-3' alt='App Store' />
             </a>
-            <a className='inline-block' href='#' title='Play Store'>
+            <a className='inline-block' href='#' title='Play Store' target='_blank'>
               <img src={playStore} alt='Play Store' />
             </a>
           </div>

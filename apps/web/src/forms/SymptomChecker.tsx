@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form } from 'formik';
 import _ from 'lodash';
 import { Button } from '../components/Button';
@@ -14,6 +14,10 @@ export const SymptomChecker = () => {
   const [step, setStep] = useState(0);
 
   const [pageHistory, setPageHistory] = useState<number[]>([]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [step]);
 
   const steps = QuestionSteps;
 

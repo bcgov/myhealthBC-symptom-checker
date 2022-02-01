@@ -22,6 +22,8 @@ export const ResultSymptomaticTest = () => {
           <a
             className='underline text-bcBlueLink'
             href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/self-isolation'
+            rel='noreferrer'
+            target='_blank'
           >
             self-isolate
           </a>{' '}
@@ -46,6 +48,8 @@ export const ResultSymptomaticTest = () => {
             <a
               className='underline text-bcBlueLink'
               href='https://bc.thrive.health/covid19app/resources/c03f73e6-1c25-433d-9821-559626efbc21'
+              rel='noreferrer'
+              target='_blank'
             >
               Access your test results
             </a>{' '}
@@ -57,6 +61,8 @@ export const ResultSymptomaticTest = () => {
             <a
               className='underline text-bcBlueLink'
               href='https://bc.thrive.health/covid19app/resources/7ac28674-60b0-40db-914a-e15b04af25ba'
+              rel='noreferrer'
+              target='_blank'
             >
               Learn what to do
             </a>{' '}
@@ -70,6 +76,8 @@ export const ResultSymptomaticTest = () => {
           <a
             className='underline text-bcBlueLink'
             href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/testing/children-youth'
+            rel='noreferrer'
+            target='_blank'
           >
             COVID-19 Testing for Children and Youth
           </a>

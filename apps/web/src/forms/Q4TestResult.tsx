@@ -54,13 +54,14 @@ export const Q4TestResult = () => {
             placeholderText='yyyy-mm-dd'
             ariaInvalid='error'
             dateFormat='yyyy-MM-dd'
+            maxDate={new Date()}
             onChange={handleDateChange}
           />
           <img src={calendar} height={12} width={12} alt='select date' />
         </div>
         <ErrorBox error={_.get(errors, 'test.testDate')} hide={!_.get(touched, 'test.testDate')} />
         <div className='my-2'>{t('Result')}:</div>
-        <div className='flex flexcol w-56 p-2 border rounded'>
+        <div className='w-56 p-2 border rounded'>
           <Field
             name='test.result'
             label='test.result'
@@ -68,7 +69,7 @@ export const Q4TestResult = () => {
             as='select'
             value={values?.test?.result || ''}
             placeholder='Select'
-            className='w-full'
+            className='w-full bg-white'
           >
             <option value='' key='' className='hidden' />
             <option value='Negative'>{t('Negative')}</option>
@@ -94,7 +95,7 @@ export const Q4TestResult = () => {
           </div>
         </QuestionDescription>
       </div>
-      <RadioButtons label={''} name={'test.tested'} options={YES_NO_OPTIONS} />
+      <RadioButtons label={''} name={'test.tested'} options={YES_NO_OPTIONS} optional />
       <ErrorBox error={_.get(errors, 'test.tested')} hide={!_.get(touched, 'test.tested')} />
       {renderTestOptions()}
     </div>
