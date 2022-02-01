@@ -71,7 +71,6 @@ jobs:
 
       - name: Invalidate WEB
         run: aws --region ca-central-1 cloudfront create-invalidation --distribution-id ${{ secrets.CFID }} --paths "/*"
-        continue-on-error: true
 
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.3.0
