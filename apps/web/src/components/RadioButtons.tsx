@@ -29,10 +29,7 @@ const RadioButtons = (props: FormFieldProps) => {
           const { field } = formik;
           return options.map(option => {
             return (
-              <div
-                className='flex space-x-5  cursor-pointer items-center leading-none py-3'
-                key={option.key}
-              >
+              <div className='flex space-x-5 items-center leading-none py-3' key={option.key}>
                 <Field
                   type='radio'
                   id={option.value}
@@ -42,7 +39,7 @@ const RadioButtons = (props: FormFieldProps) => {
                   checked={field.value === option.value}
                   className='h-5 w-5 cursor-pointer'
                 />
-                <label className='!ml-0 pl-4 cursor-pointer ' htmlFor={option.value}>
+                <label className='!ml-0 pl-4 md:cursor-pointer ' htmlFor={option.value}>
                   {option.key}
                 </label>
               </div>

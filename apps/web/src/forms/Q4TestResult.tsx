@@ -8,6 +8,7 @@ import { QuestionDescription } from '../components/QuestionDescription';
 import question from '../images/question.svg';
 import { Tooltip } from '../components/Tooltip';
 import calendar from '../images/calendar.svg';
+import upendCaret from '../images/upend-caret.svg';
 
 import { enCA as en, frCA as fr, ko, zhCN as zh, faIR as fa, ar, vi } from 'date-fns/locale';
 import { Field, useFormikContext } from 'formik';
@@ -47,7 +48,7 @@ export const Q4TestResult = () => {
       <div className='py-3'>
         <div className='font-bold my-4'>{t('Q4-Enter the details')}</div>
         <div className='my-2'>{t('Q4-Date you had your test:')}</div>
-        <div className='flex w-56 p-2 mb-4 border rounded'>
+        <div className='flex mb-4 max-w-xs border rounded'>
           <DatePicker
             locale={i18n.language}
             selected={values.test.testDate}
@@ -56,12 +57,13 @@ export const Q4TestResult = () => {
             dateFormat='yyyy-MM-dd'
             maxDate={new Date()}
             onChange={handleDateChange}
+            className='bg-transparent py-2 px-2 w-full'
           />
-          <img src={calendar} height={12} width={12} alt='select date' />
+          <img src={calendar} height={12} width={12} alt='select date' className='-ml-5 mr-2' />
         </div>
         <ErrorBox error={_.get(errors, 'test.testDate')} hide={!_.get(touched, 'test.testDate')} />
         <div className='my-2'>{t('Result')}:</div>
-        <div className='w-56 p-2 border rounded'>
+        <div className='flex max-w-xs border rounded'>
           <Field
             name='test.result'
             label='test.result'
@@ -69,13 +71,19 @@ export const Q4TestResult = () => {
             as='select'
             value={values?.test?.result || ''}
             placeholder='Select'
-            className='w-full bg-white'
+            className='w-full bg-transparent p-2 appearance-none'
           >
             <option value='' key='' className='hidden' />
             <option value='Negative'>{t('Negative')}</option>
             <option value='Positive'>{t('Positive')}</option>
             <option value='Indeterminate'>{t('Indeterminate')}</option>
           </Field>
+          <img
+            src={upendCaret}
+            width={12}
+            alt='upend caret'
+            className='-ml-5 mr-2 pointer-events-none'
+          />
         </div>
         <ErrorBox error={_.get(errors, 'test.result')} hide={!_.get(touched, 'test.result')} />
       </div>
