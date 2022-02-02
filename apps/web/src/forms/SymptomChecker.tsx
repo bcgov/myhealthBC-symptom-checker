@@ -21,13 +21,17 @@ export const SymptomChecker = () => {
 
   const steps = QuestionSteps;
 
+  const recommend = (recommend: Recommendation) => {
+    navigate(`/result/${recommend}`, { state: { step } });
+  };
+
   const decideNextPage = (values: SymptomCheckerForm) => {
     if (values.emergentFactors === 'yes') {
-      navigate(`/result/${Recommendation.CALL_911}`);
+      recommend(Recommendation.CALL_911);
     }
 
     if (values.complicatingFactors === 'yes') {
-      navigate(`/result/${Recommendation.CALL_811}`);
+      recommend(Recommendation.CALL_811);
     }
 
     // 0 - emergent, 1 - complicated, 2 - symptoms, 3 - test result
@@ -57,11 +61,11 @@ export const SymptomChecker = () => {
     const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
 
     if (symptoms.length === 0) {
-      navigate(`/result/${Recommendation.ASYMPTOMATIC_NO_TEST}`);
+      recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
     } else if (healthWorkConcern) {
-      navigate(`/result/${Recommendation.SYMPTOMATIC_TEST}`);
+      recommend(Recommendation.SYMPTOMATIC_TEST);
     } else {
-      navigate(`/result/${Recommendation.SYMPTOMATIC_NO_TEST}`);
+      recommend(Recommendation.SYMPTOMATIC_NO_TEST);
     }
     return step;
   };
