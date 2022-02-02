@@ -21,8 +21,8 @@ export const SymptomChecker = () => {
 
   const steps = QuestionSteps;
 
-  const recommend = (recommend: Recommendation) => {
-    navigate(`/result/${recommend}`, { state: { step } });
+  const recommend = (recommendation: Recommendation) => {
+    navigate('/result', { state: { recommendation } });
   };
 
   const decideNextPage = (values: SymptomCheckerForm) => {
