@@ -138,3 +138,7 @@ export interface Step {
   validationSchema?: BaseSchema;
   symptom?: string;
 }
+
+export interface ResultState {
+  recommendation: Recommendation;
+}
