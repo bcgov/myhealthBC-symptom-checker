@@ -1,0 +1,104 @@
+{
+  "q1": {
+    "question": "Are you experiencing any of the following?",
+    "contents": [
+      "Severe difficulty breathing (e.g. struggling to breathe or speaking in single words)",
+      "Severe chest pain",
+      "Having a very hard time waking up",
+      "Feeling confused",
+      "Losing consciousness"
+    ]
+  },
+  "q2": {
+    "question": "Are you experiencing any of the following?",
+    "contents": [
+      "Inability to lie down because of difficulty breathing",
+      "Chronic health conditions that you are having difficulty managing because of difficulty breathing"
+    ]
+  },
+  "q3": {
+    "question": "Are you experiencing new or worsening symptoms?",
+    "contents": [
+      "Select the symptoms you have. If you are not experiencing any symptoms, select 'None of the above.'"
+    ],
+    "primarySymptoms": [
+      "cough",
+      "difficultBreathing",
+      "soreThroat",
+      "headache",
+      "diarrhea",
+      "nauseaVomiting",
+      "bodyAches"
+    ],
+    "secondarySymptoms": [
+      "fever",
+      "lossOfSmellTaste",
+      "fatigue",
+      "runnyNose",
+      "sneezing",
+      "lossOfAppetite"
+    ]
+  },
+  "q4": {
+    "question": "Have you received a new COVID-19 test result?",
+    "contents": [
+      "If you have not entered it here before, please enter the details of your last COVID-19 test"
+    ]
+  },
+  "hwq1": {
+    "question": "Are you an individual who is moderately to severely immunocompromised?",
+    "contents": [
+      "You have had an organ transplant and are taking anti-rejection medications",
+      "You are receiving chemotherapy for cancer",
+      "You have had a bone marrow or stem cell transplant or CAR-T cell therapy",
+      "You have been diagnosed with a primary immunodeficiency disorder",
+      "You have been diagnosed with HIV and are not currently taking medications for it",
+      "You are on dialysis and/or have severe kidney disease"
+    ]
+  },
+  "hwq2": {
+    "question": "Are you 18 years of age and older and unvaccinated or partially vaccinated?",
+    "contents": [
+      "Unvaccinated or partially vaccinated means you have not received at least 2 doses of a 2-dose series or more than 14 days after receiving a single dose of a 1-dose series."
+    ]
+  },
+  "hwq3": {
+    "question": "Do you work as a health care worker in a hospital, long-term care facility, assisted living facility, or community clinic, or as a first responder (i.e. police officer, emergency medical technician/paramedic, or firefighter)?"
+  },
+  "hwq4": {
+    "question": "Do you live or work in a congregate setting (such as a long term care facility, shelter, correctional facility, or group home) or in a community that is far from testing centres and hospitals (such as rural, remote, isolated, or Indigenous community or a work camp)?"
+  },
+  "severity": {
+    "cough": "What is the severity of your cough?",
+    "difficultBreathing": "What is the severity of your difficulty breathing?",
+    "soreThroat": "What is the severity of your sore throat?",
+    "headache": "What is the severity of your headache?",
+    "diarrhea": "What is the severity of your diarrhea?",
+    "nauseaVomiting": "What is the severity of your nausea or vomiting?",
+    "bodyAches": "What is the severity of your body aches?"
+  },
+  "recommendation": {
+    "call911": {
+      "title": "Please call 9-1-1 or go directly to your nearest emergency department."
+    },
+    "call811": {
+      "title": "Please consult your family doctor or nurse practitioner."
+    },
+    "asymptomatic": {
+      "title": "You do not need a COVID-19 test at this time.",
+      "contents": [
+        "If your symptoms change, retake this self-assessment to see if you need testing."
+      ]
+    },
+    "symptomaticNeedTest": {
+      "title": "Please get a COVID-19 test and self-isolate.",
+      "contents": ["If you test negative for COVID-19, stay home until you feel better."]
+    },
+    "symptomaticNoNeedTest": {
+      "title": "You do not need a COVID-19 test at this time.",
+      "contents": [
+        "Testing is not recommended for adults and children with mild symptoms. Stay home until you feel well enough to resume your regular activities. Avoid high risk settings (e.g. long term care facilities) and individuals at higher risk for severe complications for 10 days after the start of your symptoms."
+      ]
+    }
+  }
+}

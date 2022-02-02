@@ -23,3 +23,39 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('home', () => {
+  return cy.visit('http://localhost:3030');
+});
+
+Cypress.Commands.add('startAssessment', () => {
+  return cy.get('button').contains('Start assessment').click();
+});
+
+Cypress.Commands.add('continue', () => {
+  return cy.get('button').contains('Continue').click();
+});
+
+Cypress.Commands.add('back', () => {
+  return cy.get('button').contains('Go back').click();
+});
+
+Cypress.Commands.add('yes', () => {
+  return cy.get('#yes').click();
+});
+
+Cypress.Commands.add('no', () => {
+  return cy.get('#no').click();
+});
+
+Cypress.Commands.add('selectSymptom', (symptom: string) => {
+  return cy.get(`input[name="symptoms.${symptom}"]`).click();
+});
+
+Cypress.Commands.add('setTestDate', (date: string) => {
+  return cy.get(`input[type="text"`).type(date);
+});
+
+Cypress.Commands.add('selectTestResult', (text: string) => {
+  return cy.get('select').select(text);
+});
