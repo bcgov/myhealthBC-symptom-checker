@@ -21,7 +21,12 @@ export const SymptomChecker = () => {
 
   const steps = QuestionSteps;
 
+  window.onbeforeunload = () => {
+    return 'Leave site?';
+  };
+
   const recommend = (recommendation: Recommendation) => {
+    window.onbeforeunload = () => null;
     navigate('/result', { state: { recommendation } });
   };
 
