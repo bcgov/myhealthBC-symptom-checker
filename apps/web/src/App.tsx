@@ -26,7 +26,7 @@ const App = () => {
           }
         />
         <Route
-          path='/result/:result'
+          path='/result'
           element={
             <Layout result>
               <ResultPage />

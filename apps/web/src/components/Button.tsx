@@ -25,7 +25,6 @@ export const buttonBase = classNames(
   'shadow-sm focus:outline-none',
   'rounded',
   'disabled:opacity-50',
-  'focus:ring-2 focus:ring-offset-2',
 );
 
 export const Button = (props: ButtonProps) => {
