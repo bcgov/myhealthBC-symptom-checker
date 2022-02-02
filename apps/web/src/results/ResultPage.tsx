@@ -1,14 +1,25 @@
-import React from 'react';
-import { Recommendation } from '../types/index';
+import React, { useEffect } from 'react';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+
+import { Recommendation } from '../types';
 import { ResultCall911 } from './ResultCall911';
 import { ResultCall811 } from './ResultCall811';
 import { ResultAsymptomaticNoTest } from './ResultAsymptomaticNoTest';
 import { ResultSymptomaticTest } from './ResultSymptomaticTest';
 import { ResultSymptomaticNoTest } from './ResultSymptomaticNoTest';
-import { useParams } from 'react-router-dom';
 
 export const ResultPage = () => {
   const { result } = useParams();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(location);
+    if (!location.state) {
+      navigate('/');
+    }
+  }, []);
 
   const results = {
     [Recommendation.CALL_911]: <ResultCall911 />,
