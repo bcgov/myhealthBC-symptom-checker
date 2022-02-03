@@ -17,26 +17,39 @@ export const SymptomChecker = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
+    window.onpopstate = () => {
+      if (step > 1) {
+        navigate(window.location.pathname);
+      }
+      if (step > 0) {
+        return previous();
+      }
+      window.onbeforeunload = () => null;
+    };
   }, [step]);
 
   const steps = QuestionSteps;
 
-  window.onbeforeunload = () => {
-    return 'Leave site?';
-  };
+  useEffect(() => {
+    navigate(window.location.pathname);
+    window.onbeforeunload = () => {
+      return t('LeaveSite');
+    };
+  }, []);
 
   const recommend = (recommendation: Recommendation) => {
     window.onbeforeunload = () => null;
+    window.onpopstate = null;
     navigate('/result', { state: { recommendation } });
   };
 
   const decideNextPage = (values: SymptomCheckerForm) => {
     if (values.emergentFactors === 'yes') {
-      recommend(Recommendation.CALL_911);
+      return recommend(Recommendation.CALL_911);
     }
 
     if (values.complicatingFactors === 'yes') {
-      recommend(Recommendation.CALL_811);
+      return recommend(Recommendation.CALL_811);
     }
 
     // 0 - emergent, 1 - complicated, 2 - symptoms, 3 - test result
@@ -66,13 +79,12 @@ export const SymptomChecker = () => {
     const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
 
     if (symptoms.length === 0) {
-      recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
+      return recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
     } else if (healthWorkConcern) {
-      recommend(Recommendation.SYMPTOMATIC_TEST);
+      return recommend(Recommendation.SYMPTOMATIC_TEST);
     } else {
-      recommend(Recommendation.SYMPTOMATIC_NO_TEST);
+      return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
     }
-    return step;
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {
