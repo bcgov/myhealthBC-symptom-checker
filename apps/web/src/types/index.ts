@@ -97,10 +97,12 @@ export const initialValues: SymptomCheckerForm = {
 };
 
 export const validationSchema = {
-  symptoms: yup.object().test('required', (value, context) => {
-    const isSet = Object.values(value).some((s: SymptomDetails) => s.checked);
-    if (isSet) return true;
-    throw new yup.ValidationError('Required', value, context.path);
+  symptoms: yup.object().shape({
+    symptoms: yup.object().test('required', (value, context) => {
+      const isSet = Object.values(value).some((s: SymptomDetails) => s.checked);
+      if (isSet) return true;
+      throw new yup.ValidationError('Required', value, context.path);
+    }),
   }),
   test: yup.object().shape({
     test: yup.object().shape({
