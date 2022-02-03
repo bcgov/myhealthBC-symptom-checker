@@ -5,6 +5,7 @@ import { QuestionDescription } from '../components/QuestionDescription';
 import { useFormikContext } from 'formik';
 import { SymptomCheckbox } from '../components/SymptomCheckbox';
 import { SymptomCheckerForm } from '../types';
+import { ErrorBox } from '../components/ErrorBox';
 
 export const Q3Symptoms = () => {
   const { t } = useTranslation('symptoms');
@@ -26,14 +27,7 @@ export const Q3Symptoms = () => {
           );
         })}
       </div>
-      {errors.symptoms ? (
-        <div className='bg-gray-50 my-4 p-4 rounded'>
-          <div className='text-bcBlueLink font-bold'>{t('Errors')}</div>
-          <div className='font-bold mt-3'>{errors.symptoms}</div>
-        </div>
-      ) : (
-        ''
-      )}
+      <ErrorBox error={errors.symptoms as string} />
     </div>
   );
 };
