@@ -7,16 +7,21 @@ import { ResultPage } from './results/ResultPage';
 
 const App = () => {
   useEffect(() => {
-    const script = document.createElement('script');
+    switch (process.env.NEXT_PUBLIC_ENV_NAME) {
+      case 'dev':
+        const script = document.createElement('script');
 
-    script.src = '/analytics/snowplow.dev.js';
-    script.async = true;
+        script.src = '/analytics/snowplow.dev.js';
+        script.async = true;
 
-    document.body.appendChild(script);
+        document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
+        return () => {
+          document.body.removeChild(script);
+        };
+      default:
+        return;
+    }
   }, []);
   return (
     <BrowserRouter>

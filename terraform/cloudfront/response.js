@@ -9,7 +9,7 @@ function handler(event) {
   headers['strict-transport-security'] = { value: 'max-age=63072000; includeSubdomains; preload' };
   headers['content-security-policy'] = {
     value:
-      "default-src 'self'; img-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline';",
+      "default-src 'self'; img-src 'self'; script-src 'self' 'unsafe-eval' www2.gov.bc.ca spm.apps.gov.bc.ca; 'unsafe-inline'; style-src 'self' 'unsafe-inline';",
   };
   headers['x-content-type-options'] = { value: 'nosniff' };
   headers['x-frame-options'] = { value: 'DENY' };

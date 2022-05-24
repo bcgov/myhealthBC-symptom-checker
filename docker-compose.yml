@@ -58,6 +58,7 @@ services:
       - 3030
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:4040/api/v1
+      - NEXT_PUBLIC_ENV_NAME=${NEXT_PUBLIC_ENV_NAME}
       - RUNTIME_ENV=local
     depends_on:
       - api
