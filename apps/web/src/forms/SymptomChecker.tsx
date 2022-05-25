@@ -89,6 +89,10 @@ export const SymptomChecker = () => {
 
   const nextQuestion = (values: SymptomCheckerForm) => {
     const nextStep = decideNextPage(values);
+    switch(process.env.NEXT_PUBLIC_ENV_NAME){
+      case 'dev':
+        
+    }
     if (nextStep) {
       pageHistory.push(step);
       setPageHistory([...pageHistory]);

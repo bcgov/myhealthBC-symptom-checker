@@ -9,6 +9,7 @@ const App = () => {
   useEffect(() => {
     switch (process.env.NEXT_PUBLIC_ENV_NAME) {
       case 'dev':
+        console.log('SNOW PLOW ONLINE');
         const script = document.createElement('script');
 
         script.src = '/analytics/snowplow.dev.js';
