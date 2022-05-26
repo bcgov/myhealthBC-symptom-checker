@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
 import QuestionSteps from './QuestionSteps';
+import { goBack, goForward, submitForm } from 'src/utils/anayltics';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -40,6 +41,7 @@ export const SymptomChecker = () => {
   const recommend = (recommendation: Recommendation) => {
     window.onbeforeunload = () => null;
     window.onpopstate = null;
+    submitForm(recommendation);
     navigate('/result', { state: { recommendation } });
   };
 
@@ -89,11 +91,8 @@ export const SymptomChecker = () => {
 
   const nextQuestion = (values: SymptomCheckerForm) => {
     const nextStep = decideNextPage(values);
-    switch(process.env.NEXT_PUBLIC_ENV_NAME){
-      case 'dev':
-        
-    }
     if (nextStep) {
+      goForward(steps[nextStep]);
       pageHistory.push(step);
       setPageHistory([...pageHistory]);
       setStep(nextStep);
@@ -103,11 +102,12 @@ export const SymptomChecker = () => {
   const previous = () => {
     const prev = pageHistory.pop();
     if (prev !== undefined) {
+      goBack(steps[step - 1]);
       setStep(prev);
       setPageHistory([...pageHistory]);
     }
   };
-
+  //console.log(steps);
   return (
     <main className='container mx-auto max-w-main mt-0 md:mt-12 md:mb-12 py-6 md:py-12 px-6 md:px-24 bg-lightBlueBackground md:bg-white md:rounded shadow-md'>
       <div className=' h-full flex flex-col '>

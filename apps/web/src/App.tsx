@@ -7,22 +7,18 @@ import { ResultPage } from './results/ResultPage';
 
 const App = () => {
   useEffect(() => {
-    switch (process.env.NEXT_PUBLIC_ENV_NAME) {
-      case 'dev':
-        console.log('SNOW PLOW ONLINE');
-        const script = document.createElement('script');
+    console.log('SNOW PLOW ONLINE');
+    const script = document.createElement('script');
 
-        script.src = '/analytics/snowplow.dev.js';
-        script.async = true;
+    script.src = '/analytics/snowplow.dev.js';
+    script.async = true;
 
-        document.body.appendChild(script);
+    document.body.appendChild(script);
+    console.log(process.env.NEXT_PUBLIC_ENV_NAME);
 
-        return () => {
-          document.body.removeChild(script);
-        };
-      default:
-        return;
-    }
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
   return (
     <BrowserRouter>
