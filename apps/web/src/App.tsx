@@ -7,7 +7,6 @@ import { ResultPage } from './results/ResultPage';
 
 const App = () => {
   useEffect(() => {
-    console.log('SNOW PLOW ONLINE');
     const script = document.createElement('script');
 
     script.src = '/analytics/snowplow.dev.js';

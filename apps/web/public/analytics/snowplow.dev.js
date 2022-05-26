@@ -36,5 +36,4 @@ window.snowplow('newTracker', 'rt', collector, {
 window.snowplow('enableActivityTracking', 30, 30); // Ping every 30 seconds after 30 seconds
 window.snowplow('enableLinkClickTracking');
 window.snowplow('trackPageView');
-console.log('snowplow online');
 // <!-- Snowplow stops plowing -->
