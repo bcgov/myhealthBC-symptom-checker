@@ -20,7 +20,7 @@ registerLocale('en', en);
 registerLocale('fr', fr);
 registerLocale('es', es);
 registerLocale('zh', zh);
-registerLocale('fa', fa);
+registerLocale('pa', fa);
 
 export const Q4TestResult = () => {
   const { t, i18n } = useTranslation();
