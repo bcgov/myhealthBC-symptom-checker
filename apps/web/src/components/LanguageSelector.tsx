@@ -10,13 +10,9 @@ import globe from 'src/images/globe.svg';
 const languages = {
   en: 'English',
   fr: 'Français',
-  ko: '한국어',
+  es: 'Español',
   zh: '中文(繁體)',
   pa: 'ਪੰਜਾਬੀ',
-  fa: 'فارسی',
-  ar: 'العربية',
-  tl: 'Tagalog',
-  vi: 'Tiếng Việt',
 };
 
 export const LanguageSelector = () => {
