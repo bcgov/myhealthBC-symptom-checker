@@ -4,20 +4,25 @@ import Layout from './Layout';
 import Home from './components/Home';
 import { SymptomChecker } from './forms/SymptomChecker';
 import { ResultPage } from './results/ResultPage';
-
 const App = () => {
   useEffect(() => {
-    const script = document.createElement('script');
+    switch (process.env.REACT_APP_ENV_NAME) {
+      case 'dev':
+        console.log('Adding Snowplow script');
+        const script = document.createElement('script');
 
-    script.src = '/analytics/snowplow.dev.js';
-    script.async = true;
+        script.src = '/analytics/snowplow.dev.js';
+        script.async = true;
 
-    document.body.appendChild(script);
-    console.log(process.env.NEXT_PUBLIC_ENV_NAME);
+        document.body.appendChild(script);
+        console.log(process.env);
 
-    return () => {
-      document.body.removeChild(script);
-    };
+        return () => {
+          document.body.removeChild(script);
+        };
+      default:
+        console.log('Snowplow not enabled for this env');
+    }
   }, []);
   return (
     <BrowserRouter>

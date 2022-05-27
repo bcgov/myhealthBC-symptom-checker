@@ -47,5 +47,3 @@ const actions = {
   CONTINUE: 'continue',
   SUBMIT: 'submit',
 };
-
-// export const;

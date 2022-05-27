@@ -37,5 +37,8 @@
     "prettier": "2.4.1",
     "pretty-quick": "3.1.2"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.1.1",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
 }

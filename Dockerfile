@@ -7,6 +7,4 @@ COPY yarn.lock .
 COPY tsconfig.json .
 COPY ./apps/$BUILD_CONTEXT apps/$BUILD_CONTEXT
 
-run set 
-
 RUN yarn

@@ -12,18 +12,11 @@ export LZ2_SUFFIX = symchk
 export AWS_REGION ?= ca-central-1
 
 
-####################################################################
-## Front End Environment Variables
-####################################################################
-
-
-
-
-ENV_NAME ?= dev
+ENV_NAME ?= local
 TERRAFORM_DIR = terraform/
 PROJECT_CODE = $(LZ2_PROJECT)-$(ENV_NAME)-$(LZ2_SUFFIX)
 
-export NEXT_PUBLIC_ENV_NAME = $(ENV_NAME)
+export REACT_APP_ENV_NAME = $(ENV_NAME)
 define TFVARS_DATA
 target_env = "$(ENV_NAME)"
 project_name = "$(PROJECT_NAME)"
