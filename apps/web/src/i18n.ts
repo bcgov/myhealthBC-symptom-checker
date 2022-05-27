@@ -13,7 +13,7 @@ i18n
       order: ['path', 'navigator', 'querystring', 'cookie'],
     },
     debug: true,
-    supportedLngs: ['en', 'fr', 'zh', 'ko', 'fa', 'ar', 'tl', 'vi'],
+    supportedLngs: ['en', 'fr', 'es', 'pa', 'zh'],
     preload: ['en', 'fr'],
     ns: ['translation', 'symptoms'],
     interpolation: {

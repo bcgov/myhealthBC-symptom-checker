@@ -10,20 +10,17 @@ import { Tooltip } from '../components/Tooltip';
 import calendar from '../images/calendar.svg';
 import upendCaret from '../images/upend-caret.svg';
 
-import { enCA as en, frCA as fr, ko, zhCN as zh, faIR as fa, ar, vi } from 'date-fns/locale';
+import { enCA as en, frCA as fr, zhCN as zh, faIR as fa, es } from 'date-fns/locale';
 import { Field, useFormikContext } from 'formik';
 import RadioButtons from 'src/components/RadioButtons';
 import { ErrorBox } from '../components/ErrorBox';
 import _ from 'lodash';
 
 registerLocale('en', en);
-registerLocale('ko', ko);
 registerLocale('fr', fr);
+registerLocale('es', es);
 registerLocale('zh', zh);
-registerLocale('fa', fa);
-registerLocale('ar', ar);
-registerLocale('vi', vi);
-registerLocale('tl', en); // date-fns doesn't support Tagalog?
+registerLocale('pa', fa);
 
 export const Q4TestResult = () => {
   const { t, i18n } = useTranslation();
