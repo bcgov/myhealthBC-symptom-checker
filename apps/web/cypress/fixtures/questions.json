@@ -2,7 +2,7 @@
   "q1": {
     "question": "Are you experiencing any of the following?",
     "contents": [
-      "Severe difficulty breathing (e.g. struggling to breathe or speaking in single words)",
+      "Severe difficulty breathing (e.g., struggling to breathe or speaking in single words)",
       "Severe chest pain",
       "Having a very hard time waking up",
       "Feeling confused",
@@ -12,14 +12,14 @@
   "q2": {
     "question": "Are you experiencing any of the following?",
     "contents": [
-      "Inability to lie down because of difficulty breathing",
-      "Chronic health conditions that you are having difficulty managing because of difficulty breathing"
+      "I cannot lie down because I'm having trouble breathing",
+      "I'm having trouble managing my chronic health conditions because of difficulty breathing"
     ]
   },
   "q3": {
     "question": "Are you experiencing new or worsening symptoms?",
     "contents": [
-      "Select the symptoms you have. If you are not experiencing any symptoms, select 'None of the above.'"
+      "Select all the symptoms you have right now. If you dont have any of these symptoms, select 'none of the above.'"
     ],
     "primarySymptoms": [
       "cough",
@@ -48,12 +48,14 @@
   "hwq1": {
     "question": "Are you an individual who is moderately to severely immunocompromised?",
     "contents": [
-      "You have had an organ transplant and are taking anti-rejection medications",
-      "You are receiving chemotherapy for cancer",
-      "You have had a bone marrow or stem cell transplant or CAR-T cell therapy",
-      "You have been diagnosed with a primary immunodeficiency disorder",
-      "You have been diagnosed with HIV and are not currently taking medications for it",
-      "You are on dialysis and/or have severe kidney disease"
+      "You’ve had an organ transplant and are taking anti-rejection medications",
+      "You are receiving treatment for cancer",
+      "You’ve had a bone marrow or stem cell transplant",
+      "You’ve been diagnosed with a moderate to severe primary immunodeficiency disorder",
+      "You have advanced or untreated HIV",
+      "You’ve been diagnosed with HIV and are not currently taking medications for it",
+      "You are on dialysis and/or have severe kidney disease",
+      "You are on active treatment with immunosuppressive therapies"
     ]
   },
   "hwq2": {

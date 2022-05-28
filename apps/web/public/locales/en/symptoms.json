@@ -1,18 +1,18 @@
 {
   "Question": "Are you experiencing new or worsening symptoms?",
-  "Description": "Select the symptoms you have. If you are not experiencing any symptoms, select 'None of the above.'",
+  "Description": "Select the symptoms you have. If you are not experiencing any symptoms, select \"none of the above.\"",
   "fever": "Fever or chills",
-  "cough": "Cough (either new or worsening / exacerbation of chronic cough)",
+  "cough": "Cough",
   "difficultBreathing": "Shortness of breath",
   "soreThroat": "Sore throat",
-  "lossOfSmellTaste": "Loss of sense of smell or taste",
+  "lossOfSmellTaste": "Loss or change of sense of smell or taste",
   "headache": "Headache",
   "fatigue": "Extreme fatigue or tiredness",
   "runnyNose": "Runny nose",
   "sneezing": "Sneezing",
-  "diarrhea": "Diarrhea",
+  "diarrhea": "Diarrhea - For example, having loose or watery stool that is not normal for you.",
   "lossOfAppetite": "Loss of appetite",
   "nauseaVomiting": "Nausea or vomiting",
-  "bodyAches": "Body or muscle aches",
+  "bodyAches": "Body or muscle aches - For example, aches or pains in your body that you don't normally have.",
   "none": "None of the above"
 }
