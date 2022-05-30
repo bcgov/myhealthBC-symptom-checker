@@ -1,6 +1,6 @@
 {
   "Question": "Are you experiencing new or worsening symptoms?",
-  "Description": "Select the symptoms you have. If you are not experiencing any symptoms, select \"none of the above.\"",
+  "Description": "Select all the symptoms you have right now. If you don't have any of these symptoms, select \"none of the above.\"",
   "fever": "Fever or chills",
   "cough": "Cough",
   "difficultBreathing": "Shortness of breath",

@@ -1,4 +1,10 @@
 {
+  "Tool description": "Utilisez cet outil d'auto-évaluation pour savoir si vous avez besoin d'un test COVID-19. Vous pouvez le compléter pour vous-même ou pour quelqu'un d'autre.",
+  "Home alert": "Si vous vous sentez très malade ou si vos symptômes ne s'améliorent pas, contactez votre fournisseur de soins de santé ou composez le 8-1-1.",
+  "home-desc": "<0>Vous pouvez également appeler le 8-1-1 pour parler à quelqu'un chez HealthLink BC. Ils peuvent:</0><1><0>Répondre aux questions et fournir des conseils pour votre situation spécifique</0><1>Offrir de l'aide dans différentes langues</1></1><2>Do not use this self-assessment to check symptoms for anyone under 2 years old. Contact your health care provider or 8-1-1 instead.</2><3>N'utilisez pas cette auto-évaluation pour vérifier les symptômes d'une personne de moins de 2 ans. Contactez votre fournisseur de soins de santé ou le 8-1-1 à la place.</2><3>Les informations contenues dans cet outil sont basées sur les conseils d'experts du British Columbia Centre for Disease (BCCDC). Il ne remplace pas les conseils de votre fournisseur de soins de santé.</3>",
+  "home-covid19-children-desc": "<0>COVID-19 et les enfants</0><1></1><2>Les enfants présentent généralement les symptômes de la COVID-19 différemment des adultes. Par exemple, ils peuvent avoir des symptômes plus légers ou montrer un changement dans leur niveau d'énergie, leur appétit ou leur comportement.<1>En savoir plus sur la COVID-19 et les enfants.</1></2>",
+  "home-mobile-apps-desc": "<0>Application My Health BC</0><1></1><2>Faites l'auto-évaluation COVID-19 sur votre téléphone avec accès à votre historique d'évaluation et à celui de votre famille et à toutes vos preuves de vaccination en Colombie-Britannique.</2>",
+
   "AppName": "COVID-19 Self-Assessment Tool",
   "Welcome": "Soyez le bienvenu",
   "Question": "Question",

@@ -16,21 +16,25 @@ export const SeverityHeadache = () => {
   const renderDescription = () => {
     return (
       <div>
-        <div className='text-base text-bcGray font-bold mb-2'>{t(`${symptom}-description`)}</div>
-        <div className='text-base text-bcGray'>
-          <Trans i18nKey={`${symptom}-description1`}>
-            For more information on headaches, go to{' '}
+        <Trans t={t} i18nKey={`${symptom}-description`}>
+          <div className='text-base text-bcGray font-bold mb-2'>
+            If you have a severe headache that started suddenly and it feels like the worst headache
+            of your life, you need medical attention. Call 9-1-1 or visit an emergency department
+            right away.
+          </div>
+          <div className='text-base text-bcGray'>
+            Get more information about headaches from{' '}
             <a
               className='underline text-bcBlueLink'
-              href='https://www.healthlinkbc.ca/health-topics/heada'
+              href='https://www.healthlinkbc.ca/health-topics/headaches-0'
               rel='noreferrer'
               target='_blank'
             >
               Healthlink BC
             </a>
             .
-          </Trans>
-        </div>
+          </div>
+        </Trans>
       </div>
     );
   };
@@ -40,9 +44,7 @@ export const SeverityHeadache = () => {
       {severity ? (
         <div className='bg-bcLightBoxBackground md:bg-gray-50 my-4 p-4 border rounded'>
           <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
-          <div className='font-bold mt-3'>
-            {t(severity === 'None' ? 'None-title' : `${symptom}-${severity}-title`)}
-          </div>
+          <div className='font-bold mt-3'>{t(`${symptom}-${severity}-title`)}</div>
           {severity === Severity.Severe ? (
             <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>
           ) : (
