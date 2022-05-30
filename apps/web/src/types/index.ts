@@ -133,6 +133,7 @@ export enum QuestionType {
 }
 
 export interface Step {
+  key: string;
   type: QuestionType;
   component: ReactNode;
   validationSchema?: BaseSchema;
