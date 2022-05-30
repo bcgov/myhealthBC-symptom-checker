@@ -18,7 +18,9 @@ export function sendActionEvent(
   action: string,
   symptom_list: string[],
 ) {
+  //eslint-disable-next-line
   if ((window as any).snowplow) {
+    //eslint-disable-next-line
     (window as any)?.snowplow('trackSelfDescribingEvent', {
       schema: 'iglu:ca.bc.gov.gateway/covid19_self_assessment_action/jsonschema/1-0-0',
       data: {
@@ -32,7 +34,9 @@ export function sendActionEvent(
 }
 
 export function submitRecommendation(recommendation: Recommendation) {
+  //eslint-disable-next-line
   if ((window as any).snowplow) {
+    //eslint-disable-next-line
     (window as any).snowplow('trackSelfDescribingEvent', {
       schema: 'iglu:ca.bc.gov.gateway/recommendation/jsonschema/1-0-0',
       data: {
