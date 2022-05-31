@@ -52,7 +52,8 @@ const Home = () => {
             </p>
             <p className='mb-2'>
               The information in this tool is based on expert guidance from the British Columbia
-              Centre for Disease (BCCDC). It does not replace your health care provider's advice.
+              Centre for Disease (BCCDC). It does not replace your health care provider`&apos;`s
+              advice.
             </p>
           </Trans>
         </div>
@@ -71,6 +72,7 @@ const Home = () => {
                   className='inline-block'
                   target='_blank'
                   href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'
+                  rel='noreferrer'
                 >
                   Learn more about COVID-19 and children.
                 </a>
