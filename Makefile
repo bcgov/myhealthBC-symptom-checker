@@ -16,7 +16,7 @@ ENV_NAME ?= dev
 TERRAFORM_DIR = terraform/
 PROJECT_CODE = $(LZ2_PROJECT)-$(ENV_NAME)-$(LZ2_SUFFIX)
 
-
+export REACT_APP_ENV_NAME = $(ENV_NAME)
 define TFVARS_DATA
 target_env = "$(ENV_NAME)"
 project_name = "$(PROJECT_NAME)"
