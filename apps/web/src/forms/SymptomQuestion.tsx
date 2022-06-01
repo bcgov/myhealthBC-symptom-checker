@@ -25,6 +25,10 @@ export const SymptomQuestion = (props: FieldOptionProps) => {
 
   const error = _.get(errors, name);
 
+  const options = answerOptions.map(opt => {
+    return { key: t(opt.key), value: opt.value };
+  });
+
   return (
     <div>
       <div className='pb-7'>
@@ -35,7 +39,7 @@ export const SymptomQuestion = (props: FieldOptionProps) => {
         {question.options && <Options options={question.options.map(option => t(option))} />}
         {question.content && <div className='mt-3'>{t(question.content)}</div>}
       </div>
-      <RadioButtons label={''} name={name} options={answerOptions}></RadioButtons>
+      <RadioButtons label={''} name={name} options={options}></RadioButtons>
       <ErrorBox error={error} />
     </div>
   );

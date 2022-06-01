@@ -116,12 +116,12 @@ const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ2',
-          content: 'HWQ2-description',
+          options: ['HWQ2-1', 'HWQ2-2', 'HWQ2-3', 'HWQ2-4', 'HWQ2-5', 'HWQ2-6', 'HWQ2-7'],
         }}
-        name='healthWork.unvaccinated'
+        name='healthWork.vulnerableConditions'
       />
     ),
-    key: 'Are you 18 years of age and older and unvaccinated or partially vaccinated?',
+    key: 'Are you an individual who has any one of the following conditions?',
   },
   {
     type: QuestionType.HEALTH_WORK,
@@ -148,6 +148,20 @@ const QuestionSteps: Step[] = [
       />
     ),
     key: 'Do you live or work in a congregate setting ...?',
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ7',
+          content: 'HWQ7-description',
+        }}
+        name='healthWork.unvaccinated'
+      />
+    ),
+    key: 'Are you 18 years of age and older and unvaccinated or partially vaccinated?',
   },
 ];
 

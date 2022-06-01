@@ -17,6 +17,7 @@ describe('Five recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq7.question).no().continue();
   };
 
   it('shows asymptomatic recommendation for no test results', () => {
@@ -95,6 +96,7 @@ describe('Five recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq7.question).no().continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
 
