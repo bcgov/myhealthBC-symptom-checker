@@ -10,7 +10,6 @@ import globe from 'src/images/globe.svg';
 const languages = {
   en: 'English',
   fr: 'Français',
-  es: 'Español',
   zh: '中文(繁體)',
   pa: 'ਪੰਜਾਬੀ',
 };
