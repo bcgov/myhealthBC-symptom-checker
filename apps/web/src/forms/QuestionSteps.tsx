@@ -131,6 +131,9 @@ const QuestionSteps: Step[] = [
           title: 'HWQ4',
         }}
         name='healthWork.congregated'
+      />
+    ),
+  },
   {
     type: QuestionType.HEALTH_WORK,
     component: (
@@ -141,9 +144,6 @@ const QuestionSteps: Step[] = [
           content: 'HWQ7-description',
         }}
         name='healthWork.unvaccinated'
-      />
-    ),
-  },
       />
     ),
   },
