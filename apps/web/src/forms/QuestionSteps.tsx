@@ -104,9 +104,9 @@ const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ2',
-          content: 'HWQ2-description',
+          options: ['HWQ2-1', 'HWQ2-2', 'HWQ2-3', 'HWQ2-4', 'HWQ2-5', 'HWQ2-6', 'HWQ2-7'],
         }}
-        name='healthWork.unvaccinated'
+        name='healthWork.vulnerableConditions' //Are you an individual who has any one of the following conditions?
       />
     ),
   },
@@ -131,6 +131,19 @@ const QuestionSteps: Step[] = [
           title: 'HWQ4',
         }}
         name='healthWork.congregated'
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ7',
+          content: 'HWQ7-description',
+        }}
+        name='healthWork.unvaccinated'
+      />
+    ),
+  },
       />
     ),
   },

@@ -14,9 +14,9 @@ describe('Five recommendations', () => {
 
   const answerNoForHealthWorkQuestions = () => {
     cy.contains(questions.hwq1.question).no().continue();
-    cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq7.question).no().continue();
   };
 
   it('shows asymptomatic recommendation for no test results', () => {
@@ -92,9 +92,9 @@ describe('Five recommendations', () => {
     cy.contains(questions.q4.question).continue();
     cy.contains(questions.severity.cough).get('#Mild').click().continue();
     cy.contains(questions.hwq1.question).yes().continue();
-    cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq7.question).no().continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
 
