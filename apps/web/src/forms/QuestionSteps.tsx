@@ -131,6 +131,33 @@ const QuestionSteps: Step[] = [
         question={{
           title: 'HWQ3',
         }}
+        name='healthWork.indigenous'
+      />
+    ),
+    key: 'Do you self-identify as Indigenous?',
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ4',
+        }}
+        name='healthWork.pregnant'
+      />
+    ),
+    key: 'Are you pregnant?',
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ5',
+          options: ['HWQ5-1', 'HWQ5-2'],
+        }}
         name='healthWork.careWorker'
       />
     ),
@@ -142,7 +169,8 @@ const QuestionSteps: Step[] = [
       <SymptomQuestion
         answerOptions={YES_NO_OPTIONS}
         question={{
-          title: 'HWQ4',
+          title: 'HWQ6',
+          options: ['HWQ6-1', 'HWQ6-2'],
         }}
         name='healthWork.congregated'
       />
