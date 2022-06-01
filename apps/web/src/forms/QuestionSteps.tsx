@@ -118,10 +118,10 @@ const QuestionSteps: Step[] = [
           title: 'HWQ2',
           options: ['HWQ2-1', 'HWQ2-2', 'HWQ2-3', 'HWQ2-4', 'HWQ2-5', 'HWQ2-6', 'HWQ2-7'],
         }}
-        name='healthWork.vulnerableConditions' //Are you an individual who has any one of the following conditions?
+        name='healthWork.vulnerableConditions'
       />
     ),
-    key: 'Are you 18 years of age and older and unvaccinated or partially vaccinated?',
+    key: 'Are you an individual who has any one of the following conditions?',
   },
   {
     type: QuestionType.HEALTH_WORK,
@@ -161,6 +161,7 @@ const QuestionSteps: Step[] = [
         name='healthWork.unvaccinated'
       />
     ),
+    key: 'Are you 18 years of age and older and unvaccinated or partially vaccinated?',
   },
 ];
 
