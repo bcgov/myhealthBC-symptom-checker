@@ -17,6 +17,8 @@ describe('Five recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq5.question).no().continue();
+    cy.contains(questions.hwq6.question).no().continue();
     cy.contains(questions.hwq7.question).no().continue();
   };
 
@@ -96,6 +98,8 @@ describe('Five recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq5.question).no().continue();
+    cy.contains(questions.hwq6.question).no().continue();
     cy.contains(questions.hwq7.question).no().continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
