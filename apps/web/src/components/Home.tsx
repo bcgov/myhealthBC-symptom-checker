@@ -16,16 +16,6 @@ const Home = () => {
       <main className='bg-white'>
         <div className='container mx-auto max-w-main py-8'>
           <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
-          {/*<div className='mb-5'>*/}
-          {/*  <ul className='flex'>*/}
-          {/*    <li className='pr-3 mr-3 border-r-bc-gray border-r-2'>English</li>*/}
-          {/*    <li className='mr-6'>*/}
-          {/*      <a className='text-blue-500 hover:text-blue-800' href='#'>*/}
-          {/*        French*/}
-          {/*      </a>*/}
-          {/*    </li>*/}
-          {/*  </ul>*/}
-          {/*</div>*/}
           <div>Last updated</div>
           <div className='flex flex-wrap md:flex-nowrap md:flex-row-reverse my-5'>
             <div className='basis-full md:basis-1/2'>
@@ -50,21 +40,20 @@ const Home = () => {
           </div>
           <Trans i18nKey='home-desc'>
             <p className='mb-2'>
-              The Ministry of Health, in partnership with Thrive Health, created this
-              self-assessment tool to provide up-to-date guidance and recommendations for testing
-              and follow-up for COVID-19 that follows BCCDC guidance. You can complete this
-              assessment for yourself or on behalf of someone else.
-              <strong>We do not recommend this tool for children under 2 years old</strong>; please
-              see your healthcare provider.
+              You can also call 8-1-1 to talk to someone at HealthLink BC. They can:
+            </p>
+            <ul>
+              <li>Answer questions and provide advice for your specific situation</li>
+              <li>Offer help in different languages</li>
+            </ul>
+            <p className='mb-2'>
+              Do not use this self-assessment to check symptoms for anyone under 2 years old.
+              Contact your health care provider or 8-1-1 instead.
             </p>
             <p className='mb-2'>
-              This guidance is not to be used to determine suitability to attend/return to work or
-              school.
-            </p>
-            <p className='mb-2'>
-              This self-assessment tool is intended for COVID-19 only and does not replace your
-              health care provider&apos;s advice. Your symptoms may not be related to COVID-19 and
-              could require you to seek medical attention.
+              The information in this tool is based on expert guidance from the British Columbia
+              Centre for Disease (BCCDC). It does not replace your health care provider`&apos;`s
+              advice.
             </p>
           </Trans>
         </div>
@@ -72,22 +61,28 @@ const Home = () => {
       <aside className='container mx-auto max-w-main py-8'>
         <div className='flex flex-wrap md:flex-nowrap'>
           <div className='basis-full md:basis-1/2 p-5 md:mr-5 mb-5 drop-shadow-md bg-white'>
-            <h3 className='text-xl font-bold'>COVID-19 and Children</h3>
-            <img src={covidAndChildren} alt='covid 19 and children' className='my-3 w-full' />
             <Trans i18nKey='home-covid19-children-desc'>
+              <h3 className='text-xl font-bold'>COVID-19 and children</h3>
+              <img src={covidAndChildren} alt='covid 19 and children' className='my-3 w-full' />
               <p>
-                Children generally have milder symptoms of COVID-19 than adults. Children may also
-                present symptoms of COVID-19 differently than adults. For example, symptoms in
-                children may be a change in activity level, appetite, or behaviour. For children,
-                it&apos;s important to think about what is usual or unusual about their specific
-                symptoms. For more information visit COVID-19 and children.
+                Children generally show COVID-19 symptoms differently than adults. For example, they
+                may have milder symptoms, or they may show a change in energy level, appetite or
+                behaviour.
+                <a
+                  className='inline-block'
+                  target='_blank'
+                  href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'
+                  rel='noreferrer'
+                >
+                  Learn more about COVID-19 and children.
+                </a>
               </p>
             </Trans>
           </div>
           <div className='basis-full md:basis-1/2 p-5 md:ml-5 mb-5 drop-shadow-md bg-white'>
-            <h3 className='text-xl font-bold'>My Health BC app</h3>
-            <img src={covidapp} alt='covid apps' className='my-3 w-full' />
             <Trans i18nKey='home-mobile-apps-desc'>
+              <h3 className='text-xl font-bold'>My Health BC app</h3>
+              <img src={covidapp} alt='covid apps' className='my-3 w-full' />
               <p className='mb-5'>
                 Take COVID-19 self-assessment on your phone with access to you and your
                 family&apos;s assessment history and all your BC proofs of vaccination.

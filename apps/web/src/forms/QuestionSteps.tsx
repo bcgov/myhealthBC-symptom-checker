@@ -101,6 +101,7 @@ const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ1',
+          description: 'HWQ1-desc',
           options: ['HWQ1-1', 'HWQ1-2', 'HWQ1-3', 'HWQ1-4', 'HWQ1-5', 'HWQ1-6'],
         }}
         name='healthWork.immunocompromised'
