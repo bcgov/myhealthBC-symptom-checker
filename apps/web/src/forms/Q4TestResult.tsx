@@ -10,7 +10,7 @@ import { Tooltip } from '../components/Tooltip';
 import calendar from '../images/calendar.svg';
 import upendCaret from '../images/upend-caret.svg';
 
-import { enCA as en, frCA as fr, zhCN as zh, faIR as fa, es } from 'date-fns/locale';
+import { enCA as en, frCA as fr, zhCN as zh, faIR as fa } from 'date-fns/locale';
 import { Field, useFormikContext } from 'formik';
 import RadioButtons from 'src/components/RadioButtons';
 import { ErrorBox } from '../components/ErrorBox';
@@ -18,7 +18,6 @@ import _ from 'lodash';
 
 registerLocale('en', en);
 registerLocale('fr', fr);
-registerLocale('es', es);
 registerLocale('zh', zh);
 registerLocale('pa', fa);
 
