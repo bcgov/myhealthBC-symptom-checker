@@ -16,3 +16,5 @@ apps/web/cypress/videos
 
 .build
 *.zip
+
+.DS_Store
