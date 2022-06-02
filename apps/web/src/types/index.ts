@@ -24,6 +24,19 @@ export enum Severity {
   Severe = 'Severe',
 }
 
+export enum VaccinationStatus {
+  None = 'None',
+  Partial2Dose = 'Partial2Dose',
+  Partial1Dose = 'Partial1Dose',
+  Full = 'Full',
+}
+
+export enum AgeRanges {
+  Under50 = '0-49',
+  FiftyTo69 = '50-69',
+  Over70 = '70+',
+}
+
 export const YES_NO_OPTIONS = [
   {
     key: 'Yes',
@@ -60,7 +73,8 @@ export interface SymptomDetails {
 
 export interface HealthWorkDetails {
   immunocompromised?: boolean;
-  unvaccinated?: boolean;
+  unvaccinated?: VaccinationStatus;
+  age?: AgeRanges;
   careWorker?: boolean;
   congregated?: boolean;
 }

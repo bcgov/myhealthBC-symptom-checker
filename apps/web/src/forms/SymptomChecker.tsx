@@ -4,7 +4,13 @@ import _ from 'lodash';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
+import {
+  AgeRanges,
+  initialValues,
+  Recommendation,
+  SymptomCheckerForm,
+  VaccinationStatus,
+} from '../types';
 import QuestionSteps from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
 
@@ -67,6 +73,34 @@ export const SymptomChecker = () => {
       const { checked, required } = values.symptoms[symptom];
       if (checked && required) {
         return index;
+      }
+    }
+
+    //vaccination/age answered, not yet chronic conditions
+    if (values.healthWork.unvaccinated && values.healthWork.age) {
+      const { unvaccinated, age } = values.healthWork;
+      switch (unvaccinated) {
+        case VaccinationStatus.None:
+          if (age === AgeRanges.Under50) {
+            // ask question HWQ9-M,
+            // else recommend test
+          }
+          break;
+        case (VaccinationStatus.Partial1Dose, VaccinationStatus.Partial2Dose):
+          // under 50: no test
+          // 50-69 AND HWQ9-M: test
+          // 70+ AND HWQ9-S: test
+          // ELSE: no test
+          break;
+        case VaccinationStatus.Full:
+          // under 50, OR 50-69: NO TEST
+          // 70+ AND HWQ9-M: test
+          break;
+        default:
+          // this shouldn't happen...
+          console.log('something went wrong');
+          console.log(values);
+          break;
       }
     }
 

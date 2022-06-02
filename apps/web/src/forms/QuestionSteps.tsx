@@ -1,5 +1,12 @@
 import React from 'react';
-import { QuestionType, Step, validationSchema, YES_NO_OPTIONS } from '../types';
+import {
+  AgeRanges,
+  QuestionType,
+  Step,
+  VaccinationStatus,
+  validationSchema,
+  YES_NO_OPTIONS,
+} from '../types';
 import { SymptomQuestion } from './SymptomQuestion';
 import { Q3Symptoms } from './Q3Symptoms';
 import { Q4TestResult } from './Q4TestResult';
@@ -181,15 +188,61 @@ const QuestionSteps: Step[] = [
     type: QuestionType.HEALTH_WORK,
     component: (
       <SymptomQuestion
-        answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ7',
-          content: 'HWQ7-description',
         }}
+        answerOptions={Object.keys(VaccinationStatus).map((key, val) => {
+          const index = val + 1;
+          return { key: `HWQ7-${index}`, value: key };
+        })}
         name='healthWork.unvaccinated'
       />
     ),
-    key: 'Are you 18 years of age and older and unvaccinated or partially vaccinated?',
+    key: 'Please select your COVID-19 vaccination status',
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={Object.entries(AgeRanges).map((key, val) => {
+          const index = val + 1;
+          return { key: `HWQ8-${index}`, value: key[1] };
+        })}
+        question={{
+          title: 'HWQ8',
+        }}
+        name='healthWork.age'
+      />
+    ),
+    key: 'What is your age?',
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ9-M',
+          description: 'HWQ9-desc',
+        }}
+        name='healthWork.chronicConditionsMany'
+      />
+    ),
+    key: '',
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ9-S',
+          description: 'HWQ9-desc',
+        }}
+        name='healthWork.chronicConditionSingle'
+      />
+    ),
+    key: '',
   },
 ];
 
