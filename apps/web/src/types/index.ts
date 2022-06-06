@@ -77,6 +77,7 @@ export interface HealthWorkDetails {
   age?: AgeRanges;
   careWorker?: boolean;
   congregated?: boolean;
+  chronicConditions?: string;
 }
 
 export interface SymptomCheckerForm {

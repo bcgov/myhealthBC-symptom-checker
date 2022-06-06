@@ -35,6 +35,11 @@ export const SymptomChecker = () => {
     };
   }, [step]);
 
+  useEffect(() => {
+    if (step >= steps.length - 1) {
+    }
+  }, [step]);
+
   const steps = QuestionSteps;
 
   useEffect(() => {
@@ -52,6 +57,7 @@ export const SymptomChecker = () => {
   };
 
   const decideNextPage = (values: SymptomCheckerForm) => {
+    console.log(values);
     if (values.emergentFactors === 'yes') {
       return recommend(Recommendation.CALL_911);
     }
@@ -77,24 +83,42 @@ export const SymptomChecker = () => {
     }
 
     //vaccination/age answered, not yet chronic conditions
+
     if (values.healthWork.unvaccinated && values.healthWork.age) {
-      const { unvaccinated, age } = values.healthWork;
+      let needsTest = false;
+      const { unvaccinated, age, chronicConditions } = values.healthWork;
       switch (unvaccinated) {
         case VaccinationStatus.None:
-          if (age === AgeRanges.Under50) {
-            // ask question HWQ9-M,
-            // else recommend test
+          if (age === AgeRanges.Under50 && chronicConditions === 'yes') {
+            needsTest = true;
           }
           break;
         case (VaccinationStatus.Partial1Dose, VaccinationStatus.Partial2Dose):
           // under 50: no test
           // 50-69 AND HWQ9-M: test
-          // 70+ AND HWQ9-S: test
           // ELSE: no test
+          if (age === AgeRanges.FiftyTo69 && chronicConditions === 'yes') {
+            needsTest = true;
+          }
+
+          // 70+ AND HWQ9-S: test
+          if (age === AgeRanges.Over70) {
+            if (chronicConditions === undefined) {
+              let temp = steps[step + 1];
+              console.log(temp);
+            }
+            if (chronicConditions === 'yes') {
+              needsTest = true;
+            }
+          }
+
           break;
         case VaccinationStatus.Full:
           // under 50, OR 50-69: NO TEST
           // 70+ AND HWQ9-M: test
+          if (age === AgeRanges.Over70 && chronicConditions === 'yes') {
+            needsTest = true;
+          }
           break;
         default:
           // this shouldn't happen...
@@ -125,6 +149,7 @@ export const SymptomChecker = () => {
 
   const nextQuestion = (values: SymptomCheckerForm) => {
     const nextStep = decideNextPage(values);
+    console.log(nextStep);
     if (step === 2) {
       submitSymptomChoices(
         step,

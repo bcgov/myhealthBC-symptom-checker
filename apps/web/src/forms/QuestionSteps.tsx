@@ -216,34 +216,25 @@ const QuestionSteps: Step[] = [
     ),
     key: 'What is your age?',
   },
-  {
-    type: QuestionType.HEALTH_WORK,
-    component: (
-      <SymptomQuestion
-        answerOptions={YES_NO_OPTIONS}
-        question={{
-          title: 'HWQ9-M',
-          description: 'HWQ9-desc',
-        }}
-        name='healthWork.chronicConditionsMany'
-      />
-    ),
-    key: '',
-  },
-  {
-    type: QuestionType.HEALTH_WORK,
-    component: (
-      <SymptomQuestion
-        answerOptions={YES_NO_OPTIONS}
-        question={{
-          title: 'HWQ9-S',
-          description: 'HWQ9-desc',
-        }}
-        name='healthWork.chronicConditionSingle'
-      />
-    ),
-    key: '',
-  },
 ];
+
+// return the final step of the survey, dependent on prior questions
+export const LastStep = (isMultiple: boolean): Step => {
+  const questionTitle = isMultiple ? 'HWQ9-M' : 'HWQ9-S';
+  return {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: questionTitle,
+          description: 'HWQ9-desc',
+        }}
+        name='healthWork.chronicConditions'
+      />
+    ),
+    key: 'Do you have chronic conditions?',
+  };
+};
 
 export default QuestionSteps;
