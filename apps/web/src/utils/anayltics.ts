@@ -19,20 +19,18 @@ export function sendActionEvent(
   symptom_list: string[],
 ) {
   //eslint-disable-next-line
-
-  console.log(stage, name, action, symptom_list);
-  // if ((window as any).snowplow) {
-  //   //eslint-disable-next-line
-  //   (window as any)?.snowplow('trackSelfDescribingEvent', {
-  //     schema: 'iglu:ca.bc.gov.gateway/covid19_self_assessment_action/jsonschema/1-0-0',
-  //     data: {
-  //       stage_id: stage,
-  //       stage_name: name,
-  //       action: action,
-  //       symptom_list: symptom_list,
-  //     },
-  //   });
-  // }
+  if ((window as any).snowplow) {
+    //eslint-disable-next-line
+    (window as any)?.snowplow('trackSelfDescribingEvent', {
+      schema: 'iglu:ca.bc.gov.gateway/covid19_self_assessment_action/jsonschema/1-0-0',
+      data: {
+        stage_id: stage,
+        stage_name: name,
+        action: action,
+        symptom_list: symptom_list,
+      },
+    });
+  }
 }
 
 export function submitRecommendation(recommendation: Recommendation) {

@@ -22,8 +22,8 @@
       "Select all the symptoms you have right now. If you dont have any of these symptoms, select 'none of the above.'"
     ],
     "primarySymptoms": [
-      "difficultBreathing",
       "cough",
+      "difficultBreathing",
       "soreThroat",
       "headache",
       "diarrhea",
