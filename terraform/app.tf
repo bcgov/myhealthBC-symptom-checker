@@ -36,19 +36,6 @@ resource "aws_cloudfront_distribution" "app" {
     }
   }
 
-  # origin {
-  #   domain_name = trimsuffix(trimprefix(aws_apigatewayv2_stage.api.invoke_url, "https://"), "/")
-  #   origin_id   = local.api_origin_id
-
-  #   custom_origin_config {
-  #     http_port  = 80
-  #     https_port = 443
-
-  #     origin_protocol_policy = "https-only"
-  #     origin_ssl_protocols   = ["TLSv1.2"]
-  #   }
-  # }
-
   # Enable in production for production certificate data import
     dynamic "viewer_certificate" {
       for_each = local.is_prod
