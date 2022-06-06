@@ -54,15 +54,15 @@ const QuestionSteps: Step[] = [
   },
   {
     type: QuestionType.SEVERITY,
-    symptom: 'difficultBreathing',
-    component: <SeverityDifficultBreathing />,
-    key: 'What is the severity of your difficulty breathing?',
-  },
-  {
-    type: QuestionType.SEVERITY,
     symptom: 'cough',
     component: <SeverityCough />,
     key: 'What is the severity of your cough?',
+  },
+  {
+    type: QuestionType.SEVERITY,
+    symptom: 'difficultBreathing',
+    component: <SeverityDifficultBreathing />,
+    key: 'What is the severity of your difficulty breathing?',
   },
   {
     type: QuestionType.SEVERITY,
