@@ -86,27 +86,6 @@ resource "aws_cloudfront_distribution" "app" {
     }
   }
 
-  # // API Redirection 
-  # ordered_cache_behavior {
-  #   path_pattern           = "/api/*"
-  #   allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"]
-  #   cached_methods         = ["GET", "HEAD"]
-  #   target_origin_id       = local.api_origin_id
-  #   viewer_protocol_policy = "redirect-to-https"
-
-  #   forwarded_values {
-  #     query_string = true
-  #     headers      = ["authorization", "user-agent", "x-forwarded-for"]
-  #     cookies {
-  #       forward = "all"
-  #     }
-  #   }
-
-  #   min_ttl     = 0
-  #   default_ttl = 0
-  #   max_ttl     = 0
-  #   compress    = true
-  # }
 }
 
 output "cfid" {
