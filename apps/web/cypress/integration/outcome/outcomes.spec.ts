@@ -68,8 +68,8 @@ describe('Five recommendations', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question)
-      .selectSymptom('difficultBreathing')
       .selectSymptom('cough')
+      .selectSymptom('difficultBreathing')
       .selectSymptom('bodyAches')
       .selectSymptom('soreThroat')
       .selectSymptom('headache')
