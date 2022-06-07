@@ -22,7 +22,6 @@ locals {
   account_id  = data.aws_caller_identity.current.account_id
   
   app_name    = "${var.project_name}-app-${var.target_env}"
-  api_name    = "${var.project_name}-api-${var.target_env}"
   db_name    = "${var.project_name}-db-${var.target_env}"
   
   api_build_zip = ".artifacts/empty_lambda.zip"

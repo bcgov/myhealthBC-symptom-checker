@@ -1,7 +1,6 @@
 
 locals {
   s3_origin_id  = "app"
-  api_origin_id = "api"
 }
 
 data "aws_cloudfront_cache_policy" "optimized" {
@@ -37,28 +36,13 @@ resource "aws_cloudfront_distribution" "app" {
     }
   }
 
-  origin {
-    domain_name = trimsuffix(trimprefix(aws_apigatewayv2_stage.api.invoke_url, "https://"), "/")
-    origin_id   = local.api_origin_id
-
-    custom_origin_config {
-      http_port  = 80
-      https_port = 443
-
-      origin_protocol_policy = "https-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
-  }
-
   # Enable in production for production certificate data import
-  #   dynamic "viewer_certificate" {
-  #     for_each = local.is_prod
-  #     content {
-  #       acm_certificate_arn      = data.aws_acm_certificate.ets[0].arn
-  #       ssl_support_method       = "sni-only"
-  #       minimum_protocol_version = "TLSv1.2_2019"
-  #     }
-  #   }
+    dynamic "viewer_certificate" {
+      for_each = local.is_prod
+      content {
+        cloudfront_default_certificate = true
+      }
+    }
 
   # CNAME to this CF dist is created in freshworks.club hosted zone managed by fw
   dynamic "viewer_certificate" {
@@ -102,27 +86,6 @@ resource "aws_cloudfront_distribution" "app" {
     }
   }
 
-  // API Redirection 
-  ordered_cache_behavior {
-    path_pattern           = "/api/*"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"]
-    cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = local.api_origin_id
-    viewer_protocol_policy = "redirect-to-https"
-
-    forwarded_values {
-      query_string = true
-      headers      = ["authorization", "user-agent", "x-forwarded-for"]
-      cookies {
-        forward = "all"
-      }
-    }
-
-    min_ttl     = 0
-    default_ttl = 0
-    max_ttl     = 0
-    compress    = true
-  }
 }
 
 output "cfid" {

@@ -12,7 +12,7 @@ export LZ2_SUFFIX = symchk
 export AWS_REGION ?= ca-central-1
 
 
-ENV_NAME ?= dev
+ENV_NAME ?= test
 TERRAFORM_DIR = terraform/
 PROJECT_CODE = $(LZ2_PROJECT)-$(ENV_NAME)-$(LZ2_SUFFIX)
 
