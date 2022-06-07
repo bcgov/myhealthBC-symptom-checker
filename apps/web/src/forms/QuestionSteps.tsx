@@ -18,7 +18,7 @@ import { SeverityCough } from './SeverityCough';
 import { SeverityHeadache } from './SeverityHeadache';
 import { SeverityQuestion } from './SeverityQuestion';
 
-const QuestionSteps: Step[] = [
+export const QuestionSteps: Step[] = [
   {
     type: QuestionType.EMERGENT,
     component: (
@@ -237,4 +237,4 @@ export const LastStep = (isMultiple: boolean): Step => {
   };
 };
 
-export default QuestionSteps;
+export const numberOfQuestions = QuestionSteps.length + 1;
