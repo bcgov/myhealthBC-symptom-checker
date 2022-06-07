@@ -68,8 +68,8 @@ describe('Five recommendations', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question)
-      .selectSymptom('difficultBreathing')
       .selectSymptom('cough')
+      .selectSymptom('difficultBreathing')
       .selectSymptom('bodyAches')
       .selectSymptom('soreThroat')
       .selectSymptom('headache')
@@ -77,8 +77,8 @@ describe('Five recommendations', () => {
       .selectSymptom('nauseaVomiting')
       .continue();
     cy.contains(questions.q4.question).continue();
-    cy.contains(questions.severity.difficultBreathing).get('#None').click().continue();
     cy.contains(questions.severity.cough).get('#Mild').click().continue();
+    cy.contains(questions.severity.difficultBreathing).get('#None').click().continue();
     cy.contains(questions.severity.bodyAches).get('#Moderate').click().continue();
     cy.contains(questions.severity.soreThroat).get('#Severe').click().continue();
     cy.contains(questions.severity.headache).get('#Moderate').click().continue();

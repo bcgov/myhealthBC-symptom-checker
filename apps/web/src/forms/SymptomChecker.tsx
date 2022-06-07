@@ -99,7 +99,9 @@ export const SymptomChecker = () => {
       );
     }
     if (nextStep) {
-      goForward(steps[step], step);
+      if (step !== 2) {
+        goForward(steps[step], step);
+      }
       pageHistory.push(step);
       setPageHistory([...pageHistory]);
       setStep(nextStep);

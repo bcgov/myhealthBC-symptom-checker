@@ -6,7 +6,7 @@ import { SymptomChecker } from './forms/SymptomChecker';
 import { ResultPage } from './results/ResultPage';
 const App = () => {
   useEffect(() => {
-    let script = document.createElement('script');
+    const script = document.createElement('script');
     switch (process.env.REACT_APP_ENV_NAME) {
       case 'dev':
       case 'test':
