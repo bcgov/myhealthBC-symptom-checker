@@ -32,9 +32,9 @@ export enum VaccinationStatus {
 }
 
 export enum AgeRanges {
-  Under50 = '0-49',
-  FiftyTo69 = '50-69',
-  Over70 = '70+',
+  Under50 = 'Under50',
+  FiftyTo69 = 'FiftyTo69',
+  Over70 = 'Over70',
 }
 
 export const YES_NO_OPTIONS = [

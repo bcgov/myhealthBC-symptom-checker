@@ -19,7 +19,6 @@ describe('Five recommendations', () => {
     cy.contains(questions.hwq4.question).no().continue();
     cy.contains(questions.hwq5.question).no().continue();
     cy.contains(questions.hwq6.question).no().continue();
-    cy.contains(questions.hwq7.question).no().continue();
   };
 
   it('shows asymptomatic recommendation for no test results', () => {
@@ -28,6 +27,8 @@ describe('Five recommendations', () => {
     cy.contains(questions.q3.question).selectSymptom('none').continue();
     cy.contains(questions.q4.question).continue();
     answerNoForHealthWorkQuestions();
+    cy.contains(questions.hwq7.question).selectRadio('Partial2Dose').continue();
+    cy.contains(questions.hwq8.question).selectRadio('Under50').continue();
     cy.contains(questions.recommendation.asymptomatic.title);
   });
 
@@ -41,6 +42,8 @@ describe('Five recommendations', () => {
       .selectTestResult('Positive')
       .continue();
     answerNoForHealthWorkQuestions();
+    cy.contains(questions.hwq7.question).selectRadio('Partial2Dose').continue();
+    cy.contains(questions.hwq8.question).selectRadio('Under50').continue();
     cy.contains(questions.recommendation.asymptomatic.title);
   });
 
@@ -61,6 +64,9 @@ describe('Five recommendations', () => {
     cy.contains(questions.q3.question).selectSymptom('fever').continue();
     cy.contains(questions.q4.question).continue();
     answerNoForHealthWorkQuestions();
+    cy.contains(questions.hwq7.question).selectRadio('Partial1Dose').continue();
+    cy.contains(questions.hwq8.question).selectRadio('Over70').continue();
+    cy.contains(questions.hwq9s.question).no().continue();
     cy.contains(questions.recommendation.symptomaticNoNeedTest.title);
   });
 
@@ -85,6 +91,9 @@ describe('Five recommendations', () => {
     cy.contains(questions.severity.diarrhea).get('#Mild').click().continue();
     cy.contains(questions.severity.nauseaVomiting).get('#None').click().continue();
     answerNoForHealthWorkQuestions();
+    cy.contains(questions.hwq7.question).selectRadio('Full').continue();
+    cy.contains(questions.hwq8.question).selectRadio('Over70').continue();
+    cy.contains(questions.hwq9m.question).no().continue();
     cy.contains(questions.recommendation.symptomaticNoNeedTest.title);
   });
 
@@ -100,7 +109,8 @@ describe('Five recommendations', () => {
     cy.contains(questions.hwq4.question).no().continue();
     cy.contains(questions.hwq5.question).no().continue();
     cy.contains(questions.hwq6.question).no().continue();
-    cy.contains(questions.hwq7.question).no().continue();
+    cy.contains(questions.hwq7.question).selectRadio('None').continue();
+    cy.contains(questions.hwq8.question).selectRadio('Over70').continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
 
