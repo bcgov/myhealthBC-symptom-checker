@@ -1,5 +1,12 @@
 import React from 'react';
-import { QuestionType, Step, validationSchema, YES_NO_OPTIONS } from '../types';
+import {
+  AgeRanges,
+  QuestionType,
+  Step,
+  VaccinationStatus,
+  validationSchema,
+  YES_NO_OPTIONS,
+} from '../types';
 import { SymptomQuestion } from './SymptomQuestion';
 import { Q3Symptoms } from './Q3Symptoms';
 import { Q4TestResult } from './Q4TestResult';
@@ -11,7 +18,7 @@ import { SeverityCough } from './SeverityCough';
 import { SeverityHeadache } from './SeverityHeadache';
 import { SeverityQuestion } from './SeverityQuestion';
 
-const QuestionSteps: Step[] = [
+export const QuestionSteps: Step[] = [
   {
     type: QuestionType.EMERGENT,
     component: (
@@ -181,16 +188,53 @@ const QuestionSteps: Step[] = [
     type: QuestionType.HEALTH_WORK,
     component: (
       <SymptomQuestion
-        answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ7',
-          content: 'HWQ7-description',
         }}
+        answerOptions={Object.keys(VaccinationStatus).map((key, val) => {
+          const index = val + 1;
+          return { key: `HWQ7-${index}`, value: key };
+        })}
         name='healthWork.unvaccinated'
       />
     ),
-    key: 'Are you 18 years of age and older and unvaccinated or partially vaccinated?',
+    key: 'Please select your COVID-19 vaccination status',
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={Object.entries(AgeRanges).map((key, val) => {
+          const index = val + 1;
+          return { key: `HWQ8-${index}`, value: key[1] };
+        })}
+        question={{
+          title: 'HWQ8',
+        }}
+        name='healthWork.age'
+      />
+    ),
+    key: 'What is your age?',
   },
 ];
 
-export default QuestionSteps;
+// return the final step of the survey, dependent on prior questions
+export const LastStep = (isMultiple: boolean): Step => {
+  const questionTitle = isMultiple ? 'HWQ9-M' : 'HWQ9-S';
+  return {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: questionTitle,
+          description: 'HWQ9-desc',
+        }}
+        name='healthWork.chronicConditions'
+      />
+    ),
+    key: 'Do you have chronic conditions?',
+  };
+};
+
+export const numberOfQuestions = QuestionSteps.length + 1;

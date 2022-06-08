@@ -52,6 +52,10 @@ Cypress.Commands.add('selectSymptom', (symptom: string) => {
   return cy.get(`input[name="symptoms.${symptom}"]`).click();
 });
 
+Cypress.Commands.add('selectRadio', (optionValue: string) => {
+  return cy.get(`#${optionValue}`).click();
+});
+
 Cypress.Commands.add('setTestDate', (date: string) => {
   return cy.get(`input[type="text"`).type(date);
 });

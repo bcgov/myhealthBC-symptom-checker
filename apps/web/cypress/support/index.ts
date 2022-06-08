@@ -25,6 +25,7 @@ declare global {
       yes(): Chainable<Element>;
       no(): Chainable<Element>;
       selectSymptom(symptom: string): Chainable<Element>;
+      selectRadio(selectRadio: string): Chainable<Element>;
       setTestDate(testDate: string): Chainable<Element>;
       selectTestResult(text: string): Chainable<Element>;
       checkContents(tests: string[]): Chainable<Element>;

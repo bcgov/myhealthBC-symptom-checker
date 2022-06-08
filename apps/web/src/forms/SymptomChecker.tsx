@@ -4,8 +4,14 @@ import _ from 'lodash';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
-import QuestionSteps from './QuestionSteps';
+import {
+  AgeRanges,
+  initialValues,
+  Recommendation,
+  SymptomCheckerForm,
+  VaccinationStatus,
+} from '../types';
+import { QuestionSteps, LastStep, numberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
 
 export const SymptomChecker = () => {
@@ -29,7 +35,7 @@ export const SymptomChecker = () => {
     };
   }, [step]);
 
-  const steps = QuestionSteps;
+  let steps = QuestionSteps;
 
   useEffect(() => {
     navigate(window.location.pathname);
@@ -61,7 +67,7 @@ export const SymptomChecker = () => {
 
     // go to severity selection for the primary symptoms
     let index = step + 1;
-    for (; index < steps.length; index++) {
+    for (; index < numberOfQuestions - 1; index++) {
       const symptom = steps[index].symptom;
       if (!symptom) break;
       const { checked, required } = values.symptoms[symptom];
@@ -70,15 +76,65 @@ export const SymptomChecker = () => {
       }
     }
 
-    // go to health work questions
-    if (index < steps.length) {
-      return index;
-    }
-
     const symptoms = Object.keys(values.symptoms)
       .filter(symptom => symptom !== 'none' && values.symptoms[symptom].checked)
       .map(symptom => values.symptoms[symptom]);
     const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
+
+    if (values.healthWork.unvaccinated && values.healthWork.age) {
+      let needsTest = false;
+      const { unvaccinated, age, chronicConditions } = values.healthWork;
+      let isMultiple = true;
+      switch (unvaccinated) {
+        case VaccinationStatus.None:
+          if (age !== AgeRanges.UnderFifty || chronicConditions === 'yes') {
+            needsTest = true;
+          }
+          break;
+
+        case VaccinationStatus.Partial1Dose:
+        case VaccinationStatus.Partial2Dose:
+          if (age === AgeRanges.UnderFifty) {
+            return symptoms.length
+              ? recommend(Recommendation.SYMPTOMATIC_NO_TEST)
+              : recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
+          }
+          if (age === AgeRanges.OverSeventy) {
+            isMultiple = false;
+          }
+          if (chronicConditions === 'yes') {
+            needsTest = true;
+          }
+          break;
+
+        case VaccinationStatus.Full:
+          if (age !== AgeRanges.OverSeventy) {
+            return symptoms.length
+              ? recommend(Recommendation.SYMPTOMATIC_NO_TEST)
+              : recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
+          }
+          if (age === AgeRanges.OverSeventy && chronicConditions === 'yes') {
+            needsTest = true;
+          }
+          break;
+
+        default:
+          // this shouldn't happen...
+          break;
+      }
+
+      if (needsTest && symptoms.length) {
+        return recommend(Recommendation.SYMPTOMATIC_TEST);
+      }
+      // set the final question (do not .push because back button)
+      const lastStep = LastStep(isMultiple);
+      steps[numberOfQuestions - 1] = lastStep;
+    }
+
+    // go to health work questions
+    if (index < numberOfQuestions) {
+      return index;
+    }
 
     if (symptoms.length === 0) {
       return recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
