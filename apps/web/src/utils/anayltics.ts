@@ -9,7 +9,13 @@ export function goForward(step: Step, index: number) {
 }
 
 export function submitSymptomChoices(index: number, name: string, symptoms: string[]) {
-  sendActionEvent(index, name, actions.CONTINUE, symptoms);
+  const formattedSymptoms = symptoms.map(symptom => {
+    if (FormattedSymptoms[symptom]) {
+      return FormattedSymptoms[symptom];
+    }
+    return symptom;
+  });
+  sendActionEvent(index, name, actions.CONTINUE, formattedSymptoms);
 }
 
 export function sendActionEvent(
@@ -47,7 +53,23 @@ export function submitRecommendation(recommendation: Recommendation) {
 }
 
 const actions = {
-  GO_BACK: 'go back',
-  CONTINUE: 'continue',
-  SUBMIT: 'submit',
+  GO_BACK: 'Go Back',
+  CONTINUE: 'Continue',
+  SUBMIT: 'Submit',
+};
+
+const FormattedSymptoms = {
+  cough: 'Cough',
+  difficultBreathing: 'Difficult Breathing',
+  soreThroat: 'Sore Throat',
+  headache: 'Headache',
+  diarrhea: 'Diarrhea',
+  nauseaVomiting: 'Nausea Vomiting',
+  bodyAches: 'Body Aches',
+  fever: 'Fever',
+  lossOfSmellTaste: 'Loss of Taste or Smell',
+  fatigue: 'Fatigue',
+  runnyNose: 'Runny nose',
+  sneezing: 'Sneezing',
+  lossOfAppetite: 'Loss of Appetite',
 };
