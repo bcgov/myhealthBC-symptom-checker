@@ -9,7 +9,6 @@ import {
 } from '../types';
 import { SymptomQuestion } from './SymptomQuestion';
 import { Q3Symptoms } from './Q3Symptoms';
-import { Q4TestResult } from './Q4TestResult';
 import { SeverityDifficultBreathing } from './SeverityDifficultBreathing';
 import { SeverityNausea } from './SeverityNausea';
 import { SeverityDiarrhea } from './SeverityDiarrhea';
@@ -52,12 +51,6 @@ export const QuestionSteps: Step[] = [
     component: <Q3Symptoms />,
     validationSchema: validationSchema.symptoms,
     key: 'Are you experiencing new or worsening symptoms?',
-  },
-  {
-    type: QuestionType.RESULT,
-    component: <Q4TestResult />,
-    validationSchema: validationSchema.test,
-    key: 'Have you received a new COVID-19 test result?',
   },
   {
     type: QuestionType.SEVERITY,
