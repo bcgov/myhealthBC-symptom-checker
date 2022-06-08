@@ -1,10 +1,6 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import banner from 'src/images/banner.svg';
-import covidAndChildren from 'src/images/children.png';
-import covidapp from 'src/images/covidapp.png';
-import appStore from 'src/images/app_store.svg';
-import playStore from 'src/images/play_store.svg';
 import { Button } from './Button';
 import { useNavigate } from 'react-router-dom';
 

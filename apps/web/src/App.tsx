@@ -44,7 +44,7 @@ const App = () => {
         <Route
           path='/result'
           element={
-            <Layout result>
+            <Layout>
               <ResultPage />
             </Layout>
           }
