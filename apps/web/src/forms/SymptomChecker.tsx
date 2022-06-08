@@ -35,7 +35,7 @@ export const SymptomChecker = () => {
     };
   }, [step]);
 
-  let steps = QuestionSteps;
+  const steps = QuestionSteps;
 
   useEffect(() => {
     navigate(window.location.pathname);
