@@ -55,7 +55,7 @@ export const SymptomChecker = () => {
     }
 
     // 0 - emergent, 1 - complicated, 2 - symptoms, 3 - test result
-    if (step < 3) {
+    if (step < 2) {
       return step + 1;
     }
 

@@ -47,12 +47,6 @@ const QuestionSteps: Step[] = [
     key: 'Are you experiencing new or worsening symptoms?',
   },
   {
-    type: QuestionType.RESULT,
-    component: <Q4TestResult />,
-    validationSchema: validationSchema.test,
-    key: 'Have you received a new COVID-19 test result?',
-  },
-  {
     type: QuestionType.SEVERITY,
     symptom: 'cough',
     component: <SeverityCough />,

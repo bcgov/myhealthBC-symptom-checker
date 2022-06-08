@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference path="../../support/index.ts"/>
 
-describe('Five recommendations', () => {
+describe('Recommendations', () => {
   let questions: Record<string, any>;
 
   beforeEach(() => {
@@ -26,12 +26,13 @@ describe('Five recommendations', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question).selectSymptom('none').continue();
-    cy.contains(questions.q4.question).continue();
     answerNoForHealthWorkQuestions();
     cy.contains(questions.recommendation.asymptomatic.title);
   });
 
-  it('shows asymptomatic recommendation for test result', () => {
+  // keeping this test here if they put the COVID test question back
+  // but skipping it because for now it's removed
+  it.skip('shows asymptomatic recommendation for test result', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question).selectSymptom('none').continue();
@@ -59,7 +60,6 @@ describe('Five recommendations', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question).selectSymptom('fever').continue();
-    cy.contains(questions.q4.question).continue();
     answerNoForHealthWorkQuestions();
     cy.contains(questions.recommendation.symptomaticNoNeedTest.title);
   });
@@ -76,7 +76,6 @@ describe('Five recommendations', () => {
       .selectSymptom('diarrhea')
       .selectSymptom('nauseaVomiting')
       .continue();
-    cy.contains(questions.q4.question).continue();
     cy.contains(questions.severity.cough).get('#Mild').click().continue();
     cy.contains(questions.severity.difficultBreathing).get('#None').click().continue();
     cy.contains(questions.severity.bodyAches).get('#Moderate').click().continue();
@@ -92,7 +91,6 @@ describe('Five recommendations', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question).selectSymptom('fever').selectSymptom('cough').continue();
-    cy.contains(questions.q4.question).continue();
     cy.contains(questions.severity.cough).get('#Mild').click().continue();
     cy.contains(questions.hwq1.question).yes().continue();
     cy.contains(questions.hwq2.question).no().continue();
