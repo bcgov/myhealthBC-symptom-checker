@@ -38,7 +38,7 @@ const Home = () => {
             <p className='mb-2'>
               You can also call 8-1-1 to talk to someone at HealthLink BC. They can:
             </p>
-            <ul>
+            <ul className='list-disc pl-6'>
               <li>Answer questions and provide advice for your specific situation</li>
               <li>Offer help in different languages</li>
             </ul>

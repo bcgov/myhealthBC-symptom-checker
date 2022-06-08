@@ -21,7 +21,7 @@ export const SeverityCough = () => {
           <div className='text-base text-bcGray mb-2'>
             You need to contact your health care provider or call 8-1-1 if you have any of these
             symptoms:
-            <ul>
+            <ul className='list-disc pl-6'>
               <li>Your cough gets worse</li>
               <li>You start coughing up blood or sputum</li>
               <li>Your cough makes it hard to breathe</li>

@@ -15,7 +15,7 @@ export const SeverityDiarrhea = () => {
             You need to contact your health care provider or call 8-1-1 if you have any of these
             symptoms:
           </div>
-          <ul>
+          <ul className='list-disc pl-6'>
             <li>Your diarrhea is getting worse.</li>
             <li>You have bloody diarrhea or black, tarry stool.</li>
             <li>
