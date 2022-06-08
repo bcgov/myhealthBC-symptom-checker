@@ -2,7 +2,6 @@ import React from 'react';
 import { QuestionType, Step, validationSchema, YES_NO_OPTIONS } from '../types';
 import { SymptomQuestion } from './SymptomQuestion';
 import { Q3Symptoms } from './Q3Symptoms';
-import { Q4TestResult } from './Q4TestResult';
 import { SeverityDifficultBreathing } from './SeverityDifficultBreathing';
 import { SeverityNausea } from './SeverityNausea';
 import { SeverityDiarrhea } from './SeverityDiarrhea';
