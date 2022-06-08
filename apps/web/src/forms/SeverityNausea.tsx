@@ -21,7 +21,7 @@ export const SeverityNausea = () => {
           <div className='text-base text-bcGray font-bold mb-2'>
             You need to contact your health care provider or call 8-1-1 if you have any of these
             symptoms:
-            <ul>
+            <ul className='list-disc pl-6'>
               <li>You are not able to keep down small sips of water</li>
               <li>
                 You feel like you are dehydrated because you have less frequent urination or you
