@@ -87,19 +87,19 @@ export const SymptomChecker = () => {
       let isMultiple = true;
       switch (unvaccinated) {
         case VaccinationStatus.None:
-          if (age !== AgeRanges.Under50 || chronicConditions === 'yes') {
+          if (age !== AgeRanges.UnderFifty || chronicConditions === 'yes') {
             needsTest = true;
           }
           break;
 
         case VaccinationStatus.Partial1Dose:
         case VaccinationStatus.Partial2Dose:
-          if (age === AgeRanges.Under50) {
+          if (age === AgeRanges.UnderFifty) {
             return symptoms.length
               ? recommend(Recommendation.SYMPTOMATIC_NO_TEST)
               : recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
           }
-          if (age === AgeRanges.Over70) {
+          if (age === AgeRanges.OverSeventy) {
             isMultiple = false;
           }
           if (chronicConditions === 'yes') {
@@ -108,12 +108,12 @@ export const SymptomChecker = () => {
           break;
 
         case VaccinationStatus.Full:
-          if (age !== AgeRanges.Over70) {
+          if (age !== AgeRanges.OverSeventy) {
             return symptoms.length
               ? recommend(Recommendation.SYMPTOMATIC_NO_TEST)
               : recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
           }
-          if (age === AgeRanges.Over70 && chronicConditions === 'yes') {
+          if (age === AgeRanges.OverSeventy && chronicConditions === 'yes') {
             needsTest = true;
           }
           break;
