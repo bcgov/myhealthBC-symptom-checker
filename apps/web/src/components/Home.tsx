@@ -38,7 +38,7 @@ const Home = () => {
             <p className='mb-2'>
               You can also call 8-1-1 to talk to someone at HealthLink BC. They can:
             </p>
-            <ul>
+            <ul className='list-disc pl-6'>
               <li>Answer questions and provide advice for your specific situation</li>
               <li>Offer help in different languages</li>
             </ul>
@@ -52,6 +52,16 @@ const Home = () => {
               advice.
             </p>
           </Trans>
+          <h2 className='text-3xl font-bold mb-5'>{t('home-children-header')}</h2>
+          <p>{t('home-children-desc')}</p>
+          <a
+            href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'
+            className='underline text-bcBlueLink'
+            rel='noreferrer'
+            target='_blank'
+          >
+            {t('home-children-link')}
+          </a>
         </div>
       </main>
     </>
