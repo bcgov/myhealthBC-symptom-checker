@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey }) => {
   const { t } = useTranslation('severity');
@@ -26,4 +27,10 @@ export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey })
       </a>
     </Trans>
   );
+};
+
+HealthLinkBC.propTypes = {
+  linkForChildren: PropTypes.string.isRequired,
+  linkForAdults: PropTypes.string.isRequired,
+  translationKey: PropTypes.string.isRequired,
 };
