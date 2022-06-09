@@ -30,7 +30,11 @@ export const SeverityCough = () => {
         </Trans>
 
         <div className='text-base text-bcGray'>
-          <HealthLinkBC />
+          <HealthLinkBC
+            linkForChildren={'https://www.healthlinkbc.ca/health-topics/coughs-age-11-and-younger'}
+            linkForAdults={'https://www.healthlinkbc.ca/health-topics/coughs-age-12-and-older'}
+            translationKey={'cough-healthLinkBC'}
+          />
         </div>
       </div>
     );

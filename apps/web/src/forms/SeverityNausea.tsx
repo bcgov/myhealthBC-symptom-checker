@@ -32,7 +32,15 @@ export const SeverityNausea = () => {
           <div className='text-base text-bcGray'></div>
         </Trans>
         <div className='text-base text-bcGray'>
-          <HealthLinkBC />
+          <HealthLinkBC
+            linkForChildren={
+              'https://www.healthlinkbc.ca/health-topics/nausea-and-vomiting-age-11-and-younger'
+            }
+            linkForAdults={
+              'https://www.healthlinkbc.ca/health-topics/nausea-and-vomiting-age-12-and-older'
+            }
+            translationKey={'nausea-healthLinkBC'}
+          />
         </div>
       </div>
     );

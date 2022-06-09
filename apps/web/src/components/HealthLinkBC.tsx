@@ -1,15 +1,15 @@
 import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 
-export const HealthLinkBC = () => {
+export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey }) => {
   const { t } = useTranslation('severity');
 
   return (
-    <Trans t={t} i18nKey='HealthLinkBC'>
+    <Trans t={t} i18nKey={translationKey}>
       For more information on cough, see HealthLinkBC&apos;s information for{' '}
       <a
         className='underline text-bcBlueLink'
-        href='https://www.healthlinkbc.ca/health-topics/vomt3'
+        href={linkForChildren}
         target='_blank'
         rel='noreferrer'
       >
@@ -18,7 +18,7 @@ export const HealthLinkBC = () => {
       and for{' '}
       <a
         className='underline text-bcBlueLink'
-        href='https://www.healthlinkbc.ca/health-topics/navt4'
+        href={linkForAdults}
         target='_blank'
         rel='noreferrer'
       >
