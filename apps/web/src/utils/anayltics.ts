@@ -72,4 +72,5 @@ const FormattedSymptoms = {
   runnyNose: 'Runny nose',
   sneezing: 'Sneezing',
   lossOfAppetite: 'Loss of Appetite',
+  none: 'None',
 };
