@@ -52,6 +52,15 @@ const Home = () => {
               advice.
             </p>
           </Trans>
+          <p>{t('home-children-desc')}</p>
+          <a
+            href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'
+            className='underline text-bcBlueLink'
+            rel='noreferrer'
+            target='_blank'
+          >
+            {t('home-children-link')}
+          </a>
         </div>
       </main>
     </>
