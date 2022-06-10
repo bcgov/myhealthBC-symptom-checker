@@ -12,7 +12,7 @@ const Home = () => {
       <main className='bg-white'>
         <div className='container mx-auto max-w-main py-8'>
           <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
-          <div>Last updated</div>
+          <div>Last updated: June 10, 2022</div>
           <div className='flex flex-wrap md:flex-nowrap md:flex-row-reverse my-5'>
             <div className='basis-full md:basis-1/2'>
               <img src={banner} alt='government of british columbia' className='w-full' />
