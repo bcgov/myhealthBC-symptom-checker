@@ -65,6 +65,11 @@ export const SymptomChecker = () => {
       return step + 1;
     }
 
+    // exit if no symptoms
+    if (values.symptoms.none.checked === true) {
+      return recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
+    }
+
     // go to severity selection for the primary symptoms
     let index = step + 1;
     for (; index < numberOfQuestions - 1; index++) {
@@ -76,10 +81,10 @@ export const SymptomChecker = () => {
       }
     }
 
-    const symptoms = Object.keys(values.symptoms)
-      .filter(symptom => symptom !== 'none' && values.symptoms[symptom].checked)
-      .map(symptom => values.symptoms[symptom]);
     const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
+    if (healthWorkConcern) {
+      return recommend(Recommendation.SYMPTOMATIC_TEST);
+    }
 
     if (values.healthWork.unvaccinated && values.healthWork.age) {
       let needsTest = false;
@@ -95,9 +100,7 @@ export const SymptomChecker = () => {
         case VaccinationStatus.Partial1Dose:
         case VaccinationStatus.Partial2Dose:
           if (age === AgeRanges.UnderFifty) {
-            return symptoms.length
-              ? recommend(Recommendation.SYMPTOMATIC_NO_TEST)
-              : recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
+            return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
           }
           if (age === AgeRanges.OverSeventy) {
             isMultiple = false;
@@ -109,9 +112,7 @@ export const SymptomChecker = () => {
 
         case VaccinationStatus.Full:
           if (age !== AgeRanges.OverSeventy) {
-            return symptoms.length
-              ? recommend(Recommendation.SYMPTOMATIC_NO_TEST)
-              : recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
+            return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
           }
           if (age === AgeRanges.OverSeventy && chronicConditions === 'yes') {
             needsTest = true;
@@ -122,8 +123,7 @@ export const SymptomChecker = () => {
           // this shouldn't happen...
           break;
       }
-
-      if (needsTest && symptoms.length) {
+      if (needsTest) {
         return recommend(Recommendation.SYMPTOMATIC_TEST);
       }
       // set the final question (do not .push because back button)
@@ -135,14 +135,7 @@ export const SymptomChecker = () => {
     if (index < numberOfQuestions) {
       return index;
     }
-
-    if (symptoms.length === 0) {
-      return recommend(Recommendation.ASYMPTOMATIC_NO_TEST);
-    } else if (healthWorkConcern) {
-      return recommend(Recommendation.SYMPTOMATIC_TEST);
-    } else {
-      return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
-    }
+    return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {

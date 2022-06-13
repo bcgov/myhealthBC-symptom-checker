@@ -25,9 +25,6 @@ describe('Recommendations', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question).selectSymptom('none').continue();
-    answerNoForHealthWorkQuestions();
-    cy.contains(questions.hwq7.question).selectRadio('Partial2Dose').continue();
-    cy.contains(questions.hwq8.question).selectRadio('UnderFifty').continue();
     cy.contains(questions.recommendation.asymptomatic.title);
   });
 
@@ -101,7 +98,7 @@ describe('Recommendations', () => {
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question).selectSymptom('fever').selectSymptom('cough').continue();
     cy.contains(questions.severity.cough).get('#Mild').click().continue();
-    cy.contains(questions.hwq1.question).yes().continue();
+    cy.contains(questions.hwq1.question).no().continue();
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
