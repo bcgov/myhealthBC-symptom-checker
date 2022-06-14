@@ -22,7 +22,7 @@ export const ResultRapidTest = () => {
           <Trans i18nKey='ResultRapidTestNotice'>
             <a
               className='underline text-bcBlueLink'
-              href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19'
+              href='https://www2.gov.bc.ca/gov/content/covid-19/info/testing#get'
               rel='noreferrer'
               target='_blank'
             >
