@@ -81,6 +81,13 @@ export const SymptomChecker = () => {
       }
     }
 
+    const needsRapidTest = [values.healthWork?.congregated, values.healthWork?.indigenous].includes(
+      'yes',
+    );
+    if (needsRapidTest) {
+      return recommend(Recommendation.RAPID_TEST);
+    }
+
     const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
     if (healthWorkConcern) {
       return recommend(Recommendation.SYMPTOMATIC_TEST);

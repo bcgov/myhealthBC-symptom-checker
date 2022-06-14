@@ -146,6 +146,13 @@
       "contents": [
         "Testing is not recommended for adults and children with mild symptoms. Stay home until you feel well enough to resume your regular activities. Avoid high risk settings (e.g. long term care facilities) and individuals at higher risk for severe complications for 10 days after the start of your symptoms."
       ]
+    },
+    "rapidTest": {
+      "title": "Please get a Rapid Antigen COVID-19 test.",
+      "contents": [
+        "Rapid antigen testing kits are free for everyone. Visit your local pharmacy and ask for your testing kit.",
+        "Find more information on getting a rapid antigen test kit."
+      ]
     }
   }
 }
