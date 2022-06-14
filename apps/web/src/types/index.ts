@@ -15,6 +15,7 @@ export enum Recommendation {
   ASYMPTOMATIC_NO_TEST = 'asymptomatic_no_test',
   SYMPTOMATIC_TEST = 'symptomatic_test',
   SYMPTOMATIC_NO_TEST = 'symptomatic_no_test',
+  RAPID_TEST = 'rapid_test',
 }
 
 export enum Severity {
@@ -76,7 +77,8 @@ export interface HealthWorkDetails {
   unvaccinated?: VaccinationStatus;
   age?: AgeRanges;
   careWorker?: boolean;
-  congregated?: boolean;
+  congregated?: string;
+  indigenous?: string;
   chronicConditions?: string;
 }
 
