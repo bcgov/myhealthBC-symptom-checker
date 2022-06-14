@@ -115,8 +115,7 @@ describe('Recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).no().continue();
-    cy.contains(questions.hwq6.question).yes().continue();
+    cy.contains(questions.hwq5.question).yes().continue();
     cy.contains(questions.recommendation.rapidTest.title);
   });
 
