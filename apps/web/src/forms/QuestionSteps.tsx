@@ -155,20 +155,6 @@ export const QuestionSteps: Step[] = [
       <SymptomQuestion
         answerOptions={YES_NO_OPTIONS}
         question={{
-          title: 'HWQ5',
-          options: ['HWQ5-1', 'HWQ5-2'],
-        }}
-        name='healthWork.careWorker'
-      />
-    ),
-    key: 'Do you work as a health care worker in a hospital, long-term care facility ...?',
-  },
-  {
-    type: QuestionType.HEALTH_WORK,
-    component: (
-      <SymptomQuestion
-        answerOptions={YES_NO_OPTIONS}
-        question={{
           title: 'HWQ6',
           options: ['HWQ6-1', 'HWQ6-2'],
         }}

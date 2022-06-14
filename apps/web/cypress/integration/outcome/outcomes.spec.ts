@@ -17,7 +17,6 @@ describe('Recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).no().continue();
     cy.contains(questions.hwq6.question).no().continue();
   };
 
@@ -102,7 +101,6 @@ describe('Recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).no().continue();
     cy.contains(questions.hwq6.question).no().continue();
     cy.contains(questions.hwq7.question).selectRadio('None').continue();
     cy.contains(questions.hwq8.question).selectRadio('OverSeventy').continue();

@@ -76,13 +76,6 @@
   "hwq4": {
     "question": "Are you pregnant?"
   },
-  "hwq5": {
-    "question": "Do either of these roles describe your work?",
-    "contents": [
-      "I am a health care worker that works in a hospital, long-term care facility, assisted living facility, or community clinic.",
-      "I am a first responder (i.e., police officer, emergency medical technician/paramedic, or firefighter)."
-    ]
-  },
   "hwq6": {
     "question": "Do either of these describe where you live or work?",
     "contents": [
