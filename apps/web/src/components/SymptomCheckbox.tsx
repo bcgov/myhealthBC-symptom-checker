@@ -20,7 +20,7 @@ export const SymptomCheckbox = props => {
     if (checked) {
       if (symptom === 'none') {
         Object.keys(symptoms)
-          .filter(key => key != symptom)
+          .filter(key => key !== symptom)
           .forEach(key => (symptoms[key].checked = false));
       } else {
         symptoms.none.checked = false;

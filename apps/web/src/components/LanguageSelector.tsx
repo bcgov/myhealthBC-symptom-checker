@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import classNames from 'classnames';
@@ -56,6 +56,7 @@ export const LanguageSelector = () => {
               return (
                 <Menu.Item key={ln}>
                   {({ active }) => (
+                    // eslint-disable-next-line
                     <a
                       id={`ln-${ln}`}
                       className={classNames(

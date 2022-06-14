@@ -15,6 +15,9 @@
 
 /// <reference types="cypress" />
 
+// Import commands.ts using ES2015 syntax:
+import './commands';
+
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -32,9 +35,6 @@ declare global {
     }
   }
 }
-
-// Import commands.ts using ES2015 syntax:
-import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

@@ -22,6 +22,7 @@ export const ResultPage = () => {
     if (!location.state) {
       navigate('/');
     }
+    // eslint-disable-next-line
   }, []);
 
   const results = {
