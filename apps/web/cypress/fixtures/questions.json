@@ -77,20 +77,13 @@
     "question": "Are you pregnant?"
   },
   "hwq5": {
-    "question": "Do either of these roles describe your work?",
-    "contents": [
-      "I am a health care worker that works in a hospital, long-term care facility, assisted living facility, or community clinic.",
-      "I am a first responder (i.e., police officer, emergency medical technician/paramedic, or firefighter)."
-    ]
-  },
-  "hwq6": {
     "question": "Do either of these describe where you live or work?",
     "contents": [
       "I live or work in a group setting (e.g., a long-term care facility, shelter, correctional facility or group home).",
       "I live or work in a community that is far from testing centres and hospitals (e.g. a rural, remote or isolated community or a work camp)."
     ]
   },
-  "hwq7": {
+  "hwq6": {
     "question": "Please select your COVID-19 vaccination status:",
     "contents": [
       "I am not vaccinated for COVID-19.",
@@ -99,7 +92,7 @@
       "I am fully vaccinated (completed my vaccine series) and I have also received a booster dose."
     ]
   },
-  "hwq8": {
+  "hwq7": {
     "question": "How old are you?",
     "contents": [
       "I am 49 years old or younger.",
@@ -107,11 +100,11 @@
       "I am 70 years old or older."
     ]
   },
-  "hwq9m": {
+  "hwq8m": {
     "question": "Do you have 3 or more chronic conditions?",
     "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
   },
-  "hwq9s": {
+  "hwq8s": {
     "question": "Do you have 1 or more chronic conditions?",
     "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
   },
