@@ -109,6 +109,19 @@ describe('Recommendations', () => {
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
 
+  it('shows rapid test recommendation', () => {
+    cy.contains(questions.q1.question).no().continue();
+    cy.contains(questions.q2.question).no().continue();
+    cy.contains(questions.q3.question).selectSymptom('runnyNose').continue();
+    cy.contains(questions.hwq1.question).no().continue();
+    cy.contains(questions.hwq2.question).no().continue();
+    cy.contains(questions.hwq3.question).no().continue();
+    cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq5.question).no().continue();
+    cy.contains(questions.hwq6.question).yes().continue();
+    cy.contains(questions.recommendation.rapidTest.title);
+  });
+
   it('routes to the landing page by retake button', () => {
     cy.contains(questions.q1.question).yes().continue();
     cy.contains('Retake the Self-Assessment').click();
