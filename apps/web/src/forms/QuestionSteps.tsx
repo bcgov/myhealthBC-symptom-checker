@@ -155,8 +155,8 @@ export const QuestionSteps: Step[] = [
       <SymptomQuestion
         answerOptions={YES_NO_OPTIONS}
         question={{
-          title: 'HWQ6',
-          options: ['HWQ6-1', 'HWQ6-2'],
+          title: 'HWQ5',
+          options: ['HWQ5-1', 'HWQ5-2'],
         }}
         name='healthWork.congregated'
       />
@@ -168,11 +168,11 @@ export const QuestionSteps: Step[] = [
     component: (
       <SymptomQuestion
         question={{
-          title: 'HWQ7',
+          title: 'HWQ6',
         }}
         answerOptions={Object.keys(VaccinationStatus).map((key, val) => {
           const index = val + 1;
-          return { key: `HWQ7-${index}`, value: key };
+          return { key: `HWQ6-${index}`, value: key };
         })}
         name='healthWork.unvaccinated'
       />
@@ -185,10 +185,10 @@ export const QuestionSteps: Step[] = [
       <SymptomQuestion
         answerOptions={Object.entries(AgeRanges).map((key, val) => {
           const index = val + 1;
-          return { key: `HWQ8-${index}`, value: key[1] };
+          return { key: `HWQ7-${index}`, value: key[1] };
         })}
         question={{
-          title: 'HWQ8',
+          title: 'HWQ7',
         }}
         name='healthWork.age'
       />
@@ -199,7 +199,7 @@ export const QuestionSteps: Step[] = [
 
 // return the final step of the survey, dependent on prior questions
 export const LastStep = (isMultiple: boolean): Step => {
-  const questionTitle = isMultiple ? 'HWQ9-M' : 'HWQ9-S';
+  const questionTitle = isMultiple ? 'HWQ8-M' : 'HWQ8-S';
   return {
     type: QuestionType.HEALTH_WORK,
     component: (
@@ -207,7 +207,7 @@ export const LastStep = (isMultiple: boolean): Step => {
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: questionTitle,
-          description: 'HWQ9-desc',
+          description: 'HWQ8-desc',
         }}
         name='healthWork.chronicConditions'
       />
