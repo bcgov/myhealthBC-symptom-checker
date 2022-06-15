@@ -4,6 +4,7 @@ import Layout from './Layout';
 import Home from './components/Home';
 import { SymptomChecker } from './forms/SymptomChecker';
 import { ResultPage } from './results/ResultPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 const App = () => {
   useEffect(() => {
     const script = document.createElement('script');
@@ -46,6 +47,14 @@ const App = () => {
           element={
             <Layout>
               <ResultPage />
+            </Layout>
+          }
+        />
+        <Route
+          path='/*'
+          element={
+            <Layout>
+              <NotFoundPage />
             </Layout>
           }
         />
