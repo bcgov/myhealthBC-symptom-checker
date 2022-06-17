@@ -104,56 +104,57 @@ export const SymptomChecker = () => {
       }
     }
 
-    if (unvaccinated && age) {
-      let needsTest = false;
+    let nonPCR = false;
+    if (unvaccinated) {
       let isMultiple = true;
+      let askChronicConditions = false;
       switch (unvaccinated) {
         case VaccinationStatus.None:
-          if (age !== AgeRanges.UnderFifty || chronicConditions === 'yes') {
-            needsTest = true;
-          }
+          askChronicConditions = age === AgeRanges.UnderFifty;
           break;
-
         case VaccinationStatus.Partial1Dose:
         case VaccinationStatus.Partial2Dose:
           if (age === AgeRanges.UnderFifty) {
-            return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
+            nonPCR = true;
+          } else {
+            askChronicConditions = true;
           }
           if (age === AgeRanges.OverSeventy) {
             isMultiple = false;
-          }
-          if (chronicConditions === 'yes') {
-            needsTest = true;
           }
           break;
 
         case VaccinationStatus.Full:
           if (age !== AgeRanges.OverSeventy) {
-            return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
-          }
-          if (age === AgeRanges.OverSeventy && chronicConditions === 'yes') {
-            needsTest = true;
+            nonPCR = true;
+          } else {
+            askChronicConditions = true;
           }
           break;
 
         default:
-          // this shouldn't happen...
           break;
       }
-      if (needsTest) {
-        return recommend(Recommendation.SYMPTOMATIC_TEST);
+      if (chronicConditions === 'no') {
+        nonPCR = true;
       }
       if (indigenous === 'no') {
-        // set the final question (do not .push because back button)
-        const lastStep = LastStep(isMultiple);
-        steps[numberOfQuestions - 1] = lastStep;
+        if (!askChronicConditions) {
+          numberOfQuestions--;
+        } else {
+          // set the final question (do not .push because back button)
+          const lastStep = LastStep(isMultiple);
+          steps[numberOfQuestions - 1] = lastStep;
+        }
       }
     }
     // go to health work questions
     if (index < numberOfQuestions) {
       return index;
     }
-    return recommend(Recommendation.RAPID_TEST);
+    return nonPCR
+      ? recommend(Recommendation.RAPID_TEST)
+      : recommend(Recommendation.SYMPTOMATIC_TEST);
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {
