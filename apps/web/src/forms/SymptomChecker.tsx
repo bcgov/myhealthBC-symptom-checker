@@ -114,9 +114,7 @@ export const SymptomChecker = () => {
           break;
         case VaccinationStatus.Partial1Dose:
         case VaccinationStatus.Partial2Dose:
-          if (age === AgeRanges.UnderFifty) {
-            nonPCR = true;
-          } else {
+          if (age !== AgeRanges.UnderFifty) {
             askChronicConditions = true;
           }
           if (age === AgeRanges.OverSeventy) {
@@ -125,9 +123,7 @@ export const SymptomChecker = () => {
           break;
 
         case VaccinationStatus.Full:
-          if (age !== AgeRanges.OverSeventy) {
-            nonPCR = true;
-          } else {
+          if (age === AgeRanges.OverSeventy) {
             askChronicConditions = true;
           }
           break;
@@ -135,14 +131,14 @@ export const SymptomChecker = () => {
         default:
           break;
       }
-      if (chronicConditions === 'no') {
+      if (chronicConditions === 'no' || askChronicConditions) {
         nonPCR = true;
       }
       if (indigenous === 'no') {
+        // set the final chronic conditions question
         if (!askChronicConditions) {
           numberOfQuestions--;
         } else {
-          // set the final question (do not .push because back button)
           const lastStep = LastStep(isMultiple);
           steps[numberOfQuestions - 1] = lastStep;
         }
