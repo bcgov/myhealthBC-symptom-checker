@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Formik, Form } from 'formik';
 import _ from 'lodash';
 import { Button } from '../components/Button';
@@ -33,6 +33,7 @@ export const SymptomChecker = () => {
       }
       window.onbeforeunload = () => null;
     };
+    // eslint-disable-next-line
   }, [step]);
 
   const steps = QuestionSteps;
@@ -42,6 +43,7 @@ export const SymptomChecker = () => {
     window.onbeforeunload = () => {
       return t('LeaveSite');
     };
+    // eslint-disable-next-line
   }, []);
 
   const recommend = (recommendation: Recommendation) => {

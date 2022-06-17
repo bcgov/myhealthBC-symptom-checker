@@ -11,7 +11,7 @@ export const Tooltip = ({ children, text }: TooltipProps) => {
     if (tipRef.current?.style.opacity) {
       tipRef.current.style.zIndex = '-10';
     }
-  }, [tipRef.current]);
+  }, [tipRef]);
 
   function handleMouseEnter() {
     if (tipRef.current?.style.opacity) {

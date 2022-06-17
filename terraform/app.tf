@@ -63,7 +63,7 @@ resource "aws_cloudfront_distribution" "app" {
 
   custom_error_response {
     error_code         = 404
-    response_code      = 200
+    response_code      = 404
     response_page_path = "/index.html"
   }
 
@@ -74,8 +74,8 @@ resource "aws_cloudfront_distribution" "app" {
   }
 
   default_cache_behavior {
-    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
-    cached_methods         = ["GET", "HEAD", "OPTIONS"]
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
     target_origin_id       = local.s3_origin_id
     cache_policy_id        = data.aws_cloudfront_cache_policy.optimized.id
     viewer_protocol_policy = "redirect-to-https"

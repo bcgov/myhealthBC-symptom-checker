@@ -34,6 +34,7 @@ export const Q4TestResult = () => {
   useEffect(() => {
     delete touched.test;
     setTouched(touched);
+    // eslint-disable-next-line
   }, []);
 
   const renderTestOptions = () => {
