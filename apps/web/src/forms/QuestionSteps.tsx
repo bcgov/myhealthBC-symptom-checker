@@ -131,7 +131,7 @@ export const QuestionSteps: Step[] = [
         question={{
           title: 'HWQ3',
         }}
-        name='healthWork.indigenous'
+        name='indigenous'
       />
     ),
     key: 'Do you self-identify as Indigenous?',
@@ -153,26 +153,12 @@ export const QuestionSteps: Step[] = [
     type: QuestionType.HEALTH_WORK,
     component: (
       <SymptomQuestion
-        answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ5',
-          options: ['HWQ5-1', 'HWQ5-2'],
-        }}
-        name='healthWork.congregated'
-      />
-    ),
-    key: 'Do you live or work in a congregate setting ...?',
-  },
-  {
-    type: QuestionType.HEALTH_WORK,
-    component: (
-      <SymptomQuestion
-        question={{
-          title: 'HWQ6',
         }}
         answerOptions={Object.keys(VaccinationStatus).map((key, val) => {
           const index = val + 1;
-          return { key: `HWQ6-${index}`, value: key };
+          return { key: `HWQ5-${index}`, value: key };
         })}
         name='healthWork.unvaccinated'
       />
@@ -185,10 +171,10 @@ export const QuestionSteps: Step[] = [
       <SymptomQuestion
         answerOptions={Object.entries(AgeRanges).map((key, val) => {
           const index = val + 1;
-          return { key: `HWQ7-${index}`, value: key[1] };
+          return { key: `HWQ6-${index}`, value: key[1] };
         })}
         question={{
-          title: 'HWQ7',
+          title: 'HWQ6',
         }}
         name='healthWork.age'
       />
@@ -199,7 +185,7 @@ export const QuestionSteps: Step[] = [
 
 // return the final step of the survey, dependent on prior questions
 export const LastStep = (isMultiple: boolean): Step => {
-  const questionTitle = isMultiple ? 'HWQ8-M' : 'HWQ8-S';
+  const questionTitle = isMultiple ? 'HWQ7-M' : 'HWQ7-S';
   return {
     type: QuestionType.HEALTH_WORK,
     component: (
@@ -207,7 +193,7 @@ export const LastStep = (isMultiple: boolean): Step => {
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: questionTitle,
-          description: 'HWQ8-desc',
+          description: 'HWQ7-desc',
         }}
         name='healthWork.chronicConditions'
       />
@@ -216,4 +202,4 @@ export const LastStep = (isMultiple: boolean): Step => {
   };
 };
 
-export const numberOfQuestions = QuestionSteps.length + 1;
+export const defaultNumberOfQuestions = QuestionSteps.length + 1;

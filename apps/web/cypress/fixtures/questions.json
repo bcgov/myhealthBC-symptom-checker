@@ -77,13 +77,6 @@
     "question": "Are you pregnant?"
   },
   "hwq5": {
-    "question": "Do either of these describe where you live or work?",
-    "contents": [
-      "I live or work in a group setting (e.g., a long-term care facility, shelter, correctional facility or group home).",
-      "I live or work in a community that is far from testing centres and hospitals (e.g. a rural, remote or isolated community or a work camp)."
-    ]
-  },
-  "hwq6": {
     "question": "Please select your COVID-19 vaccination status:",
     "contents": [
       "I am not vaccinated for COVID-19.",
@@ -92,7 +85,7 @@
       "I am fully vaccinated (completed my vaccine series) and I have also received a booster dose."
     ]
   },
-  "hwq7": {
+  "hwq6": {
     "question": "How old are you?",
     "contents": [
       "I am 49 years old or younger.",
@@ -100,11 +93,11 @@
       "I am 70 years old or older."
     ]
   },
-  "hwq8m": {
+  "hwq7m": {
     "question": "Do you have 3 or more chronic conditions?",
     "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
   },
-  "hwq8s": {
+  "hwq7s": {
     "question": "Do you have 1 or more chronic conditions?",
     "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
   },

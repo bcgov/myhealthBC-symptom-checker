@@ -11,7 +11,7 @@ import {
   SymptomCheckerForm,
   VaccinationStatus,
 } from '../types';
-import { QuestionSteps, LastStep, numberOfQuestions } from './QuestionSteps';
+import { QuestionSteps, LastStep, defaultNumberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
 
 export const SymptomChecker = () => {
@@ -19,6 +19,7 @@ export const SymptomChecker = () => {
   const navigate = useNavigate();
 
   const [step, setStep] = useState(0);
+  let numberOfQuestions = defaultNumberOfQuestions;
 
   const [pageHistory, setPageHistory] = useState<number[]>([]);
 
@@ -83,9 +84,7 @@ export const SymptomChecker = () => {
       }
     }
 
-    const needsRapidTest = [values.healthWork?.congregated, values.healthWork?.indigenous].includes(
-      'yes',
-    );
+    const needsRapidTest = [values.healthWork?.congregated].includes('yes');
     if (needsRapidTest) {
       return recommend(Recommendation.RAPID_TEST);
     }
@@ -95,9 +94,18 @@ export const SymptomChecker = () => {
       return recommend(Recommendation.SYMPTOMATIC_TEST);
     }
 
-    if (values.healthWork.unvaccinated && values.healthWork.age) {
+    const { unvaccinated, age, chronicConditions } = values.healthWork;
+    const indigenous = values.indigenous;
+
+    if (indigenous === 'yes') {
+      numberOfQuestions--;
+      if (unvaccinated === 'None') {
+        numberOfQuestions--;
+      }
+    }
+
+    if (unvaccinated && age) {
       let needsTest = false;
-      const { unvaccinated, age, chronicConditions } = values.healthWork;
       let isMultiple = true;
       switch (unvaccinated) {
         case VaccinationStatus.None:
@@ -135,16 +143,17 @@ export const SymptomChecker = () => {
       if (needsTest) {
         return recommend(Recommendation.SYMPTOMATIC_TEST);
       }
-      // set the final question (do not .push because back button)
-      const lastStep = LastStep(isMultiple);
-      steps[numberOfQuestions - 1] = lastStep;
+      if (indigenous === 'no') {
+        // set the final question (do not .push because back button)
+        const lastStep = LastStep(isMultiple);
+        steps[numberOfQuestions - 1] = lastStep;
+      }
     }
-
     // go to health work questions
     if (index < numberOfQuestions) {
       return index;
     }
-    return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
+    return recommend(Recommendation.RAPID_TEST);
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {
