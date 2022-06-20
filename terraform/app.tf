@@ -23,6 +23,14 @@ resource "aws_cloudfront_function" "response" {
   code     = file("${path.module}/cloudfront/response.js")
 }
 
+resource "aws_cloudfront_function" "request" {
+  provider = aws.us-east-1
+  name     = "${local.namespace}-cf-request"
+  runtime  = "cloudfront-js-1.0"
+  comment  = "Redirect to index for sitemap.xml"
+  code     = file("${path.module}/cloudfront/request.js")
+}
+
 resource "aws_cloudfront_distribution" "app" {
   comment = local.app_name
   aliases = var.target_env == "prod" ? [] : ["${var.target_env}.symchk.freshworks.club"]
@@ -83,6 +91,10 @@ resource "aws_cloudfront_distribution" "app" {
     function_association {
       event_type   = "viewer-response"
       function_arn = aws_cloudfront_function.response.arn
+    }
+        function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.request.arn
     }
   }
 
