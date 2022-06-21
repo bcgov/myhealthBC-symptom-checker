@@ -13,6 +13,7 @@ import {
 } from '../types';
 import { QuestionSteps, LastStep, defaultNumberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
+import { determineRecomendation, Outcome } from 'src/utils/determineReccomendation';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -55,6 +56,7 @@ export const SymptomChecker = () => {
   };
 
   const decideNextPage = (values: SymptomCheckerForm) => {
+    console.log(values);
     if (values.emergentFactors === 'yes') {
       return recommend(Recommendation.CALL_911);
     }
@@ -144,6 +146,7 @@ export const SymptomChecker = () => {
         }
       }
     }
+    const result: Outcome = determineRecomendation(values);
     // go to health work questions
     if (index < numberOfQuestions) {
       return index;

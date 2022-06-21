@@ -131,10 +131,10 @@ export const QuestionSteps: Step[] = [
         question={{
           title: 'HWQ3',
         }}
-        name='indigenous'
+        name='healthWork.pregnant'
       />
     ),
-    key: 'Do you self-identify as Indigenous?',
+    key: 'Are you pregnant?',
   },
   {
     type: QuestionType.HEALTH_WORK,
@@ -144,10 +144,10 @@ export const QuestionSteps: Step[] = [
         question={{
           title: 'HWQ4',
         }}
-        name='healthWork.pregnant'
+        name='indigenous'
       />
     ),
-    key: 'Are you pregnant?',
+    key: 'Do you self-identify as Indigenous?',
   },
   {
     type: QuestionType.HEALTH_WORK,
