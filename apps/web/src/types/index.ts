@@ -80,6 +80,7 @@ export interface HealthWorkDetails {
   congregated?: string;
   indigenous?: string;
   chronicConditions?: string;
+  pregnant?: string;
 }
 
 export interface SymptomCheckerForm {

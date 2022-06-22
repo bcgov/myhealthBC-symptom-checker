@@ -76,8 +76,8 @@ describe('Recommendations', () => {
     answerNoForHealthWorkQuestions();
     cy.contains(questions.hwq5.question).selectRadio('Full').continue();
     cy.contains(questions.hwq6.question).selectRadio('OverSeventy').continue();
-    cy.contains(questions.hwq7m.question).no().continue();
-    cy.contains(questions.recommendation.symptomaticNoNeedTest.title);
+    cy.contains(questions.hwq7m.question).yes().continue();
+    cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
 
   it('shows symptomatic & test recommendation', () => {
@@ -102,6 +102,8 @@ describe('Recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq5.question).selectRadio('Full').continue();
+    cy.contains(questions.hwq6.question).selectRadio('UnderFifty').continue();
     cy.contains(questions.recommendation.rapidTest.title);
   });
 

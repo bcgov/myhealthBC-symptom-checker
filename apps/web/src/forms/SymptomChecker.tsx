@@ -4,14 +4,8 @@ import _ from 'lodash';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import {
-  AgeRanges,
-  initialValues,
-  Recommendation,
-  SymptomCheckerForm,
-  VaccinationStatus,
-} from '../types';
-import { QuestionSteps, LastStep, defaultNumberOfQuestions } from './QuestionSteps';
+import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
+import { QuestionSteps, defaultNumberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
 import { determineRecomendation, Outcome } from 'src/utils/determineReccomendation';
 
@@ -56,7 +50,6 @@ export const SymptomChecker = () => {
   };
 
   const decideNextPage = (values: SymptomCheckerForm) => {
-    console.log(values);
     if (values.emergentFactors === 'yes') {
       return recommend(Recommendation.CALL_911);
     }
@@ -90,70 +83,23 @@ export const SymptomChecker = () => {
     if (needsRapidTest) {
       return recommend(Recommendation.RAPID_TEST);
     }
-
-    const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
-    if (healthWorkConcern) {
+    if (values.healthWork.pregnant === 'yes') {
       return recommend(Recommendation.SYMPTOMATIC_TEST);
     }
 
-    const { unvaccinated, age, chronicConditions } = values.healthWork;
-    const indigenous = values.indigenous;
-
-    if (indigenous === 'yes') {
-      numberOfQuestions--;
-      if (unvaccinated === 'None') {
-        numberOfQuestions--;
-      }
-    }
-
-    let nonPCR = false;
-    if (unvaccinated) {
-      let isMultiple = true;
-      let askChronicConditions = false;
-      switch (unvaccinated) {
-        case VaccinationStatus.None:
-          askChronicConditions = age === AgeRanges.UnderFifty;
-          break;
-        case VaccinationStatus.Partial1Dose:
-        case VaccinationStatus.Partial2Dose:
-          if (age !== AgeRanges.UnderFifty) {
-            askChronicConditions = true;
-          }
-          if (age === AgeRanges.OverSeventy) {
-            isMultiple = false;
-          }
-          break;
-
-        case VaccinationStatus.Full:
-          if (age === AgeRanges.OverSeventy) {
-            askChronicConditions = true;
-          }
-          break;
-
-        default:
-          break;
-      }
-      if (chronicConditions === 'no' || askChronicConditions) {
-        nonPCR = true;
-      }
-      if (indigenous === 'no') {
-        // set the final chronic conditions question
-        if (!askChronicConditions) {
-          numberOfQuestions--;
-        } else {
-          const lastStep = LastStep(isMultiple);
-          steps[numberOfQuestions - 1] = lastStep;
-        }
-      }
-    }
     const result: Outcome = determineRecomendation(values);
-    // go to health work questions
-    if (index < numberOfQuestions) {
-      return index;
+    switch (result) {
+      case Outcome.CONTINUE:
+        return index;
+      case Outcome.CONTINUE_PLUS_TWO:
+        return index + 1;
+      case Outcome.PCR_TEST:
+        return recommend(Recommendation.SYMPTOMATIC_TEST);
+      case Outcome.RAPID_TEST:
+        return recommend(Recommendation.RAPID_TEST);
+      default:
+        return index;
     }
-    return nonPCR
-      ? recommend(Recommendation.RAPID_TEST)
-      : recommend(Recommendation.SYMPTOMATIC_TEST);
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {
