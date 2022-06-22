@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
 import { QuestionSteps, defaultNumberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
-import { determineRecomendation, Outcome } from 'src/utils/determineReccomendation';
+import { determineRecommendation, Outcome } from 'src/utils/determineReccomendation';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
@@ -87,7 +87,7 @@ export const SymptomChecker = () => {
       return recommend(Recommendation.SYMPTOMATIC_TEST);
     }
 
-    const result: Outcome = determineRecomendation(values);
+    const result: Outcome = determineRecommendation(values);
     switch (result) {
       case Outcome.CONTINUE:
         return index;

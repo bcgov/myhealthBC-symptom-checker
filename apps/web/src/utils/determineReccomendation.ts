@@ -7,7 +7,7 @@ export enum Outcome {
   PCR_TEST = 'pcr',
 }
 
-export function determineRecomendation(values: SymptomCheckerForm): Outcome {
+export function determineRecommendation(values: SymptomCheckerForm): Outcome {
   if (values?.indigenous === 'yes') {
     return indigenousYesRecommendation(values);
   } else if (values?.indigenous === 'no') {

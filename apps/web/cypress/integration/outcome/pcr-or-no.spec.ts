@@ -155,7 +155,7 @@ describe('Recommendations', () => {
   });
 
   // Case 12
-  it('Case 12 Rapid > Indigenous no, full vax, over seventy, complications no ', () => {
+  it('Case 12 Rapid > Indigenous no, full vax, over seventy, complications no', () => {
     answerNoForHealthWorkQuestions();
     cy.contains(questions.hwq4.question).no().continue();
     cy.contains(questions.hwq5.question).selectRadio('Full').continue();
@@ -181,7 +181,7 @@ describe('Recommendations', () => {
   });
 
   // Case 15
-  it('Case 15 PCR > Indigenous yes, partial vax, fifty to sixitynine ', () => {
+  it('Case 15 PCR > Indigenous yes, partial vax, fifty to sixitynine', () => {
     answerNoForHealthWorkQuestions();
     cy.contains(questions.hwq4.question).yes().continue();
     cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
@@ -215,7 +215,7 @@ describe('Recommendations', () => {
     cy.contains(questions.recommendation.rapidTest.title);
   });
   // Case 19
-  it('Case 19 PCR > Indigenous yes, full vax, seventy plus ', () => {
+  it('Case 19 PCR > Indigenous yes, full vax, seventy plus', () => {
     answerNoForHealthWorkQuestions();
     cy.contains(questions.hwq4.question).yes().continue();
     cy.contains(questions.hwq5.question).selectRadio('Full').continue();
