@@ -53,8 +53,9 @@ describe('Recommendations', () => {
     cy.contains(questions.q2.question).yes().continue();
     cy.contains(questions.recommendation.call811.title);
   });
-
-  it('shows symptomatic & no test recommendation with primary symptoms', () => {
+  // This test does not match current requirements
+  // If any symptoms are present, the outcome will be either get a rapid test or get a PCR test
+  it.skip('shows symptomatic & no test recommendation with primary symptoms', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question)
