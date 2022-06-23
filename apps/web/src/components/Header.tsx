@@ -19,7 +19,7 @@ export const Header = () => {
             </h1>
           </div>
         </div>
-        {<LanguageSelector />}
+        {/* {<LanguageSelector />} */}
       </div>
     </header>
   );
