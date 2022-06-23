@@ -80,11 +80,13 @@ export interface HealthWorkDetails {
   congregated?: string;
   indigenous?: string;
   chronicConditions?: string;
+  pregnant?: string;
 }
 
 export interface SymptomCheckerForm {
   emergentFactors: string;
   complicatingFactors: string;
+  indigenous: string;
   symptoms: Symptoms;
   test?: Partial<TestResult>;
   healthWork: HealthWorkDetails;
@@ -109,6 +111,7 @@ export const initialValues: SymptomCheckerForm = {
     bodyAches: { checked: false, required: true },
     none: { checked: false },
   },
+  indigenous: '',
   test: { tested: undefined, testDate: undefined, result: undefined },
   healthWork: {},
 };

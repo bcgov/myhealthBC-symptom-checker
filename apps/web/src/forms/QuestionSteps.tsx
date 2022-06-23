@@ -131,19 +131,6 @@ export const QuestionSteps: Step[] = [
         question={{
           title: 'HWQ3',
         }}
-        name='healthWork.indigenous'
-      />
-    ),
-    key: 'Do you self-identify as Indigenous?',
-  },
-  {
-    type: QuestionType.HEALTH_WORK,
-    component: (
-      <SymptomQuestion
-        answerOptions={YES_NO_OPTIONS}
-        question={{
-          title: 'HWQ4',
-        }}
         name='healthWork.pregnant'
       />
     ),
@@ -155,24 +142,23 @@ export const QuestionSteps: Step[] = [
       <SymptomQuestion
         answerOptions={YES_NO_OPTIONS}
         question={{
-          title: 'HWQ5',
-          options: ['HWQ5-1', 'HWQ5-2'],
+          title: 'HWQ4',
         }}
-        name='healthWork.congregated'
+        name='indigenous'
       />
     ),
-    key: 'Do you live or work in a congregate setting ...?',
+    key: 'Do you self-identify as Indigenous?',
   },
   {
     type: QuestionType.HEALTH_WORK,
     component: (
       <SymptomQuestion
         question={{
-          title: 'HWQ6',
+          title: 'HWQ5',
         }}
         answerOptions={Object.keys(VaccinationStatus).map((key, val) => {
           const index = val + 1;
-          return { key: `HWQ6-${index}`, value: key };
+          return { key: `HWQ5-${index}`, value: key };
         })}
         name='healthWork.unvaccinated'
       />
@@ -185,35 +171,43 @@ export const QuestionSteps: Step[] = [
       <SymptomQuestion
         answerOptions={Object.entries(AgeRanges).map((key, val) => {
           const index = val + 1;
-          return { key: `HWQ7-${index}`, value: key[1] };
+          return { key: `HWQ6-${index}`, value: key[1] };
         })}
         question={{
-          title: 'HWQ7',
+          title: 'HWQ6',
         }}
         name='healthWork.age'
       />
     ),
     key: 'What is your age?',
   },
-];
-
-// return the final step of the survey, dependent on prior questions
-export const LastStep = (isMultiple: boolean): Step => {
-  const questionTitle = isMultiple ? 'HWQ8-M' : 'HWQ8-S';
-  return {
+  {
     type: QuestionType.HEALTH_WORK,
     component: (
       <SymptomQuestion
         answerOptions={YES_NO_OPTIONS}
         question={{
-          title: questionTitle,
-          description: 'HWQ8-desc',
+          title: 'HWQ7-M',
+          description: 'HWQ7-desc',
         }}
         name='healthWork.chronicConditions'
       />
     ),
     key: 'Do you have chronic conditions?',
-  };
-};
-
-export const numberOfQuestions = QuestionSteps.length + 1;
+  },
+  {
+    type: QuestionType.HEALTH_WORK,
+    component: (
+      <SymptomQuestion
+        answerOptions={YES_NO_OPTIONS}
+        question={{
+          title: 'HWQ7-S',
+          description: 'HWQ7-desc',
+        }}
+        name='healthWork.chronicConditions'
+      />
+    ),
+    key: 'Do you have chronic conditions?',
+  },
+];
+export const defaultNumberOfQuestions = QuestionSteps.length + 1;

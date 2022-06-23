@@ -17,7 +17,6 @@ describe('Recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).no().continue();
   };
 
   it('shows asymptomatic recommendation for no test results', () => {
@@ -39,8 +38,8 @@ describe('Recommendations', () => {
       .selectTestResult('Positive')
       .continue();
     answerNoForHealthWorkQuestions();
-    cy.contains(questions.hwq6.question).selectRadio('Partial2Dose').continue();
-    cy.contains(questions.hwq7.question).selectRadio('UnderFifty').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial2Dose').continue();
+    cy.contains(questions.hwq6.question).selectRadio('UnderFifty').continue();
     cy.contains(questions.recommendation.asymptomatic.title);
   });
 
@@ -54,19 +53,9 @@ describe('Recommendations', () => {
     cy.contains(questions.q2.question).yes().continue();
     cy.contains(questions.recommendation.call811.title);
   });
-
-  it('shows symptomatic & no test recommendation with secondary symptoms', () => {
-    cy.contains(questions.q1.question).no().continue();
-    cy.contains(questions.q2.question).no().continue();
-    cy.contains(questions.q3.question).selectSymptom('fever').continue();
-    answerNoForHealthWorkQuestions();
-    cy.contains(questions.hwq6.question).selectRadio('Partial1Dose').continue();
-    cy.contains(questions.hwq7.question).selectRadio('OverSeventy').continue();
-    cy.contains(questions.hwq8s.question).no().continue();
-    cy.contains(questions.recommendation.symptomaticNoNeedTest.title);
-  });
-
-  it('shows symptomatic & no test recommendation with primary symptoms', () => {
+  // This test does not match current requirements
+  // If any symptoms are present, the outcome will be either get a rapid test or get a PCR test
+  it.skip('shows symptomatic & no test recommendation with primary symptoms', () => {
     cy.contains(questions.q1.question).no().continue();
     cy.contains(questions.q2.question).no().continue();
     cy.contains(questions.q3.question)
@@ -86,10 +75,10 @@ describe('Recommendations', () => {
     cy.contains(questions.severity.diarrhea).get('#Mild').click().continue();
     cy.contains(questions.severity.nauseaVomiting).get('#None').click().continue();
     answerNoForHealthWorkQuestions();
-    cy.contains(questions.hwq6.question).selectRadio('Full').continue();
-    cy.contains(questions.hwq7.question).selectRadio('OverSeventy').continue();
-    cy.contains(questions.hwq8m.question).no().continue();
-    cy.contains(questions.recommendation.symptomaticNoNeedTest.title);
+    cy.contains(questions.hwq5.question).selectRadio('Full').continue();
+    cy.contains(questions.hwq6.question).selectRadio('OverSeventy').continue();
+    cy.contains(questions.hwq7m.question).yes().continue();
+    cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
 
   it('shows symptomatic & test recommendation', () => {
@@ -101,9 +90,8 @@ describe('Recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).no().continue();
-    cy.contains(questions.hwq6.question).selectRadio('None').continue();
-    cy.contains(questions.hwq7.question).selectRadio('OverSeventy').continue();
+    cy.contains(questions.hwq5.question).selectRadio('None').continue();
+    cy.contains(questions.hwq6.question).selectRadio('OverSeventy').continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
 
@@ -115,7 +103,8 @@ describe('Recommendations', () => {
     cy.contains(questions.hwq2.question).no().continue();
     cy.contains(questions.hwq3.question).no().continue();
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).yes().continue();
+    cy.contains(questions.hwq5.question).selectRadio('Full').continue();
+    cy.contains(questions.hwq6.question).selectRadio('UnderFifty').continue();
     cy.contains(questions.recommendation.rapidTest.title);
   });
 

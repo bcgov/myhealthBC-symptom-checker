@@ -4,21 +4,17 @@ import _ from 'lodash';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import {
-  AgeRanges,
-  initialValues,
-  Recommendation,
-  SymptomCheckerForm,
-  VaccinationStatus,
-} from '../types';
-import { QuestionSteps, LastStep, numberOfQuestions } from './QuestionSteps';
+import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
+import { QuestionSteps, defaultNumberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
+import { determineRecommendation, Outcome } from 'src/utils/determineReccomendation';
 
 export const SymptomChecker = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [step, setStep] = useState(0);
+  let numberOfQuestions = defaultNumberOfQuestions;
 
   const [pageHistory, setPageHistory] = useState<number[]>([]);
 
@@ -83,68 +79,27 @@ export const SymptomChecker = () => {
       }
     }
 
-    const needsRapidTest = [values.healthWork?.congregated, values.healthWork?.indigenous].includes(
-      'yes',
-    );
+    const needsRapidTest = [values.healthWork?.congregated].includes('yes');
     if (needsRapidTest) {
       return recommend(Recommendation.RAPID_TEST);
     }
-
-    const healthWorkConcern = Object.values(values.healthWork).some(value => value === 'yes');
-    if (healthWorkConcern) {
+    if (values.healthWork.pregnant === 'yes') {
       return recommend(Recommendation.SYMPTOMATIC_TEST);
     }
 
-    if (values.healthWork.unvaccinated && values.healthWork.age) {
-      let needsTest = false;
-      const { unvaccinated, age, chronicConditions } = values.healthWork;
-      let isMultiple = true;
-      switch (unvaccinated) {
-        case VaccinationStatus.None:
-          if (age !== AgeRanges.UnderFifty || chronicConditions === 'yes') {
-            needsTest = true;
-          }
-          break;
-
-        case VaccinationStatus.Partial1Dose:
-        case VaccinationStatus.Partial2Dose:
-          if (age === AgeRanges.UnderFifty) {
-            return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
-          }
-          if (age === AgeRanges.OverSeventy) {
-            isMultiple = false;
-          }
-          if (chronicConditions === 'yes') {
-            needsTest = true;
-          }
-          break;
-
-        case VaccinationStatus.Full:
-          if (age !== AgeRanges.OverSeventy) {
-            return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
-          }
-          if (age === AgeRanges.OverSeventy && chronicConditions === 'yes') {
-            needsTest = true;
-          }
-          break;
-
-        default:
-          // this shouldn't happen...
-          break;
-      }
-      if (needsTest) {
+    const result: Outcome = determineRecommendation(values);
+    switch (result) {
+      case Outcome.CONTINUE:
+        return index;
+      case Outcome.CONTINUE_PLUS_TWO:
+        return index + 1;
+      case Outcome.PCR_TEST:
         return recommend(Recommendation.SYMPTOMATIC_TEST);
-      }
-      // set the final question (do not .push because back button)
-      const lastStep = LastStep(isMultiple);
-      steps[numberOfQuestions - 1] = lastStep;
+      case Outcome.RAPID_TEST:
+        return recommend(Recommendation.RAPID_TEST);
+      default:
+        return index;
     }
-
-    // go to health work questions
-    if (index < numberOfQuestions) {
-      return index;
-    }
-    return recommend(Recommendation.SYMPTOMATIC_NO_TEST);
   };
 
   const nextQuestion = (values: SymptomCheckerForm) => {
