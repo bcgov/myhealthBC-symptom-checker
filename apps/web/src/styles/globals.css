@@ -19,7 +19,8 @@ body,
     src: url('./fonts/BCSans-Bold.woff') format('woff');
   }
   b,
-  strong {
+  strong,
+  .font-bold {
     font-family: BCSans-Bold;
   }
   p + p,

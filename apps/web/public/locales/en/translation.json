@@ -51,7 +51,7 @@
   "ResultSymptomaticNoTestNotice1": "Note that sometimes symptoms may suddenly worsen and require urgent medical care.",
   "ResultSymptomaticNoTestNotice2": "Pay attention to how you are feeling. If it becomes harder to breathe, you can’t drink anything or feel much worse, call 9-1-1 or go to your nearest emergency department.",
   "ResultSymptomaticNoTestNotice3": "For more information on COVID-19 and how to stay safe, visit the <2>BCCDC website</2>.",
-  "ResultRapidTest": "You can get a non-PCR COVID test.",
+  "ResultRapidTest": "You can get a rapid COVID test.",
   "ResultRapidTestDescription": "Rapid antigen testing kits are free for everyone. Visit your local pharmacy and ask for your testing kit.",
   "ResultRapidTestNotice": "<0>Find more information</0> on getting a rapid antigen test kit.",
   "ResultSymptomaticTest": "Please get a COVID-19 test and self-isolate.",
