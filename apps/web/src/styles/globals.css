@@ -21,7 +21,7 @@ body,
   b,
   strong,
   .font-bold {
-    font-family: BCSans-Bold;
+    font-family: BCSans-Bold, sans-serif;
   }
   p + p,
   ul + p,
