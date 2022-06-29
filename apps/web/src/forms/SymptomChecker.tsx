@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import _ from 'lodash';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, HistoryRouterProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
 import { QuestionSteps, defaultNumberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
