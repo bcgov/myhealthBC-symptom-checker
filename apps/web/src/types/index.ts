@@ -72,14 +72,13 @@ export interface SymptomDetails {
 }
 
 export interface HealthWorkDetails {
-  immunocompromised?: boolean;
+  immunocompromised?: string;
   unvaccinated?: VaccinationStatus;
   age?: AgeRanges;
-  careWorker?: boolean;
-  congregated?: string;
   indigenous?: string;
   chronicConditions?: string;
   pregnant?: string;
+  vulnerableConditions?: string;
 }
 
 export interface SymptomCheckerForm {
