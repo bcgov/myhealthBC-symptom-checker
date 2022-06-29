@@ -121,7 +121,6 @@ export const SymptomChecker = () => {
 
   const previous = () => {
     const prev = pageHistory.pop();
-    console.log(pageHistory);
     if (prev !== undefined) {
       goBack(steps[step], step);
       setStep(prev);
