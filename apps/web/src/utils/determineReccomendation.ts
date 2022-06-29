@@ -8,6 +8,15 @@ export enum Outcome {
 }
 
 export function determineRecommendation(values: SymptomCheckerForm): Outcome {
+  if (
+    [
+      values?.healthWork?.immunocompromised,
+      values?.healthWork?.pregnant,
+      values?.healthWork?.vulnerableConditions,
+    ].includes('yes')
+  ) {
+    return Outcome.PCR_TEST;
+  }
   if (values?.indigenous === 'yes') {
     return indigenousYesRecommendation(values);
   } else if (values?.indigenous === 'no') {

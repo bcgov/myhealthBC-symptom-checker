@@ -79,14 +79,6 @@ export const SymptomChecker = () => {
       }
     }
 
-    const needsRapidTest = [values.healthWork?.congregated].includes('yes');
-    if (needsRapidTest) {
-      return recommend(Recommendation.RAPID_TEST);
-    }
-    if (values.healthWork.pregnant === 'yes') {
-      return recommend(Recommendation.SYMPTOMATIC_TEST);
-    }
-
     const result: Outcome = determineRecommendation(values);
     switch (result) {
       case Outcome.CONTINUE:
