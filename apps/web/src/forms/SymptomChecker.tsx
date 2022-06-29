@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import _ from 'lodash';
 import { Button } from '../components/Button';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, HistoryRouterProps } from 'react-router-dom';
 import { initialValues, Recommendation, SymptomCheckerForm } from '../types';
 import { QuestionSteps, defaultNumberOfQuestions } from './QuestionSteps';
 import { goBack, goForward, submitRecommendation, submitSymptomChoices } from 'src/utils/anayltics';
@@ -12,10 +12,8 @@ import { determineRecommendation, Outcome } from 'src/utils/determineReccomendat
 export const SymptomChecker = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
   const [step, setStep] = useState(0);
   let numberOfQuestions = defaultNumberOfQuestions;
-
   const [pageHistory, setPageHistory] = useState<number[]>([]);
 
   useEffect(() => {
@@ -123,6 +121,7 @@ export const SymptomChecker = () => {
 
   const previous = () => {
     const prev = pageHistory.pop();
+    console.log(pageHistory);
     if (prev !== undefined) {
       goBack(steps[step], step);
       setStep(prev);
