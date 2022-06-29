@@ -57,7 +57,7 @@ describe('Recommendations', () => {
   // Case 4
   it('Case 4 Rapid test > Indigenous no, partial vax, under fifty.', () => {
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('UnderFifty').continue();
     cy.contains(questions.recommendation.rapidTest.title);
   });
@@ -65,16 +65,7 @@ describe('Recommendations', () => {
   // Case 5
   it('Case 5 Rapid test > Indigenous no, partial vax, fifty to sixty nine, multiple conditions no.', () => {
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
-    cy.contains(questions.hwq6.question).selectRadio('FiftyToSixtyNine').continue();
-    cy.contains(questions.hwq7m.question).no().continue();
-    cy.contains(questions.recommendation.rapidTest.title);
-  });
-
-  // Case 5
-  it('Case 5 Rapid test > indigenous no, partial vax 2 dose, fifty to sixty nine, multiple conditions no.', () => {
-    cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial2Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('FiftyToSixtyNine').continue();
     cy.contains(questions.hwq7m.question).no().continue();
     cy.contains(questions.recommendation.rapidTest.title);
@@ -83,16 +74,7 @@ describe('Recommendations', () => {
   // Case 6
   it('Case 6 PCR > Indigenous no, partial vax, fifty to sixty nine, multiple coniditions yes', () => {
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
-    cy.contains(questions.hwq6.question).selectRadio('FiftyToSixtyNine').continue();
-    cy.contains(questions.hwq7m.question).yes().continue();
-    cy.contains(questions.recommendation.symptomaticNeedTest.title);
-  });
-
-  // Case 6
-  it('Case 6 PCR > Indigenous no, partial vax two dose, fifty to sixty nine, multiple coniditions yes', () => {
-    cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial2Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('FiftyToSixtyNine').continue();
     cy.contains(questions.hwq7m.question).yes().continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
@@ -101,7 +83,7 @@ describe('Recommendations', () => {
   // Case 7
   it('Case 7 PCR > Indigenous no, partial vax, over seventy, multiple coniditions yes', () => {
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('OverSeventy').continue();
     cy.contains(questions.hwq7s.question).yes().continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
@@ -110,7 +92,7 @@ describe('Recommendations', () => {
   // Case 8
   it('Case 8 Rapid Test > Indigenous no, partial vax, over seventy, one or more coniditions no', () => {
     cy.contains(questions.hwq4.question).no().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('OverSeventy').continue();
     cy.contains(questions.hwq7s.question).no().continue();
     cy.contains(questions.recommendation.rapidTest.title);
@@ -159,7 +141,7 @@ describe('Recommendations', () => {
   // Case 14
   it('Case 14 Rapid test > Indigenous yes, partial vax, under fifty', () => {
     cy.contains(questions.hwq4.question).yes().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('UnderFifty').continue();
     cy.contains(questions.recommendation.rapidTest.title);
   });
@@ -167,14 +149,14 @@ describe('Recommendations', () => {
   // Case 15
   it('Case 15 PCR > Indigenous yes, partial vax, fifty to sixitynine', () => {
     cy.contains(questions.hwq4.question).yes().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('FiftyToSixtyNine').continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });
   // Case 16
   it('Case 16 PCR > Indigenous yes, partial vax, over seventy', () => {
     cy.contains(questions.hwq4.question).yes().continue();
-    cy.contains(questions.hwq5.question).selectRadio('Partial1Dose').continue();
+    cy.contains(questions.hwq5.question).selectRadio('Partial').continue();
     cy.contains(questions.hwq6.question).selectRadio('OverSeventy').continue();
     cy.contains(questions.recommendation.symptomaticNeedTest.title);
   });

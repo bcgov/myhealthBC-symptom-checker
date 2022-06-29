@@ -19,9 +19,7 @@ function indigenousYesRecommendation(values: SymptomCheckerForm): Outcome {
   switch (values?.healthWork?.unvaccinated) {
     case VaccinationStatus.Full:
       return indigenousYesFullVax(values);
-    case VaccinationStatus.Partial1Dose:
-      return indigenousYesPartialVax(values);
-    case VaccinationStatus.Partial2Dose:
+    case VaccinationStatus.Partial:
       return indigenousYesPartialVax(values);
     case VaccinationStatus.None:
       return Outcome.PCR_TEST;
@@ -57,9 +55,7 @@ function indigenousNoRecommendation(values: SymptomCheckerForm): Outcome {
   switch (values?.healthWork?.unvaccinated) {
     case VaccinationStatus.Full:
       return indigenousNoFullVaxAgeRecommendations(values);
-    case VaccinationStatus.Partial1Dose:
-      return indigenousNoPartialVaxAgeRecommendations(values);
-    case VaccinationStatus.Partial2Dose:
+    case VaccinationStatus.Partial:
       return indigenousNoPartialVaxAgeRecommendations(values);
     case VaccinationStatus.None:
       return indigenousNoNoVaxAgeRecommendations(values);

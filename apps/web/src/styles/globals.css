@@ -18,6 +18,16 @@ body,
     font-weight: 600;
     src: url('./fonts/BCSans-Bold.woff') format('woff');
   }
+  b,
+  strong,
+  .font-bold {
+    font-family: BCSans-Bold, sans-serif;
+  }
+  p + p,
+  ul + p,
+  p + ul {
+    margin-top: 0.75rem;
+  }
 }
 
 @media (min-width: 768px) {
