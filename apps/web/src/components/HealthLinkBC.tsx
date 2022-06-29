@@ -7,7 +7,7 @@ export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey })
 
   return (
     <Trans t={t} i18nKey={translationKey}>
-      For more information on cough, see HealthLinkBC&apos;s information for{' '}
+      Get more information about coughing from HealthLink BC information for{' '}
       <a
         className='underline text-bcBlueLink'
         href={linkForChildren}

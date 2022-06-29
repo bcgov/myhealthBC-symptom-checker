@@ -12,10 +12,8 @@ import { determineRecommendation, Outcome } from 'src/utils/determineReccomendat
 export const SymptomChecker = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
   const [step, setStep] = useState(0);
   let numberOfQuestions = defaultNumberOfQuestions;
-
   const [pageHistory, setPageHistory] = useState<number[]>([]);
 
   useEffect(() => {

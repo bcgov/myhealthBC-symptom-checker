@@ -10,7 +10,6 @@ import { ErrorBox } from '../components/ErrorBox';
 export const Q3Symptoms = () => {
   const { t } = useTranslation('symptoms');
   const { values, errors } = useFormikContext<SymptomCheckerForm>();
-
   return (
     <div>
       <Question>{t('Question')}</Question>
@@ -28,6 +27,7 @@ export const Q3Symptoms = () => {
         })}
       </div>
       <ErrorBox error={errors.symptoms as string} />
+      {!errors.symptoms && <div className='h-6 min-h-full' />}
     </div>
   );
 };

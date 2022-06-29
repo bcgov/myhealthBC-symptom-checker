@@ -2,7 +2,6 @@ import React from 'react';
 import logo from 'src/images/gov_bc_logo.svg';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { LanguageSelector } from './LanguageSelector';
 
 export const Header = () => {
   const { t } = useTranslation();
@@ -19,7 +18,7 @@ export const Header = () => {
             </h1>
           </div>
         </div>
-        {<LanguageSelector />}
+        {/* {<LanguageSelector />} */}
       </div>
     </header>
   );
