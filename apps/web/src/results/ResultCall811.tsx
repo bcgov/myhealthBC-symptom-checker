@@ -16,25 +16,20 @@ export const ResultCall811 = () => {
       title={t('Result811')}
       titleColor='text-bcBlueNav'
     >
-      <Trans i18nKey='Result811Description'>
-        These symptoms require emergency medical care. You should <b>call 9-1-1 immediately</b>, or
-        go directly to your nearest emergency department.
-      </Trans>
       <NoticeBox>
-        <div>
-          <Trans i18nKey='Result811Notice'>
-            For more information on where you can call for help,{' '}
-            <a
-              className='underline text-bcBlueLink'
-              href='https://bc.wethrive.ninja/covid19app/resources/559894d8-8df3-4243-9246-bf7a46323744'
-              rel='noreferrer'
-              target='_blank'
-            >
-              click here
-            </a>
-            .
-          </Trans>
-        </div>
+        <Trans i18nKey='Result811Notice'>
+          <b>Pay attention to how you're feeling.</b> You should call 9-1-1 or visit an{' '}
+          <a
+            href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
+            className='underline text-bcBlueLink'
+            rel='noreferrer'
+            target='_blank'
+          >
+            Urgent and Primary Care Centre
+          </a>{' '}
+          emergency department right away if you start to feel worse – for example, if it gets hard
+          to breathe or you can’t drink anything.
+        </Trans>
       </NoticeBox>
     </ResultPageLayout>
   );
