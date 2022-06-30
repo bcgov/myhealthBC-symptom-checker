@@ -30,6 +30,7 @@ module.exports = {
         lightBlueBackground: '#F7F9FC',
       },
       fontSize: {
+        '2xl': '1.25rem',
         '3xl': '1.5rem',
         '4xl': '2rem',
         '5xl': '2.5rem',
