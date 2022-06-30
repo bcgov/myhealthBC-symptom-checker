@@ -74,7 +74,7 @@
     "question": "Are you pregnant?"
   },
   "hwq4": {
-    "question": "Do you self-identify as Indigenous?"
+    "question": "Do you self-identify as Indigenous (First Nations, Metis, and/or Inuit)?"
   },
   "hwq5": {
     "question": "Please select your COVID-19 vaccination status:",
@@ -134,8 +134,9 @@
       ]
     },
     "rapidTest": {
-      "title": "You can get a rapid COVID test.",
+      "title": "Stay home and away from others until you feel well enough to return to your regular activities and you no longer have a fever.",
       "contents": [
+        "You can get a rapid COVID-19 test if you'd like.",
         "Rapid antigen testing kits are free for everyone. Visit your local pharmacy and ask for your testing kit.",
         "Find more information on getting a rapid antigen test kit."
       ]
