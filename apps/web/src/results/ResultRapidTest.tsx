@@ -17,7 +17,10 @@ export const ResultRapidTest = () => {
       title={t('ResultRapidTest')}
       titleColor='text-bcBlueNav'
     >
-      <div>{t('ResultRapidTestDescription')}</div>
+      <div>
+        <p>{t('ResultRapidTestDescription1')}</p>
+        <p>{t('ResultRapidTestDescription2')}</p>
+      </div>
       <NoticeBox>
         <div>
           <Trans i18nKey='ResultRapidTestNotice'>
