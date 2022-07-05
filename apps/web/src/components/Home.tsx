@@ -12,13 +12,13 @@ const Home = () => {
       <main className='bg-white'>
         <div className='container mx-auto max-w-main py-8'>
           <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
-          <div>Last updated: June 10, 2022</div>
-          <div className='flex flex-wrap md:flex-nowrap md:flex-row-reverse my-5'>
-            <div className='basis-full md:basis-1/2'>
+          <div>Last updated: July 7, 2022</div>
+          <div className='my-5'>
+            <div>
               <img src={banner} alt='government of british columbia' className='w-full' />
             </div>
-            <div className='basis-full md:basis-1/2 md:pr-4'>
-              <strong className='block my-4 md:mt-0'>{t('Tool description')}</strong>
+            <div>
+              <strong className='block my-4'>{t('Tool description')}</strong>
               <Button
                 title={t('Start assessment')}
                 variant='primary'
