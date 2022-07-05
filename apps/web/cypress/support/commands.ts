@@ -29,7 +29,7 @@ Cypress.Commands.add('home', () => {
 });
 
 Cypress.Commands.add('startAssessment', () => {
-  return cy.get('button').contains('Start assessment').click();
+  return cy.get('button').contains('Start now').click();
 });
 
 Cypress.Commands.add('continue', () => {
