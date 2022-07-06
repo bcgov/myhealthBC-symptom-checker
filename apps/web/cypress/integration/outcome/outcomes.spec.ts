@@ -111,6 +111,6 @@ describe('Recommendations', () => {
   it('routes to the landing page by retake button', () => {
     cy.contains(questions.q1.question).yes().continue();
     cy.contains('Retake the Self-Assessment').click();
-    cy.contains('COVID 19 self-assessment');
+    cy.contains('COVID 19 self-assessment tool');
   });
 });

@@ -49,11 +49,10 @@
     "question": "Are you an individual who is moderately to severely immunocompromised?",
     "contents": [
       "You’ve had an organ transplant and are taking anti-rejection medications",
-      "You are receiving treatment for cancer",
       "You’ve had a bone marrow or stem cell transplant",
+      "You are receiving treatment for cancer",
       "You’ve been diagnosed with a moderate to severe primary immunodeficiency disorder",
       "You have advanced or untreated HIV",
-      "You’ve been diagnosed with HIV and are not currently taking medications for it",
       "You are on dialysis and/or have severe kidney disease",
       "You are on active treatment with immunosuppressive therapies"
     ]
@@ -72,10 +71,10 @@
     ]
   },
   "hwq3": {
-    "question": "Are you pregnant?"
+    "question": "Are you pregnant? This information helps us find the best testing options for you."
   },
   "hwq4": {
-    "question": "Do you self-identify as Indigenous (First Nations, Metis, and/or Inuit)?"
+    "question": "Do you self-identify as Indigenous? This information helps us find the best testing options for you. Proof of ancestry is not required."
   },
   "hwq5": {
     "question": "Please select your COVID-19 vaccination status:",
@@ -96,11 +95,15 @@
   },
   "hwq7m": {
     "question": "Do you have 3 or more chronic conditions?",
-    "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
+    "contents": [
+      "For example, do you have obesity, diabetes, or a neurological condition? Or have you had heart failure or a stroke?"
+    ]
   },
   "hwq7s": {
     "question": "Do you have 1 or more chronic conditions?",
-    "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
+    "contents": [
+      "For example, do you have obesity, diabetes, or a neurological condition? Or have you had heart failure or a stroke?"
+    ]
   },
   "severity": {
     "cough": "What is the severity of your cough?",

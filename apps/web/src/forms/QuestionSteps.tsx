@@ -102,7 +102,7 @@ export const QuestionSteps: Step[] = [
         question={{
           title: 'HWQ1',
           description: 'HWQ1-desc',
-          options: ['HWQ1-1', 'HWQ1-2', 'HWQ1-3', 'HWQ1-4', 'HWQ1-5', 'HWQ1-6', 'HWQ1-7', 'HWQ1-8'],
+          options: ['HWQ1-1', 'HWQ1-2', 'HWQ1-3', 'HWQ1-4', 'HWQ1-5', 'HWQ1-6', 'HWQ1-7'],
         }}
         name='healthWork.immunocompromised'
       />
