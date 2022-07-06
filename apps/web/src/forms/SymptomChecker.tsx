@@ -113,6 +113,9 @@ export const SymptomChecker = () => {
 
   const previous = () => {
     const prev = pageHistory.pop();
+    if (step === 0) {
+      navigate('/');
+    }
     if (prev !== undefined) {
       goBack(steps[step], step);
       setStep(prev);
@@ -130,13 +133,7 @@ export const SymptomChecker = () => {
           <Form>
             <div> {steps[step].component}</div>
             <div className='my-10 justify-center flex flex-col md:flex-row mx-2 md:mx-0 m'>
-              <Button
-                type='button'
-                variant='outline'
-                widthClass='md:w-44'
-                onClick={previous}
-                disabled={step === 0}
-              >
+              <Button type='button' variant='outline' widthClass='md:w-44' onClick={previous}>
                 {t('Go back')}
               </Button>
               <span className='ml-4 mt-3 md:mt-0'></span>
