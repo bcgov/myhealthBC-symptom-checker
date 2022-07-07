@@ -130,6 +130,7 @@ export const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ3',
+          description: 'HWQ3-desc',
         }}
         name='healthWork.pregnant'
       />
@@ -143,6 +144,7 @@ export const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ4',
+          description: 'HWQ4-desc',
         }}
         name='indigenous'
       />

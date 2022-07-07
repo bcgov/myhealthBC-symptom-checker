@@ -71,10 +71,14 @@
     ]
   },
   "hwq3": {
-    "question": "Are you pregnant? This information helps us find the best testing options for you."
+    "question": "Are you pregnant?",
+    "contents": ["This information helps us find the best testing options for you."]
   },
   "hwq4": {
-    "question": "Do you self-identify as Indigenous? This information helps us find the best testing options for you. Proof of ancestry is not required."
+    "question": "Do you self-identify as Indigenous?",
+    "contents": [
+      "This information helps us find the best testing options for you. Proof of ancestry is not required."
+    ]
   },
   "hwq5": {
     "question": "Please select your COVID-19 vaccination status:",
