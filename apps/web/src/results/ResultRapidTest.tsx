@@ -20,9 +20,7 @@ export const ResultRapidTest = () => {
       <div>
         <p>{t('ResultRapidTestDescription1')}</p>
         <p>{t('ResultRapidTestDescription2')}</p>
-      </div>
-      <NoticeBox>
-        <div>
+        <p>
           <Trans i18nKey='ResultRapidTestNotice'>
             <a
               className='underline text-bcBlueLink'
@@ -34,8 +32,8 @@ export const ResultRapidTest = () => {
             </a>
             on getting a rapid antigen test kit.
           </Trans>
-        </div>
-      </NoticeBox>
+        </p>
+      </div>
     </ResultPageLayout>
   );
 };

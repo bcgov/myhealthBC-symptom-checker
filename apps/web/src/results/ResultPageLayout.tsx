@@ -22,7 +22,6 @@ export const ResultPageLayout = (props: ResultPageLayoutTypes) => {
 
   return (
     <div className='flex flex-col justify-center items-center m-auto'>
-      <div>{t('Recommendation')}</div>
       <div className={`my-5 border rounded-full ${imageBg}`}>
         <img src={image} height={110} width={110} alt={imageAlt} />
       </div>
