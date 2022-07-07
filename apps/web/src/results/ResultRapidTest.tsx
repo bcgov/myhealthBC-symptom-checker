@@ -3,7 +3,6 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import vial from '../images/vial.svg';
 import { ResultPageLayout } from './ResultPageLayout';
-import { NoticeBox } from '../components/NoticeBox';
 
 // language changes, but this is currently described as the "non-PCR" test result
 export const ResultRapidTest = () => {
