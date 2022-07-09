@@ -6,7 +6,7 @@ import { useFormikContext } from 'formik';
 import { SymptomCheckerForm } from '../types';
 import RadioButtons from '../components/RadioButtons';
 import { ErrorBox } from '../components/ErrorBox';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 export type SeverityQuestionProps = PropsWithChildren<ReactNode> & {
   symptom: string;
@@ -35,13 +35,29 @@ export const SeverityQuestion = (props: SeverityQuestionProps) => {
     );
   };
 
+  let desc = description || <QuestionDescription text={t(`${symptom}-description`)} />;
+  if (symptom === 'difficultBreathing') {
+    desc = (
+      <Trans t={t} i18nKey={`${symptom}-description`}>
+        If you are struggling to breathe or you can only speak in single words, call 9-1-1 or go
+        directly to the nearest emergency department an
+        <a
+          className='underline text-bcBlueLink'
+          href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
+        >
+          {' '}
+          Urgent and Primary Care Centre (UPCC)
+        </a>{' '}
+        or emergency department right away.
+      </Trans>
+    );
+  }
   return (
     <div>
       <div className='pb-5'>
         <Question>{t(`${symptom}-question`)}</Question>
-        {description || <QuestionDescription text={t(`${symptom}-description`)} />}
+        {desc}
       </div>
-
       <div>
         <RadioButtons name={field} options={options} />
         <ErrorBox error={error} />

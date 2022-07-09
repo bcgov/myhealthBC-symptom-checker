@@ -1,5 +1,5 @@
 {
-  "Question": "Are you experiencing new or worsening symptoms?",
+  "Question": "Do you have any of these other symptoms?",
   "Description": "Select the symptoms you have. If you are not experiencing any symptoms, select 'None of the above.'",
   "fever": "Fever or chills",
   "cough": "기침",

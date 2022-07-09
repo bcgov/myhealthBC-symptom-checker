@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { useFormikContext } from 'formik';
-import { SymptomCheckerForm } from '../types';
+import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
 import { HealthLinkBC } from 'src/components/HealthLinkBC';
 
@@ -18,9 +18,8 @@ export const SeverityNausea = () => {
     return (
       <div>
         <Trans t={t} i18nKey={`${symptom}-description`}>
-          <div className='text-base text-bcGray font-bold mb-2'>
-            You need to contact your health care provider or call 8-1-1 if you have any of these
-            symptoms:
+          <div className='text-base text-bcGray mb-2'>
+            Contact your health care provider or call 8-1-1 if:
             <ul className='list-disc pl-6'>
               <li>You are not able to keep down small sips of water</li>
               <li>
@@ -29,7 +28,6 @@ export const SeverityNausea = () => {
               </li>
             </ul>
           </div>
-          <div className='text-base text-bcGray'></div>
         </Trans>
         <div className='text-base text-bcGray'>
           <HealthLinkBC
@@ -52,6 +50,11 @@ export const SeverityNausea = () => {
         <div className='bg-bcLightBoxBackground md:bg-gray-50 my-4 p-4 border rounded'>
           <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
           <div className='font-bold mt-3'>{t(`${symptom}-${severity}-title`)}</div>
+          {severity === Severity.Severe ? (
+            <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>
+          ) : (
+            ''
+          )}
         </div>
       ) : (
         ''
