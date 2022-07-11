@@ -46,39 +46,40 @@ export const SeveritySoreThroat = () => {
       </div>
     );
   };
+  let severityDescription = <div />;
+  switch (severity) {
+    case Severity.Severe:
+      severityDescription = <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>;
+      break;
+    case Severity.Severe:
+      severityDescription = (
+        <div className='mt-3'>
+          <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
+            If you find you can’t are not able to drink anything, you need medical attention. call
+            9-1-1 or visit go to an
+            <a
+              className='underline text-bcBlueLink'
+              href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
+            >
+              {' '}
+              Urgent and Primary Care Centre (UPCC)
+            </a>{' '}
+            or an emergency department right away.
+          </Trans>
+        </div>
+      );
+
+      break;
+  }
 
   return (
     <SeverityQuestion symptom={symptom} description={renderDescription()}>
-      {severity ? (
+      {severity && (
         <div className='bg-bcLightBoxBackground md:bg-gray-50 my-4 p-4 border rounded'>
           <div className='text-bcBlueLink font-bold'>{t(`${severity}`)}</div>
           <div className='font-bold mt-3'>{t(`${symptom}-${severity}-title`)}</div>
-          {severity === Severity.Moderate ? (
-            <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>
-          ) : (
-            ''
-          )}
-          {severity === Severity.Severe ? (
-            <div className='mt-3'>
-              <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
-                If you find you can’t are not able to drink anything, you need medical attention.
-                call 9-1-1 or visit go to an
-                <a
-                  className='underline text-bcBlueLink'
-                  href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
-                >
-                  {' '}
-                  Urgent and Primary Care Centre (UPCC)
-                </a>{' '}
-                or an emergency department right away.
-              </Trans>
-            </div>
-          ) : (
-            ''
-          )}
+          {severityDescription}
         </div>
-      ) : (
-        ''
       )}
     </SeverityQuestion>
   );
