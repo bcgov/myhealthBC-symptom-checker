@@ -48,7 +48,7 @@ export const SeveritySoreThroat = () => {
   };
   let severityDescription = <div />;
   switch (severity) {
-    case Severity.Severe:
+    case Severity.Moderate:
       severityDescription = <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>;
       break;
     case Severity.Severe:
@@ -68,7 +68,6 @@ export const SeveritySoreThroat = () => {
           </Trans>
         </div>
       );
-
       break;
   }
 
