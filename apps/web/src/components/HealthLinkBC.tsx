@@ -4,27 +4,33 @@ import PropTypes from 'prop-types';
 
 export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey }) => {
   const { t } = useTranslation('severity');
-
   return (
     <Trans t={t} i18nKey={translationKey}>
-      Get more information about coughing from HealthLink BC information for{' '}
-      <a
-        className='underline text-bcBlueLink'
-        href={linkForChildren}
-        target='_blank'
-        rel='noreferrer'
-      >
-        children age 11 and younger
-      </a>{' '}
-      and for{' '}
-      <a
-        className='underline text-bcBlueLink'
-        href={linkForAdults}
-        target='_blank'
-        rel='noreferrer'
-      >
-        people age 12 and older.
-      </a>
+      <div className='text-base text-bcGray mb-2'>
+        Input title here
+        <ul className='list-disc pl-6'>
+          <li>
+            <a
+              className='underline text-bcBlueLink'
+              href={linkForChildren}
+              target='_blank'
+              rel='noreferrer'
+            >
+              Children 11 and younger
+            </a>
+          </li>
+          <li>
+            <a
+              className='underline text-bcBlueLink'
+              href={linkForAdults}
+              target='_blank'
+              rel='noreferrer'
+            >
+              People age 12 and older
+            </a>
+          </li>
+        </ul>
+      </div>
     </Trans>
   );
 };

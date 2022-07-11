@@ -18,12 +18,19 @@ export const SeverityHeadache = () => {
       <div>
         <Trans t={t} i18nKey={`${symptom}-description`}>
           <div className='text-base text-bcGray font-bold mb-2'>
-            If you have a severe headache that started suddenly and it feels like the worst headache
-            of your life, you need medical attention. Call 9-1-1 or visit an emergency department
-            right away.
+            If you have a severe headache that started suddenly and is the worst headache of your
+            life, you need medical attention. call 9-1-1 or go to an{' '}
+            <a
+              className='underline text-bcBlueLink'
+              href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
+            >
+              {' '}
+              Urgent and Primary Care Centre (UPCC)
+            </a>{' '}
+            or an emergency department right away.
           </div>
           <div className='text-base text-bcGray'>
-            Get more information about headaches from{' '}
+            Get more information from{' '}
             <a
               className='underline text-bcBlueLink'
               href='https://www.healthlinkbc.ca/health-topics/headaches-0'
@@ -32,7 +39,7 @@ export const SeverityHeadache = () => {
             >
               Healthlink BC
             </a>
-            .
+            about headaches.
           </div>
         </Trans>
       </div>

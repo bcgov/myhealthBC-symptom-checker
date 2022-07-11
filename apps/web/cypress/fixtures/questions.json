@@ -1,8 +1,8 @@
 {
   "q1": {
-    "question": "Are you experiencing any of the following?",
+    "question": "Do you have any of these symptoms?",
     "contents": [
-      "Severe difficulty breathing (e.g., struggling to breathe or speaking in single words)",
+      "Severe difficulty breathing, for example, you’re struggling to breathe or you can only speak in single words",
       "Severe chest pain",
       "Having a very hard time waking up",
       "Feeling confused",
@@ -10,14 +10,14 @@
     ]
   },
   "q2": {
-    "question": "Are you experiencing any of the following?",
+    "question": "Do you have any of these symptoms?",
     "contents": [
       "I cannot lie down because I'm having trouble breathing",
       "I'm having trouble managing my chronic health conditions because of difficulty breathing"
     ]
   },
   "q3": {
-    "question": "Are you experiencing new or worsening symptoms?",
+    "question": "Do you have any of these symptoms?",
     "contents": [
       "Select all the symptoms you have right now. If you dont have any of these symptoms, select 'none of the above.'"
     ],

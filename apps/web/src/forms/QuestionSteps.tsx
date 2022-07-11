@@ -15,7 +15,7 @@ import { SeverityDiarrhea } from './SeverityDiarrhea';
 import { SeveritySoreThroat } from './SeveritySoreThroat';
 import { SeverityCough } from './SeverityCough';
 import { SeverityHeadache } from './SeverityHeadache';
-import { SeverityQuestion } from './SeverityQuestion';
+import { SeverityBodyAches } from './SeverityBodyAches';
 
 export const QuestionSteps: Step[] = [
   {
@@ -54,20 +54,20 @@ export const QuestionSteps: Step[] = [
   },
   {
     type: QuestionType.SEVERITY,
-    symptom: 'cough',
-    component: <SeverityCough />,
-    key: 'What is the severity of your cough?',
-  },
-  {
-    type: QuestionType.SEVERITY,
     symptom: 'difficultBreathing',
     component: <SeverityDifficultBreathing />,
     key: 'What is the severity of your difficulty breathing?',
   },
   {
     type: QuestionType.SEVERITY,
+    symptom: 'cough',
+    component: <SeverityCough />,
+    key: 'What is the severity of your cough?',
+  },
+  {
+    type: QuestionType.SEVERITY,
     symptom: 'bodyAches',
-    component: <SeverityQuestion symptom='bodyAches' />,
+    component: <SeverityBodyAches />,
     key: 'What is the severity of your body aches?',
   },
   {
