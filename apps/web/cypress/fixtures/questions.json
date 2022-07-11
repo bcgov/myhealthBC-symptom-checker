@@ -49,11 +49,10 @@
     "question": "Are you an individual who is moderately to severely immunocompromised?",
     "contents": [
       "You’ve had an organ transplant and are taking anti-rejection medications",
-      "You are receiving treatment for cancer",
       "You’ve had a bone marrow or stem cell transplant",
+      "You are receiving treatment for cancer",
       "You’ve been diagnosed with a moderate to severe primary immunodeficiency disorder",
       "You have advanced or untreated HIV",
-      "You’ve been diagnosed with HIV and are not currently taking medications for it",
       "You are on dialysis and/or have severe kidney disease",
       "You are on active treatment with immunosuppressive therapies"
     ]
@@ -62,7 +61,8 @@
     "question": "Are you an individual who has any one of the following conditions?",
     "contents": [
       "You have cystic fibrosis",
-      "You have severe COPD, asthma or another serious respiratory condition (e.g. on long-term home oxygen, are being assessed for a lung transplant, have severe pulmonary arterial hypertension, severe pulmonary fibrosis, or severe interstitial lung disease)",
+      "You have severe chronic obstructive pulmonary disease (COPD) or asthma requiring hospitalization in the last year",
+      "You are taking biologics for asthma, severe lung disease and have at least one of the following: on long-term home oxygen, are being assessed for a lung transplant, have severe pulmonary arterial hypertension, severe pulmonary fibrosis, or severe interstitial lung disease",
       "You’ve been diagnosed with a rare blood disorder or inborn error of metabolism",
       "You’ve had a splenectomy or you have functional asplenia",
       "You have diabetes and are being treated with insulin",
@@ -71,10 +71,14 @@
     ]
   },
   "hwq3": {
-    "question": "Are you pregnant?"
+    "question": "Are you pregnant?",
+    "contents": ["This information helps us find the best testing options for you."]
   },
   "hwq4": {
-    "question": "Do you self-identify as Indigenous?"
+    "question": "Do you self-identify as Indigenous?",
+    "contents": [
+      "This information helps us find the best testing options for you. Proof of ancestry is not required."
+    ]
   },
   "hwq5": {
     "question": "Please select your COVID-19 vaccination status:",
@@ -95,11 +99,15 @@
   },
   "hwq7m": {
     "question": "Do you have 3 or more chronic conditions?",
-    "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
+    "contents": [
+      "For example, do you have obesity, diabetes, or a neurological condition? Or have you had heart failure or a stroke?"
+    ]
   },
   "hwq7s": {
     "question": "Do you have 1 or more chronic conditions?",
-    "contents": ["(e.g., obesity, diabetes, heart failure, stroke, or a neurological condition)"]
+    "contents": [
+      "For example, do you have obesity, diabetes, or a neurological condition? Or have you had heart failure or a stroke?"
+    ]
   },
   "severity": {
     "cough": "What is the severity of your cough?",
@@ -112,7 +120,7 @@
   },
   "recommendation": {
     "call911": {
-      "title": "Your symptoms require emergency medical care. Call 9-1-1 or visit an Urgent and Primary Care Centre or emergency department right away."
+      "title": "Your symptoms require emergency medical care."
     },
     "call811": {
       "title": "You should get health advice. Contact your health care provider or call 8-1-1 to talk to a nurse at HealthLink BC."
@@ -134,8 +142,9 @@
       ]
     },
     "rapidTest": {
-      "title": "You can get a rapid COVID test.",
+      "title": "Stay home and away from others until you feel well enough to return to your regular activities and you no longer have a fever.",
       "contents": [
+        "You can get a rapid COVID-19 test if you'd like.",
         "Rapid antigen testing kits are free for everyone. Visit your local pharmacy and ask for your testing kit.",
         "Find more information on getting a rapid antigen test kit."
       ]

@@ -102,7 +102,7 @@ export const QuestionSteps: Step[] = [
         question={{
           title: 'HWQ1',
           description: 'HWQ1-desc',
-          options: ['HWQ1-1', 'HWQ1-2', 'HWQ1-3', 'HWQ1-4', 'HWQ1-5', 'HWQ1-6', 'HWQ1-7', 'HWQ1-8'],
+          options: ['HWQ1-1', 'HWQ1-2', 'HWQ1-3', 'HWQ1-4', 'HWQ1-5', 'HWQ1-6', 'HWQ1-7'],
         }}
         name='healthWork.immunocompromised'
       />
@@ -116,7 +116,7 @@ export const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ2',
-          options: ['HWQ2-1', 'HWQ2-2', 'HWQ2-3', 'HWQ2-4', 'HWQ2-5', 'HWQ2-6', 'HWQ2-7'],
+          options: ['HWQ2-1', 'HWQ2-2', 'HWQ2-3', 'HWQ2-4', 'HWQ2-5', 'HWQ2-6', 'HWQ2-7', 'HWQ2-8'],
         }}
         name='healthWork.vulnerableConditions'
       />
@@ -130,6 +130,7 @@ export const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ3',
+          description: 'HWQ3-desc',
         }}
         name='healthWork.pregnant'
       />
@@ -143,6 +144,7 @@ export const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ4',
+          description: 'HWQ4-desc',
         }}
         name='indigenous'
       />

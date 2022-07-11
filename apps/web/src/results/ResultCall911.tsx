@@ -6,7 +6,6 @@ import { ResultPageLayout } from './ResultPageLayout';
 
 export const ResultCall911 = () => {
   const { t } = useTranslation();
-
   return (
     <ResultPageLayout
       image={ambulance}
@@ -16,8 +15,18 @@ export const ResultCall911 = () => {
       titleColor='text-bcRedError'
     >
       <Trans i18nKey='Result911Description'>
-        These symptoms require emergency medical care. You should <b>call 9-1-1 immediately</b>, or
-        go directly to your nearest emergency department.
+        <b>
+          Call 9-1-1 or visit an{' '}
+          <a
+            className='underline text-bcBlueLink'
+            href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
+            rel='noreferrer'
+            target='_blank'
+          >
+            Urgent and Primary Care Centre (UPCC)
+          </a>{' '}
+          or emergency department right away.
+        </b>
       </Trans>
     </ResultPageLayout>
   );

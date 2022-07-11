@@ -3,7 +3,6 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import vial from '../images/vial.svg';
 import { ResultPageLayout } from './ResultPageLayout';
-import { NoticeBox } from '../components/NoticeBox';
 
 // language changes, but this is currently described as the "non-PCR" test result
 export const ResultRapidTest = () => {
@@ -17,9 +16,10 @@ export const ResultRapidTest = () => {
       title={t('ResultRapidTest')}
       titleColor='text-bcBlueNav'
     >
-      <div>{t('ResultRapidTestDescription')}</div>
-      <NoticeBox>
-        <div>
+      <div>
+        <p>{t('ResultRapidTestDescription1')}</p>
+        <p>{t('ResultRapidTestDescription2')}</p>
+        <p>
           <Trans i18nKey='ResultRapidTestNotice'>
             <a
               className='underline text-bcBlueLink'
@@ -31,8 +31,8 @@ export const ResultRapidTest = () => {
             </a>
             on getting a rapid antigen test kit.
           </Trans>
-        </div>
-      </NoticeBox>
+        </p>
+      </div>
     </ResultPageLayout>
   );
 };

@@ -12,13 +12,13 @@ const Home = () => {
       <main className='bg-white'>
         <div className='container mx-auto max-w-main py-8'>
           <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
-          <div>Last updated: June 10, 2022</div>
-          <div className='flex flex-wrap md:flex-nowrap md:flex-row-reverse my-5'>
-            <div className='basis-full md:basis-1/2'>
+          <div>Last updated: July 7, 2022</div>
+          <div className='my-5'>
+            <div>
               <img src={banner} alt='government of british columbia' className='w-full' />
             </div>
-            <div className='basis-full md:basis-1/2 md:pr-4'>
-              <strong className='block my-4 md:mt-0'>{t('Tool description')}</strong>
+            <div>
+              <p className='my-4'>{t('Tool description')}</p>
               <Button
                 title={t('Start assessment')}
                 variant='primary'
@@ -28,40 +28,29 @@ const Home = () => {
               </Button>
             </div>
           </div>
-          <div
-            role='alert'
-            className='border-l-bcBluePrimary border-l-8 p-4 my-4 bg-bcLightBackground'
-          >
-            {t('Home alert')}
-          </div>
           <Trans i18nKey='home-desc'>
-            <p className='mb-2'>
-              You can also call 8-1-1 to talk to someone at HealthLink BC. They can:
+            <p>
+              <b>If you feel very sick or your symptoms are not improving,</b> contact your health
+              care provider. You can also call 8-1-1 for health advice or to get help in a different
+              language
             </p>
-            <ul className='list-disc pl-6'>
-              <li>Answer questions and provide advice for your specific situation</li>
-              <li>Offer help in different languages</li>
-            </ul>
-            <p className='mb-2'>
+            <p>
               Do not use this self-assessment to check symptoms for anyone under 2 years old.
-              Contact your health care provider or 8-1-1 instead.
+              Contact your health care provider or 8-1-1 instead.{' '}
+              <a
+                href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'
+                className='underline text-bcBlueLink'
+                rel='noreferrer'
+                target='_blank'
+              >
+                Learn more about COVID-19 and children.
+              </a>
             </p>
-            <p className='mb-2'>
+            <p>
               The information in this tool is based on expert guidance from the British Columbia
-              Centre for Disease (BCCDC). It does not replace your health care provider`&apos;`s
-              advice.
+              Centre for Disease (BCCDC). It does not replace your health care provider's advice.{' '}
             </p>
           </Trans>
-          <h2 className='text-3xl font-bold mb-5'>{t('home-children-header')}</h2>
-          <p>{t('home-children-desc')}</p>
-          <a
-            href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'
-            className='underline text-bcBlueLink'
-            rel='noreferrer'
-            target='_blank'
-          >
-            {t('home-children-link')}
-          </a>
         </div>
       </main>
     </>
