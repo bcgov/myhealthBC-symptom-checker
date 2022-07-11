@@ -17,7 +17,7 @@
     ]
   },
   "q3": {
-    "question": "Do you have any of these other symptoms?",
+    "question": "Do you have any of these symptoms?",
     "contents": [
       "Select all the symptoms you have right now. If you dont have any of these symptoms, select 'none of the above.'"
     ],
