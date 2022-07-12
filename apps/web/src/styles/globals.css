@@ -7,6 +7,10 @@ body,
 #root {
   height: 100%;
 }
+/* assumes radio input also has w-5 and h-5 classes. */
+input[type='radio'] {
+  min-width: 1.25rem;
+}
 
 @layer base {
   @font-face {
