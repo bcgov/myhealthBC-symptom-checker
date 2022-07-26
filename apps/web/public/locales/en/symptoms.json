@@ -1,5 +1,5 @@
 {
-  "Question": "Do you have any of these symptoms?",
+  "Question": "Do you have any of these other symptoms?",
   "Description": "Select all the symptoms you have right now. If you don't have any of these symptoms, select \"none of the above.\"",
   "fever": "Fever or chills",
   "cough": "Cough",
@@ -10,9 +10,9 @@
   "fatigue": "Extreme fatigue or tiredness",
   "runnyNose": "Runny nose",
   "sneezing": "Sneezing",
-  "diarrhea": "Diarrhea,  for example, having loose or watery stool that is not normal for you.",
+  "diarrhea": "Diarrhea, for example, having loose or watery stool that you don't normally have",
   "lossOfAppetite": "Loss of appetite",
   "nauseaVomiting": "Nausea or vomiting",
-  "bodyAches": "Body or muscle aches, for example, aches or pains in your body that you don't normally have.",
+  "bodyAches": "Body or muscle aches, for example, aches or pains in your body that you don't normally have",
   "none": "None of the above"
 }

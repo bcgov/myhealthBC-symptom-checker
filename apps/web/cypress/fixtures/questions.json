@@ -110,13 +110,13 @@
     ]
   },
   "severity": {
-    "cough": "What is the severity of your cough?",
-    "difficultBreathing": "What is the severity of your shortness of breath?",
-    "soreThroat": "What is the severity of your sore throat?",
-    "headache": "What is the severity of your headache?",
-    "diarrhea": "What is the severity of your diarrhea?",
-    "nauseaVomiting": "What is the severity of your nausea or vomiting?",
-    "bodyAches": "What is the severity of your body aches?"
+    "cough": "How severe is your cough?",
+    "difficultBreathing": "How severe is your shortness of breath?",
+    "soreThroat": "How severe is your sore throat?",
+    "headache": "How severe is your headache?",
+    "diarrhea": "How severe is your diarrhea?",
+    "nauseaVomiting": "How severe is your nausea or vomiting?",
+    "bodyAches": "How severe is your body aches?"
   },
   "recommendation": {
     "call911": {
