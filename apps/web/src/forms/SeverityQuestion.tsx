@@ -39,8 +39,8 @@ export const SeverityQuestion = (props: SeverityQuestionProps) => {
   if (symptom === 'difficultBreathing') {
     desc = (
       <Trans t={t} i18nKey={`${symptom}-description`}>
-        If you are struggling to breathe or you can only speak in single words, call 9-1-1 or go
-        directly to the nearest emergency department an
+        If you are struggling to breathe or you can only speak in single words, call 9-1-1 or go to
+        an
         <a
           className='underline text-bcBlueLink'
           href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'

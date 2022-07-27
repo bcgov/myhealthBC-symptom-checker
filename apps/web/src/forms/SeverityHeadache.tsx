@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useFormikContext } from 'formik';
 import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
+import { LinkUPCC } from 'src/components/LinkUPCC';
 
 export const SeverityHeadache = () => {
   const { t } = useTranslation('severity');
@@ -19,15 +20,7 @@ export const SeverityHeadache = () => {
         <Trans t={t} i18nKey={`${symptom}-description`}>
           <div className='text-base text-bcGray font-bold mb-2'>
             If you have a severe headache that started suddenly and is the worst headache of your
-            life, you need medical attention. call 9-1-1 or go to an{' '}
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
-            >
-              {' '}
-              Urgent and Primary Care Centre (UPCC)
-            </a>{' '}
-            or an emergency department right away.
+            life, call 9-1-1 or go to an {LinkUPCC} or emergency department right away.
           </div>
           <div className='text-base text-bcGray'>
             Get more information from{' '}

@@ -4,6 +4,7 @@ import { useFormikContext } from 'formik';
 import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
 import { HealthLinkBC } from '../components/HealthLinkBC';
+import { Link811 } from 'src/components/Link811';
 
 export const SeverityCough = () => {
   const { t } = useTranslation('severity');
@@ -19,16 +20,15 @@ export const SeverityCough = () => {
       <div>
         <Trans t={t} i18nKey={`${symptom}-description`}>
           <div className='text-base text-bcGray mb-2'>
-            Get more information from HealthLink BC about coughing for: Contact your health care
-            provider or call 8-1-1 if you have any of these symptoms:
+            Contact your health care provider or call {Link811} if:
             <ul className='list-disc pl-6'>
               <li>Your cough is getting worse</li>
-              <li>You start coughing up blood or sputum</li>
+              <li>You start coughing up blood or phlegm</li>
               <li>Your cough makes it hard to breathe</li>
             </ul>
           </div>
         </Trans>
-        <div className='text-base text-bcGray'>
+        <div className='text-base text-bcGray mt-3'>
           <HealthLinkBC
             linkForChildren={'https://www.healthlinkbc.ca/health-topics/coughs-age-11-and-younger'}
             linkForAdults={'https://www.healthlinkbc.ca/health-topics/coughs-age-12-and-older'}
@@ -40,7 +40,13 @@ export const SeverityCough = () => {
   };
   let severityDescription = <div />;
   if (severity === Severity.Severe) {
-    severityDescription = <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>;
+    severityDescription = (
+      <div className='mt-3'>
+        <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
+          You should get health advice. Call {Link811} or contact your health care provider.
+        </Trans>
+      </div>
+    );
   }
 
   return (

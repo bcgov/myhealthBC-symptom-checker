@@ -3,6 +3,8 @@ import { useTranslation, Trans } from 'react-i18next';
 import { useFormikContext } from 'formik';
 import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
+import { Link811 } from 'src/components/Link811';
+import { LinkUPCC } from 'src/components/LinkUPCC';
 
 export const SeveritySoreThroat = () => {
   const { t } = useTranslation('severity');
@@ -18,29 +20,25 @@ export const SeveritySoreThroat = () => {
       <div>
         <Trans t={t} i18nKey={`${symptom}-description`}>
           <div className='text-base text-bcGray mb-2'>
-            If your pain is increasing or if you’re having trouble swallowing, please contact your
-            health care provider or call 8-1-1 right away.
-            <br />
-            <br />
-            If you find you can’t are not able to drink anything, you need medical attention. call
-            9-1-1 or visit go to an{' '}
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
-            >
-              Urgent and Primary Care Centre (UPCC)
-            </a>{' '}
-            or an emergency department right away.
-          </div>
-          <div className='text-base text-bcGray mb-2'>
-            Get more information about sore throats from{' '}
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www.healthlinkbc.ca/illnesses-conditions/infectious-diseases/sore-throat-and-other-throat-problems'
-            >
-              HealthLink BC
-            </a>{' '}
-            about sore throats
+            <p>
+              If your pain is increasing or if you’re having trouble swallowing, contact your health
+              care provider or call {Link811} right away.
+            </p>
+
+            <p>
+              If you find you can’t drink anything, call 9-1-1 or go to an {LinkUPCC} or emergency
+              department right away.
+            </p>
+            <p>
+              Get more information from{' '}
+              <a
+                className='underline text-bcBlueLink'
+                href='https://www.healthlinkbc.ca/illnesses-conditions/infectious-diseases/sore-throat-and-other-throat-problems'
+              >
+                HealthLink BC
+              </a>{' '}
+              about sore throats.
+            </p>
           </div>
         </Trans>
       </div>

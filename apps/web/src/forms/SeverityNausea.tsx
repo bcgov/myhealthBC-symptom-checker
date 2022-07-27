@@ -4,6 +4,7 @@ import { useFormikContext } from 'formik';
 import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
 import { HealthLinkBC } from 'src/components/HealthLinkBC';
+import { Link811 } from 'src/components/Link811';
 
 export const SeverityNausea = () => {
   const { t } = useTranslation('severity');
@@ -19,12 +20,12 @@ export const SeverityNausea = () => {
       <div>
         <Trans t={t} i18nKey={`${symptom}-description`}>
           <div className='text-base text-bcGray mb-2'>
-            Contact your health care provider or call 8-1-1 if:
+            Contact your health care provider or call {Link811} if:
             <ul className='list-disc pl-6'>
-              <li>You are not able to keep down small sips of water</li>
+              <li>You're not able to keep down even small sips of water</li>
               <li>
-                You feel like you are dehydrated because you have less frequent urination or you
-                feel light-headed when you stand
+                You are dehydrated, for example, you don’t have to pee very often or you feel
+                light-headed when you stand up
               </li>
             </ul>
           </div>
@@ -45,7 +46,13 @@ export const SeverityNausea = () => {
   };
   let severityDescription = <div />;
   if (severity === Severity.Severe) {
-    severityDescription = <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>;
+    severityDescription = (
+      <div className='mt-3'>
+        <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
+          You should get health advice. Call {Link811} or contact your health care provider.
+        </Trans>
+      </div>
+    );
   }
 
   return (

@@ -116,7 +116,7 @@ export const QuestionSteps: Step[] = [
         answerOptions={YES_NO_OPTIONS}
         question={{
           title: 'HWQ2',
-          options: ['HWQ2-1', 'HWQ2-2', 'HWQ2-3', 'HWQ2-4', 'HWQ2-5', 'HWQ2-6', 'HWQ2-7', 'HWQ2-8'],
+          options: ['HWQ2-1', 'HWQ2-2', 'HWQ2-3', 'HWQ2-4', 'HWQ2-5', 'HWQ2-6', 'HWQ2-7'],
         }}
         name='healthWork.vulnerableConditions'
       />
@@ -157,6 +157,7 @@ export const QuestionSteps: Step[] = [
       <SymptomQuestion
         question={{
           title: 'HWQ5',
+          description: 'HWQ5-desc',
         }}
         answerOptions={Object.keys(VaccinationStatus).map((key, val) => {
           const index = val + 1;
