@@ -1,5 +1,6 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { Link811 } from 'src/components/Link811';
 
 import house from '../images/house.svg';
 import { ResultPageLayout } from './ResultPageLayout';
@@ -23,8 +24,8 @@ export const ResultAsymptomaticNoTest = () => {
       </p>
       <p>
         <Trans i18nKey='ResultAsymptomaticNotice1'>
-          If you have any questions, you can contact your health care provider or call 8-1-1 to talk
-          to a nurse at HealthLink BC
+          If you have any questions, contact your health care provider or call {Link811} to talk to
+          a nurse at HealthLink BC.
         </Trans>
       </p>
     </ResultPageLayout>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { Link811 } from 'src/components/Link811';
+import { LinkUPCC } from 'src/components/LinkUPCC';
 
 import stethoscope from '../images/stethoscope.svg';
 import { ResultPageLayout } from './ResultPageLayout';
@@ -14,18 +16,15 @@ export const ResultCall811 = () => {
       title={t('Result811')}
       titleColor='text-bcBlueNav'
     >
-      <Trans i18nKey='Result811Notice'>
-        <b>Pay attention to how you're feeling.</b> You should call 9-1-1 or visit an{' '}
-        <a
-          href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
-          className='underline text-bcBlueLink'
-          rel='noreferrer'
-          target='_blank'
-        >
-          Urgent and Primary Care Centre (UPCC)
-        </a>{' '}
-        or emergency department right away if you start to feel worse – for example, if it gets hard
-        to breathe or you can’t drink anything.
+      <Trans i18nKey='Result811Notice-a'>
+        <p>
+          Contact your health care provider or call {Link811} to talk to a nurse at HealthLink BC.
+        </p>
+        <p>
+          <b>Pay attention to how you're feeling.</b> If you start to feel vvery sick (for example,
+          if you're having trouble breathing or can't drink anything), call 9-1-1 or visit an{' '}
+          {LinkUPCC} emergency department right away.
+        </p>
       </Trans>
     </ResultPageLayout>
   );
