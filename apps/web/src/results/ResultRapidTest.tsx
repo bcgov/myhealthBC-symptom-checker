@@ -18,18 +18,17 @@ export const ResultRapidTest = () => {
     >
       <div>
         <p>{t('ResultRapidTestDescription1')}</p>
-        <p>{t('ResultRapidTestDescription2')}</p>
         <p>
-          <Trans i18nKey='ResultRapidTestNotice'>
+          <Trans i18nKey='ResultRapidTestNotice-a'>
             <a
               className='underline text-bcBlueLink'
               href='https://www2.gov.bc.ca/gov/content/covid-19/info/testing#get'
               rel='noreferrer'
               target='_blank'
             >
-              Find more information
+              Rapid antigen testing kits are free for everyone
             </a>
-            on getting a rapid antigen test kit.
+            . Visit your local pharmacy and ask for your testing kit.
           </Trans>
         </p>
       </div>

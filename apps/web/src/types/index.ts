@@ -28,6 +28,7 @@ export enum Severity {
 export enum VaccinationStatus {
   None = 'None',
   Partial = 'Partial',
+  PartialJJ = 'PartialJJ',
   Full = 'Full',
 }
 

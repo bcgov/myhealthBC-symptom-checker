@@ -13,7 +13,11 @@ const Home = () => {
       <main className='bg-white'>
         <div className='container mx-auto max-w-main py-8'>
           <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
-          <div>Last updated: July 7, 2022</div>
+          <Trans t={t} i18nKey={'Last updated'}>
+            <div>
+              Last updated: <b>July 7, 2022</b>
+            </div>
+          </Trans>
           <div className='my-5'>
             <div>
               <p className='my-4'>{t('Tool description')}</p>
@@ -43,10 +47,6 @@ const Home = () => {
               >
                 Learn more about COVID-19 and children.
               </a>
-            </p>
-            <p>
-              The information in this tool is based on expert guidance from the British Columbia
-              Centre for Disease (BCCDC). It does not replace your health care provider's advice.{' '}
             </p>
           </Trans>
         </div>
