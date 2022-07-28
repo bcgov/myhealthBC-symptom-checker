@@ -14,7 +14,7 @@ const Home = () => {
           <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
           <Trans t={t} i18nKey={'Last updated'}>
             <div>
-              Last updated: <b>July 7, 2022</b>
+              Last updated: <b>July 28, 2022</b>
             </div>
           </Trans>
           <div className='my-5'>
