@@ -47,7 +47,14 @@ export const SeveritySoreThroat = () => {
   let severityDescription = <div />;
   switch (severity) {
     case Severity.Moderate:
-      severityDescription = <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>;
+      severityDescription = (
+        <div className='mt-3'>
+          <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
+            If you're having trouble swallowing, please contact your health care provider or call{' '}
+            {Link811} right away.
+          </Trans>
+        </div>
+      );
       break;
     case Severity.Severe:
       severityDescription = (
