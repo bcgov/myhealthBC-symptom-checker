@@ -1,6 +1,5 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import banner from 'src/images/banner.svg';
 import { Button } from './Button';
 import { useNavigate } from 'react-router-dom';
 import { Link811 } from './Link811';

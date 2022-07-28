@@ -1,7 +1,4 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
-import { Button } from '../components/Button';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 type ResultPageLayoutTypes = PropsWithChildren<ReactNode> & {
   image: string;
@@ -13,12 +10,6 @@ type ResultPageLayoutTypes = PropsWithChildren<ReactNode> & {
 
 export const ResultPageLayout = (props: ResultPageLayoutTypes) => {
   const { image, imageBg, imageAlt, title, titleColor, children } = props;
-
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const restart = () => {
-    navigate('/');
-  };
 
   return (
     <div className='flex flex-col justify-center items-center m-auto'>
