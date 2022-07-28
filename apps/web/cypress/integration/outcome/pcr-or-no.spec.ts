@@ -98,6 +98,15 @@ describe('Recommendations', () => {
     cy.contains(questions.recommendation.rapidTest.title);
   });
 
+  // Case 8.5 - 2nd partial vaccination added
+  it('Case 8.5 Rapid Test > Indigenous no, partial JJ vax, over seventy, one or more coniditions no', () => {
+    cy.contains(questions.hwq4.question).no().continue();
+    cy.contains(questions.hwq5.question).selectRadio('PartialJJ').continue();
+    cy.contains(questions.hwq6.question).selectRadio('OverSeventy').continue();
+    cy.contains(questions.hwq7s.question).no().continue();
+    cy.contains(questions.recommendation.rapidTest.title);
+  });
+
   // Case 9
   it('Case 9 Rapid test > Indigenous no, full vax, under fifty,  multiple coniditions yes', () => {
     cy.contains(questions.hwq4.question).no().continue();
