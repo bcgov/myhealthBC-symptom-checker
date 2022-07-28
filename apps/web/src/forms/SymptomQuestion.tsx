@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Question } from '../components/Question';
 import { Options } from '../components/Options';
 import RadioButtons from 'src/components/RadioButtons';
@@ -34,7 +34,19 @@ export const SymptomQuestion = (props: FieldOptionProps) => {
       <div className='pb-7'>
         <Question>{t(question.title)}</Question>
         {question.description && (
-          <div className='text-base text-bcGray font-bold mb-2'>{t(question.description)}</div>
+          <div className='text-base text-bcGray font-bold mb-2'>
+            <Trans t={t} i18nKey={`${question.description}`}>
+              Examples of chronic conditions include:
+              <ul className='list-disc pl-6'>
+                <li>Obesity</li>
+                <li>Diabetes</li>
+                <li>Heart failure</li>
+                <li>Chronic respiratory condition</li>
+                <li>Kidney disease</li>
+                <li>Previous stroke</li>
+              </ul>
+            </Trans>
+          </div>
         )}
         {question.options && <Options options={question.options.map(option => t(option))} />}
         {question.content && <div className='mt-3'>{t(question.content)}</div>}

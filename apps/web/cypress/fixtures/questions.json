@@ -17,7 +17,7 @@
     ]
   },
   "q3": {
-    "question": "Do you have any of these symptoms?",
+    "question": "Do you have any of these other symptoms?",
     "contents": [
       "Select all the symptoms you have right now. If you dont have any of these symptoms, select 'none of the above.'"
     ],
@@ -46,7 +46,7 @@
     ]
   },
   "hwq1": {
-    "question": "Are you an individual who is moderately to severely immunocompromised?",
+    "question": "Are you moderately to severely immunocompromised?",
     "contents": [
       "You’ve had an organ transplant and are taking anti-rejection medications",
       "You’ve had a bone marrow or stem cell transplant",
@@ -58,13 +58,12 @@
     ]
   },
   "hwq2": {
-    "question": "Are you an individual who has any one of the following conditions?",
+    "question": "Do you have any one of the following conditions?",
     "contents": [
       "You have cystic fibrosis",
-      "You have severe chronic obstructive pulmonary disease (COPD) or asthma requiring hospitalization in the last year",
-      "You are taking biologics for asthma, severe lung disease and have at least one of the following: on long-term home oxygen, are being assessed for a lung transplant, have severe pulmonary arterial hypertension, severe pulmonary fibrosis, or severe interstitial lung disease",
+      "You have severe COPD, asthma or another serious respiratory condition. For example, you are on long-term home oxygen, are being assessed for a lung transplant, or you have severe pulmonary arterial hypertension, severe pulmonary fibrosis, or severe interstitial lung disease",
       "You’ve been diagnosed with a rare blood disorder or inborn error of metabolism",
-      "You’ve had a splenectomy or you have functional asplenia",
+      "You’ve had a splenectomy, or you have functional asplenia",
       "You have diabetes and are being treated with insulin",
       "You have a significant developmental disability",
       "You have a condition or syndrome that causes muscle weakness around the lungs requiring the use of a ventilator or continuous bi-PAP"
@@ -83,7 +82,8 @@
   "hwq5": {
     "question": "Please select your COVID-19 vaccination status:",
     "contents": [
-      "I am not vaccinated for COVID-19.",
+      "This information helps us find the best testing options for you.",
+      "Not vaccinated against COVID-19",
       "I have received 1 or 2 doses of a 2-dose series like Pfizer, Moderna, Novavax or AstraZeneca.",
       "I have received 1 dose of a 1-dose series like Johnson & Johnson.",
       "I am fully vaccinated (completed my vaccine series) and I have also received a booster dose."
@@ -91,11 +91,7 @@
   },
   "hwq6": {
     "question": "How old are you?",
-    "contents": [
-      "I am 49 years old or younger.",
-      "I am 50 to 69 years old.",
-      "I am 70 years old or older."
-    ]
+    "contents": ["49 years old or younger", "50 to 69 years old", "70 years old or older"]
   },
   "hwq7m": {
     "question": "Do you have 3 or more chronic conditions?",
@@ -110,20 +106,23 @@
     ]
   },
   "severity": {
-    "cough": "What is the severity of your cough?",
-    "difficultBreathing": "What is the severity of your shortness of breath?",
-    "soreThroat": "What is the severity of your sore throat?",
-    "headache": "What is the severity of your headache?",
-    "diarrhea": "What is the severity of your diarrhea?",
-    "nauseaVomiting": "What is the severity of your nausea or vomiting?",
-    "bodyAches": "What is the severity of your body aches?"
+    "cough": "How severe is your cough?",
+    "difficultBreathing": "How severe is your shortness of breath?",
+    "soreThroat": "How severe is your sore throat?",
+    "headache": "How severe is your headache?",
+    "diarrhea": "How severe is your diarrhea?",
+    "nauseaVomiting": "How severe is your nausea or vomiting?",
+    "bodyAches": "How severe are your body aches?"
   },
   "recommendation": {
     "call911": {
       "title": "Your symptoms require emergency medical care."
     },
     "call811": {
-      "title": "You should get health advice. Contact your health care provider or call 8-1-1 to talk to a nurse at HealthLink BC."
+      "title": "You should get health advice.",
+      "contents": [
+        "Contact your health care provider or call 8-1-1 to talk to a nurse at HealthLink BC."
+      ]
     },
     "asymptomatic": {
       "title": "You do not need a COVID-19 test.",
@@ -144,9 +143,8 @@
     "rapidTest": {
       "title": "Stay home and away from others until you feel well enough to return to your regular activities and you no longer have a fever.",
       "contents": [
-        "You can get a rapid COVID-19 test if you'd like.",
-        "Rapid antigen testing kits are free for everyone. Visit your local pharmacy and ask for your testing kit.",
-        "Find more information on getting a rapid antigen test kit."
+        "You can use a rapid COVID-19 test if you'd like.",
+        "Rapid antigen testing kits are free for everyone. Visit your local pharmacy and ask for your testing kit."
       ]
     }
   }

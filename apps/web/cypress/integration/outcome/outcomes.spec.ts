@@ -108,9 +108,10 @@ describe('Recommendations', () => {
     cy.contains(questions.recommendation.rapidTest.title);
   });
 
-  it('routes to the landing page by retake button', () => {
+  // removed Retake button based on changes Jul 20 2022
+  it.skip('routes to the landing page by retake button', () => {
     cy.contains(questions.q1.question).yes().continue();
     cy.contains('Retake the Self-Assessment').click();
-    cy.contains('COVID 19 self-assessment tool');
+    cy.contains('COVID-19 self-assessment tool');
   });
 });

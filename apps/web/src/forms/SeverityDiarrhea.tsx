@@ -3,6 +3,7 @@ import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { Severity, SymptomCheckerForm } from 'src/types';
 import { SeverityQuestion } from './SeverityQuestion';
+import { Link811 } from 'src/components/Link811';
 
 export const SeverityDiarrhea = () => {
   const { t } = useTranslation('severity');
@@ -16,17 +17,17 @@ export const SeverityDiarrhea = () => {
       <div>
         <Trans t={t} i18nKey={`${symptom}-description`}>
           <div className='text-base text-bcGray mb-2'>
-            Contact your health care provider or call 8-1-1 if:
+            Contact your health care provider or call {Link811} if:
           </div>
           <ul className='list-disc pl-6'>
-            <li>Your diarrhea is getting worse.</li>
-            <li>You have bloody diarrhea or black, tarry stool.</li>
+            <li>Your diarrhea is getting worse</li>
+            <li>You have bloody diarrhea or black, tarry stool</li>
             <li>
               You are dehydrated, for example, you don’t have to pee very often or you feel
               light-headed when you stand up
             </li>
           </ul>
-          <div className='text-base text-bcGray'>
+          <div className='text-base text-bcGray mt-3'>
             Get more information from{' '}
             <a
               className='underline text-bcBlueLink'
@@ -35,7 +36,7 @@ export const SeverityDiarrhea = () => {
               target='_blank'
             >
               Healthlink BC
-            </a>
+            </a>{' '}
             about diarrhea.
           </div>{' '}
         </Trans>
@@ -44,7 +45,14 @@ export const SeverityDiarrhea = () => {
   };
   let severityDescription = <div />;
   if (severity === Severity.Severe) {
-    severityDescription = <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>;
+    severityDescription = (
+      <div className='mt-3'>
+        <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
+          <p>I have loose stools more than 10 times each day (within 24 hours).</p>
+          <p>You should get health advice. Call {Link811} or contact your health care provider.</p>
+        </Trans>
+      </div>
+    );
   }
 
   return (

@@ -1,7 +1,8 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { useFormikContext } from 'formik';
 import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
+import { Link811 } from 'src/components/Link811';
 
 export const SeverityBodyAches = () => {
   const { t } = useTranslation('severity');
@@ -14,7 +15,13 @@ export const SeverityBodyAches = () => {
 
   let severityDescription = <div />;
   if (severity === Severity.Severe) {
-    severityDescription = <div className='mt-3'>{t(`${symptom}-${severity}-desc`)}</div>;
+    severityDescription = (
+      <div className='mt-3'>
+        <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
+          You should get health advice. Call {Link811} or contact your health care provider.
+        </Trans>
+      </div>
+    );
   }
   return (
     <SeverityQuestion symptom={symptom}>

@@ -16,7 +16,7 @@ export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey })
               target='_blank'
               rel='noreferrer'
             >
-              Children 11 and younger
+              Children age 11 and younger
             </a>
           </li>
           <li>
