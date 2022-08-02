@@ -1,16 +1,16 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
-import ambulance from '../images/ambulance.svg';
+import call911 from '../images/call911.svg';
 import { ResultPageLayout } from './ResultPageLayout';
 
 export const ResultCall911 = () => {
   const { t } = useTranslation();
   return (
     <ResultPageLayout
-      image={ambulance}
-      imageBg='lightRedBackground'
-      imageAlt='safe house'
+      image={call911}
+      imageBg='bg-white'
+      imageAlt='ambulance'
       title={t('Result911')}
       titleColor='text-bcRedError'
     >

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import vial from '../images/vial.svg';
+import symptomaticTest from '../images/symptomaticTest.svg';
 import { ResultPageLayout } from './ResultPageLayout';
 import { Link811 } from 'src/components/Link811';
 import { LinkUPCC } from 'src/components/LinkUPCC';
@@ -10,9 +10,9 @@ export const ResultSymptomaticTest = () => {
 
   return (
     <ResultPageLayout
-      image={vial}
-      imageBg='bg-lightYellowBackground'
-      imageAlt='vial'
+      image={symptomaticTest}
+      imageBg='bg-white'
+      imageAlt='rapid test'
       title={t('ResultSymptomaticTest')}
       titleColor='text-bcBlueNav'
     >

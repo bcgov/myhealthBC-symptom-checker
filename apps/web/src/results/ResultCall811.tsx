@@ -3,20 +3,20 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Link811 } from 'src/components/Link811';
 import { LinkUPCC } from 'src/components/LinkUPCC';
 
-import stethoscope from '../images/stethoscope.svg';
+import call811 from '../images/call811.svg';
 import { ResultPageLayout } from './ResultPageLayout';
 export const ResultCall811 = () => {
   const { t } = useTranslation();
 
   return (
     <ResultPageLayout
-      image={stethoscope}
-      imageBg='bg-lightYellowBackground'
+      image={call811}
+      imageBg='bg-white'
       imageAlt='stethoscope'
       title={t('Result811')}
       titleColor='text-bcBlueNav'
     >
-      <Trans i18nKey='Result811Notice-a'>
+      <Trans i18nKey='Result811Notice'>
         <p>
           Contact your health care provider or call {Link811} to talk to a nurse at HealthLink BC.
         </p>
