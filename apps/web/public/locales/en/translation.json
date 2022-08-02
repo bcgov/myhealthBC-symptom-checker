@@ -85,6 +85,7 @@
   "HWQ2-5": "You have diabetes and are being treated with insulin",
   "HWQ2-6": "You have a significant developmental disability",
   "HWQ2-7": "You have a condition or syndrome that causes muscle weakness around the lungs requiring the use of a ventilator or continuous bi-PAP",
+  "HWQ2-8": "On dialysis or have stage 5 chronic kidney disease (eGFR ≤ 15ml/min)",
   "HWQ3": "Are you pregnant?",
   "HWQ3-desc": "This information helps us find the best testing options for you.",
   "HWQ4": "Do you self-identify as Indigenous?",
