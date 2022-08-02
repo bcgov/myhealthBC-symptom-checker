@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+version="1.1" 
+width="512" height="512" 
+x="0" y="0" 
+viewBox="0 0 32 32" 
+style="enable-background:new 0 0 512 512" 
+xml:space="preserve">
+<g>
+<path fill="#1A2E5D" xmlns="http://www.w3.org/2000/svg" d="m8 8v-3a3 3 0 0 0 -6 0v3a3 3 0 0 0 2 2.816v18.184a1 1 0 0 0 2 0v-18.184a3 3 0 0 0 2-2.816zm-2 0a1 1 0 0 1 -2 0v-3a1 1 0 0 1 2 0z"/>
+<path fill="#1A2E5D" xmlns="http://www.w3.org/2000/svg" d="m23 13a3 3 0 0 0 -3 3v7a3 3 0 0 0 6 0v-7a3 3 0 0 0 -3-3zm1 10a1 1 0 0 1 -2 0v-7a1 1 0 0 1 2 0z"/>
+<path fill="#1A2E5D" xmlns="http://www.w3.org/2000/svg" d="m13 14h-1v-1a1 1 0 0 0 -2 0v1h-1a1 1 0 0 0 0 2h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2z" />
+<path fill="#1A2E5D" xmlns="http://www.w3.org/2000/svg" d="m13 24h-4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2z"/>
+<path fill="#1A2E5D" xmlns="http://www.w3.org/2000/svg" d="m27 2h-8a3 3 0 0 0 -3 3v22a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-22a3 3 0 0 0 -3-3zm1 25a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1-1v-22a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1z"/>
+<path fill="#1A2E5D" xmlns="http://www.w3.org/2000/svg" d="m23 6a3 3 0 1 0 3 3 3 3 0 0 0 -3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1 -1 1z" />
+</g></svg>

@@ -13,7 +13,7 @@ export const ResultPageLayout = (props: ResultPageLayoutTypes) => {
 
   return (
     <div className='flex flex-col justify-center items-center m-auto'>
-      <div className={`my-5 border rounded-full ${imageBg}`}>
+      <div className={`my-5 ${imageBg}`}>
         <img src={image} height={110} width={110} alt={imageAlt} />
       </div>
       <h1 className={`text-3xl font-bold ${titleColor}`}>{title}</h1>

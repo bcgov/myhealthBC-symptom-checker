@@ -52,7 +52,7 @@
   "ResultSymptomaticNoTestNotice3": "For more information on COVID-19 and how to stay safe, visit the <2>BCCDC website</2>.",
   "ResultRapidTest": "Stay home and away from others until you feel well enough to return to your regular activities and you no longer have a fever.",
   "ResultRapidTestDescription1": "You can use a rapid COVID-19 test if you'd like.",
-  "ResultRapidTestNotice": "Rapid antigen testing kits are free for everyone. Visit your local pharmacy and ask for your testing kit.",
+  "ResultRapidTestNotice": "<0>Rapid antigen testing kits are free for everyone</0>. Visit your local pharmacy and ask for your testing kit.",
   "ResultSymptomaticTest": "Please get a COVID-19 test and self-isolate.",
   "ResultSymptomaticTestDescription1": "<p>A positive Rapid Antigen Test (RAT) result is acceptable for initiating treatment.</p><1><0>Rapid antigen testing kits are free for everyone</0>. Visit your local pharmacy and ask for your testing kit.</1><2><0>If you test positive,</0> you need to self-isolate. This means staying home and away from others.</2><p>Find out:</p>",
   "ResultSymptomaticTestDescription2": "<0><0><0>How long you need to self-isolate</0></0><1><0>If you can access treatment for COVID-19</0></1></0>",
