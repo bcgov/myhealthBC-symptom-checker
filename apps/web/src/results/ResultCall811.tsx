@@ -21,7 +21,7 @@ export const ResultCall811 = () => {
           Contact your health care provider or call {Link811} to talk to a nurse at HealthLink BC.
         </p>
         <p>
-          <b>Pay attention to how you're feeling.</b> If you start to feel vvery sick (for example,
+          <b>Pay attention to how you're feeling.</b> If you start to feel very sick (for example,
           if you're having trouble breathing or can't drink anything), call 9-1-1 or visit an{' '}
           {LinkUPCC} emergency department right away.
         </p>
