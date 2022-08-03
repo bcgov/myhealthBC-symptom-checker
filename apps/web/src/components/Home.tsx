@@ -14,7 +14,7 @@ const Home = () => {
           <h2 className='text-3xl font-bold mb-5'>{t('COVID 19 self-assessment tool')}</h2>
           <Trans t={t} i18nKey={'Last updated'}>
             <div>
-              Last updated: <b>July 28, 2022</b>
+              Last updated: <b>August 10, 2022</b>
             </div>
           </Trans>
           <div className='my-5'>
@@ -44,8 +44,9 @@ const Home = () => {
                 rel='noreferrer'
                 target='_blank'
               >
-                Learn more about COVID-19 and children.
+                Learn more about COVID-19 and children
               </a>
+              .
             </p>
           </Trans>
         </div>
