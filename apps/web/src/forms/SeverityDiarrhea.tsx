@@ -48,7 +48,6 @@ export const SeverityDiarrhea = () => {
     severityDescription = (
       <div className='mt-3'>
         <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
-          <p>I have loose stools more than 10 times each day (within 24 hours).</p>
           <p>You should get health advice. Call {Link811} or contact your health care provider.</p>
         </Trans>
       </div>
