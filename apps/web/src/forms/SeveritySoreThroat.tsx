@@ -60,8 +60,7 @@ export const SeveritySoreThroat = () => {
       severityDescription = (
         <div className='mt-3'>
           <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
-            If you find you can’t are not able to drink anything, you need medical attention. call
-            9-1-1 or visit go to an
+            If you find you can’t drink anything, call 9-1-1 or go to an
             <a
               className='underline text-bcBlueLink'
               href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
@@ -69,7 +68,7 @@ export const SeveritySoreThroat = () => {
               {' '}
               Urgent and Primary Care Centre (UPCC)
             </a>{' '}
-            or an emergency department right away.
+            or emergency department right away.
           </Trans>
         </div>
       );
