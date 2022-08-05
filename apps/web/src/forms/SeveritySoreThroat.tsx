@@ -50,8 +50,8 @@ export const SeveritySoreThroat = () => {
       severityDescription = (
         <div className='mt-3'>
           <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
-            If you're having trouble swallowing, please contact your health care provider or call{' '}
-            {Link811} right away.
+            If you're having trouble swallowing, contact your health care provider or call {Link811}{' '}
+            right away.
           </Trans>
         </div>
       );
