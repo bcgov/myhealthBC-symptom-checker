@@ -61,7 +61,7 @@
   "Result811": "You should get health advice.",
   "Result811Notice": "<0>Contact your health care provider or call <1>8-1-1</1> to talk to a nurse at HealthLink BC.</0><1><0>Pay attention to how you're feeling.</0> If you start to feel very sick (for example, if you're having trouble breathing or can't drink anything), call 9-1-1 or visit an <3>Urgent and Primary Care Centre (UPCC)</3> emergency department right away.</1>",
   "Result911": "Your symptoms require emergency medical care.",
-  "Result911Description": "<0>Call 9-1-1 or visit an <2>Urgent and Primary Care Centre (UPCC)</2> or emergency department right away.</0>",
+  "Result911Description": "<0>Call 9-1-1 or visit an <1>Urgent and Primary Care Centre (UPCC)</1> or emergency department right away.</0>",
   "Retake": "Retake the Self-Assessment",
   "Runny nose": "Runny nose",
   "Shortness of breath": "Shortness of breath",

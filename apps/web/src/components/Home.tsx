@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Button } from './Button';
 import { useNavigate } from 'react-router-dom';
 import { Link811 } from './Link811';
+import { Link } from './Link';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -38,14 +39,9 @@ const Home = () => {
             <p>
               For children under 2 years old, contact your health care provider directly or{' '}
               {Link811}.{' '}
-              <a
-                href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'
-                className='underline text-bcBlueLink'
-                rel='noreferrer'
-                target='_blank'
-              >
+              <Link href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/covid-19-and-children'>
                 Learn more about COVID-19 and children
-              </a>
+              </Link>
               .
             </p>
           </Trans>

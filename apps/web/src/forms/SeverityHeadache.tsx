@@ -4,6 +4,7 @@ import { useFormikContext } from 'formik';
 import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
 import { LinkUPCC } from 'src/components/LinkUPCC';
+import { Link } from 'src/components/Link';
 
 export const SeverityHeadache = () => {
   const { t } = useTranslation('severity');
@@ -24,14 +25,7 @@ export const SeverityHeadache = () => {
           </div>
           <div className='text-base text-bcGray'>
             Get more information from{' '}
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www.healthlinkbc.ca/health-topics/headaches-0'
-              rel='noreferrer'
-              target='_blank'
-            >
-              Healthlink BC
-            </a>
+            <Link href='https://www.healthlinkbc.ca/health-topics/headaches-0'>Healthlink BC</Link>{' '}
             about headaches.
           </div>
         </Trans>

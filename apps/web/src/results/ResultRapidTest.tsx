@@ -1,5 +1,6 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { Link } from 'src/components/Link';
 
 import rapidTest from '../images/rapidTest.svg';
 import { ResultPageLayout } from './ResultPageLayout';
@@ -20,14 +21,9 @@ export const ResultRapidTest = () => {
         <p>{t('ResultRapidTestDescription1')}</p>
         <p>
           <Trans i18nKey='ResultRapidTestNotice'>
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www2.gov.bc.ca/gov/content/covid-19/info/testing#get'
-              rel='noreferrer'
-              target='_blank'
-            >
+            <Link href='https://www2.gov.bc.ca/gov/content/covid-19/info/testing#get'>
               Rapid antigen testing kits are free for everyone
-            </a>
+            </Link>
             . Visit your local pharmacy and ask for your testing kit.
           </Trans>
         </p>

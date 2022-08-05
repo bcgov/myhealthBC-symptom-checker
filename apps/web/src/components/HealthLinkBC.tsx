@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { Link } from './Link';
 
 export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey }) => {
   const { t } = useTranslation('severity');
@@ -10,24 +11,10 @@ export const HealthLinkBC = ({ linkForChildren, linkForAdults, translationKey })
         Input title here
         <ul className='list-disc pl-6'>
           <li>
-            <a
-              className='underline text-bcBlueLink'
-              href={linkForChildren}
-              target='_blank'
-              rel='noreferrer'
-            >
-              Children age 11 and younger
-            </a>
+            <Link href={linkForChildren}>Children age 11 and younger</Link>
           </li>
           <li>
-            <a
-              className='underline text-bcBlueLink'
-              href={linkForAdults}
-              target='_blank'
-              rel='noreferrer'
-            >
-              People age 12 and older
-            </a>
+            <Link href={linkForAdults}>People age 12 and older</Link>
           </li>
         </ul>
       </div>

@@ -5,6 +5,7 @@ import { Severity, SymptomCheckerForm } from '../types';
 import { SeverityQuestion } from './SeverityQuestion';
 import { Link811 } from 'src/components/Link811';
 import { LinkUPCC } from 'src/components/LinkUPCC';
+import { Link } from 'src/components/Link';
 
 export const SeveritySoreThroat = () => {
   const { t } = useTranslation('severity');
@@ -31,12 +32,9 @@ export const SeveritySoreThroat = () => {
             </p>
             <p>
               Get more information from{' '}
-              <a
-                className='underline text-bcBlueLink'
-                href='https://www.healthlinkbc.ca/illnesses-conditions/infectious-diseases/sore-throat-and-other-throat-problems'
-              >
+              <Link href='https://www.healthlinkbc.ca/illnesses-conditions/infectious-diseases/sore-throat-and-other-throat-problems'>
                 HealthLink BC
-              </a>{' '}
+              </Link>{' '}
               about sore throats.
             </p>
           </div>
@@ -60,15 +58,8 @@ export const SeveritySoreThroat = () => {
       severityDescription = (
         <div className='mt-3'>
           <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
-            If you find you can’t drink anything, call 9-1-1 or go to an
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www.healthlinkbc.ca/health-services/urgent-and-primary-care-centres'
-            >
-              {' '}
-              Urgent and Primary Care Centre (UPCC)
-            </a>{' '}
-            or emergency department right away.
+            If you find you can’t drink anything, call 9-1-1 or go to an {LinkUPCC} or emergency
+            department right away.
           </Trans>
         </div>
       );
