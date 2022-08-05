@@ -81,7 +81,7 @@
     ]
   },
   "hwq5": {
-    "question": "Please select your COVID-19 vaccination status:",
+    "question": "Please select your vaccine status:",
     "contents": [
       "This information helps us find the best testing options for you.",
       "Not vaccinated against COVID-19",
