@@ -61,9 +61,10 @@
     "question": "Do you have any one of the following conditions?",
     "contents": [
       "You have cystic fibrosis",
-      "You have severe COPD, asthma or another serious respiratory condition. For example, you are on long-term home oxygen, are being assessed for a lung transplant, or you have severe pulmonary arterial hypertension, severe pulmonary fibrosis, or severe interstitial lung disease",
+      "You have severe chronic obstructive pulmonary disease (COPD) or asthma requiring hospitalization in the last year ",
+      "You are taking biologics for asthma, severe lung disease and have at least one of the following: on long-term home oxygen, are being assessed for a lung transplant, have severe pulmonary arterial hypertension, severe pulmonary fibrosis, or severe interstitial lung disease",
       "You’ve been diagnosed with a rare blood disorder or inborn error of metabolism",
-      "You’ve had a splenectomy, or you have functional asplenia",
+      "You’ve had a splenectomy or you have functional asplenia",
       "You have diabetes and are being treated with insulin",
       "You have a significant developmental disability",
       "You have a condition or syndrome that causes muscle weakness around the lungs requiring the use of a ventilator or continuous bi-PAP",
@@ -81,7 +82,7 @@
     ]
   },
   "hwq5": {
-    "question": "Please select your COVID-19 vaccination status:",
+    "question": "Please select your vaccine status:",
     "contents": [
       "This information helps us find the best testing options for you.",
       "Not vaccinated against COVID-19",

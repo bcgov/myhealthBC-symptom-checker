@@ -1,10 +1,7 @@
+import { Link, defaultLinkClass } from './Link';
+
 export const Link811 = (
-  <a
-    href='tel:811'
-    className='underline text-bcBlueLink whitespace-nowrap'
-    rel='noreferrer'
-    target='_blank'
-  >
+  <Link href='tel:811' className={`${defaultLinkClass} whitespace-nowrap`}>
     8-1-1
-  </a>
+  </Link>
 );

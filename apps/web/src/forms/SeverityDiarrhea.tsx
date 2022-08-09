@@ -4,6 +4,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Severity, SymptomCheckerForm } from 'src/types';
 import { SeverityQuestion } from './SeverityQuestion';
 import { Link811 } from 'src/components/Link811';
+import { Link } from 'src/components/Link';
 
 export const SeverityDiarrhea = () => {
   const { t } = useTranslation('severity');
@@ -29,14 +30,9 @@ export const SeverityDiarrhea = () => {
           </ul>
           <div className='text-base text-bcGray mt-3'>
             Get more information from{' '}
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www.healthlinkbc.ca/illnesses-conditions/bowel-and-gastrointestinal-conditions/mild-moderate-or-severe-diarrhea'
-              rel='noreferrer'
-              target='_blank'
-            >
+            <Link href='https://www.healthlinkbc.ca/illnesses-conditions/bowel-and-gastrointestinal-conditions/mild-moderate-or-severe-diarrhea'>
               Healthlink BC
-            </a>{' '}
+            </Link>{' '}
             about diarrhea.
           </div>{' '}
         </Trans>
@@ -48,7 +44,6 @@ export const SeverityDiarrhea = () => {
     severityDescription = (
       <div className='mt-3'>
         <Trans t={t} i18nKey={`${symptom}-${severity}-desc`}>
-          <p>I have loose stools more than 10 times each day (within 24 hours).</p>
           <p>You should get health advice. Call {Link811} or contact your health care provider.</p>
         </Trans>
       </div>

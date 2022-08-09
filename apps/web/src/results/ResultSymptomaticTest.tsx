@@ -4,6 +4,7 @@ import symptomaticTest from '../images/symptomaticTest.svg';
 import { ResultPageLayout } from './ResultPageLayout';
 import { Link811 } from 'src/components/Link811';
 import { LinkUPCC } from 'src/components/LinkUPCC';
+import { Link } from 'src/components/Link';
 
 export const ResultSymptomaticTest = () => {
   const { t } = useTranslation();
@@ -20,14 +21,9 @@ export const ResultSymptomaticTest = () => {
         <Trans i18nKey='ResultSymptomaticTestDescription1'>
           <p>A positive Rapid Antigen Test (RAT) result is acceptable for initiating treatment.</p>
           <p>
-            <a
-              className='underline text-bcBlueLink'
-              href='https://www2.gov.bc.ca/gov/content/covid-19/info/testing#get'
-              rel='noreferrer'
-              target='_blank'
-            >
+            <Link href='https://www2.gov.bc.ca/gov/content/covid-19/info/testing#get'>
               Rapid antigen testing kits are free for everyone
-            </a>
+            </Link>
             . Visit your local pharmacy and ask for your testing kit.
           </p>
           <p>
@@ -40,24 +36,14 @@ export const ResultSymptomaticTest = () => {
         <Trans i18nKey='ResultSymptomaticTestDescription2'>
           <ul className='list-disc pl-6'>
             <li>
-              <a
-                className='underline text-bcBlueLink'
-                href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/self-isolation#Self-isolation'
-                rel='noreferrer'
-                target='_blank'
-              >
+              <Link href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/self-isolation#Self-isolation'>
                 How long you need to self-isolate
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className='underline text-bcBlueLink'
-                href='https://www2.gov.bc.ca/gov/content/covid-19/vaccine/treatments#criteria'
-                rel='noreferrer'
-                target='_blank'
-              >
+              <Link href='https://www2.gov.bc.ca/gov/content/covid-19/vaccine/treatments#criteria'>
                 If you can access treatment for COVID-19
-              </a>
+              </Link>
             </li>
           </ul>
         </Trans>
