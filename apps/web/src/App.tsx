@@ -10,9 +10,14 @@ const App = () => {
     const script = document.createElement('script');
     switch (process.env.REACT_APP_ENV_NAME) {
       case 'dev':
+        console.log('Snowplow is not enabled for dev');
+        return;
       case 'test':
+        console.log('Snowplow is not enabled for test');
+        return;
+      case 'prod':
         console.log('Adding Snowplow script');
-        script.src = '/analytics/snowplow.dev.js';
+        script.src = '/analytics/snowplow.js';
         script.async = true;
         break;
       default:
