@@ -37,7 +37,7 @@ export const ResultRapidTest = () => {
             </li>
             <li>
               Work as a first responder (police officer, firefighter, emergency medical technician
-              or paramedic, or
+              or paramedic), or
             </li>
             <li>
               Live or work in a congregate setting, like a long-term care facility, shelter,
