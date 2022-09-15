@@ -26,6 +26,13 @@ export const ResultRapidTest = () => {
             </Link>
             . Visit your local pharmacy and ask for your testing kit.
           </p>
+          <p>
+            Information about managing your symptoms is available on the{' '}
+            <Link href='http://www.bccdc.ca/health-info/diseases-conditions/covid-19/if-you-have-covid-19'>
+              BCCDC website
+            </Link>
+            .
+          </p>
         </Trans>
       </div>
     </ResultPageLayout>
