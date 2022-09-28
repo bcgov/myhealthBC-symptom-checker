@@ -22,7 +22,6 @@ target_env = "$(ENV_NAME)"
 project_name = "$(PROJECT_NAME)"
 project_code = "$(PROJECT_CODE)"
 git_version = "$(PROJECT_NAME)-$(COMMIT_SHA)"
-
 endef
 export TFVARS_DATA
 

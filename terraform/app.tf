@@ -33,7 +33,7 @@ resource "aws_cloudfront_function" "request" {
 
 resource "aws_cloudfront_distribution" "app" {
   comment = local.app_name
-  aliases = var.target_env == "prod" ? [] : ["${var.target_env}.symchk.freshworks.club"]
+  aliases = var.target_env == "prod" ? ["covidcheck.gov.bc.ca"] : ["${var.target_env}.symchk.freshworks.club"]
 
   origin {
     domain_name = aws_s3_bucket.app.bucket_regional_domain_name
@@ -47,9 +47,11 @@ resource "aws_cloudfront_distribution" "app" {
   # Enable in production for production certificate data import
     dynamic "viewer_certificate" {
       for_each = local.is_prod
-      content {
-        cloudfront_default_certificate = true
-      }
+    content {
+      acm_certificate_arn      = data.aws_acm_certificate.symchk.arn
+      ssl_support_method       = "sni-only"
+      minimum_protocol_version = "TLSv1.2_2021"
+    }
     }
 
   # CNAME to this CF dist is created in freshworks.club hosted zone managed by fw
