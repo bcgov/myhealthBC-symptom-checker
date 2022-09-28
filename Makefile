@@ -12,7 +12,7 @@ export LZ2_SUFFIX = symchk
 export AWS_REGION ?= ca-central-1
 
 
-ENV_NAME ?= dev
+ENV_NAME ?= prod
 TERRAFORM_DIR = terraform/
 PROJECT_CODE = $(LZ2_PROJECT)-$(ENV_NAME)-$(LZ2_SUFFIX)
 
@@ -22,7 +22,6 @@ target_env = "$(ENV_NAME)"
 project_name = "$(PROJECT_NAME)"
 project_code = "$(PROJECT_CODE)"
 git_version = "$(PROJECT_NAME)-$(COMMIT_SHA)"
-
 endef
 export TFVARS_DATA
 
