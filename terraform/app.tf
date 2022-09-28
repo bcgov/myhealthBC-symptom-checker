@@ -48,7 +48,7 @@ resource "aws_cloudfront_distribution" "app" {
     dynamic "viewer_certificate" {
       for_each = local.is_prod
     content {
-      acm_certificate_arn      = data.aws_acm_certificate.symchk.arn
+      acm_certificate_arn      = data.aws_acm_certificate.symchk[0].arn
       ssl_support_method       = "sni-only"
       minimum_protocol_version = "TLSv1.2_2021"
     }
