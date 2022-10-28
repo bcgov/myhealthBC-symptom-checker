@@ -27,8 +27,7 @@ export const ResultSymptomaticTest = () => {
             . Visit your local pharmacy and ask for your testing kit.
           </p>
           <p>
-            <b>If you test positive,</b> you need to self-isolate. This means staying home and away
-            from others.
+            <b>If you test positive,</b> you should stay home and limit contact with other people.
           </p>
 
           <p>Find out:</p>
