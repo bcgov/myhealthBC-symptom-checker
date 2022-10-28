@@ -133,7 +133,7 @@
       ]
     },
     "symptomaticNeedTest": {
-      "title": "Please get a COVID-19 test and self-isolate.",
+      "title": "Please get a COVID-19 test.",
       "contents": ["If you test negative for COVID-19, stay home until you feel better."]
     },
     "symptomaticNoNeedTest": {
