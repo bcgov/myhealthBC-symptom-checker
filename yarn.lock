@@ -2006,9 +2006,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:9.3.12":
-  version: 9.3.12
-  resolution: "@nestjs/core@npm:9.3.12"
+"@nestjs/core@npm:8.0.0":
+  version: 8.0.0
+  resolution: "@nestjs/core@npm:8.0.0"
   dependencies:
     "@nuxtjs/opencollective": 0.3.2
     fast-safe-stringify: 2.1.1
@@ -2030,7 +2030,7 @@ __metadata:
       optional: true
     "@nestjs/websockets":
       optional: true
-  checksum: 9a2ba9c304aae9655a8656e7eb2b9644340bc5498216377818c62d58930c1326dd313f3f20497e2499ed4c6215b5b77a2d18f874a463c14094b216ae743f14e1
+  checksum: 274fc4d399fb006875df6969ebc07d8db8cb445dc8c7ade3329237363e5dd767bd7876664fdec1c666fcdcb57ce00c708a42b9ca373845f8a27c5ce124c4051a
   languageName: node
   linkType: hard
 
@@ -2045,7 +2045,7 @@ __metadata:
     tslib: 2.3.0
   peerDependencies:
     "@nestjs/common": ^8.0.0
-    "@nestjs/core": 9.0.5
+    "@nestjs/core": 8.0.0
   checksum: a56112d9725a7a1bf4c011ea62cc8d4fd6e6ac6b6e9a49da6cd72e7fc769c229c6574b1c74a8ee8e4746e1defc12f11d8a9ace8a90d352300daa255d03dc4d97
   languageName: node
   linkType: hard
@@ -2073,7 +2073,7 @@ __metadata:
     tslib: 2.3.1
   peerDependencies:
     "@nestjs/common": ^8.0.0
-    "@nestjs/core": 9.0.5
+    "@nestjs/core": 8.0.0
     "@nestjs/microservices": ^8.0.0
     "@nestjs/platform-express": ^8.0.0
   peerDependenciesMeta:
@@ -2423,7 +2423,7 @@ __metadata:
   dependencies:
     "@nestjs/cli": ^8.0.0
     "@nestjs/common": 8.0.0
-    "@nestjs/core": 9.3.12
+    "@nestjs/core": 8.0.0
     "@nestjs/platform-express": 8.0.0
     "@nestjs/schematics": ^8.0.0
     "@nestjs/testing": ^8.0.0
