@@ -4153,7 +4153,7 @@ __metadata:
 
 "aws-sdk@npm:^2.814.0":
   version: 2.1063.0
-  resolution: "aws-sdk@npm:2.1063.0"
+  resolution: "aws-sdk@npm:2.1360.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -4163,8 +4163,8 @@ __metadata:
     sax: 1.2.1
     url: 0.10.3
     uuid: 3.3.2
-    xml2js: 0.4.19
-  checksum: f40ac12da5ea3575cc4d4831ffb948dc185b238ab597e6caa7a56ae985ae6b74674990b58b107109d431bd44187a8fd0440d97e51e0221f4443db643110270e2
+    xml2js: 0.5.0
+  checksum: b180b10469486003ab388ce869789b8daf9510b83d71f4313ae11d2c5fe80ffed89d87e7ec7c57d847bf617a58d33fa5607b699cb43a0c7221e95f6bf8bc375c
   languageName: node
   linkType: hard
 
@@ -10089,16 +10089,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:3.0.4":
-  version: 3.0.4
-  resolution: "minimatch@npm:3.0.4"
-  dependencies:
-    brace-expansion: ^1.1.7
-  checksum: 66ac295f8a7b59788000ea3749938b0970344c841750abd96694f80269b926ebcafad3deeb3f1da2522978b119e6ae3a5869b63b13a7859a456b3408bd18a078
-  languageName: node
-  linkType: hard
-
-"minimatch@npm:3.0.5, minimatch@npm:^3.0.4":
+"minimatch@npm:3.0.5":
   version: 3.0.5
   resolution: "minimatch@npm:3.0.5"
   dependencies:
@@ -12412,7 +12403,7 @@ __metadata:
   version: 2.2.2
   resolution: "recursive-readdir@npm:2.2.2"
   dependencies:
-    minimatch: 3.0.4
+    minimatch: 3.0.5
   checksum: a6b22994d76458443d4a27f5fd7147ac63ad31bba972666a291d511d4d819ee40ff71ba7524c14f6a565b8cfaf7f48b318f971804b913cf538d58f04e25d1fee
   languageName: node
   linkType: hard
@@ -13952,7 +13943,7 @@ __metadata:
   dependencies:
     "@istanbuljs/schema": ^0.1.2
     glob: ^7.1.4
-    minimatch: ^3.0.4
+    minimatch: 3.0.5
   checksum: 3b34a3d77165a2cb82b34014b3aba93b1c4637a5011807557dc2f3da826c59975a5ccad765721c4648b39817e3472789f9b0fa98fc854c5c1c7a1e632aacdc28
   languageName: node
   linkType: hard
@@ -15315,13 +15306,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xml2js@npm:0.4.19":
-  version: 0.4.19
-  resolution: "xml2js@npm:0.4.19"
+"xml2js@npm:0.5.0":
+  version: 0.5.0
+  resolution: "xml2js@npm:0.5.0"
   dependencies:
     sax: ">=0.6.0"
     xmlbuilder: ~9.0.1
-  checksum: ca8b2fee430d450a18947786bfd7cd1a353ee00fc6fd550acbc8a8e65f1b4df5e9786fcb2990c1a5514ecd554d445fb74e1d716b3a4fcfffc10554aeb5db482b
+  checksum: 1aa71d62e5bc2d89138e3929b9ea46459157727759cbc62ef99484b778641c0cd21fb637696c052d901a22f82d092a3e740a16b4ce218e81ac59b933535124ea
   languageName: node
   linkType: hard
 
